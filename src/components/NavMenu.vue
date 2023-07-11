@@ -1,12 +1,9 @@
 <template>
   <div class="menu">
     <el-menu class="menu__list" :collapse="isCollapsed">
-      <el-menu-item
-        v-if="isCollapsed"
-        class="menu__header-collapsed"
-        @click="isCollapsed = !isCollapsed"
-      >
-        <i class="menu__icon-company">
+      <!-- Header -->
+      <el-menu-item v-if="isCollapsed" class="menu__header-collapsed">
+        <i class="menu__icon-company" @click="toggleCollapse">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="32"
@@ -57,66 +54,109 @@
           </svg>
         </i>
         <span class="menu__title" v-show="!isCollapsed">КОМПАНИЯ</span>
-        <div class="menu__icon-colapse" @click="isCollapsed = !isCollapsed">
-          <!-- <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="12"
-            height="12"
-            fill="currentColor"
-            class="bi bi-chevron-left"
-            viewBox="0 0 16 16"
-          >
-            <path
-              fill-rule="evenodd"
-              d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"
-            />
-          </svg>
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="12"
-            height="12"
-            fill="currentColor"
-            class="bi bi-chevron-left"
-            viewBox="0 0 16 16"
-          >
-            <path
-              fill-rule="evenodd"
-              d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"
-            />
-          </svg> -->
-          <Icon icon="ri:arrow-left-double-fill" width="24" height="24" />
-        </div>
+        <i class="menu__icon-colapse" @click="toggleCollapse">
+          <Icon
+            class="menu__icon-colapse-l"
+            icon="iconamoon:arrow-left-2-thin"
+          />
+          <Icon
+            class="menu__icon-colapse-r"
+            icon="iconamoon:arrow-left-2-thin"
+          />
+        </i>
       </el-menu-item>
-      <el-menu-item class="menu__item" :class="{ collapsed: !isCollapsed }">
+
+      <!-- Поля меню -->
+      <el-menu-item
+        class="menu__item"
+        :class="{ collapsed: !isCollapsed }"
+        index="/"
+        @click="navigateTo"
+      >
         <i class="menu__icon el-icon-time"></i>
         <span class="menu__label" v-show="!isCollapsed">График работы</span>
       </el-menu-item>
-      <el-menu-item class="menu__item" :class="{ collapsed: !isCollapsed }">
+      <el-menu-item
+        class="menu__item"
+        :class="{ collapsed: !isCollapsed }"
+        index="/news"
+        @click="navigateTo"
+      >
         <i class="menu__icon el-icon-news"></i>
         <span class="menu__label" v-show="!isCollapsed">Новости компании</span>
       </el-menu-item>
-      <el-menu-item class="menu__item" :class="{ collapsed: !isCollapsed }">
+      <el-menu-item
+        class="menu__item"
+        :class="{ collapsed: !isCollapsed }"
+        index="/knowledge"
+        @click="navigateTo"
+      >
         <i class="menu__icon"><Icon icon="tabler:book" /></i>
         <span class="menu__label" v-show="!isCollapsed">База знаний</span>
       </el-menu-item>
-      <el-menu-item class="menu__item" :class="{ collapsed: !isCollapsed }">
+      <el-menu-item
+        class="menu__item"
+        :class="{ collapsed: !isCollapsed }"
+        index="/passwords"
+        @click="navigateTo"
+      >
         <i class="menu__icon"><Icon icon="iconoir:password-pass" /></i>
         <span class="menu__label" v-show="!isCollapsed">Пароли</span>
+      </el-menu-item>
+
+      <!-- Настройки -->
+      <el-menu-item
+        class="menu__item menu__item-settings"
+        :class="
+          isCollapsed
+            ? 'menu__item-settings--collapsed'
+            : 'menu__item-settings--expanded'
+        "
+      >
+        <i class="menu__icon"><Icon icon="tabler:settings" /></i>
+        <span class="menu__label" v-show="!isCollapsed">Настройки</span>
       </el-menu-item>
     </el-menu>
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent, ref } from "vue";
+import { defineComponent, computed } from "vue";
 import { Icon } from "@iconify/vue";
+import { useRouter } from "vue-router";
 
 export default defineComponent({
   components: { Icon },
 
-  setup() {
-    const isCollapsed = ref(false);
-    return { isCollapsed };
+  props: {
+    modelValue: {
+      type: Boolean,
+      default: false,
+    },
+  },
+
+  setup(props, { emit }) {
+    const router = useRouter();
+
+    const isCollapsed = computed({
+      get: () => props.modelValue,
+      set: (val) => emit("update:modelValue", val),
+    });
+
+    function toggleCollapse() {
+      isCollapsed.value = !isCollapsed.value;
+    }
+
+    const navigateTo = (menuObject: { index: string }) => {
+      console.log(menuObject.index);
+      router.push(menuObject.index);
+    };
+
+    return {
+      isCollapsed,
+      toggleCollapse,
+      navigateTo,
+    };
   },
 });
 </script>
@@ -124,19 +164,22 @@ export default defineComponent({
 <style scoped lang="scss">
 .menu {
   &__list:not(.el-menu--collapse) {
+    position: relative;
     width: 264px;
     height: 100vh;
   }
 
   &__list {
+    position: relative;
     width: 60px;
+    z-index: 1;
     height: 100vh;
     padding: 0 10px;
   }
 
   &__header {
-    margin-top: 16px;
-    margin-left: -14px;
+    height: 40px;
+    margin-top: 18px;
     cursor: default;
 
     &:hover,
@@ -146,42 +189,66 @@ export default defineComponent({
   }
 
   &__header-collapsed {
-    margin-left: -14px;
-  }
-
-  .menu__icon-colapse {
-    margin-left: 20px;
+    transition: none;
+    margin-top: 18px;
+    height: 40px;
     padding: 0 10px;
+
     &:hover {
       background-color: $main-palette-success-background;
       border-radius: 8px;
     }
   }
 
-  .bi,
-  .bi-chevron-left {
-    color: $color-primary;
-    margin-top: -5px;
-  }
-
-  .bi,
-  .bi-chevron-left:last-child {
+  &__icon-company {
+    margin-top: -10px;
+    z-index: 1;
     margin-left: -7px;
   }
 
-  &__item {
-    transition: none;
+  &__icon-colapse {
+    position: absolute;
+    z-index: 0;
+    cursor: pointer;
+    right: 5px;
+    top: 0;
+    height: 32px;
+    width: 32px;
+
+    .menu__icon-colapse-l {
+      margin-top: -25px;
+      height: 80%;
+      width: 80%;
+      color: $color-primary;
+    }
+
+    .menu__icon-colapse-r {
+      margin-top: -25px;
+      margin-left: -20px;
+      height: 80%;
+      width: 80%;
+      color: $color-primary;
+    }
 
     &:hover {
       background-color: $main-palette-success-background;
       border-radius: 8px;
-      width: 90%;
+    }
+  }
+
+  &__item {
+    margin-top: 8px;
+    transition: none;
+    height: 40px;
+    border-radius: 8px;
+    width: 90%;
+
+    &:hover {
+      background-color: $main-palette-success-background;
     }
 
     &:focus {
       background-color: $main-palette-success-border;
-      border-radius: 8px;
-      width: 90%;
     }
   }
 
@@ -197,14 +264,9 @@ export default defineComponent({
   }
 
   &__icon {
-    margin-left: -12px;
     font-size: 24px !important;
+    margin-left: -12px;
     line-height: 20px;
-  }
-
-  &__icon-company {
-    margin-top: -10px;
-    margin-left: 5px;
   }
 
   &__label {
@@ -212,6 +274,41 @@ export default defineComponent({
     font-weight: 600;
     margin-left: 10px;
     color: $text-color-nav;
+  }
+
+  &__item-settings {
+    position: absolute;
+    border: 1px solid $border-color-light;
+    border-radius: 8px;
+    bottom: 20px;
+
+    &--collapsed {
+      width: 50%;
+
+      &:hover {
+        background-color: $main-palette-success-background;
+        width: 50%;
+      }
+
+      &:focus {
+        background-color: $main-palette-success-border;
+        width: 50%;
+      }
+    }
+
+    &--expanded {
+      width: 85%;
+
+      &:hover {
+        background-color: $main-palette-success-background;
+        width: 85%;
+      }
+
+      &:focus {
+        background-color: $main-palette-success-border;
+        width: 85%;
+      }
+    }
   }
 }
 </style>
