@@ -9,4 +9,12 @@ import "@/assets/theme/index.css";
 import "normalize.css";
 import "@fontsource/roboto";
 
+let initialMenuState = localStorage.getItem("menuIsCollapsed");
+if (initialMenuState === null) {
+  // Здесь вы можете выбрать, что делать при первом посещении сайта.
+  // Например, можно установить меню в закрытое состояние:
+  initialMenuState = "true"; // Это строка, а не булево значение.
+  localStorage.setItem("menuIsCollapsed", initialMenuState);
+}
+
 createApp(App).use(store).use(ElementPlus).use(router).mount("#app");

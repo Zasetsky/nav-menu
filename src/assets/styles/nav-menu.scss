@@ -1,0 +1,152 @@
+.menu {
+  .el-menu-item.is-active {
+    background-color: $main-palette-success-border;
+    color: $color-primary;
+  }
+
+  &__list:not(.el-menu--collapse) {
+    position: relative;
+    width: 264px;
+    height: 100vh;
+  }
+
+  &__list {
+    position: relative;
+    width: 60px;
+    z-index: 1;
+    height: 100vh;
+    padding: 0 10px;
+  }
+
+  &__header {
+    height: 40px;
+    margin-top: 18px;
+    cursor: default;
+
+    &:hover,
+    &:focus {
+      background-color: transparent !important;
+    }
+  }
+
+  &__header-collapsed {
+    transition: none;
+    margin-top: 18px;
+    height: 40px;
+    padding: 0 10px;
+
+    &:hover {
+      background-color: $main-palette-success-background;
+      border-radius: 8px;
+    }
+  }
+
+  &__icon-company {
+    margin-top: -10px;
+    z-index: 1;
+    margin-left: -7px;
+  }
+
+  &__icon-colapse {
+    position: absolute;
+    z-index: 0;
+    cursor: pointer;
+    right: 5px;
+    top: 0;
+    height: 32px;
+    width: 32px;
+
+    .menu__icon-colapse-l {
+      margin-top: -25px;
+      height: 80%;
+      width: 80%;
+      color: $color-primary;
+    }
+
+    .menu__icon-colapse-r {
+      margin-top: -25px;
+      margin-left: -20px;
+      height: 80%;
+      width: 80%;
+      color: $color-primary;
+    }
+
+    &:hover {
+      background-color: $main-palette-success-background;
+      border-radius: 8px;
+    }
+  }
+
+  &__item {
+    margin-top: 8px;
+    transition: none;
+    height: 40px;
+    border-radius: 8px;
+    width: 90%;
+
+    &:hover {
+      background-color: $main-palette-success-background;
+    }
+  }
+
+  .collapsed {
+    margin-left: 10px;
+  }
+
+  &__title {
+    font-weight: 900 !important;
+    font-size: 24px;
+    margin-left: 5px;
+    color: $text-color-nav-title;
+  }
+
+  &__icon {
+    font-size: 24px !important;
+    margin-left: -12px;
+    line-height: 20px;
+  }
+
+  &__label {
+    line-height: 25px;
+    font-weight: 600;
+    margin-left: 10px;
+    color: $text-color-nav;
+  }
+
+  &__label--active {
+    color: $color-primary;
+  }
+
+  &__item-settings {
+    position: absolute;
+    border: 1px solid $border-color-light;
+    border-radius: 8px;
+    bottom: 20px;
+
+    &--collapsed {
+      width: 50%;
+
+      &:hover {
+        background-color: $main-palette-success-background;
+        width: 50%;
+      }
+
+      &:focus {
+        background-color: transparent !important;
+      }
+    }
+
+    &--expanded {
+      width: 85%;
+
+      &:hover {
+        background-color: $main-palette-success-background;
+        width: 85%;
+      }
+
+      &:focus {
+        background-color: transparent !important;
+      }
+    }
+  }
+}

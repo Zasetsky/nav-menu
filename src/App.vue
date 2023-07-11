@@ -9,7 +9,7 @@
     >
       <nav-menu
         :is-collapsed="isCollapsed"
-        @update:isCollapsed="isCollapsed = !isCollapsed"
+        @update:isCollapsed="toggleCollapse"
       />
     </el-aside>
 
@@ -30,8 +30,14 @@ export default defineComponent({
   },
 
   setup() {
-    const isCollapsed = ref(false);
-    return { isCollapsed };
+    const isCollapsed = ref(localStorage.getItem("menuIsCollapsed") === "true");
+
+    const toggleCollapse = () => {
+      isCollapsed.value = !isCollapsed.value;
+      localStorage.setItem("menuIsCollapsed", isCollapsed.value.toString());
+    };
+
+    return { isCollapsed, toggleCollapse };
   },
 });
 </script>
