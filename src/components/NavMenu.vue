@@ -129,7 +129,7 @@ export default defineComponent({
   components: { Icon },
 
   props: {
-    modelValue: {
+    isCollapsed: {
       type: Boolean,
       default: false,
     },
@@ -138,13 +138,8 @@ export default defineComponent({
   setup(props, { emit }) {
     const router = useRouter();
 
-    const isCollapsed = computed({
-      get: () => props.modelValue,
-      set: (val) => emit("update:modelValue", val),
-    });
-
     function toggleCollapse() {
-      isCollapsed.value = !isCollapsed.value;
+      emit("update:isCollapsed", !props.isCollapsed);
     }
 
     const navigateTo = (menuObject: { index: string }) => {
@@ -153,7 +148,6 @@ export default defineComponent({
     };
 
     return {
-      isCollapsed,
       toggleCollapse,
       navigateTo,
     };
