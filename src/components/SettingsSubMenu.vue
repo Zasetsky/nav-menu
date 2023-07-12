@@ -1,5 +1,8 @@
 <template>
-  <div class="settings-submenu" v-if="visible">
+  <div
+    :class="isCollapsed ? 'settings-submenu collapsed' : 'settings-submenu'"
+    v-if="visible"
+  >
     <div class="settings-content">
       <span>Здесь будут настройки</span>
     </div>
@@ -12,6 +15,11 @@ import { defineComponent, watch } from "vue";
 export default defineComponent({
   props: {
     visible: {
+      type: Boolean,
+      required: true,
+    },
+
+    isCollapsed: {
       type: Boolean,
       required: true,
     },
@@ -28,16 +36,24 @@ export default defineComponent({
 });
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .settings-submenu {
   position: absolute;
+  margin: auto;
   width: 224px;
   height: 144px;
-  bottom: 70px;
+  bottom: 80px;
+  left: 17px;
   justify-content: center;
   background-color: #fff;
-  box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.15);
+  border: 1px solid $color-primary;
   border-radius: 4px;
   z-index: 1000;
+  transition: all 0.4s ease-out;
+}
+
+.collapsed {
+  left: 74px;
+  bottom: 20px;
 }
 </style>
