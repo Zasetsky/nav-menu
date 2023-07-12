@@ -44,6 +44,7 @@ export default defineComponent({
 
 <style scoped>
 .el-aside {
+  overflow: visible !important;
   transition: all 0.4s ease-out;
 }
 </style>
