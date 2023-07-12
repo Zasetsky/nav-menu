@@ -1,16 +1,28 @@
 <template>
   <div
-    :class="isCollapsed ? 'settings-submenu collapsed' : 'settings-submenu'"
+    class="settings-submenu"
+    :class="{ 'settings-submenu--collapsed': isCollapsed }"
     v-if="visible"
   >
-    <div class="settings-content">
-      <span>Здесь будут настройки</span>
+    <div class="settings-submenu__content">
+      <span class="settings-submenu__content--item"
+        ><i v-html="employees"></i>Сотрудники</span
+      >
+      <span class="settings-submenu__content--item">
+        <i v-html="absense"></i>
+        Список отсутствий
+      </span>
+      <span class="settings-submenu__content--item">
+        <i v-html="distribution"></i>
+        Распределение сделок
+      </span>
     </div>
   </div>
 </template>
 
 <script lang="ts">
 import { defineComponent, watch } from "vue";
+import { distribution, employees, absense } from "@/assets/icons/index";
 
 export default defineComponent({
   props: {
@@ -32,6 +44,12 @@ export default defineComponent({
         console.log("Visible changed: ", newValue);
       }
     );
+
+    return {
+      distribution,
+      employees,
+      absense,
+    };
   },
 });
 </script>
@@ -39,21 +57,33 @@ export default defineComponent({
 <style lang="scss" scoped>
 .settings-submenu {
   position: absolute;
-  margin: auto;
   width: 224px;
   height: 144px;
   bottom: 80px;
   left: 17px;
-  justify-content: center;
   background-color: #fff;
   border: 1px solid $color-primary;
-  border-radius: 4px;
+  box-shadow: 0px 4px 4px 0px rgba(209, 220, 222, 0.5);
+  border-radius: 8px;
   z-index: 1000;
   transition: all 0.4s ease-out;
-}
 
-.collapsed {
-  left: 74px;
-  bottom: 20px;
+  &--collapsed {
+    left: 74px;
+    bottom: 20px;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    &--item {
+      margin-top: 5px;
+      padding: 10px;
+      cursor: pointer;
+    }
+  }
 }
 </style>

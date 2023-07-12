@@ -10,4 +10,14 @@ module.exports = defineConfig({
       },
     },
   },
+
+  chainWebpack: (config) => {
+    config.module.rules.delete("svg");
+    config.module
+      .rule("svg")
+      .test(/\.svg$/)
+      .use("raw-loader")
+      .loader("raw-loader")
+      .end();
+  },
 });

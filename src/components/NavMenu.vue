@@ -14,58 +14,12 @@
             class="menu__header-collapsed"
             @click.stop="$emit('update:isCollapsed')"
           >
-            <i class="menu__icon-company">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="32"
-                height="32"
-                viewBox="0 0 32 32"
-                fill="none"
-              >
-                <path
-                  d="M6.80448 28.1379H17.4712V9.47121V4.13788L6.80448 9.47121V28.1379Z"
-                  fill="#6FCF97"
-                />
-                <path
-                  d="M17.4712 28.1379H25.4712V14.8045L17.4712 9.47121V28.1379Z"
-                  fill="white"
-                />
-                <path
-                  d="M4.13782 28.1379H28.1378M17.4712 4.13788L6.80448 9.47121V28.1379H17.4712M17.4712 4.13788V28.1379M17.4712 4.13788V9.47121M17.4712 28.1379V9.47121M17.4712 28.1379H25.4712V14.8045L17.4712 9.47121M12.1378 12.1379V12.1512M12.1378 16.1379V16.1512M12.1378 20.1379V20.1512M12.1378 24.1379V24.1512"
-                  stroke="#17505B"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                />
-              </svg>
-            </i>
+            <i v-html="building" class="menu__icon-company"></i>
           </div>
 
           <div v-else class="menu__header">
             <div class="menu__header-wrapper">
-              <i class="menu__icon-company">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="32"
-                  height="32"
-                  viewBox="0 0 32 32"
-                  fill="none"
-                >
-                  <path
-                    d="M6.80448 28.1379H17.4712V9.47121V4.13788L6.80448 9.47121V28.1379Z"
-                    fill="#6FCF97"
-                  />
-                  <path
-                    d="M17.4712 28.1379H25.4712V14.8045L17.4712 9.47121V28.1379Z"
-                    fill="white"
-                  />
-                  <path
-                    d="M4.13782 28.1379H28.1378M17.4712 4.13788L6.80448 9.47121V28.1379H17.4712M17.4712 4.13788V28.1379M17.4712 4.13788V9.47121M17.4712 28.1379V9.47121M17.4712 28.1379H25.4712V14.8045L17.4712 9.47121M12.1378 12.1379V12.1512M12.1378 16.1379V16.1512M12.1378 20.1379V20.1512M12.1378 24.1379V24.1512"
-                    stroke="#17505B"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  />
-                </svg>
-              </i>
+              <i v-html="building" class="menu__icon-company"></i>
               <span class="menu__title" v-show="!isCollapsed">КОМПАНИЯ</span>
             </div>
 
@@ -123,9 +77,11 @@
             index="/knowledge"
             @click="navigateTo"
           >
-            <i :class="isCollapsed ? 'menu__icon-collapsed' : 'menu__icon'"
-              ><Icon icon="tabler:book"
-            /></i>
+            <i
+              v-html="book"
+              :class="isCollapsed ? 'menu__icon-collapsed' : 'menu__icon'"
+            >
+            </i>
             <span
               class="menu__label"
               :class="{ 'menu__label-active': activeIndex === '/knowledge' }"
@@ -177,6 +133,7 @@ import { Icon } from "@iconify/vue";
 import { useRouter, useRoute } from "vue-router";
 import SettingSubMenu from "./SettingsSubMenu.vue";
 import useSettingsVisibility from "../utils/useSettingsVisibility";
+import { book, building } from "@/assets/icons/index";
 
 export default defineComponent({
   components: { Icon, SettingSubMenu },
@@ -217,6 +174,8 @@ export default defineComponent({
       activeIndex,
       isSettingsVisible,
       settingsClass,
+      book,
+      building,
       openSettings,
       navigateTo,
     };
