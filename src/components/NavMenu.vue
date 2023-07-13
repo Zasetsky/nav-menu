@@ -9,108 +9,161 @@
       <div class="menu__wrapper">
         <div class="menu__items">
           <!-- Header -->
-          <div
+          <el-tooltip
             v-if="isCollapsed"
-            class="menu__header-collapsed"
-            @click.stop="$emit('update:isCollapsed')"
+            :disabled="!isCollapsed"
+            effect="dark"
+            content="Развернуть"
+            placement="right"
+            :show-after="500"
           >
-            <i v-html="building" class="menu__icon-company"></i>
-          </div>
+            <div
+              class="menu__header-collapsed"
+              @click.stop="$emit('update:isCollapsed')"
+            >
+              <i v-html="building" class="menu__icon-company"></i>
+            </div>
+          </el-tooltip>
 
           <div v-else class="menu__header">
             <div class="menu__header-wrapper">
               <i v-html="building" class="menu__icon-company"></i>
               <span class="menu__title" v-show="!isCollapsed">КОМПАНИЯ</span>
             </div>
-
-            <i
-              v-html="arrows"
-              class="menu__icon-colapse"
-              @click.stop="$emit('update:isCollapsed')"
+            <el-tooltip
+              :disabled="isCollapsed"
+              effect="dark"
+              content="Свернуть"
+              placement="bottom"
+              :show-after="500"
             >
-            </i>
+              <i
+                v-html="arrows"
+                class="menu__icon-colapse"
+                @click.stop="$emit('update:isCollapsed')"
+              >
+              </i>
+            </el-tooltip>
           </div>
 
           <!-- Поля меню -->
-          <el-menu-item
-            :class="isCollapsed ? 'menu__item-collapsed' : 'menu__item'"
-            index="/"
-            :model-value="activeIndex === '/'"
-            @click="navigateTo"
+          <el-tooltip
+            :disabled="!isCollapsed"
+            effect="dark"
+            content="График работы"
+            placement="right"
+            :show-after="500"
           >
-            <i
-              class="el-icon-time"
-              :class="isCollapsed ? 'menu__icon-collapsed' : 'menu__icon'"
-            ></i>
-            <span
-              class="menu__label"
-              :class="{ 'menu__label-active': activeIndex === '/' }"
-              v-show="!isCollapsed"
-              >График работы</span
+            <el-menu-item
+              :class="isCollapsed ? 'menu__item-collapsed' : 'menu__item'"
+              index="/"
+              :model-value="activeIndex === '/'"
+              @click="navigateTo"
             >
-          </el-menu-item>
-          <el-menu-item
-            :class="isCollapsed ? 'menu__item-collapsed' : 'menu__item'"
-            index="/news"
-            @click="navigateTo"
+              <i
+                class="el-icon-time"
+                :class="isCollapsed ? 'menu__icon-collapsed' : 'menu__icon'"
+              ></i>
+              <span
+                class="menu__label"
+                :class="{ 'menu__label-active': activeIndex === '/' }"
+                v-show="!isCollapsed"
+                >График работы</span
+              >
+            </el-menu-item>
+          </el-tooltip>
+          <el-tooltip
+            :disabled="!isCollapsed"
+            effect="dark"
+            content="Новости компании"
+            placement="right"
+            :show-after="500"
           >
-            <i
-              class="el-icon-news"
-              :class="isCollapsed ? 'menu__icon-collapsed' : 'menu__icon'"
-            ></i>
-            <span
-              class="menu__label"
-              :class="{ 'menu__label-active': activeIndex === '/news' }"
-              v-show="!isCollapsed"
-              >Новости компании</span
+            <el-menu-item
+              :class="isCollapsed ? 'menu__item-collapsed' : 'menu__item'"
+              index="/news"
+              @click="navigateTo"
             >
-          </el-menu-item>
-          <el-menu-item
-            :class="isCollapsed ? 'menu__item-collapsed' : 'menu__item'"
-            index="/knowledge"
-            @click="navigateTo"
+              <i
+                class="el-icon-news"
+                :class="isCollapsed ? 'menu__icon-collapsed' : 'menu__icon'"
+              ></i>
+              <span
+                class="menu__label"
+                :class="{ 'menu__label-active': activeIndex === '/news' }"
+                v-show="!isCollapsed"
+                >Новости компании</span
+              >
+            </el-menu-item>
+          </el-tooltip>
+          <el-tooltip
+            :disabled="!isCollapsed"
+            effect="dark"
+            content="База знаний"
+            placement="right"
+            :show-after="500"
           >
-            <i :class="isCollapsed ? 'menu__icon-collapsed' : 'menu__icon'">
-              <Icon icon="ph:book-bookmark-light" />
-            </i>
-            <span
-              class="menu__label"
-              :class="{ 'menu__label-active': activeIndex === '/knowledge' }"
-              v-show="!isCollapsed"
-              >База знаний</span
+            <el-menu-item
+              :class="isCollapsed ? 'menu__item-collapsed' : 'menu__item'"
+              index="/knowledge"
+              @click="navigateTo"
             >
-          </el-menu-item>
-          <el-menu-item
-            :class="isCollapsed ? 'menu__item-collapsed' : 'menu__item'"
-            index="/passwords"
-            @click="navigateTo"
+              <i :class="isCollapsed ? 'menu__icon-collapsed' : 'menu__icon'">
+                <Icon icon="ph:book-bookmark-light" />
+              </i>
+              <span
+                class="menu__label"
+                :class="{ 'menu__label-active': activeIndex === '/knowledge' }"
+                v-show="!isCollapsed"
+                >База знаний</span
+              >
+            </el-menu-item>
+          </el-tooltip>
+          <el-tooltip
+            :disabled="!isCollapsed"
+            effect="dark"
+            content="Пароли"
+            placement="right"
+            :show-after="500"
           >
-            <i :class="isCollapsed ? 'menu__icon-collapsed' : 'menu__icon'"
-              ><Icon icon="iconoir:password-pass"
-            /></i>
-            <span
-              class="menu__label"
-              :class="{ 'menu__label-active': activeIndex === '/passwords' }"
-              v-show="!isCollapsed"
-              >Пароли</span
+            <el-menu-item
+              :class="isCollapsed ? 'menu__item-collapsed' : 'menu__item'"
+              index="/passwords"
+              @click="navigateTo"
             >
-          </el-menu-item>
+              <i :class="isCollapsed ? 'menu__icon-collapsed' : 'menu__icon'"
+                ><Icon icon="iconoir:password-pass"
+              /></i>
+              <span
+                class="menu__label"
+                :class="{ 'menu__label-active': activeIndex === '/passwords' }"
+                v-show="!isCollapsed"
+                >Пароли</span
+              >
+            </el-menu-item>
+          </el-tooltip>
         </div>
 
         <!-- Настройки -->
-        <div @click="openSettings">
-          <el-menu-item :class="settingsClass" index="">
-            <i :class="isCollapsed ? 'menu__icon-collapsed' : 'menu__icon'"
+        <el-tooltip
+          :disabled="!isCollapsed || isSettingsVisible"
+          effect="dark"
+          content="Настройки"
+          placement="right"
+          :show-after="500"
+        >
+          <div :class="settingsClass" @click="openSettings">
+            <i class="menu__icon-settings" :class="settingsIconClass"
               ><Icon icon="tabler:settings"
             /></i>
             <span
-              class="menu__label"
+              class="menu__label menu__label-settings"
               :class="{ 'menu__label-active': isSettingsVisible }"
               v-show="!isCollapsed"
               >Настройки</span
             >
-          </el-menu-item>
-        </div>
+          </div>
+        </el-tooltip>
       </div>
     </el-menu>
 
@@ -141,17 +194,20 @@ export default defineComponent({
     const route = useRoute();
 
     const activeIndex = computed(() => {
-      if (!isSettingsVisible.value) {
-        return route.path;
-      } else {
-        return "";
-      }
+      return route.path;
     });
 
     const settingsClass = computed(() => {
       let classes = "menu__item-settings";
       classes += props.isCollapsed ? " menu__item-collapsed" : " menu__item";
       classes += isSettingsVisible.value ? " active-settings" : "";
+      return classes;
+    });
+
+    const settingsIconClass = computed(() => {
+      let classes = "";
+      classes += props.isCollapsed ? "menu__icon-collapsed" : "menu__icon";
+      classes += isSettingsVisible.value ? " active-icon" : "";
       return classes;
     });
 
@@ -165,6 +221,7 @@ export default defineComponent({
       activeIndex,
       isSettingsVisible,
       settingsClass,
+      settingsIconClass,
       building,
       arrows,
       openSettings,

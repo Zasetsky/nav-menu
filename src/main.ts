@@ -8,6 +8,7 @@ import "element-plus/dist/index.css";
 import "@/assets/theme/index.css";
 import "normalize.css";
 import "@fontsource/roboto";
+import "@/assets/styles/main.scss";
 
 let initialMenuState = localStorage.getItem("menuIsCollapsed");
 if (initialMenuState === null) {

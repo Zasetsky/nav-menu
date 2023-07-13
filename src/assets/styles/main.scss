@@ -1,19 +1,13 @@
-// Цвета
-$color-primary: #17505b;
-$color-info: #2f80ed;
-$color-warning: #f2994a;
-$color-danger: #eb5757;
-$color-success: #6fcf97;
-$border-color-extra-light: #f3f6f7;
-$main-palette-success-background: #f1faf5;
-$main-palette-success-border: #e2f5ea;
-$color-black: #1d343f;
-$border-color-lighter: #e8eeef;
-$border-color-light: #d1dcde;
-$border-color-base: #bacbce;
-$text-color-nav: #313942;
-$text-color-nav-title: #000000;
-
 h1, h2, span, p {
   font-family: 'Roboto', sans-serif;
+}
+
+.el-popper.is-dark {
+  background-color: $color-primary !important;
+  border: none !important;
+}
+
+.el-popper.is-dark .el-popper__arrow::before {
+  border: none !important;
+  background: $color-primary !important;
 }
