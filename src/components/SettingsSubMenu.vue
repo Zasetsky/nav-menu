@@ -62,7 +62,7 @@ export default defineComponent({
   width: 224px;
   height: 144px;
   bottom: 80px;
-  left: 17px;
+  left: 20px;
   background-color: #fff;
   border: 1px solid $color-primary;
   box-shadow: 0px 4px 4px 0px rgba(209, 220, 222, 0.5);
