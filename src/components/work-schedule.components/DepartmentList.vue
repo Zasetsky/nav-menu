@@ -1,0 +1,69 @@
+<template>
+  <div>
+    <EmployeeSearch v-model="search" />
+
+    <div class="departments">
+      <DepartmentComponent
+        v-for="department in filteredDepartments"
+        :key="department.id"
+        :department="department"
+      />
+    </div>
+  </div>
+</template>
+
+<script lang="ts">
+import { ref, computed } from "vue";
+import DepartmentComponent from "./DepartmentComponent.vue";
+import EmployeeSearch from "./EmployeeSearch.vue";
+
+interface Employee {
+  id: number;
+  name: string;
+  phone: string;
+}
+
+interface Department {
+  id: number;
+  name: string;
+  employees: Employee[];
+}
+
+export default {
+  components: {
+    DepartmentComponent,
+    EmployeeSearch,
+  },
+  setup() {
+    const search = ref("");
+
+    const departments = ref<Department[]>([
+      {
+        id: 1,
+        name: "Отдел 1",
+        employees: [
+          { id: 1, name: "Иван Иванов", phone: "+1234567890" },
+          { id: 2, name: "Петр Петров", phone: "+0987654321" },
+        ],
+      },
+    ]);
+
+    const filteredDepartments = computed(() => {
+      if (search.value === "") {
+        return departments.value;
+      } else {
+        return departments.value.map((department) => ({
+          ...department,
+          employees: department.employees.filter((employee) =>
+            employee.name.toLowerCase().includes(search.value.toLowerCase())
+          ),
+        }));
+      }
+    });
+
+    return { search, filteredDepartments };
+  },
+};
+</script>
+
+<style scoped></style>

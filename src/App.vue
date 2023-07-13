@@ -22,7 +22,7 @@
 
 <script lang="ts">
 import { defineComponent, ref } from "vue";
-import NavMenu from "./components/NavMenu.vue";
+import NavMenu from "./components/navigation-menu.components/NavMenu.vue";
 
 export default defineComponent({
   components: {
