@@ -72,29 +72,12 @@
   }
 
   &__icon-colapse {
-    position: relative;
     display: flex;
     align-items: center;
     z-index: 0;
     cursor: pointer;
-    height: 32px;
-    width: 32px;
-
-    .menu__icon-colapse-l {
-      position: absolute;
-      margin-right: 5px;
-      height: 80%;
-      width: 80%;
-      color: $color-primary;
-    }
-
-    .menu__icon-colapse-r {
-      position: absolute;
-      margin-left: 5px;
-      height: 80%;
-      width: 80%;
-      color: $color-primary;
-    }
+    height: 24px;
+    width: 24px;
 
     &:hover {
       background-color: $main-palette-success-background;
@@ -111,7 +94,7 @@
     transition: none;
     height: 40px;
     border-radius: 8px;
-    width: 100%;
+    width: 104%;
 
     &:hover {
       background-color: $main-palette-success-background;
@@ -141,6 +124,7 @@
 
   .is-active {
     cursor: default;
+    color: $color-primary;
   }
 
   &__icon {
@@ -171,9 +155,18 @@
   &__item-settings {
     margin-bottom: 20px;
     border: 1px solid $border-color-light;
+
+    &:hover {
+      background-color: $main-palette-success-background;
+    }
+
+    &:focus {
+      background-color: transparent;
+    }
   }
 
   .active-settings {
     border: 1px solid $color-primary;
+    background-color: $main-palette-success-border;
   }
 }

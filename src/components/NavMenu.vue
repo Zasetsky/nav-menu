@@ -24,17 +24,10 @@
             </div>
 
             <i
+              v-html="arrows"
               class="menu__icon-colapse"
               @click.stop="$emit('update:isCollapsed')"
             >
-              <Icon
-                class="menu__icon-colapse-l"
-                icon="iconamoon:arrow-left-2-thin"
-              />
-              <Icon
-                class="menu__icon-colapse-r"
-                icon="iconamoon:arrow-left-2-thin"
-              />
             </i>
           </div>
 
@@ -77,10 +70,8 @@
             index="/knowledge"
             @click="navigateTo"
           >
-            <i
-              v-html="book"
-              :class="isCollapsed ? 'menu__icon-collapsed' : 'menu__icon'"
-            >
+            <i :class="isCollapsed ? 'menu__icon-collapsed' : 'menu__icon'">
+              <Icon icon="ph:book-bookmark-light" />
             </i>
             <span
               class="menu__label"
@@ -133,7 +124,7 @@ import { Icon } from "@iconify/vue";
 import { useRouter, useRoute } from "vue-router";
 import SettingSubMenu from "./SettingsSubMenu.vue";
 import useSettingsVisibility from "../utils/useSettingsVisibility";
-import { book, building } from "@/assets/icons/index";
+import { building, arrows } from "@/assets/icons/index";
 
 export default defineComponent({
   components: { Icon, SettingSubMenu },
@@ -174,8 +165,8 @@ export default defineComponent({
       activeIndex,
       isSettingsVisible,
       settingsClass,
-      book,
       building,
+      arrows,
       openSettings,
       navigateTo,
     };

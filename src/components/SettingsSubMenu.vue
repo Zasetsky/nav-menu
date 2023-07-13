@@ -1,21 +1,23 @@
 <template>
   <div
+    v-if="visible"
     class="settings-submenu"
     :class="{ 'settings-submenu--collapsed': isCollapsed }"
-    v-if="visible"
+    @click.stop
   >
     <div class="settings-submenu__content">
-      <span class="settings-submenu__content--item"
-        ><i v-html="employees"></i>Сотрудники</span
-      >
-      <span class="settings-submenu__content--item">
-        <i v-html="absense"></i>
-        Список отсутствий
-      </span>
-      <span class="settings-submenu__content--item">
-        <i v-html="distribution"></i>
-        Распределение сделок
-      </span>
+      <div class="settings-submenu__item">
+        <i v-html="employees" class="settings-submenu__item-icon"></i>
+        <span class="settings-submenu__item-text">Сотрудники</span>
+      </div>
+      <div class="settings-submenu__item">
+        <i v-html="absense" class="settings-submenu__item-icon"></i>
+        <span class="settings-submenu__item-text">Список отсутствий</span>
+      </div>
+      <div class="settings-submenu__item">
+        <i v-html="distribution" class="settings-submenu__item-icon"></i>
+        <span class="settings-submenu__item-text">Распределение сделок</span>
+      </div>
     </div>
   </div>
 </template>
@@ -67,6 +69,7 @@ export default defineComponent({
   border-radius: 8px;
   z-index: 1000;
   transition: all 0.4s ease-out;
+  overflow: hidden;
 
   &--collapsed {
     left: 74px;
@@ -74,15 +77,27 @@ export default defineComponent({
   }
 
   &__content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+  }
 
-    &--item {
-      margin-top: 5px;
-      padding: 10px;
-      cursor: pointer;
+  &__item {
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    font-weight: 600;
+    color: $text-color-nav;
+    justify-content: flex-start;
+    padding: 10px;
+    cursor: pointer;
+
+    &:hover {
+      background-color: $main-palette-success-background;
+    }
+
+    &-icon {
+      min-width: 35px;
+    }
+
+    &-text {
     }
   }
 }
