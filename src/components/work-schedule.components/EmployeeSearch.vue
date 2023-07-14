@@ -3,15 +3,15 @@
 </template>
 
 <script lang="ts">
-import { ref } from "vue";
+import { defineComponent, ref } from "vue";
 
-export default {
+export default defineComponent({
   setup() {
     const search = ref("");
 
     return { search };
   },
-};
+});
 </script>
 
 <style scoped></style>

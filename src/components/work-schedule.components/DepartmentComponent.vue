@@ -12,18 +12,7 @@
 <script lang="ts">
 import { defineComponent } from "vue";
 import EmployeeRow from "./EmployeeRow.vue";
-
-interface Employee {
-  id: number;
-  name: string;
-  phone: string;
-}
-
-interface Department {
-  id: number;
-  name: string;
-  employees: Employee[];
-}
+import { Department } from "@/types";
 
 export default defineComponent({
   components: {

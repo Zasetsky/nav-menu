@@ -7,9 +7,9 @@
 </template>
 
 <script lang="ts">
-import { ref, computed } from "vue";
+import { defineComponent, ref, computed } from "vue";
 
-export default {
+export default defineComponent({
   setup() {
     const month = ref(new Date().getMonth() + 1);
     const year = ref(new Date().getFullYear());
@@ -21,15 +21,19 @@ export default {
 
     return { daysOfMonth };
   },
-};
+});
 </script>
 
 <style lang="scss">
 .calendar-header {
   display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  left: 280px;
 
   &-day {
-    padding: 8px;
+    padding: 0 12.15px;
   }
 }
 </style>

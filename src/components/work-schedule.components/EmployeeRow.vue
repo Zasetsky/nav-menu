@@ -1,25 +1,27 @@
 <template>
-  <div class="employee">
-    <div class="employee-info">
-      <h3>{{ employee.name }}</h3>
-      <p>{{ employee.phone }}</p>
+  <div class="employee-row">
+    <div class="employee-row__card">
+      <div class="employee-row-info">
+        <!-- <el-avatar :size="size" :src="circleUrl" /> -->
+        <h3>{{ employee.name }}</h3>
+        <p>{{ employee.phone }}</p>
+      </div>
     </div>
-    <div v-for="day in daysOfMonth" :key="day" class="employee-day">
-      <div class="day-circle"></div>
+
+    <div class="employee-row-days">
+      <day-cell v-for="day in daysOfMonth" :key="day" />
     </div>
   </div>
 </template>
 
 <script lang="ts">
-import { ref, computed } from "vue";
+import { defineComponent, ref, computed } from "vue";
+import { Employee } from "@/types";
+import DayCell from "./DayCell.vue";
 
-interface Employee {
-  id: number;
-  name: string;
-  phone: string;
-}
+export default defineComponent({
+  components: { DayCell },
 
-export default {
   props: {
     employee: {
       type: Object as () => Employee,
@@ -37,29 +39,20 @@ export default {
 
     return { daysOfMonth };
   },
-};
+});
 </script>
 
-<style scoped>
-.employee-day {
-  display: inline-flex;
+<style lang="scss" scoped>
+.employee-row {
+  display: flex;
   align-items: center;
-  justify-content: center;
-}
 
-.day-circle {
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-  background: #ff0000;
-  margin-right: 5px;
-}
+  &__card {
+    min-width: 280px;
+  }
 
-.day-circle:nth-child(2n) {
-  background: #00ff00;
-}
-
-.day-circle:nth-child(3n) {
-  background: #0000ff;
+  &-days {
+    display: flex;
+  }
 }
 </style>

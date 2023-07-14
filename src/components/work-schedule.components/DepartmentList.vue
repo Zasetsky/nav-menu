@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="department-list">
     <EmployeeSearch v-model="search" />
 
     <div class="departments">
@@ -13,23 +13,12 @@
 </template>
 
 <script lang="ts">
-import { ref, computed } from "vue";
+import { defineComponent, ref, computed } from "vue";
 import DepartmentComponent from "./DepartmentComponent.vue";
 import EmployeeSearch from "./EmployeeSearch.vue";
+import { Department } from "@/types";
 
-interface Employee {
-  id: number;
-  name: string;
-  phone: string;
-}
-
-interface Department {
-  id: number;
-  name: string;
-  employees: Employee[];
-}
-
-export default {
+export default defineComponent({
   components: {
     DepartmentComponent,
     EmployeeSearch,
@@ -63,7 +52,7 @@ export default {
 
     return { search, filteredDepartments };
   },
-};
+});
 </script>
 
 <style scoped></style>
