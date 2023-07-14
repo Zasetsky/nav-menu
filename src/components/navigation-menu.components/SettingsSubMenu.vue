@@ -59,21 +59,21 @@ export default defineComponent({
 <style lang="scss" scoped>
 .settings-submenu {
   position: absolute;
-  width: 224px;
-  height: 144px;
-  bottom: 80px;
-  left: 20px;
+  width: 14rem;
+  height: 9rem;
+  bottom: 5rem;
+  left: 1.25rem;
   background-color: #fff;
-  border: 1px solid $color-primary;
-  box-shadow: 0px 4px 4px 0px rgba(209, 220, 222, 0.5);
-  border-radius: 8px;
+  border: 0.0625rem solid $color-primary;
+  box-shadow: 0rem 0.25rem 0.25rem 0rem rgba(209, 220, 222, 0.5);
+  border-radius: 0.5rem;
   z-index: 1000;
   transition: all 0.4s ease-out;
   overflow: hidden;
 
   &--collapsed {
-    left: 74px;
-    bottom: 20px;
+    left: 4.625rem;
+    bottom: 1.25rem;
   }
 
   &__content {
@@ -82,11 +82,11 @@ export default defineComponent({
   &__item {
     display: flex;
     align-items: center;
-    font-size: 14px;
+    font-size: 0.875rem;
     font-weight: 600;
     color: $text-color-nav;
     justify-content: flex-start;
-    padding: 10px;
+    padding: 0.625rem;
     cursor: pointer;
 
     &:hover {
@@ -94,7 +94,7 @@ export default defineComponent({
     }
 
     &-icon {
-      min-width: 35px;
+      min-width: 2.1875rem;
     }
 
     &-text {
