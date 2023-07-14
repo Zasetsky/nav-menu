@@ -1,11 +1,9 @@
 <template>
   <div class="employee-row">
-    <div class="employee-row__card">
-      <div class="employee-row-info">
-        <!-- <el-avatar :size="size" :src="circleUrl" /> -->
-        <h3>{{ employee.name }}</h3>
-        <p>{{ employee.phone }}</p>
-      </div>
+    <div class="employee-row-info">
+      <!-- <el-avatar :size="size" :src="circleUrl" /> -->
+      <h3>{{ employee.name }}</h3>
+      <p>{{ employee.phone }}</p>
     </div>
 
     <div class="employee-row-days">
@@ -47,12 +45,12 @@ export default defineComponent({
   display: flex;
   align-items: center;
 
-  &__card {
-    min-width: 280px;
-  }
-
   &-days {
     display: flex;
+    justify-content: space-between;
+    width: 78vw;
+    position: absolute;
+    left: 18vw;
   }
 }
 </style>

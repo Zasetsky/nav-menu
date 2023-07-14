@@ -18,7 +18,6 @@ export default defineComponent({});
   justify-content: center;
   height: 48px;
   width: 100%;
-  padding: 12px;
   border-top: 1px solid $main-palette-background-base;
   border-bottom: 1px solid $main-palette-background-base;
 }

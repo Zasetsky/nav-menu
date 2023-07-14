@@ -28,12 +28,16 @@ export default defineComponent({
 .calendar-header {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
+  width: 78vw;
   position: absolute;
-  left: 280px;
+  left: 18vw;
 
   &-day {
-    padding: 0 12.15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
   }
 }
 </style>

@@ -1,5 +1,5 @@
 <template>
-  <div class="department">
+  <div class="department-component">
     <h2>{{ department.name }}</h2>
     <employee-row
       v-for="employee in department.employees"
@@ -26,3 +26,8 @@ export default defineComponent({
   },
 });
 </script>
+
+<style lang="scss" scoped>
+.department-component {
+}
+</style>

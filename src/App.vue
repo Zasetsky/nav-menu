@@ -47,4 +47,8 @@ export default defineComponent({
   overflow: visible !important;
   transition: all 0.4s ease-out;
 }
+.el-main {
+  overflow-x: hidden;
+  padding: 0;
+}
 </style>

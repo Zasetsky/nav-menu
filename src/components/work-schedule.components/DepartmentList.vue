@@ -55,4 +55,10 @@ export default defineComponent({
 });
 </script>
 
-<style scoped></style>
+<style lang="scss" scoped>
+.department-list {
+  min-width: 18vw;
+  min-height: 100vh;
+  background-color: $main-palette-background-base;
+}
+</style>
