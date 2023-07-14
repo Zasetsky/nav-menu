@@ -9,3 +9,7 @@ export interface Department {
   name: string;
   employees: Employee[];
 }
+
+export interface LocalState {
+  isCollapsed: boolean;
+}

@@ -1,41 +1,28 @@
 <template>
   <div class="employee-row">
-    <div class="employee-row-info">
-      <!-- <el-avatar :size="size" :src="circleUrl" /> -->
-      <h3>{{ employee.name }}</h3>
-      <p>{{ employee.phone }}</p>
+    <div class="employee-row--info">
+      <EmployeeInfo :employee="employee" />
     </div>
-
-    <div class="employee-row-days">
-      <day-cell v-for="day in daysOfMonth" :key="day" />
+    <div class="employee-row--day">
+      <EmployeeDays :employee="employee" />
     </div>
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, computed } from "vue";
+import { defineComponent } from "vue";
+import EmployeeInfo from "./EmployeeInfo.vue";
+import EmployeeDays from "./EmployeeDays.vue";
 import { Employee } from "@/types";
-import DayCell from "./DayCell.vue";
 
 export default defineComponent({
-  components: { DayCell },
+  components: { EmployeeInfo, EmployeeDays },
 
   props: {
     employee: {
       type: Object as () => Employee,
       required: true,
     },
-  },
-  setup() {
-    const month = ref(new Date().getMonth() + 1);
-    const year = ref(new Date().getFullYear());
-
-    const daysOfMonth = computed(() => {
-      const date = new Date(year.value, month.value, 0);
-      return Array.from({ length: date.getDate() }, (_, i) => i + 1);
-    });
-
-    return { daysOfMonth };
   },
 });
 </script>
@@ -45,12 +32,11 @@ export default defineComponent({
   display: flex;
   align-items: center;
 
-  &-days {
-    display: flex;
-    justify-content: space-between;
-    width: 78vw;
-    position: absolute;
-    left: 18vw;
+  &--info {
+    width: 17.5rem;
+  }
+
+  &--day {
   }
 }
 </style>

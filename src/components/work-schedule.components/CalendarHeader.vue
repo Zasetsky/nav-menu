@@ -27,11 +27,8 @@ export default defineComponent({
 <style lang="scss">
 .calendar-header {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: space-between;
-  width: 78vw;
-  position: absolute;
-  left: 18vw;
 
   &-day {
     display: flex;

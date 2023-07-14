@@ -13,7 +13,6 @@ export default defineComponent({});
 <style lang="scss" scoped>
 .day {
   display: flex;
-  flex-direction: row;
   align-items: center;
   justify-content: center;
   height: 48px;

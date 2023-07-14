@@ -3,14 +3,11 @@
     <!-- Навигационное меню -->
     <el-aside
       :style="{
-        'max-width': isCollapsed ? '60px' : '264px',
-        'min-width': isCollapsed ? '60px' : '264px',
+        'max-width': isCollapsed ? '3.75rem' : '16.5rem',
+        'min-width': isCollapsed ? '3.75rem' : '16.5rem',
       }"
     >
-      <nav-menu
-        :is-collapsed="isCollapsed"
-        @update:isCollapsed="toggleCollapse"
-      />
+      <nav-menu />
     </el-aside>
 
     <!-- Основное содержимое -->
@@ -21,8 +18,9 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref } from "vue";
+import { defineComponent, computed } from "vue";
 import NavMenu from "./components/navigation-menu.components/NavMenu.vue";
+import { useStore } from "vuex";
 
 export default defineComponent({
   components: {
@@ -30,14 +28,12 @@ export default defineComponent({
   },
 
   setup() {
-    const isCollapsed = ref(localStorage.getItem("menuIsCollapsed") === "true");
+    const store = useStore();
+    const isCollapsed = computed(
+      () => store.getters["LocalStates/getIsCollapsed"]
+    );
 
-    const toggleCollapse = () => {
-      isCollapsed.value = !isCollapsed.value;
-      localStorage.setItem("menuIsCollapsed", isCollapsed.value.toString());
-    };
-
-    return { isCollapsed, toggleCollapse };
+    return { isCollapsed };
   },
 });
 </script>

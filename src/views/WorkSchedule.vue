@@ -1,12 +1,12 @@
 <template>
   <div class="work-schedule">
-    <DepartmentList />
-    <CalendarHeader />
+    <DepartmentList class="work-schedule--department-list" />
+    <CalendarHeader class="work-schedule--calendar-header" />
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent } from "vue";
+import { defineComponent, computed } from "vue";
 import DepartmentList from "@/components/work-schedule.components/DepartmentList.vue";
 import CalendarHeader from "@/components/work-schedule.components/CalendarHeader.vue";
 
@@ -15,9 +15,18 @@ export default defineComponent({
 });
 </script>
 
-<style>
+<style lang="scss" scoped>
 .work-schedule {
   display: flex;
-  position: relative;
+  align-items: flex-start;
+  width: 100%;
+
+  &--department-list {
+    width: 17.5rem;
+  }
+
+  &--calendar-header {
+    flex-grow: 1;
+  }
 }
 </style>

@@ -17,10 +17,7 @@
             placement="right"
             :show-after="500"
           >
-            <div
-              class="menu__header-collapsed"
-              @click.stop="$emit('update:isCollapsed')"
-            >
+            <div class="menu__header-collapsed" @click.stop="toggleCollapse">
               <i v-html="building" class="menu__icon-company"></i>
             </div>
           </el-tooltip>
@@ -40,7 +37,7 @@
               <i
                 v-html="arrows"
                 class="menu__icon-colapse"
-                @click.stop="$emit('update:isCollapsed')"
+                @click.stop="toggleCollapse"
               >
               </i>
             </el-tooltip>
@@ -178,20 +175,19 @@ import { useRouter, useRoute } from "vue-router";
 import SettingSubMenu from "./SettingsSubMenu.vue";
 import useSettingsVisibility from "@/utils/useSettingsVisibility";
 import { building, arrows } from "@/assets/icons/index";
+import { useStore } from "vuex";
 
 export default defineComponent({
   components: { Icon, SettingSubMenu },
 
-  props: {
-    isCollapsed: {
-      type: Boolean,
-      required: true,
-    },
-  },
-
-  setup(props) {
+  setup() {
     const router = useRouter();
     const route = useRoute();
+    const store = useStore();
+
+    const isCollapsed = computed(() => {
+      return store.getters["LocalStates/getIsCollapsed"];
+    });
 
     const activeIndex = computed(() => {
       return route.path;
@@ -199,17 +195,21 @@ export default defineComponent({
 
     const settingsClass = computed(() => {
       let classes = "menu__item-settings";
-      classes += props.isCollapsed ? " menu__item-collapsed" : " menu__item";
+      classes += isCollapsed.value ? " menu__item-collapsed" : " menu__item";
       classes += isSettingsVisible.value ? " active-settings" : "";
       return classes;
     });
 
     const settingsIconClass = computed(() => {
       let classes = "";
-      classes += props.isCollapsed ? "menu__icon-collapsed" : "menu__icon";
+      classes += isCollapsed.value ? "menu__icon-collapsed" : "menu__icon";
       classes += isSettingsVisible.value ? " active-icon" : "";
       return classes;
     });
+
+    const toggleCollapse = () => {
+      store.commit("LocalStates/toggleCollapse");
+    };
 
     const { isSettingsVisible, openSettings } = useSettingsVisibility();
 
@@ -218,6 +218,7 @@ export default defineComponent({
     };
 
     return {
+      isCollapsed,
       activeIndex,
       isSettingsVisible,
       settingsClass,
@@ -225,6 +226,7 @@ export default defineComponent({
       building,
       arrows,
       openSettings,
+      toggleCollapse,
       navigateTo,
     };
   },

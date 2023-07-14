@@ -1,9 +1,8 @@
 import { createStore } from "vuex";
+import LocalStates from "./modules/local-states";
 
 export default createStore({
-  state: {},
-  getters: {},
-  mutations: {},
-  actions: {},
-  modules: {},
+  modules: {
+    LocalStates,
+  },
 });
