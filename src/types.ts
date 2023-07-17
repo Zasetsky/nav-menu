@@ -2,7 +2,6 @@ export interface Employee {
   id: number;
   name: string;
   phone: string;
-  isAdmin?: boolean; // ПОПРАВИТЬ!!!
   isOnline?: boolean; // ПОПРАВИТЬ!!!
   dates?: Dates; // ПОПРАВИТЬ!!!
 }
@@ -28,6 +27,10 @@ export interface DatesData {
 
 export interface Dates {
   [date: string]: DatesData;
+}
+
+export interface User {
+  isAdmin: boolean;
 }
 
 export interface StatusItem {

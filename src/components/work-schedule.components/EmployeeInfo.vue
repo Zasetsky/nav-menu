@@ -1,7 +1,16 @@
 <template>
   <div class="employee">
     <div class="employee__card">
-      <el-avatar class="employee--avatar" shape="square" />
+      <el-avatar class="employee--avatar" shape="square">
+        <div
+          class="employee--avatar--online-indicator"
+          v-show="employee.isOnline"
+        ></div>
+        <div
+          class="employee--avatar--offline-indicator"
+          v-show="!employee.isOnline"
+        ></div>
+      </el-avatar>
       <div class="employee__info">
         <div class="employee__info__name-wrapper">
           <p class="employee__info__name-wrapper--name">{{ employee.name }}</p>
@@ -37,8 +46,6 @@ export default defineComponent({
       return store.getters["Status/getAllStatuses"];
     });
 
-    console.log(allStatuses);
-
     const successAndWarningStatuses = computed(() => {
       return allStatuses.value.filter(
         (status: StatusItem) =>
@@ -70,8 +77,31 @@ export default defineComponent({
   }
 
   &--avatar {
+    position: relative;
     height: 33px;
     width: 33px;
+
+    &--online-indicator {
+      position: absolute;
+      bottom: -2px;
+      right: -2px;
+      width: 8px;
+      height: 8px;
+      border: 2px solid $main-palette-background-base;
+      background-color: $color-success;
+      border-radius: 50%;
+    }
+
+    &--offline-indicator {
+      position: absolute;
+      bottom: -2px;
+      right: -2px;
+      width: 8px;
+      height: 8px;
+      border: 2px solid $main-palette-background-base;
+      background-color: $color-danger;
+      border-radius: 50%;
+    }
   }
 
   &__info {

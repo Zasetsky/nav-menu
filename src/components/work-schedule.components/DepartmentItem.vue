@@ -15,11 +15,15 @@
         class="department__employee-row"
       />
     </div>
+    <p class="department__isOnline">
+      Онлайн: <span>{{ onlineEmployeesCount }}</span
+      >/<span>{{ department.employees.length }}</span>
+    </p>
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent, ref } from "vue";
+import { defineComponent, ref, computed } from "vue";
 import EmployeeRow from "./EmployeeRow.vue";
 import { Department } from "@/types";
 import { plus, minus } from "@/assets/icons/index";
@@ -32,9 +36,15 @@ export default defineComponent({
       required: true,
     },
   },
-  setup() {
+  setup(props) {
     const isCollapsed = ref(false);
-    return { isCollapsed, plus, minus };
+
+    const onlineEmployeesCount = computed(() => {
+      return props.department.employees.filter((employee) => employee.isOnline)
+        .length;
+    });
+
+    return { isCollapsed, plus, minus, onlineEmployeesCount };
   },
 });
 </script>
@@ -65,6 +75,12 @@ export default defineComponent({
   }
 
   &__employee-row {
+  }
+
+  &__isOnline {
+    font-weight: 600;
+    color: $main-palette-neutral-gray;
+    font-size: 12px;
   }
 }
 </style>

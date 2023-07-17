@@ -32,16 +32,21 @@ export default defineComponent({
         id: 1,
         name: "ОТДЕЛ ПРОДАЖ",
         employees: [
-          { id: 1, name: "Иван Иванов", phone: "+1234567890" },
-          { id: 2, name: "Петр Петров", phone: "+0987654321" },
+          { id: 1, name: "Иван Иванов", phone: "+1234567890", isOnline: true },
+          { id: 2, name: "Петр Петров", phone: "+0987654321", isOnline: false },
         ],
       },
       {
         id: 2,
         name: "БУХГАЛТЕРИЯ",
         employees: [
-          { id: 1, name: "Иван Иванов", phone: "+1234567890" },
-          { id: 2, name: "Петр Петров", phone: "+0987654321" },
+          {
+            id: 1,
+            name: "Владимир Владимиров",
+            phone: "+1234567890",
+            isOnline: true,
+          },
+          { id: 2, name: "Олег Олегов", phone: "+0987654321", isOnline: true },
         ],
       },
     ]);
