@@ -56,7 +56,4 @@ export default defineComponent({
   min-height: 100vh;
   background-color: $main-palette-background-base;
 }
-
-.departments {
-}
 </style>

@@ -31,11 +31,5 @@ export default defineComponent({
 .employee-row {
   display: flex;
   align-items: center;
-
-  &--info {
-  }
-
-  &--day {
-  }
 }
 </style>

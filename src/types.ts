@@ -3,7 +3,7 @@ export interface Employee {
   name: string;
   phone: string;
   isOnline: boolean;
-  dates?: Dates; // ПОПРАВИТЬ!!!
+  dates: Dates;
 }
 
 export interface Department {

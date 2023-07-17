@@ -68,15 +68,6 @@ export default defineComponent({
     color: $main-palette-primary-darker-20;
   }
 
-  &__toggle-icon {
-  }
-
-  &__content {
-  }
-
-  &__employee-row {
-  }
-
   &__isOnline {
     font-weight: 600;
     color: $main-palette-neutral-gray;

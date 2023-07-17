@@ -9,7 +9,9 @@ export function getCurrentMonthDates(): Dates {
   const daysInMonth = new Date(year, month + 1, 0).getDate();
 
   for (let i = 1; i <= daysInMonth; i++) {
-    dates[`${year}-${month + 1}-${i}`] = {
+    const paddedMonth = String(month + 1).padStart(2, "0");
+    const paddedDay = String(i).padStart(2, "0");
+    dates[`${year}-${paddedMonth}-${paddedDay}`] = {
       breaksCount: 0,
       totalTime: "00",
       downtime: "00",

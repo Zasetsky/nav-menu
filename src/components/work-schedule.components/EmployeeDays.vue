@@ -9,7 +9,7 @@
       v-for="(dayData, date) in employee.dates"
       :key="date"
       :day-data="dayData"
-      :date="date"
+      :date="(date as string)"
     />
   </div>
 </template>
@@ -47,5 +47,8 @@ export default defineComponent({
   display: flex;
   justify-content: space-between;
   transition: width 0.3s;
+  border-top: 1px solid $main-palette-background-base;
+  border-bottom: 1px solid $main-palette-background-base;
+  height: 48px;
 }
 </style>
