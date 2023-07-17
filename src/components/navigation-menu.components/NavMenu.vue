@@ -173,7 +173,7 @@ import { defineComponent, computed } from "vue";
 import { Icon } from "@iconify/vue";
 import { useRouter, useRoute } from "vue-router";
 import SettingSubMenu from "./SettingsSubMenu.vue";
-import useSettingsVisibility from "@/utils/useSettingsVisibility";
+import useSettingsVisibility from "@/composables/useSettingsVisibility";
 import { building, arrows } from "@/assets/icons/index";
 import { useStore } from "vuex";
 

@@ -7,17 +7,12 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, computed } from "vue";
+import { defineComponent } from "vue";
+import useDaysOfMonth from "@/composables/useDaysOfMonth";
 
 export default defineComponent({
   setup() {
-    const month = ref(new Date().getMonth() + 1);
-    const year = ref(new Date().getFullYear());
-
-    const daysOfMonth = computed(() => {
-      const date = new Date(year.value, month.value, 0);
-      return Array.from({ length: date.getDate() }, (_, i) => i + 1);
-    });
+    const { daysOfMonth } = useDaysOfMonth();
 
     return { daysOfMonth };
   },

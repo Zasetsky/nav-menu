@@ -5,12 +5,17 @@
       width: isCollapsed ? 'calc(100vw - 21.25rem)' : 'calc(100vw - 34rem)',
     }"
   >
-    <day-cell v-for="day in daysOfMonth" :key="day" />
+    <day-cell
+      v-for="(dayData, date) in employee.dates"
+      :key="date"
+      :day-data="dayData"
+      :date="date"
+    />
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, computed } from "vue";
+import { defineComponent, computed } from "vue";
 import DayCell from "./DayCell.vue";
 import { Employee } from "@/types";
 import { useStore } from "vuex";
@@ -26,20 +31,13 @@ export default defineComponent({
   },
 
   setup() {
-    const month = ref(new Date().getMonth() + 1);
-    const year = ref(new Date().getFullYear());
     const store = useStore();
 
     const isCollapsed = computed(
       () => store.getters["LocalStates/getIsCollapsed"]
     );
 
-    const daysOfMonth = computed(() => {
-      const date = new Date(year.value, month.value, 0);
-      return Array.from({ length: date.getDate() }, (_, i) => i + 1);
-    });
-
-    return { daysOfMonth, isCollapsed };
+    return { isCollapsed };
   },
 });
 </script>

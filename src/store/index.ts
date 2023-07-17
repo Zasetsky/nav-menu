@@ -1,10 +1,10 @@
 import { createStore } from "vuex";
-import LocalStates from "./modules/local-states";
-import Status from "./modules/status";
+import LocalStates from "./modules/local-states.module";
+import Department from "./modules/department.module";
 
 export default createStore({
   modules: {
     LocalStates,
-    Status,
+    Department,
   },
 });

@@ -29,7 +29,6 @@
 <script lang="ts">
 import { defineComponent, computed } from "vue";
 import { Employee, StatusItem } from "@/types";
-import { useStore } from "vuex";
 
 export default defineComponent({
   props: {
@@ -39,27 +38,26 @@ export default defineComponent({
     },
   },
 
-  setup() {
-    const store = useStore();
-
-    const allStatuses = computed(() => {
-      return store.getters["Status/getAllStatuses"];
+  setup(props) {
+    const employeeStatuses = computed(() => {
+      if (!props.employee.dates) return [];
+      return Object.values(props.employee.dates).map((date) => date.status);
     });
 
     const successAndWarningStatuses = computed(() => {
-      return allStatuses.value.filter(
+      return employeeStatuses.value.filter(
         (status: StatusItem) =>
           status.dayStatus === "success" || status.dayStatus === "warning"
       );
     });
 
     const dangerStatuses = computed(() => {
-      return allStatuses.value.filter(
+      return employeeStatuses.value.filter(
         (status: StatusItem) => status.dayStatus === "danger"
       );
     });
 
-    return { store, successAndWarningStatuses, dangerStatuses };
+    return { successAndWarningStatuses, dangerStatuses };
   },
 });
 </script>

@@ -2,7 +2,7 @@ export interface Employee {
   id: number;
   name: string;
   phone: string;
-  isOnline?: boolean; // ПОПРАВИТЬ!!!
+  isOnline: boolean;
   dates?: Dates; // ПОПРАВИТЬ!!!
 }
 
@@ -23,6 +23,7 @@ export interface DatesData {
   totalTime: string;
   downtime: string;
   workPoints: WorkPoint[][];
+  status: StatusItem;
 }
 
 export interface Dates {
@@ -34,7 +35,6 @@ export interface User {
 }
 
 export interface StatusItem {
-  date: string;
   dayStatus: string;
   comment: string;
 }
