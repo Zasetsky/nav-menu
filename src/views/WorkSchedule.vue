@@ -6,7 +6,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, computed } from "vue";
+import { defineComponent } from "vue";
 import DepartmentList from "@/components/work-schedule.components/DepartmentList.vue";
 import CalendarHeader from "@/components/work-schedule.components/CalendarHeader.vue";
 

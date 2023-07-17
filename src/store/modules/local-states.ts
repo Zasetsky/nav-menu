@@ -1,11 +1,11 @@
-import { LocalState } from "@/types";
+import { LocalStates } from "@/types";
 
-const state: LocalState = {
+const state: LocalStates = {
   isCollapsed: localStorage.getItem("menuIsCollapsed") === "true",
 };
 
 const mutations = {
-  toggleCollapse(state: LocalState) {
+  toggleCollapse(state: LocalStates) {
     state.isCollapsed = !state.isCollapsed;
     localStorage.setItem("menuIsCollapsed", state.isCollapsed.toString());
   },
@@ -14,7 +14,7 @@ const mutations = {
 const actions = {};
 
 const getters = {
-  getIsCollapsed: (state: LocalState) => state.isCollapsed,
+  getIsCollapsed: (state: LocalStates) => state.isCollapsed,
 };
 
 export default {

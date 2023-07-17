@@ -1,5 +1,6 @@
 // Цвета
 $color-primary: #17505b;
+$main-palette-primary-darker-20: #124049;
 $color-info: #2f80ed;
 $color-warning: #f2994a;
 $color-danger: #eb5757;
@@ -14,6 +15,9 @@ $border-color-light: #d1dcde;
 $border-color-base: #bacbce;
 $text-color-nav: #313942;
 $text-color-nav-title: #000000;
+$main-palette-neutral-midgray: #909399;
+$main-palette-neutral-dark-gray: #303133;
+$main-palette-eutral-light-gray: #C0C4CC;
 
 .el-popper.is-dark {
   background-color: $color-primary !important;

@@ -3,7 +3,7 @@
     <EmployeeSearch v-model="search" />
 
     <div class="departments">
-      <DepartmentComponent
+      <DepartmentItem
         v-for="department in filteredDepartments"
         :key="department.id"
         :department="department"
@@ -14,22 +14,31 @@
 
 <script lang="ts">
 import { defineComponent, ref, computed } from "vue";
-import DepartmentComponent from "./DepartmentComponent.vue";
+import DepartmentItem from "./DepartmentItem.vue";
 import EmployeeSearch from "./EmployeeSearch.vue";
 import { Department } from "@/types";
 
 export default defineComponent({
   components: {
-    DepartmentComponent,
+    DepartmentItem,
     EmployeeSearch,
   },
   setup() {
     const search = ref("");
+    const activeNames = ref([]);
 
     const departments = ref<Department[]>([
       {
         id: 1,
-        name: "Отдел 1",
+        name: "ОТДЕЛ ПРОДАЖ",
+        employees: [
+          { id: 1, name: "Иван Иванов", phone: "+1234567890" },
+          { id: 2, name: "Петр Петров", phone: "+0987654321" },
+        ],
+      },
+      {
+        id: 2,
+        name: "БУХГАЛТЕРИЯ",
         employees: [
           { id: 1, name: "Иван Иванов", phone: "+1234567890" },
           { id: 2, name: "Петр Петров", phone: "+0987654321" },
@@ -50,7 +59,7 @@ export default defineComponent({
       }
     });
 
-    return { search, filteredDepartments };
+    return { search, filteredDepartments, activeNames };
   },
 });
 </script>
@@ -59,5 +68,8 @@ export default defineComponent({
 .department-list {
   min-height: 100vh;
   background-color: $main-palette-background-base;
+}
+
+.departments {
 }
 </style>

@@ -33,7 +33,6 @@ export default defineComponent({
   align-items: center;
 
   &--info {
-    width: 17.5rem;
   }
 
   &--day {
