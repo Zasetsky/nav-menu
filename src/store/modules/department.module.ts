@@ -34,7 +34,7 @@ const state: State = {
       employees: [
         {
           id: 3,
-          name: "Владимир Владимиров",
+          name: "Владимир Дусмухаметов",
           phone: "+1234567890",
           isOnline: true,
           dates: getCurrentMonthDates(),

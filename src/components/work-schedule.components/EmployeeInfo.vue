@@ -13,24 +13,28 @@
       </el-avatar>
       <div class="employee__info">
         <div class="employee__info__name-wrapper">
-          <p class="employee__info__name-wrapper--name">
+          <p
+            ref="nameElement"
+            :style="nameStyle"
+            class="employee__info__name-wrapper--name"
+          >
             {{ employee.name }}
-            <i class="el-icon-edit employee__info__name-wrapper--edit-icon"></i>
           </p>
+          <i class="el-icon-edit employee__info__name-wrapper--edit-icon"></i>
         </div>
         <p class="employee__info--phone">{{ employee.phone }}</p>
       </div>
     </div>
     <p class="employee--success">
-      {{ successAndWarningStatuses.length
-      }}<span class="employee--backslash">/</span>
+      {{ successAndWarningStatuses.length }}
+      <span class="employee--backslash">/</span>
       <span class="employee--danger">{{ dangerStatuses.length }}</span>
     </p>
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent, computed } from "vue";
+import { defineComponent, computed, ref } from "vue";
 import { Employee, StatusItem } from "@/types";
 
 export default defineComponent({
@@ -42,6 +46,8 @@ export default defineComponent({
   },
 
   setup(props) {
+    const nameElement = ref(null) as any;
+
     const employeeStatuses = computed(() => {
       if (!props.employee.dates) return [];
       return Object.entries(props.employee.dates)
@@ -67,7 +73,19 @@ export default defineComponent({
       );
     });
 
-    return { successAndWarningStatuses, dangerStatuses };
+    const nameStyle = computed(() => {
+      if (nameElement.value && nameElement.value.scrollWidth > 150) {
+        return { width: "min-content" };
+      }
+      return {};
+    });
+
+    return {
+      nameElement,
+      nameStyle,
+      successAndWarningStatuses,
+      dangerStatuses,
+    };
   },
 });
 </script>
@@ -118,7 +136,8 @@ export default defineComponent({
 
     &__name-wrapper {
       display: flex;
-      align-items: center;
+      align-items: flex-end;
+      justify-content: flex-start;
 
       &--name {
         margin: 0;
@@ -140,6 +159,7 @@ export default defineComponent({
   }
 
   &--success {
+    flex-shrink: 0;
     color: $color-success;
     margin-right: 1rem;
   }
