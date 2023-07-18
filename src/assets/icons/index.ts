@@ -5,3 +5,5 @@ export { default as building } from "./building-skyscraper.svg";
 export { default as arrows } from "./double-arrow.svg";
 export { default as plus } from "./plus.svg";
 export { default as minus } from "./minus.svg";
+export { default as close } from "./close-tag.svg";
+export { default as all_close } from "./all-close.svg";

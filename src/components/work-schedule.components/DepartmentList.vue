@@ -1,7 +1,8 @@
 <template>
   <div class="department-list">
-    <EmployeeSearch v-model="search" />
-
+    <div class="search">
+      <EmployeeSearch v-model="selectedEmployees" />
+    </div>
     <div class="departments">
       <DepartmentItem
         v-for="department in filteredDepartments"
@@ -16,7 +17,7 @@
 import { defineComponent, ref, computed } from "vue";
 import DepartmentItem from "./DepartmentItem.vue";
 import EmployeeSearch from "./EmployeeSearch.vue";
-import { Department } from "@/types";
+import { Department, Employee } from "@/types";
 import { useStore } from "vuex";
 
 export default defineComponent({
@@ -25,8 +26,7 @@ export default defineComponent({
     EmployeeSearch,
   },
   setup() {
-    const search = ref("");
-    const activeNames = ref([]);
+    const selectedEmployees = ref<Employee[]>([]);
     const store = useStore();
 
     const departments = computed(
@@ -34,19 +34,21 @@ export default defineComponent({
     );
 
     const filteredDepartments = computed(() => {
-      if (search.value === "") {
+      if (selectedEmployees.value.length === 0) {
         return departments.value;
       } else {
-        return departments.value.map((department: Department) => ({
-          ...department,
-          employees: department.employees.filter((employee) =>
-            employee.name.toLowerCase().includes(search.value.toLowerCase())
-          ),
-        }));
+        return departments.value
+          .map((department: Department) => ({
+            ...department,
+            employees: department.employees.filter((employee: Employee) =>
+              selectedEmployees.value.includes(employee)
+            ),
+          }))
+          .filter((department: Department) => department.employees.length);
       }
     });
 
-    return { search, filteredDepartments, activeNames };
+    return { selectedEmployees, filteredDepartments };
   },
 });
 </script>
@@ -55,5 +57,12 @@ export default defineComponent({
 .department-list {
   min-height: 100vh;
   background-color: $main-palette-success-background;
+}
+
+.search {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
 }
 </style>

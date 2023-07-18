@@ -1,4 +1,6 @@
 .menu {
+  position: fixed;
+  width: 16.5rem;
   .el-menu-item.is-active {
     background-color: $main-palette-success-border;
     color: $color-primary;

@@ -74,7 +74,7 @@ export default defineComponent({
     });
 
     const nameStyle = computed(() => {
-      if (nameElement.value && nameElement.value.scrollWidth > 150) {
+      if (nameElement.value && nameElement.value.scrollWidth > 155) {
         return { width: "min-content" };
       }
       return {};

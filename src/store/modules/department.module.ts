@@ -10,7 +10,7 @@ const state: State = {
   departments: [
     {
       id: 1,
-      name: "ОТДЕЛ ПРОДАЖ",
+      name: "отдел продаж",
       employees: [
         {
           id: 1,
@@ -30,11 +30,45 @@ const state: State = {
     },
     {
       id: 2,
-      name: "БУХГАЛТЕРИЯ",
+      name: "бухгалтерия",
       employees: [
         {
+          id: 1,
+          name: "Владимир Владимиров",
+          phone: "+1234567890",
+          isOnline: true,
+          dates: getCurrentMonthDates(),
+        },
+        {
+          id: 2,
+          name: "Олег Олегов",
+          phone: "+0987654321",
+          isOnline: true,
+          dates: getCurrentMonthDates(),
+        },
+      ],
+    },
+    {
+      id: 3,
+      name: "Отлел Кадров",
+      employees: [
+        {
+          id: 1,
+          name: "Владимир Владимиров",
+          phone: "+1234567890",
+          isOnline: true,
+          dates: getCurrentMonthDates(),
+        },
+        {
+          id: 2,
+          name: "Олег Олегов",
+          phone: "+0987654321",
+          isOnline: true,
+          dates: getCurrentMonthDates(),
+        },
+        {
           id: 3,
-          name: "Владимир Дусмухаметов",
+          name: "Владимир Владимиров",
           phone: "+1234567890",
           isOnline: true,
           dates: getCurrentMonthDates(),

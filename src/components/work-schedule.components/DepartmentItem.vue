@@ -1,7 +1,7 @@
 <template>
   <div class="department">
     <div class="department__header" @click="isCollapsed = !isCollapsed">
-      <h3 class="department__title">{{ department.name }}</h3>
+      <h3 class="department__title">{{ department.name.toUpperCase() }}</h3>
       <span
         class="department__toggle-icon"
         v-html="isCollapsed ? plus : minus"
