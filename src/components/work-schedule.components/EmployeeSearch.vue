@@ -7,7 +7,6 @@
     >
       <div class="search-container__employees-wrapper">
         <div class="employees">
-          <!-- <i v-if="selectedEmployees.length > 0" class="el-icon-search"></i> -->
           <span
             v-for="employee in selectedEmployees"
             :key="employee.id"
@@ -29,14 +28,17 @@
           @click.stop="clearAllEmployees"
         ></i>
       </div>
-      <input
-        v-if="!selectedEmployees.length || isActive"
-        type="text"
-        v-model="search"
-        placeholder="Поиск"
-        @input="handleInput"
-        ref="searchInput"
-      />
+      <div v-if="!selectedEmployees.length || isActive" class="input-wrapper">
+        <input
+          type="text"
+          v-model="search"
+          :placeholder="!isActive ? 'Поиск' : ''"
+          @input="handleInput"
+          ref="searchInput"
+          :class="{ 'active-class': isActive }"
+        />
+        <i class="el-icon-search search-icon"></i>
+      </div>
     </div>
 
     <div v-if="isActive" class="employee-list">
@@ -306,11 +308,31 @@ export default defineComponent({
     }
   }
 
-  input {
-    height: 100%;
-    flex-grow: 1;
-    border: none;
-    outline: none;
+  .input-wrapper {
+    position: relative;
+
+    .search-icon {
+      position: absolute;
+      left: 5px; // вы можете управлять положением иконки, изменяя эти значения
+      top: 2px;
+      color: $main-palette-eutral-light-gray;
+    }
+
+    input {
+      height: 100%;
+      flex-grow: 1;
+      border: none;
+      outline: none;
+
+      &.active-class {
+        margin-left: 20px;
+      }
+
+      &::placeholder {
+        padding-left: 20px;
+        color: $main-palette-eutral-light-gray;
+      }
+    }
   }
 }
 </style>
