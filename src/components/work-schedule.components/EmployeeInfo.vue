@@ -41,7 +41,14 @@ export default defineComponent({
   setup(props) {
     const employeeStatuses = computed(() => {
       if (!props.employee.dates) return [];
-      return Object.values(props.employee.dates).map((date) => date.status);
+      return Object.entries(props.employee.dates)
+        .filter(([dateStr, _]) => {
+          const date = new Date(dateStr);
+          const isWeekend = date.getDay() === 0 || date.getDay() === 6;
+          const isFuture = date > new Date();
+          return !isWeekend && !isFuture;
+        })
+        .map(([_, dateData]) => dateData.status);
     });
 
     const successAndWarningStatuses = computed(() => {
