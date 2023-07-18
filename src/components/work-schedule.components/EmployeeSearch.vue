@@ -35,7 +35,6 @@
           :placeholder="!isActive ? 'Поиск' : ''"
           @input="handleInput"
           ref="searchInput"
-          :class="{ 'active-class': isActive }"
         />
         <i class="el-icon-search search-icon"></i>
       </div>
@@ -323,13 +322,9 @@ export default defineComponent({
       flex-grow: 1;
       border: none;
       outline: none;
-
-      &.active-class {
-        margin-left: 20px;
-      }
+      margin-left: 20px;
 
       &::placeholder {
-        padding-left: 20px;
         color: $main-palette-eutral-light-gray;
       }
     }
