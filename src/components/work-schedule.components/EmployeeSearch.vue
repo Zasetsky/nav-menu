@@ -312,7 +312,7 @@ export default defineComponent({
 
     .search-icon {
       position: absolute;
-      left: 5px; // вы можете управлять положением иконки, изменяя эти значения
+      left: 5px;
       top: 2px;
       color: $main-palette-eutral-light-gray;
     }
