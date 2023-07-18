@@ -13,14 +13,17 @@
       </el-avatar>
       <div class="employee__info">
         <div class="employee__info__name-wrapper">
-          <p class="employee__info__name-wrapper--name">{{ employee.name }}</p>
-          <i class="el-icon-edit employee__info__name-wrapper--edit-icon"></i>
+          <p class="employee__info__name-wrapper--name">
+            {{ employee.name }}
+            <i class="el-icon-edit employee__info__name-wrapper--edit-icon"></i>
+          </p>
         </div>
         <p class="employee__info--phone">{{ employee.phone }}</p>
       </div>
     </div>
     <p class="employee--success">
-      {{ successAndWarningStatuses.length }}/
+      {{ successAndWarningStatuses.length
+      }}<span class="employee--backslash">/</span>
       <span class="employee--danger">{{ dangerStatuses.length }}</span>
     </p>
   </div>

@@ -54,6 +54,6 @@ export default defineComponent({
 <style lang="scss" scoped>
 .department-list {
   min-height: 100vh;
-  background-color: $main-palette-background-base;
+  background-color: $main-palette-success-background;
 }
 </style>
