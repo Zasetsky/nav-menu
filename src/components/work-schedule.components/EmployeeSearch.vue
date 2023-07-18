@@ -1,8 +1,13 @@
 <template>
   <div class="employee-search" @click.stop>
-    <div class="search-container" @click="inputFocus">
+    <div
+      class="search-container"
+      :class="{ 'search-container--active': isActive }"
+      @click="inputFocus"
+    >
       <div class="search-container__employees-wrapper">
         <div class="employees">
+          <!-- <i v-if="selectedEmployees.length > 0" class="el-icon-search"></i> -->
           <span
             v-for="employee in selectedEmployees"
             :key="employee.id"
@@ -203,8 +208,12 @@ export default defineComponent({
     display: flex;
     flex-direction: column;
     padding: 5px;
-    border: 1px solid #ccc;
+    border: 1px solid $border-color-light;
     cursor: text;
+
+    &--active {
+      border: 1px solid $color-primary;
+    }
 
     &__employees-wrapper {
       display: flex;
@@ -252,7 +261,7 @@ export default defineComponent({
     height: 252px;
     overflow-y: auto;
     background-color: #fff;
-    border: 1px solid #ccc;
+    border: 1px solid $color-primary;
     z-index: 1;
 
     &__department {
