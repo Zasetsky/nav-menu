@@ -2,11 +2,11 @@
   <div class="employee-search" @click.stop>
     <div class="search-container" @click="inputFocus">
       <div class="search-container__employees-wrapper">
-        <div class="employee">
+        <div class="employees">
           <span
             v-for="employee in selectedEmployees"
             :key="employee.id"
-            class="employee--tag"
+            class="employee-tag"
             @click.stop
           >
             {{ employee.name }}
@@ -216,11 +216,11 @@ export default defineComponent({
         cursor: pointer;
       }
 
-      .employee {
+      .employees {
         display: flex;
         flex-direction: column;
 
-        &--tag {
+        .employee-tag {
           display: flex;
           width: fit-content;
           align-items: center;

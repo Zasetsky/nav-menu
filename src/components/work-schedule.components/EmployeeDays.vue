@@ -2,7 +2,9 @@
   <div
     class="employee-days"
     :style="{
-      width: isCollapsed ? 'calc(100vw - 21.25rem)' : 'calc(100vw - 34rem)',
+      width: isCollapsed
+        ? `calc(100vw - 21.25rem - ${scrollbarWidth}px)`
+        : `calc(100vw - 34rem - ${scrollbarWidth}px)`,
     }"
   >
     <day-cell
@@ -37,7 +39,11 @@ export default defineComponent({
       () => store.getters["LocalStates/getIsCollapsed"]
     );
 
-    return { isCollapsed };
+    const scrollbarWidth = computed(
+      () => store.getters["LocalStates/getScrollbarWidth"]
+    );
+
+    return { isCollapsed, scrollbarWidth };
   },
 });
 </script>

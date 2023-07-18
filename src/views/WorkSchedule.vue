@@ -6,12 +6,54 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from "vue";
+import { defineComponent, onMounted, onUnmounted } from "vue";
 import DepartmentList from "@/components/work-schedule.components/DepartmentList.vue";
 import CalendarHeader from "@/components/work-schedule.components/CalendarHeader.vue";
+import { useStore } from "vuex";
 
 export default defineComponent({
   components: { DepartmentList, CalendarHeader },
+
+  setup() {
+    const store = useStore();
+
+    const measureScrollbar = () => {
+      const outer = document.createElement("div");
+      outer.style.visibility = "hidden";
+      outer.style.overflow = "scroll";
+      document.body.appendChild(outer);
+
+      const inner = document.createElement("div");
+      outer.appendChild(inner);
+
+      const scrollbarWidth = outer.offsetWidth - inner.offsetWidth;
+
+      document.body.removeChild(outer);
+
+      return scrollbarWidth;
+    };
+
+    const checkScrollbarPresence = () => {
+      const hasScrollbar = window.innerHeight < document.body.offsetHeight;
+      store.commit("LocalStates/setHasScrollbar", hasScrollbar);
+
+      if (hasScrollbar) {
+        const scrollbarWidth = measureScrollbar();
+        store.commit("LocalStates/setScrollbarWidth", scrollbarWidth);
+      }
+    };
+
+    onMounted(() => {
+      window.addEventListener("resize", checkScrollbarPresence);
+      checkScrollbarPresence();
+    });
+
+    onUnmounted(() => {
+      window.removeEventListener("resize", checkScrollbarPresence);
+    });
+
+    return {};
+  },
 });
 </script>
 
