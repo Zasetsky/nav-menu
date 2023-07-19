@@ -5,9 +5,10 @@
     </div>
     <div class="departments">
       <DepartmentItem
-        v-for="department in filteredDepartments"
+        v-for="(department, index) in filteredDepartments"
         :key="department.id"
         :department="department"
+        :isLastItem="index === filteredDepartments.length - 1"
       />
     </div>
   </div>
@@ -64,5 +65,6 @@ export default defineComponent({
   align-items: center;
   justify-content: center;
   padding: 10px;
+  border-bottom: 1px solid $el-color-primary-light-8;
 }
 </style>

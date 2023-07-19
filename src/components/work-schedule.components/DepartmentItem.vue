@@ -19,6 +19,7 @@
       Онлайн: <span>{{ onlineEmployeesCount }}</span
       >/<span>{{ department.employees.length }}</span>
     </p>
+    <hr v-if="!isLastItem" />
   </div>
 </template>
 
@@ -34,6 +35,11 @@ export default defineComponent({
     department: {
       type: Object as () => Department,
       required: true,
+    },
+
+    isLastItem: {
+      type: Boolean,
+      default: false,
     },
   },
   setup(props) {
@@ -52,8 +58,6 @@ export default defineComponent({
 <style lang="scss" scoped>
 .department {
   padding: 44px 16px 0 16px;
-  border-top: 1px solid $el-color-success-light-8;
-  border-bottom: 1px solid $el-color-success-light-8;
 
   &__header {
     display: flex;
@@ -72,6 +76,11 @@ export default defineComponent({
     font-weight: 600;
     color: $el-text-color-regular;
     font-size: 12px;
+  }
+
+  hr {
+    border: none;
+    border-top: 1px solid $el-color-success-light-8;
   }
 }
 </style>
