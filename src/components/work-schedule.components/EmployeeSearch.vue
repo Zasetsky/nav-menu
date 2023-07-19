@@ -200,7 +200,7 @@ export default defineComponent({
 <style lang="scss" scoped>
 .employee-search {
   position: relative;
-  background-color: #fff;
+  background-color: $el-color-white;
   width: 248px;
   font-size: 12px;
   font-weight: 600;
@@ -209,11 +209,11 @@ export default defineComponent({
     display: flex;
     flex-direction: column;
     padding: 5px;
-    border: 1px solid $border-color-light;
+    border: 1px solid $el-color-primary-light-8;
     cursor: text;
 
     &--active {
-      border: 1px solid $color-primary;
+      border: 1px solid $el-color-primary;
     }
 
     &__employees-wrapper {
@@ -234,10 +234,10 @@ export default defineComponent({
           display: flex;
           width: fit-content;
           align-items: center;
-          background-color: $border-color-lighter;
-          border: 1px solid $border-color-light;
+          background-color: $el-color-primary-light-9;
+          border: 1px solid $el-color-primary-light-8;
           border-radius: 4px;
-          color: $color-primary;
+          color: $el-color-primary;
           padding: 2px 0px 2px 5px;
           height: 20px;
           margin-left: 10px;
@@ -261,14 +261,14 @@ export default defineComponent({
     font-weight: 400;
     height: 252px;
     overflow-y: auto;
-    background-color: #fff;
-    border: 1px solid $color-primary;
+    background-color: $el-color-white;
+    border: 1px solid $el-color-primary;
     z-index: 1;
 
     &__department {
       padding: 0px 20px 0px 10px;
       font-size: 12px;
-      color: $color-info;
+      color: $el-color-info;
       cursor: default;
 
       &--name {
@@ -277,32 +277,32 @@ export default defineComponent({
         justify-content: space-between;
 
         button {
-          border: 1px solid $border-color-base;
+          border: 1px solid $el-color-primary-light-7;
           cursor: pointer;
           padding: 8px 15px;
           font-weight: 600;
           font-size: 12px;
-          color: $main-palette-neutral-gray;
+          color: $el-text-color-regular;
           border-radius: 4px;
-          background-color: #fff;
+          background-color: $el-color-white;
 
           &:hover {
-            background-color: $border-color-lighter;
-            color: $color-primary;
+            background-color: $el-color-primary-light-9;
+            color: $el-color-primary;
           }
         }
       }
 
       hr {
         border: none;
-        border-top: 1px solid $border-color-light;
+        border-top: 1px solid $el-color-primary-light-8;
       }
     }
 
     &__employee {
       margin-bottom: 20px;
       font-size: 14px;
-      color: $main-palette-neutral-gray;
+      color: $el-text-color-regular;
       cursor: pointer;
     }
   }
@@ -314,7 +314,7 @@ export default defineComponent({
       position: absolute;
       left: 5px;
       top: 2px;
-      color: $main-palette-eutral-light-gray;
+      color: $el-text-color-disabled;
     }
 
     input {
@@ -325,7 +325,7 @@ export default defineComponent({
       margin-left: 20px;
 
       &::placeholder {
-        color: $main-palette-eutral-light-gray;
+        color: $el-text-color-disabled;
       }
     }
   }

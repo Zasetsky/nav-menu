@@ -1,25 +1,124 @@
 // Цвета
-$color-primary: #17505b;
-$main-palette-primary-darker-20: #124049;
-$color-info: #2f80ed;
-$color-warning: #f2994a;
-$color-danger: #eb5757;
-$color-success: #6fcf97;
-$border-color-extra-light: #f3f6f7;
-$main-palette-success-background: #f1faf5;
-$main-palette-success-border: #e2f5ea;
-$main-palette-background-base: #f5f7fa;
-$color-black: #1d343f;
-$border-color-lighter: #e8eeef;
-$border-color-light: #d1dcde;
-$border-color-base: #bacbce;
-$text-color-nav: #313942;
-$text-color-nav-title: #000000;
-$main-palette-neutral-dark-gray: #303133;
-$main-palette-neutral-midgray: #909399;
-$main-palette-neutral-gray: #606266;
-$main-palette-eutral-light-gray: #c0c4cc;
+/*State values
+Dark 2 — Pressed
+Light 3 — Hover
+Light 5 — Border, Disabled BG, Link Hover
+Light 8 — Disabled Border
+Light 9 — Background
+Light Fill – Neutral Disabled BG
+*/
+
+//Neutral Group
+    $el-color-white: #ffffff;
+    $el-color-black: #000000;
+
+//-text
+    $el-text-color-primary: #303133;
+    $el-text-color-regular: #606266;
+    $el-text-color-secondary: #909399;
+    $el-text-color-placeholder: #a8abb2;
+    $el-text-color-disabled: #c0c4cc;
+
+//-border
+    $el-border-color: #dcdfe6;
+    $el-border-color-light: #e4e7ed;
+    $el-border-color-lighter: #ebeef5;
+    $el-border-color-extra-light: #f2f6fc;
+    $el-border-color-dark: #d4d7de;
+    $el-border-color-darker: #cdd0d6;
+
+//-fill
+    $el-fill-color: #f0f2f5;
+    $el-fill-color-light: #f5f7fa;
+    $el-fill-color-lighter: #fafafa;
+    $el-fill-color-extra-light: #fafcff;
+    $el-fill-color-dark: #ebedf0;
+    $el-fill-color-darker: #e6e8eb;
+    $el-fill-color-blank: #ffffff;
+//Neutral Group End
+
+//Primary
+    $el-color-primary: #17505B;
+    $el-color-primary-light-3: #5D858D;
+    $el-color-primary-light-5: #8BA8AD;
+    $el-color-primary-light-7: #BACBCE;
+    $el-color-primary-light-8: #D1DCDE;
+    $el-color-primary-light-9: #E8EEEF;
+    $el-color-primary-dark-2: #124049;
+
+//Success
+    $el-color-success: #6FCF97;
+    $el-color-success-light-3: #9BDEB7;
+    $el-color-success-light-5: #B7E7CB;
+    $el-color-success-light-7: #D4F1E0;
+    $el-color-success-light-8: #E2F5EA;
+    $el-color-success-light-9: #F1FBF5;
+    $el-color-success-dark-2: #59A679;
+
+//Warning
+    $el-color-warning: #F2994A;
+    $el-color-warning-light-3: #F6B881;
+    $el-color-warning-light-5: #F9CCA5;
+    $el-color-warning-light-7: #FCE1C9;
+    $el-color-warning-light-8: #FCEBDB;
+    $el-color-warning-light-9: #FEF5ED;
+    $el-color-warning-dark-2: #C27A3B;
+
+//Danger
+    $el-color-danger: #EB5757;
+    $el-color-danger-light-3: #F18A8A;
+    $el-color-danger-light-5: #F5ABAB;
+    $el-color-danger-light-7: #F9CDCD;
+    $el-color-danger-light-8: #FBDDDD;
+    $el-color-danger-light-9: #FDEFEF;
+    $el-color-danger-dark-2: #BC4646;
+
+//Error
+    $el-color-error: #EB5757;
+    $el-color-error-light-3: #F18A8A;
+    $el-color-error-light-5: #F5ABAB;
+    $el-color-error-light-7: #F9CDCD;
+    $el-color-error-light-8: #FBDDDD;
+    $el-color-error-light-9: #FDEFEF;
+    $el-color-error-dark-2: #BC4646;
+
+//Info
+    $el-color-info: #2F80ED;
+    $el-color-info-light-3: #6EA7F3;
+    $el-color-info-light-5: #97C0F6;
+    $el-color-info-light-7: #C1D9FA;
+    $el-color-info-light-8: #D5E6FB;
+    $el-color-info-light-9: #EBF3FE;
+    $el-color-info-dark-2: #2666BE;
+
+//Background
+    $el-bg-color: #ffffff;
+    $el-bg-color-page: #f2f3f5;
+    $el-bg-color-overlay: #ffffff;
+//-custom background
+    $el-bg-color-dark: #1D343F;
+
+//Category Top
+    $el-color-category-top: #F2C94C;
+    $el-color-category-top-light-3: #F6DA82;
+    $el-color-category-top-light-5: #F9E4A6;
+    $el-color-category-top-light-7: #FCEFCA;
+    $el-color-category-top-light-8: #FCF4DB;
+    $el-color-category-top-light-9: #FEFAEE;
+    $el-color-category-top-dark-2: #C2A13D;
+
+//Category Free
+    $el-color-category-top: #219653;
+    $el-color-category-top-light-3: #64B687;
+    $el-color-category-top-light-5: #90CBA9;
+    $el-color-category-top-light-7: #BDE0CC;
+    $el-color-category-top-light-8: #D3EADD;
+    $el-color-category-top-light-9: #E9F5EE;
+    $el-color-category-top-dark-2: #1A7842;
+
+//-additional colors
+    $el-additional-color-special: #9747FF;
 
 .el-popper.is-dark {
-  background-color: $color-primary !important;
+  background-color: $el-color-primary !important;
 }

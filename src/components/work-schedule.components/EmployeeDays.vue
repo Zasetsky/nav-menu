@@ -53,8 +53,8 @@ export default defineComponent({
   display: flex;
   justify-content: space-between;
   transition: width 0.3s;
-  border-top: 1px solid $main-palette-background-base;
-  border-bottom: 1px solid $main-palette-background-base;
+  border-top: 1px solid $el-fill-color-light;
+  border-bottom: 1px solid $el-fill-color-light;
   height: 48px;
 }
 </style>

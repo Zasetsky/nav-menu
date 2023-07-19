@@ -2,8 +2,8 @@
   position: fixed;
   width: 16.5rem;
   .el-menu-item.is-active {
-    background-color: $main-palette-success-border;
-    color: $color-primary;
+    background-color: $el-color-success-light-8;
+    color: $el-color-primary;
   }
 
   &__list:not(.el-menu--collapse) {
@@ -56,7 +56,7 @@
     cursor: pointer;
 
     &:hover {
-      background-color: $main-palette-success-background;
+      background-color:  $el-color-success-light-9;
       border-radius: 0.5rem;
     }
   }
@@ -70,7 +70,7 @@
     font-weight: 900 !important;
     font-size: 1.5rem;
     margin-left: 0.3125rem;
-    color: $text-color-nav-title;
+    color: $el-color-black;
   }
 
   &__icon-colapse {
@@ -83,7 +83,7 @@
     width: 1.5rem;
 
     &:hover {
-      background-color: $main-palette-success-background;
+      background-color:  $el-color-success-light-9;
       border-radius: 0.5rem;
     }
   }
@@ -101,7 +101,7 @@
     width: 104%;
 
     &:hover {
-      background-color: $main-palette-success-background;
+      background-color:  $el-color-success-light-9;
     }
   }
 
@@ -117,7 +117,7 @@
     width: 50%;
 
     &:hover {
-      background-color: $main-palette-success-background;
+      background-color:  $el-color-success-light-9;
     }
   }
 
@@ -128,20 +128,20 @@
 
   .is-active {
     cursor: default;
-    color: $color-primary;
+    color: $el-color-primary;
   }
 
   &__icon {
     position: absolute;
     left: 0.625rem;
-    color: $text-color-nav;
+    color: $el-text-color-primary;
     font-size: 1.5rem !important;
     line-height: 1.25rem;
   }
 
   &__icon-collapsed {
     font-size: 1.5rem !important;
-    color: $text-color-nav;
+    color: $el-text-color-primary;
     line-height: 1.25rem;
   }
 
@@ -153,11 +153,11 @@
     line-height: 1.5625rem;
     font-weight: 600;
     margin-left: 1.875rem;
-    color: $text-color-nav;
+    color: $el-text-color-primary;
   }
 
   &__label-active {
-    color: $color-primary;
+    color: $el-color-primary;
   }
 
   &__label-settings {
@@ -167,11 +167,11 @@
   &__item-settings {
     margin-left: 1.0625rem;
     margin-bottom: 1.25rem;
-    border: 0.0625rem solid $border-color-light;
+    border: 0.0625rem solid $el-color-primary-light-8;
     cursor: pointer;
 
     &:hover {
-      background-color: $main-palette-success-background;
+      background-color:  $el-color-success-light-9;
     }
 
     &:focus {
@@ -180,11 +180,11 @@
   }
 
   .active-settings {
-    border: 0.0625rem solid $color-primary;
-    background-color: $main-palette-success-border;
+    border: 0.0625rem solid $el-color-primary;
+    background-color: $el-color-success-light-8;
   }
 
   .active-icon {
-    color: $color-primary;
+    color: $el-color-primary;
   }
 }

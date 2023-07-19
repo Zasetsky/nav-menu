@@ -63,8 +63,8 @@ export default defineComponent({
   height: 9rem;
   bottom: 5rem;
   left: 1.25rem;
-  background-color: #fff;
-  border: 0.0625rem solid $color-primary;
+  background-color: $el-color-white;
+  border: 0.0625rem solid $el-color-primary;
   box-shadow: 0rem 0.25rem 0.25rem 0rem rgba(209, 220, 222, 0.5);
   border-radius: 0.5rem;
   z-index: 1000;
@@ -84,13 +84,13 @@ export default defineComponent({
     align-items: center;
     font-size: 0.875rem;
     font-weight: 600;
-    color: $text-color-nav;
+    color: $el-text-color-primary;
     justify-content: flex-start;
     padding: 0.625rem;
     cursor: pointer;
 
     &:hover {
-      background-color: $main-palette-success-background;
+      background-color: $el-color-success-light-9;
     }
 
     &-icon {

@@ -113,8 +113,8 @@ export default defineComponent({
       right: -2px;
       width: 8px;
       height: 8px;
-      border: 2px solid $main-palette-background-base;
-      background-color: $color-success;
+      border: 2px solid $el-fill-color-light;
+      background-color: $el-color-success;
       border-radius: 50%;
     }
 
@@ -124,15 +124,15 @@ export default defineComponent({
       right: -2px;
       width: 8px;
       height: 8px;
-      border: 2px solid $main-palette-background-base;
-      background-color: $color-danger;
+      border: 2px solid $el-fill-color-light;
+      background-color: $el-color-danger;
       border-radius: 50%;
     }
   }
 
   &__info {
     margin-left: 10px;
-    color: $main-palette-neutral-dark-gray;
+    color: $el-text-color-primary;
 
     &__name-wrapper {
       display: flex;
@@ -146,26 +146,26 @@ export default defineComponent({
 
       &--edit-icon {
         font-size: 12px;
-        color: $main-palette-eutral-light-gray;
+        color: $el-text-color-disabled;
         margin-left: 5px;
       }
     }
 
     &--phone {
       margin: 2px 0;
-      color: $main-palette-neutral-midgray;
+      color: $el-text-color-secondary;
       font-size: 10px;
     }
   }
 
   &--success {
     flex-shrink: 0;
-    color: $color-success;
+    color: $el-color-success;
     margin-right: 1rem;
   }
 
   &--danger {
-    color: $color-danger;
+    color: $el-color-danger;
   }
 }
 </style>

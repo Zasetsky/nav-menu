@@ -53,7 +53,7 @@ export default defineComponent({
   width: 100%;
 
   &.day-weekend {
-    background-color: $main-palette-success-background;
+    background-color: $el-color-success-light-9;
   }
 
   .day-circle {
@@ -62,20 +62,20 @@ export default defineComponent({
     border-radius: 50%;
 
     &-success {
-      background: $color-success;
+      background: $el-color-success;
     }
 
     &-warning {
-      background: $color-warning;
+      background: $el-color-warning;
     }
 
     &-danger {
-      background: $color-danger;
+      background: $el-color-danger;
     }
 
     &-future {
-      border: 1px solid $color-success;
-      background: white;
+      border: 1px solid $el-color-success;
+      background: $el-color-white;
     }
   }
 }

@@ -29,11 +29,11 @@ html {
 }
 
 .el-popper.is-dark {
-  background-color: $color-primary !important;
+  background-color: $el-color-primary !important;
   border: none !important;
 }
 
 .el-popper.is-dark .el-popper__arrow::before {
   border: none !important;
-  background: $color-primary !important;
+  background: $el-color-primary !important;
 }

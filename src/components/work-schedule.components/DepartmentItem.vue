@@ -52,8 +52,8 @@ export default defineComponent({
 <style lang="scss" scoped>
 .department {
   padding: 44px 16px 0 16px;
-  border-top: 1px solid $main-palette-success-border;
-  border-bottom: 1px solid $main-palette-success-border;
+  border-top: 1px solid $el-color-success-light-8;
+  border-bottom: 1px solid $el-color-success-light-8;
 
   &__header {
     display: flex;
@@ -65,12 +65,12 @@ export default defineComponent({
     margin: 0;
     height: 32px;
     font-size: 14px;
-    color: $main-palette-primary-darker-20;
+    color: $el-color-primary-dark-2;
   }
 
   &__isOnline {
     font-weight: 600;
-    color: $main-palette-neutral-gray;
+    color: $el-text-color-regular;
     font-size: 12px;
   }
 }
