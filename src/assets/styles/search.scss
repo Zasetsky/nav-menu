@@ -15,6 +15,7 @@
 
     &--active {
       border: 1px solid $el-color-primary;
+      border-radius: 4px 4px 0 0;
     }
 
     &__employees-wrapper {
@@ -58,13 +59,30 @@
     position: absolute;
     top: 100%;
     left: 0;
-    width: 99.4%;
+    width: 99.3%;
     font-weight: 400;
     height: 252px;
     overflow-y: auto;
     background-color: $el-color-white;
-    border: 1px solid $el-color-primary;
+    border-bottom: 1px solid $el-color-primary;
+    border-left: 1px solid $el-color-primary;
+    border-right: 1px solid $el-color-primary;
     z-index: 1;
+
+    &::-webkit-scrollbar {
+      width: 4px; /* Ширина ползунка */
+    }
+
+    &::-webkit-scrollbar-track {
+      margin-top: 5px;
+      margin-bottom: 5px;
+      background: transparent; /* Цвет трека (дорожки прокрутки) */
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background: rgba(144, 146, 152, 0.30); /* Цвет ползунка */
+      border-radius: 4px; /* Скругление углов ползунка */
+    }
 
     &__department {
       padding: 0px 20px 0px 10px;

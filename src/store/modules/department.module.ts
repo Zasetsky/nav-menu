@@ -50,7 +50,7 @@ const state: State = {
     },
     {
       id: 3,
-      name: "Отлел Кадров",
+      name: "Отдел Кадров",
       employees: [
         {
           id: 1,

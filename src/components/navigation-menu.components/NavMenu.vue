@@ -1,5 +1,10 @@
 <template>
-  <div class="menu">
+  <div
+    class="menu"
+    :style="{
+      width: isCollapsed ? '3.75rem' : '16.5rem',
+    }"
+  >
     <el-menu
       class="menu__list"
       :collapse="isCollapsed"

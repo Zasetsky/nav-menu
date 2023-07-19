@@ -1,7 +1,12 @@
 <template>
   <div class="work-schedule">
-    <DepartmentList class="work-schedule--department-list" />
-    <CalendarHeader class="work-schedule--calendar-header" />
+    <div class="work-schedule__header">
+      <span class="work-schedule__header--title">График работы</span>
+    </div>
+    <div class="work-schedule__content">
+      <DepartmentList class="work-schedule__content--department-list" />
+      <CalendarHeader class="work-schedule__content--calendar-header" />
+    </div>
   </div>
 </template>
 
@@ -17,16 +22,29 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 .work-schedule {
-  display: flex;
-  align-items: flex-start;
-  width: 100%;
-
-  &--department-list {
-    width: 17.5rem;
+  &__header {
+    padding: 1rem;
+    margin-top: 4px;
+    border-bottom: 1px solid $el-color-primary-light-8;
+    &--title {
+      font-weight: 900;
+      font-size: 1.5rem;
+      margin-left: 0.3125rem;
+      color: $el-color-primary;
+      height: 2.5rem;
+    }
   }
 
-  &--calendar-header {
-    flex-grow: 1;
+  &__content {
+    display: flex;
+    align-items: flex-start;
+    &--department-list {
+      width: 17.5rem;
+    }
+
+    &--calendar-header {
+      flex-grow: 1;
+    }
   }
 }
 </style>

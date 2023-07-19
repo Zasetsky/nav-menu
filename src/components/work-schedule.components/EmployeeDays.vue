@@ -53,6 +53,7 @@ export default defineComponent({
   transition: width 0.3s;
   border-top: 1px solid $el-fill-color-light;
   border-bottom: 1px solid $el-fill-color-light;
+  border-left: 1px solid $el-color-primary-light-8;
   height: 48px;
 }
 </style>

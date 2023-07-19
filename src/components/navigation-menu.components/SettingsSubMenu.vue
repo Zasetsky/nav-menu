@@ -67,7 +67,7 @@ export default defineComponent({
   border: 0.0625rem solid $el-color-primary;
   box-shadow: 0rem 0.25rem 0.25rem 0rem rgba(209, 220, 222, 0.5);
   border-radius: 0.5rem;
-  z-index: 1000;
+  z-index: 9999;
   transition: all 0.4s ease-out;
   overflow: hidden;
 

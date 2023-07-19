@@ -3,8 +3,7 @@
     <!-- Навигационное меню -->
     <el-aside
       :style="{
-        'max-width': isCollapsed ? '3.75rem' : '16.5rem',
-        'min-width': isCollapsed ? '3.75rem' : '16.5rem',
+        width: isCollapsed ? '3.75rem' : '16.5rem',
       }"
     >
       <nav-menu />
@@ -42,9 +41,11 @@ export default defineComponent({
 .el-aside {
   overflow: visible !important;
   transition: all 0.4s ease-out;
+  z-index: 1;
 }
 .el-main {
   overflow-x: hidden;
   padding: 0;
+  z-index: 0;
 }
 </style>
