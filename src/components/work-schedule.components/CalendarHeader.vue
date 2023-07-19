@@ -60,6 +60,7 @@ export default defineComponent({
     justify-content: center;
     width: 100%;
     height: 41px;
+    border-bottom: 1px solid $el-color-primary-light-8;
 
     .day-number {
       font-size: 12px;
