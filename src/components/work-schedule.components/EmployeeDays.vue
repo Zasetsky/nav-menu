@@ -2,9 +2,7 @@
   <div
     class="employee-days"
     :style="{
-      width: isCollapsed
-        ? `calc(100vw - 21.25rem - ${scrollbarWidth}px)`
-        : `calc(100vw - 34rem - ${scrollbarWidth}px)`,
+      width: isCollapsed ? `calc(100vw - 21.25rem)` : `calc(100vw - 34rem)`,
     }"
   >
     <day-cell

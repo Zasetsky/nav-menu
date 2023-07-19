@@ -4,28 +4,15 @@ body {
 }
 
 // Полоса прокрутки
+/* Для Chrome, Safari и Opera */
 ::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
+  width: 0px; /* Убираем полосу прокрутки */
+  background: transparent; /* Делаем ее прозрачной */
 }
 
-::-webkit-scrollbar-track {
-  background: transparent; /* Цвет фона дорожки прокрутки */
-}
-
-::-webkit-scrollbar-thumb {
-  background: rgba(144, 146, 152, 0.30); /* Цвет самой полосы прокрутки */
-  border-radius: 4px; /* Скругление углов полосы прокрутки */
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: rgba(144, 146, 152, 0.60); /* Цвет полосы прокрутки при наведении */
-}
-
-/* Стили для Firefox */
+/* Для Firefox */
 html {
-  scrollbar-width: thin; /* Устанавливаем тонкую полосу прокрутки */
-  scrollbar-color: rgba(144, 146, 152, 0.30) transparent; /* Цвет полосы прокрутки и дорожки */
+  scrollbar-width: none; /* Убираем полосу прокрутки */
 }
 
 .el-popper.is-dark {

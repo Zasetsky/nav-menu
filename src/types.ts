@@ -41,6 +41,4 @@ export interface StatusItem {
 
 export interface LocalStates {
   isCollapsed: boolean;
-  scrollbarWidth: number;
-  hasScrollbar: boolean;
 }
