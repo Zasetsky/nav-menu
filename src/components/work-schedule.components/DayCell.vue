@@ -1,6 +1,12 @@
 <template>
-  <div class="day" :class="{ 'day-weekend': isWeekend(date) }">
-    <div v-if="!isWeekend(date)">
+  <div
+    class="day"
+    :class="{
+      'day-weekend': isWeekend(new Date(date)),
+      'day-holiday': isHoliday(new Date(date).getDate()),
+    }"
+  >
+    <div v-if="!isWeekend(new Date(date))">
       <div
         v-if="new Date(date) > new Date()"
         class="day-circle day-circle-future"
@@ -21,6 +27,7 @@
 <script lang="ts">
 import { defineComponent } from "vue";
 import { DatesData } from "@/types";
+import { useCalendar } from "@/composables/useCalendar";
 
 export default defineComponent({
   props: {
@@ -35,12 +42,9 @@ export default defineComponent({
   },
 
   setup() {
-    const isWeekend = (date: string) => {
-      const day = new Date(date).getDay();
-      return day === 0 || day === 6;
-    };
+    const { isWeekend, isHoliday } = useCalendar();
 
-    return { isWeekend };
+    return { isWeekend, isHoliday };
   },
 });
 </script>
@@ -52,7 +56,11 @@ export default defineComponent({
   justify-content: center;
   width: 100%;
 
-  &.day-weekend {
+  &-holiday {
+    background-color: $el-color-danger-light-9;
+  }
+
+  &-weekend {
     background-color: $el-color-success-light-9;
   }
 
