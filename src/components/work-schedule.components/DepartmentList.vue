@@ -64,7 +64,7 @@ export default defineComponent({
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 10px;
+    height: 56px;
     border-bottom: 1px solid $el-color-primary-light-8;
   }
 }

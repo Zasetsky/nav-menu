@@ -213,7 +213,7 @@ export default defineComponent({
     });
 
     const toggleCollapse = () => {
-      store.commit("LocalStates/toggleCollapse");
+      store.dispatch("LocalStates/toggleCollapse");
     };
 
     const { isSettingsVisible, openSettings } = useSettingsVisibility();

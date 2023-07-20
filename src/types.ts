@@ -41,4 +41,6 @@ export interface StatusItem {
 
 export interface LocalStates {
   isCollapsed: boolean;
+  selectedMonth: number;
+  selectedYear: number;
 }
