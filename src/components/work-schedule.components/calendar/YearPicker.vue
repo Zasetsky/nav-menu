@@ -244,6 +244,11 @@ export default defineComponent({
       font-size: 12px;
       cursor: pointer;
 
+      &:hover {
+        color: $el-color-primary;
+        font-weight: 600;
+      }
+
       &--selected {
         color: $el-color-primary;
         font-weight: 600;

@@ -57,12 +57,12 @@
 
   .employee-list {
     position: absolute;
-    top: 100%;
     left: 0;
     width: 99.3%;
     font-weight: 400;
     height: 252px;
     overflow-y: auto;
+    overflow-x: hidden;
     background-color: $el-color-white;
     border-bottom: 1px solid $el-color-primary;
     border-radius: 0 0 4px 4px;
@@ -86,15 +86,15 @@
     }
 
     &__department {
-      padding: 0px 20px 0px 10px;
       font-size: 12px;
-      color: $el-color-info;
+      color: $el-text-color-secondary;
       cursor: default;
 
       &--name {
         display: flex;
         align-items: center;
         justify-content: space-between;
+        padding: 0px 10px 0px 10px;
 
         button {
           border: 1px solid $el-color-primary-light-7;
@@ -115,15 +115,19 @@
 
       hr {
         border: none;
-        border-top: 1px solid $el-color-primary-light-8;
+        border-top: 1px solid $el-border-color-light;
       }
     }
 
     &__employee {
-      margin-bottom: 20px;
+      padding: 10px 0 10px 10px;
+      width: 100%;
       font-size: 14px;
       color: $el-text-color-regular;
       cursor: pointer;
+      &:hover {
+        background-color: $el-fill-color-light;
+      }
     }
   }
 
