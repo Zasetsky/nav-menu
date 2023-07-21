@@ -105,6 +105,7 @@ export default defineComponent({
         !yearPicker.value.contains(event.target as Node)
       ) {
         showYearPicker.value = false;
+        currentDecade.value = Math.floor(selectedYear.value / 10) * 10;
       }
     };
 
@@ -120,6 +121,7 @@ export default defineComponent({
       clearTimeout(timeoutId);
       timeoutId = setTimeout(() => {
         showYearPicker.value = false;
+        currentDecade.value = Math.floor(selectedYear.value / 10) * 10;
       }, 400);
     };
 
