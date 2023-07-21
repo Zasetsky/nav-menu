@@ -64,11 +64,17 @@ export default defineComponent({
     );
 
     const years = computed(() => {
-      return Array.from({ length: 10 }, (_, i) => currentDecade.value + i);
+      return Array.from(
+        { length: 10 },
+        (_, i) => currentDecade.value + i
+      ).filter((year) => year >= 2012);
     });
 
     const yearRange = computed(() => {
-      return `${currentDecade.value} - ${currentDecade.value + 9}`;
+      const startYear = Math.max(currentDecade.value, 2012); // гарантируем, что начальный год не будет меньше 2012
+      const step = startYear === 2012 ? 7 : 9; // меняем шаг в зависимости от стартового года
+      const endYear = startYear + step;
+      return `${startYear} - ${endYear}`;
     });
 
     const nextDecade = () => {
@@ -76,7 +82,9 @@ export default defineComponent({
     };
 
     const prevDecade = () => {
-      currentDecade.value -= 10;
+      if (currentDecade.value > 2010) {
+        currentDecade.value -= 10;
+      }
     };
 
     const selectYear = (year: number) => {

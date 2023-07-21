@@ -11,6 +11,10 @@
     cursor: pointer;
 
     &:not(&--show-picker)::after {
+      content: none;
+    }
+
+    &--show-picker::after {
       content: "";
       position: absolute;
       left: 0;

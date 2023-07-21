@@ -31,7 +31,8 @@
               :class="{
                 'month-picker__months__item': true,
                 'month-picker__months__item--selected':
-                  index === selectedMonthIndex,
+                  index === selectedMonthIndex &&
+                  selectedYear === localSelectedYear,
               }"
             >
               {{ month }}
@@ -112,11 +113,15 @@ export default defineComponent({
     });
 
     const nextYear = () => {
-      localSelectedYear.value++;
+      if (localSelectedYear.value < new Date().getFullYear()) {
+        localSelectedYear.value++;
+      }
     };
 
     const prevYear = () => {
-      localSelectedYear.value--;
+      if (localSelectedYear.value > 2012) {
+        localSelectedYear.value--;
+      }
     };
 
     const selectMonth = (index: number) => {
@@ -163,6 +168,7 @@ export default defineComponent({
       showMonthPicker,
       selectedMonth,
       localSelectedYear,
+      selectedYear,
       selectionMonths,
       selectedMonthIndex,
       nextYear,
