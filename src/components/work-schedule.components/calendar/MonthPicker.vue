@@ -28,12 +28,7 @@
               v-for="(month, index) in selectionMonths"
               :key="index"
               @click="selectMonth(index)"
-              :class="{
-                'month-picker__months__item': true,
-                'month-picker__months__item--selected':
-                  index === selectedMonthIndex &&
-                  selectedYear === localSelectedYear,
-              }"
+              :class="getMonthClasses(index)"
             >
               {{ month }}
             </div>
@@ -125,9 +120,16 @@ export default defineComponent({
     };
 
     const selectMonth = (index: number) => {
-      store.dispatch("LocalStates/updateYear", localSelectedYear.value);
-      store.dispatch("LocalStates/updateMonth", index);
-      showMonthPicker.value = false;
+      const currentDate = new Date();
+      if (
+        localSelectedYear.value < currentDate.getFullYear() ||
+        (localSelectedYear.value === currentDate.getFullYear() &&
+          index <= currentDate.getMonth())
+      ) {
+        store.dispatch("LocalStates/updateYear", localSelectedYear.value);
+        store.dispatch("LocalStates/updateMonth", index);
+        showMonthPicker.value = false;
+      }
     };
 
     const handleClickOutside = (event: Event) => {
@@ -156,6 +158,18 @@ export default defineComponent({
       }, 400);
     };
 
+    const getMonthClasses = (index: number) => {
+      return {
+        "month-picker__months__item": true,
+        "month-picker__months__item--selected":
+          index === selectedMonthIndex.value &&
+          selectedYear.value === localSelectedYear.value,
+        "month-picker__months__item--disabled":
+          localSelectedYear.value === new Date().getFullYear() &&
+          index > new Date().getMonth(),
+      };
+    };
+
     onMounted(() => {
       document.addEventListener("mousedown", handleClickOutside);
     });
@@ -178,6 +192,7 @@ export default defineComponent({
       selectMonth,
       openPicker,
       closePicker,
+      getMonthClasses,
     };
   },
 });
