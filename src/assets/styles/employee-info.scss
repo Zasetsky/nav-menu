@@ -63,7 +63,11 @@
       margin: 2px 0;
       color: $el-text-color-secondary;
       font-size: 10px;
-      cursor: default;
+
+      &::selection {
+        background:$el-color-info;
+        color: $el-color-white;
+      }
     }
   }
 

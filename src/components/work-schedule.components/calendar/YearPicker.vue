@@ -1,33 +1,39 @@
 <template>
   <div class="year-picker" ref="yearPicker">
-    <div @click="showYearPicker = !showYearPicker">
+    <div
+      @click="showYearPicker = true"
+      @mouseenter="openPicker"
+      @mouseleave="closePicker"
+    >
       <div
         class="year-picker__selected"
         :class="{ 'year-picker__selected--show-picker': showYearPicker }"
       >
         {{ selectedYear }}
       </div>
-      <div v-if="showYearPicker" class="year-picker__body" @click.stop>
-        <div class="year-picker__header">
-          <i v-html="picker_arrows_l" @click.stop="prevDecade"></i>
-          {{ yearRange }}
-          <i v-html="picker_arrows_r" @click.stop="nextDecade"></i>
-        </div>
-        <hr />
-        <div class="year-picker__years">
-          <div
-            v-for="year in years"
-            :key="year"
-            @click="selectYear(year)"
-            :class="{
-              'year-picker__years__year': true,
-              'year-picker__years__year--selected': year === selectedYear,
-            }"
-          >
-            {{ year }}
+      <transition name="fade">
+        <div v-if="showYearPicker" class="year-picker__body" @click.stop>
+          <div class="year-picker__header">
+            <i v-html="picker_arrows_l" @click.stop="prevDecade"></i>
+            {{ yearRange }}
+            <i v-html="picker_arrows_r" @click.stop="nextDecade"></i>
+          </div>
+          <hr />
+          <div class="year-picker__years">
+            <div
+              v-for="year in years"
+              :key="year"
+              @click="selectYear(year)"
+              :class="{
+                'year-picker__years__year': true,
+                'year-picker__years__year--selected': year === selectedYear,
+              }"
+            >
+              {{ year }}
+            </div>
           </div>
         </div>
-      </div>
+      </transition>
     </div>
   </div>
 </template>
@@ -78,11 +84,27 @@ export default defineComponent({
       }
     };
 
+    let timeoutId: number | undefined;
+    const openPicker = () => {
+      clearTimeout(timeoutId);
+      timeoutId = setTimeout(() => {
+        showYearPicker.value = true;
+      }, 400);
+    };
+
+    const closePicker = () => {
+      clearTimeout(timeoutId);
+      timeoutId = setTimeout(() => {
+        showYearPicker.value = false;
+      }, 400);
+    };
+
     onMounted(() => {
       document.addEventListener("mousedown", handleClickOutside);
     });
 
     onUnmounted(() => {
+      clearTimeout(timeoutId);
       document.removeEventListener("mousedown", handleClickOutside);
     });
 
@@ -97,6 +119,8 @@ export default defineComponent({
       nextDecade,
       prevDecade,
       selectYear,
+      openPicker,
+      closePicker,
     };
   },
 });
@@ -125,6 +149,21 @@ export default defineComponent({
       height: 2px;
       background-color: $el-text-color-secondary;
     }
+  }
+
+  .fade-enter-active,
+  .fade-leave-active {
+    transition: opacity 0.4s;
+  }
+
+  .fade-enter-from,
+  .fade-leave-to {
+    opacity: 0;
+  }
+
+  .fade-enter-to,
+  .fade-leave-from {
+    opacity: 1;
   }
 
   &__body {

@@ -1,33 +1,39 @@
 <template>
   <div class="month-picker" ref="monthPicker">
-    <div @click="showMonthPicker = !showMonthPicker">
+    <div
+      @click="showMonthPicker = true"
+      @mouseenter="openPicker"
+      @mouseleave="closePicker"
+    >
       <div
         class="month-picker__selected"
         :class="{ 'month-picker__selected--show-picker': showMonthPicker }"
       >
         {{ selectedMonth }}
       </div>
-      <div v-if="showMonthPicker" class="month-picker__body" @click.stop>
-        <div class="month-picker__header">
-          <i v-html="picker_arrows_l" @click.stop="prevYear"></i>
-          {{ localSelectedYear }}
-          <i v-html="picker_arrows_r" @click.stop="nextYear"></i>
-        </div>
-        <hr />
-        <div class="month-picker__months">
-          <div
-            v-for="(month, index) in selectionMonths"
-            :key="index"
-            @click="selectMonth(index)"
-            :class="{
-              'month-picker__month': true,
-              'month-picker__month--selected': index === selectedMonthIndex,
-            }"
-          >
-            {{ month }}
+      <transition name="fade">
+        <div v-if="showMonthPicker" class="month-picker__body" @click.stop>
+          <div class="month-picker__header">
+            <i v-html="picker_arrows_l" @click.stop="prevYear"></i>
+            {{ localSelectedYear }}
+            <i v-html="picker_arrows_r" @click.stop="nextYear"></i>
+          </div>
+          <hr />
+          <div class="month-picker__months">
+            <div
+              v-for="(month, index) in selectionMonths"
+              :key="index"
+              @click="selectMonth(index)"
+              :class="{
+                'month-picker__month': true,
+                'month-picker__month--selected': index === selectedMonthIndex,
+              }"
+            >
+              {{ month }}
+            </div>
           </div>
         </div>
-      </div>
+      </transition>
     </div>
   </div>
 </template>
@@ -118,11 +124,27 @@ export default defineComponent({
       }
     };
 
+    let timeoutId: number | undefined;
+    const openPicker = () => {
+      clearTimeout(timeoutId);
+      timeoutId = setTimeout(() => {
+        showMonthPicker.value = true;
+      }, 400);
+    };
+
+    const closePicker = () => {
+      clearTimeout(timeoutId);
+      timeoutId = setTimeout(() => {
+        showMonthPicker.value = false;
+      }, 400);
+    };
+
     onMounted(() => {
       document.addEventListener("mousedown", handleClickOutside);
     });
 
     onUnmounted(() => {
+      clearTimeout(timeoutId);
       document.removeEventListener("mousedown", handleClickOutside);
     });
 
@@ -138,6 +160,8 @@ export default defineComponent({
       nextYear,
       prevYear,
       selectMonth,
+      openPicker,
+      closePicker,
     };
   },
 });
@@ -165,6 +189,21 @@ export default defineComponent({
       height: 2px;
       background-color: $el-text-color-primary;
     }
+  }
+
+  .fade-enter-active,
+  .fade-leave-active {
+    transition: opacity 0.4s;
+  }
+
+  .fade-enter-from,
+  .fade-leave-to {
+    opacity: 0;
+  }
+
+  .fade-enter-to,
+  .fade-leave-from {
+    opacity: 1;
   }
 
   &__body {
