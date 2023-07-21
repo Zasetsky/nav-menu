@@ -58,14 +58,14 @@ export default defineComponent({
 .department-list {
   min-height: calc(100vh - 4.1rem);
   background-color: $el-color-success-light-9;
-  border-right: 1px solid $el-color-primary-light-8;
+  border-right: 1px solid $el-border-color;
 
   .search {
     display: flex;
     align-items: center;
     justify-content: center;
     padding: 14px;
-    border-bottom: 1px solid $el-color-primary-light-8;
+    border-bottom: 1px solid $el-border-color;
   }
 }
 </style>

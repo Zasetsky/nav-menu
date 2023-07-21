@@ -23,6 +23,7 @@ const state: State = {
           id: 2,
           name: "Петр Петров",
           phone: "+0987654321",
+          // isWeekend: false,
           isOnline: false,
           dates: getCurrentMonthDates(),
         },

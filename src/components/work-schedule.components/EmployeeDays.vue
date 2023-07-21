@@ -3,6 +3,7 @@
     class="employee-days"
     :style="{
       width: isCollapsed ? `calc(100vw - 21.25rem)` : `calc(100vw - 34rem)`,
+      borderTop: index === 0 ? '1px solid #dcdfe6' : 'none',
     }"
   >
     <day-cell
@@ -28,6 +29,11 @@ export default defineComponent({
       type: Object as () => Employee,
       required: true,
     },
+
+    index: {
+      type: Number,
+      required: true,
+    },
   },
 
   setup() {
@@ -51,9 +57,8 @@ export default defineComponent({
   display: flex;
   justify-content: space-between;
   transition: width 0.3s;
-  border-top: 1px solid $el-fill-color-light;
-  border-bottom: 1px solid $el-fill-color-light;
-  border-left: 1px solid $el-color-primary-light-8;
+  border-bottom: 1px solid $el-border-color;
+  border-left: 1px solid $el-border-color;
   height: 48px;
 }
 </style>

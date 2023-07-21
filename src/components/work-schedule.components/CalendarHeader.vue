@@ -59,7 +59,7 @@ export default defineComponent({
 <style lang="scss">
 .calendar-header {
   &--picker {
-    border-bottom: 1px solid $el-color-primary-light-8;
+    border-bottom: 1px solid $el-border-color;
   }
 
   &__wrapper {
@@ -72,7 +72,7 @@ export default defineComponent({
       justify-content: center;
       width: 100%;
       height: 41px;
-      border-bottom: 1px solid $el-color-primary-light-8;
+      border-bottom: 1px solid $el-border-color;
 
       .day-number {
         font-size: 12px;

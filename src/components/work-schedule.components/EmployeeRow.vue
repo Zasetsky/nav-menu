@@ -4,7 +4,7 @@
       <EmployeeInfo :employee="employee" />
     </div>
     <div class="employee-row--day">
-      <EmployeeDays :employee="employee" />
+      <EmployeeDays :employee="employee" :index="index" />
     </div>
   </div>
 </template>
@@ -21,6 +21,11 @@ export default defineComponent({
   props: {
     employee: {
       type: Object as () => Employee,
+      required: true,
+    },
+
+    index: {
+      type: Number,
       required: true,
     },
   },

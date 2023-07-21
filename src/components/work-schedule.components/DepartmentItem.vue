@@ -9,9 +9,10 @@
     </div>
     <div v-show="!isCollapsed" class="department__content">
       <employee-row
-        v-for="employee in department.employees"
+        v-for="(employee, index) in department.employees"
         :key="employee.id"
         :employee="employee"
+        :index="index"
         class="department__employee-row"
       />
     </div>
