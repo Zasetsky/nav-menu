@@ -14,19 +14,17 @@
             @click.stop
           >
             {{ employee.name }}
-            <i
-              class="employee-tag--icon"
-              v-html="close"
-              @click.stop="removeEmployee(employee)"
-            ></i>
+            <i class="employee-tag--icon" @click.stop="removeEmployee(employee)"
+              ><close_icon
+            /></i>
           </span>
         </div>
         <i
           v-if="selectedEmployees.length > 0"
           class="search-container__employees-wrapper--all_close"
-          v-html="all_close"
           @click.stop="clearAllEmployees"
-        ></i>
+          ><all_close_icon
+        /></i>
       </div>
       <div v-if="!selectedEmployees.length || isActive" class="input-wrapper">
         <input
@@ -80,9 +78,14 @@ import {
 } from "vue";
 import { useStore } from "vuex";
 import { Department, Employee } from "@/types";
-import { close, all_close } from "@/assets/icons/index";
+import { close_icon, all_close_icon } from "@/assets/icons/index";
 
 export default defineComponent({
+  components: {
+    close_icon,
+    all_close_icon,
+  },
+
   props: {
     modelValue: {
       type: Array as () => Employee[],
@@ -184,8 +187,6 @@ export default defineComponent({
       handleInput,
       selectEmployee,
       isActive,
-      close,
-      all_close,
       selectedEmployees,
       removeEmployee,
       inputFocus,

@@ -7,8 +7,8 @@ export function useCalendar() {
   const weekDays = ["ВС", "ПН", "ВТ", "СР", "ЧТ", "ПТ", "СБ"];
 
   const holidays = [
-    { month: 0, day: 1 }, // 1 января
-    { month: 6, day: 19 },
+    { month: 0, day: 1, info: "Бухой день" }, // 1 января
+    { month: 6, day: 19, info: "День создания этой фичи" },
     // Другие праздничные дни здесь
   ];
 

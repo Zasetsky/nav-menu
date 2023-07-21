@@ -14,9 +14,13 @@
       <transition name="fade">
         <div v-if="showYearPicker" class="year-picker__body" @click.stop>
           <div class="year-picker__header">
-            <i v-html="picker_arrows_l" @click.stop="prevDecade"></i>
+            <i @click.stop="prevDecade">
+              <double_arrow_l_icon :width="'20'" :height="'20'" />
+            </i>
             {{ yearRange }}
-            <i v-html="picker_arrows_r" @click.stop="nextDecade"></i>
+            <i @click.stop="nextDecade">
+              <double_arrow_r_icon :width="'20'" :height="'20'" />
+            </i>
           </div>
           <hr />
           <div class="year-picker__years">
@@ -41,9 +45,14 @@
 <script lang="ts">
 import { defineComponent, ref, computed, onMounted, onUnmounted } from "vue";
 import { useStore } from "vuex";
-import { picker_arrows_l, picker_arrows_r } from "@/assets/icons/index";
+import { double_arrow_l_icon, double_arrow_r_icon } from "@/assets/icons/index";
 
 export default defineComponent({
+  components: {
+    double_arrow_l_icon,
+    double_arrow_r_icon,
+  },
+
   setup() {
     const store = useStore();
     const yearPicker = ref<HTMLElement | null>(null);
@@ -114,8 +123,6 @@ export default defineComponent({
       selectedYear,
       years,
       yearRange,
-      picker_arrows_l,
-      picker_arrows_r,
       nextDecade,
       prevDecade,
       selectYear,

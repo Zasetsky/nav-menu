@@ -1,16 +1,12 @@
 <template>
   <div class="date-picker">
     <div class="date-picker__windows">
-      <i
-        class="arrow-icon"
-        v-html="calendar_arrows_l"
-        @click.stop="prevYear"
-      ></i>
-      <i
-        class="arrow-icon"
-        v-html="calendar_arrow_l"
-        @click.stop="prevMonth"
-      ></i>
+      <i class="arrow-icon" @click.stop="prevYear">
+        <double_arrow_l_icon />
+      </i>
+      <i class="arrow-icon" @click.stop="prevMonth">
+        <arrow_l_icon />
+      </i>
 
       <div class="selected-dates">
         <month-picker />
@@ -18,16 +14,12 @@
         <year-picker />
       </div>
 
-      <i
-        class="arrow-icon"
-        v-html="calendar_arrow_r"
-        @click.stop="nextMonth"
-      ></i>
-      <i
-        class="arrow-icon"
-        v-html="calendar_arrows_r"
-        @click.stop="nextYear"
-      ></i>
+      <i class="arrow-icon" @click.stop="nextMonth">
+        <arrow_r_icon />
+      </i>
+      <i class="arrow-icon" @click.stop="nextYear">
+        <double_arrow_r_icon />
+      </i>
     </div>
   </div>
 </template>
@@ -37,10 +29,10 @@ import { defineComponent, computed } from "vue";
 import MonthPicker from "./MonthPicker.vue";
 import YearPicker from "./YearPicker.vue";
 import {
-  calendar_arrows_l,
-  calendar_arrows_r,
-  calendar_arrow_l,
-  calendar_arrow_r,
+  double_arrow_l_icon,
+  double_arrow_r_icon,
+  arrow_l_icon,
+  arrow_r_icon,
 } from "@/assets/icons/index";
 import { useStore } from "vuex";
 
@@ -48,6 +40,10 @@ export default defineComponent({
   components: {
     MonthPicker,
     YearPicker,
+    double_arrow_l_icon,
+    double_arrow_r_icon,
+    arrow_l_icon,
+    arrow_r_icon,
   },
   setup() {
     const store = useStore();
@@ -86,10 +82,6 @@ export default defineComponent({
     };
 
     return {
-      calendar_arrows_l,
-      calendar_arrows_r,
-      calendar_arrow_l,
-      calendar_arrow_r,
       nextMonth,
       prevMonth,
       nextYear,

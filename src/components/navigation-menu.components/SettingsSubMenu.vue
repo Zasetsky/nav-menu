@@ -7,15 +7,15 @@
   >
     <div class="settings-submenu__content">
       <div class="settings-submenu__item">
-        <i v-html="employees" class="settings-submenu__item-icon"></i>
+        <i class="settings-submenu__item-icon"><employees_icon /></i>
         <span class="settings-submenu__item-text">Сотрудники</span>
       </div>
       <div class="settings-submenu__item">
-        <i v-html="absense" class="settings-submenu__item-icon"></i>
+        <i class="settings-submenu__item-icon"><absense_icon /></i>
         <span class="settings-submenu__item-text">Список отсутствий</span>
       </div>
       <div class="settings-submenu__item">
-        <i v-html="distribution" class="settings-submenu__item-icon"></i>
+        <i class="settings-submenu__item-icon"><deals_distribution_icon /></i>
         <span class="settings-submenu__item-text">Распределение сделок</span>
       </div>
     </div>
@@ -23,10 +23,20 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, watch } from "vue";
-import { distribution, employees, absense } from "@/assets/icons/index";
+import { defineComponent } from "vue";
+import {
+  deals_distribution_icon,
+  employees_icon,
+  absense_icon,
+} from "@/assets/icons/index";
 
 export default defineComponent({
+  components: {
+    deals_distribution_icon,
+    employees_icon,
+    absense_icon,
+  },
+
   props: {
     visible: {
       type: Boolean,
@@ -37,21 +47,6 @@ export default defineComponent({
       type: Boolean,
       required: true,
     },
-  },
-
-  setup(props) {
-    watch(
-      () => props.visible,
-      (newValue) => {
-        console.log("Visible changed: ", newValue);
-      }
-    );
-
-    return {
-      distribution,
-      employees,
-      absense,
-    };
   },
 });
 </script>

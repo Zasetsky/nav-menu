@@ -14,9 +14,13 @@
       <transition name="fade">
         <div v-if="showMonthPicker" class="month-picker__body" @click.stop>
           <div class="month-picker__header">
-            <i v-html="picker_arrows_l" @click.stop="prevYear"></i>
+            <i @click.stop="prevYear">
+              <double_arrow_l_icon :width="'20'" :height="'20'" />
+            </i>
             {{ localSelectedYear }}
-            <i v-html="picker_arrows_r" @click.stop="nextYear"></i>
+            <i @click.stop="nextYear">
+              <double_arrow_r_icon :width="'20'" :height="'20'" />
+            </i>
           </div>
           <hr />
           <div class="month-picker__months">
@@ -48,9 +52,14 @@ import {
   watch,
 } from "vue";
 import { useStore } from "vuex";
-import { picker_arrows_l, picker_arrows_r } from "@/assets/icons/index";
+import { double_arrow_l_icon, double_arrow_r_icon } from "@/assets/icons/index";
 
 export default defineComponent({
+  components: {
+    double_arrow_l_icon,
+    double_arrow_r_icon,
+  },
+
   setup() {
     const store = useStore();
     const monthPicker = ref<HTMLElement | null>(null);
@@ -154,8 +163,6 @@ export default defineComponent({
       selectedMonth,
       localSelectedYear,
       selectionMonths,
-      picker_arrows_l,
-      picker_arrows_r,
       selectedMonthIndex,
       nextYear,
       prevYear,

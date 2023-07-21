@@ -16,6 +16,7 @@ const state: State = {
           id: 1,
           name: "Иван Иванов",
           phone: "+1234567890",
+          // isWeekend: false, /* Сделать типизацию! */
           isOnline: true,
           dates: getCurrentMonthDates(),
         },
@@ -23,7 +24,7 @@ const state: State = {
           id: 2,
           name: "Петр Петров",
           phone: "+0987654321",
-          // isWeekend: false,
+          // isWeekend: false, /* Сделать типизацию! */
           isOnline: false,
           dates: getCurrentMonthDates(),
         },

@@ -2,10 +2,10 @@
   <div class="department">
     <div class="department__header" @click="isCollapsed = !isCollapsed">
       <h3 class="department__title">{{ department.name.toUpperCase() }}</h3>
-      <span
-        class="department__toggle-icon"
-        v-html="isCollapsed ? plus : minus"
-      ></span>
+      <i class="department__toggle-icon">
+        <plus_icon v-if="isCollapsed" />
+        <minus_icon v-else />
+      </i>
     </div>
     <div v-show="!isCollapsed" class="department__content">
       <employee-row
@@ -28,10 +28,10 @@
 import { defineComponent, ref, computed } from "vue";
 import EmployeeRow from "./EmployeeRow.vue";
 import { Department } from "@/types";
-import { plus, minus } from "@/assets/icons/index";
+import { plus_icon, minus_icon } from "@/assets/icons/index";
 
 export default defineComponent({
-  components: { EmployeeRow },
+  components: { EmployeeRow, plus_icon, minus_icon },
   props: {
     department: {
       type: Object as () => Department,
@@ -51,7 +51,7 @@ export default defineComponent({
         .length;
     });
 
-    return { isCollapsed, plus, minus, onlineEmployeesCount };
+    return { isCollapsed, onlineEmployeesCount };
   },
 });
 </script>
@@ -67,10 +67,13 @@ export default defineComponent({
   &__header {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     cursor: pointer;
   }
 
   &__title {
+    display: flex;
+    align-items: center;
     margin: 0;
     height: 32px;
     font-size: 14px;

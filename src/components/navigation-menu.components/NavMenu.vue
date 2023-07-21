@@ -23,13 +23,13 @@
             :show-after="500"
           >
             <div class="menu__header-collapsed" @click.stop="toggleCollapse">
-              <i v-html="building" class="menu__icon-company"></i>
+              <i class="menu__icon-company"><building_icon /></i>
             </div>
           </el-tooltip>
 
           <div v-else class="menu__header">
             <div class="menu__header-wrapper">
-              <i v-html="building" class="menu__icon-company"></i>
+              <i class="menu__icon-company"><building_icon /></i>
               <span class="menu__title" v-show="!isCollapsed">КОМПАНИЯ</span>
             </div>
             <el-tooltip
@@ -39,11 +39,8 @@
               placement="bottom"
               :show-after="500"
             >
-              <i
-                v-html="arrows"
-                class="menu__icon-colapse"
-                @click.stop="toggleCollapse"
-              >
+              <i class="menu__icon-colapse" @click.stop="toggleCollapse">
+                <double_arrows_menu_icon />
               </i>
             </el-tooltip>
           </div>
@@ -178,12 +175,15 @@ import { defineComponent, computed } from "vue";
 import { Icon } from "@iconify/vue";
 import { useRouter, useRoute } from "vue-router";
 import SettingSubMenu from "./SettingsSubMenu.vue";
+import {
+  building_icon,
+  double_arrows_menu_icon,
+} from "../../assets/icons/index";
 import useSettingsVisibility from "@/composables/useSettingsVisibility";
-import { building, arrows } from "@/assets/icons/index";
 import { useStore } from "vuex";
 
 export default defineComponent({
-  components: { Icon, SettingSubMenu },
+  components: { Icon, SettingSubMenu, building_icon, double_arrows_menu_icon },
 
   setup() {
     const router = useRouter();
@@ -228,8 +228,6 @@ export default defineComponent({
       isSettingsVisible,
       settingsClass,
       settingsIconClass,
-      building,
-      arrows,
       openSettings,
       toggleCollapse,
       navigateTo,
