@@ -143,6 +143,11 @@
       outline: none;
       margin-left: 20px;
 
+      &::selection {
+        background:$el-color-info;
+        color: $el-color-white;
+      }
+
       &::placeholder {
         color: $el-text-color-disabled;
       }
