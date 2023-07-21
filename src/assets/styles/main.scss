@@ -1,6 +1,14 @@
+::selection {
+  background: none;
+}
+
+::-moz-selection {
+  background: none;
+}
+
 body {
   font-size: 0.875rem;
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
 }
 
 // Полоса прокрутки

@@ -146,7 +146,6 @@ export default defineComponent({
 <style lang="scss" scoped>
 .month-picker {
   position: relative;
-  margin-left: 24px;
   color: $el-text-color-regular;
   cursor: default;
 

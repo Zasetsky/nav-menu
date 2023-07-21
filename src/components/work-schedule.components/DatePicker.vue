@@ -117,7 +117,8 @@ export default defineComponent({
 
     .selected-dates {
       display: flex;
-      min-width: 163px;
+      justify-content: center;
+      min-width: 150px;
     }
   }
 }

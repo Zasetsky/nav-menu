@@ -57,7 +57,11 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 .department {
-  padding: 44px 16px 0 16px;
+  padding: 16px 16px 0 16px;
+
+  &:first-child {
+    padding-top: 44px;
+  }
 
   &__header {
     display: flex;
@@ -76,6 +80,7 @@ export default defineComponent({
     font-weight: 600;
     color: $el-text-color-regular;
     font-size: 12px;
+    cursor: default;
   }
 
   hr {

@@ -56,7 +56,7 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 .department-list {
-  min-height: 100vh;
+  min-height: calc(100vh - 4.1rem);
   background-color: $el-color-success-light-9;
   border-right: 1px solid $el-color-primary-light-8;
 
@@ -64,7 +64,7 @@ export default defineComponent({
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 56px;
+    padding: 14px;
     border-bottom: 1px solid $el-color-primary-light-8;
   }
 }
