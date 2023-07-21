@@ -56,11 +56,15 @@ export default defineComponent({
     );
 
     const nextYear = () => {
-      store.dispatch("LocalStates/updateYear", currentYear.value + 1);
+      if (currentYear.value < new Date().getFullYear()) {
+        store.dispatch("LocalStates/updateYear", currentYear.value + 1);
+      }
     };
 
     const prevYear = () => {
-      store.dispatch("LocalStates/updateYear", currentYear.value - 1);
+      if (currentYear.value > 2012) {
+        store.dispatch("LocalStates/updateYear", currentYear.value - 1);
+      }
     };
 
     const nextMonth = () => {
@@ -68,8 +72,15 @@ export default defineComponent({
       const newYear =
         currentMonth.value === 11 ? currentYear.value + 1 : currentYear.value;
 
-      store.dispatch("LocalStates/updateMonth", newMonth);
-      store.dispatch("LocalStates/updateYear", newYear);
+      const currentDate = new Date();
+      if (
+        newYear < currentDate.getFullYear() ||
+        (newYear === currentDate.getFullYear() &&
+          newMonth <= currentDate.getMonth())
+      ) {
+        store.dispatch("LocalStates/updateMonth", newMonth);
+        store.dispatch("LocalStates/updateYear", newYear);
+      }
     };
 
     const prevMonth = () => {
@@ -77,8 +88,10 @@ export default defineComponent({
       const newYear =
         currentMonth.value === 0 ? currentYear.value - 1 : currentYear.value;
 
-      store.dispatch("LocalStates/updateMonth", newMonth);
-      store.dispatch("LocalStates/updateYear", newYear);
+      if (newYear > 2012 || (newYear === 2012 && newMonth >= 0)) {
+        store.dispatch("LocalStates/updateMonth", newMonth);
+        store.dispatch("LocalStates/updateYear", newYear);
+      }
     };
 
     return {
