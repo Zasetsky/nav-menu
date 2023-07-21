@@ -11,10 +11,6 @@
     cursor: pointer;
 
     &:not(&--show-picker)::after {
-      content: none;
-    }
-
-    &--show-picker::after {
       content: "";
       position: absolute;
       left: 0;
@@ -119,6 +115,11 @@
       &--selected {
         color: $el-color-success;
         font-weight: 600;
+      }
+
+      &--disabled {
+        color: $el-text-color-disabled;
+        pointer-events: none;
       }
     }
   }

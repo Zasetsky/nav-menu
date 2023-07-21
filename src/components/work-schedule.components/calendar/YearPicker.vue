@@ -31,6 +31,8 @@
               :class="{
                 'year-picker__years__item': true,
                 'year-picker__years__item--selected': year === selectedYear,
+                'year-picker__years__item--disabled':
+                  year > new Date().getFullYear(),
               }"
             >
               {{ year }}
@@ -78,7 +80,12 @@ export default defineComponent({
     });
 
     const nextDecade = () => {
-      currentDecade.value += 10;
+      if (
+        currentDecade.value <
+        Math.floor(new Date().getFullYear() / 10) * 10
+      ) {
+        currentDecade.value += 10;
+      }
     };
 
     const prevDecade = () => {

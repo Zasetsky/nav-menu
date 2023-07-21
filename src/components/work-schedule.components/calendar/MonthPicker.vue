@@ -136,6 +136,7 @@ export default defineComponent({
         !monthPicker.value.contains(event.target as Node)
       ) {
         showMonthPicker.value = false;
+        localSelectedYear.value = selectedYear.value;
       }
     };
 
@@ -151,6 +152,7 @@ export default defineComponent({
       clearTimeout(timeoutId);
       timeoutId = setTimeout(() => {
         showMonthPicker.value = false;
+        localSelectedYear.value = selectedYear.value;
       }, 400);
     };
 
