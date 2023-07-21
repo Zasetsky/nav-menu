@@ -26,6 +26,7 @@ export default defineComponent({
     padding: 1rem;
     margin-top: 4px;
     border-bottom: 1px solid $el-border-color;
+
     &--title {
       font-weight: 900;
       font-size: 1.5rem;

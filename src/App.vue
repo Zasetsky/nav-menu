@@ -44,7 +44,6 @@ export default defineComponent({
   z-index: 1;
 }
 .el-main {
-  overflow-x: hidden;
   padding: 0;
   z-index: 0;
 }

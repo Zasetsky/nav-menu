@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="arrow-icon" @mouseover="hover = true" @mouseleave="hover = false">
     <svg
       width="24"
       height="24"
@@ -9,10 +9,27 @@
     >
       <path
         d="M13.5 17L9 12.5L13.5 8"
-        stroke="#606266"
+        :style="{ stroke: hover ? hoverColor : defaultColor }"
         stroke-linecap="round"
       />
     </svg>
   </div>
 </template>
-<style lang=""></style>
+
+<script lang="ts">
+import { defineComponent, ref } from "vue";
+
+export default defineComponent({
+  setup() {
+    const hover = ref(false);
+    const defaultColor = "#606266";
+    const hoverColor = "#6fcf97";
+
+    return {
+      hover,
+      defaultColor,
+      hoverColor,
+    };
+  },
+});
+</script>
