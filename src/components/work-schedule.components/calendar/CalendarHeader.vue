@@ -123,7 +123,11 @@ export default defineComponent({
 
       &--holiday {
         background-color: $el-color-danger-light-9;
-        color: $el-color-danger;
+
+        .calendar-header__days-wrapper__day--number,
+        .calendar-header__days-wrapper__day--name {
+          color: $el-color-danger;
+        }
       }
     }
   }
