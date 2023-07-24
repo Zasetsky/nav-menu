@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="birthday-icon">
     <svg
       width="20"
       height="20"
@@ -34,4 +34,8 @@
     </svg>
   </div>
 </template>
-<style lang=""></style>
+<style scoped>
+.birthday-icon {
+  display: flex;
+}
+</style>
