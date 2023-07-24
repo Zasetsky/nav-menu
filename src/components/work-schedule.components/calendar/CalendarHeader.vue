@@ -1,20 +1,34 @@
 <template>
   <div class="calendar-header">
-    <div class="calendar-header--picker">
-      <date-picker />
+    <div class="calendar-header__head-wrapper">
+      <div class="calendar-header__head-wrapper__picker">
+        <date-picker />
+      </div>
+      <div class="calendar-header__head-wrapper__legend">
+        <h3 class="calendar-header__head-wrapper__legend-title">
+          Условные обозначения
+        </h3>
+        <calendar-legend />
+      </div>
     </div>
-    <div class="calendar-header__wrapper">
+    <div class="calendar-header__days-wrapper">
       <div
         v-for="(day, index) in daysOfMonth"
         :key="day"
-        class="calendar-header__wrapper--day"
+        class="calendar-header__days-wrapper__day"
         :class="{
-          'day-weekend': isWeekend(new Date(year, month, day)),
-          'day-holiday': isHoliday(day),
+          'calendar-header__days-wrapper__day--weekend': isWeekend(
+            new Date(year, month, day)
+          ),
+          'calendar-header__days-wrapper__day--holiday': isHoliday(day),
         }"
       >
-        <div class="day-number">{{ day }}</div>
-        <div class="day-name">{{ daysOfWeekInMonth[index] }}</div>
+        <div class="calendar-header__days-wrapper__day--number">
+          {{ day }}
+        </div>
+        <div class="calendar-header__days-wrapper__day--name">
+          {{ daysOfWeekInMonth[index] }}
+        </div>
       </div>
     </div>
   </div>
@@ -24,9 +38,10 @@
 import { defineComponent, computed } from "vue";
 import { useCalendar } from "@/composables/useCalendar";
 import DatePicker from "./DatePicker.vue";
+import CalendarLegend from "./CalendarLegend.vue";
 
 export default defineComponent({
-  components: { DatePicker },
+  components: { DatePicker, CalendarLegend },
 
   setup() {
     const { weekDays, year, month, isWeekend, isHoliday } = useCalendar();
@@ -47,25 +62,43 @@ export default defineComponent({
       daysOfMonth,
       weekDays,
       daysOfWeekInMonth,
-      isWeekend,
       year,
       month,
+      isWeekend,
       isHoliday,
     };
   },
 });
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .calendar-header {
-  &--picker {
-    border-bottom: 1px solid $el-border-color;
-  }
+  cursor: default;
 
-  &__wrapper {
+  &__head-wrapper {
     display: flex;
     justify-content: space-between;
-    &--day {
+    align-items: center;
+    border-bottom: 1px solid $el-border-color;
+
+    &__legend {
+      display: flex;
+      align-items: center;
+      margin-right: 32px;
+
+      &-title {
+        font-size: 18px;
+        color: $el-text-color-primary;
+        margin-right: 5px;
+      }
+    }
+  }
+
+  &__days-wrapper {
+    display: flex;
+    justify-content: space-between;
+
+    &__day {
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -74,26 +107,24 @@ export default defineComponent({
       height: 41px;
       border-bottom: 1px solid $el-border-color;
 
-      .day-number {
+      &--number {
         font-size: 12px;
         font-weight: 600;
       }
-      .day-name {
+
+      &--name {
         font-size: 10px;
         color: $el-text-color-regular;
       }
-    }
-  }
 
-  .day-weekend {
-    background-color: $el-color-success-light-9;
-  }
+      &--weekend {
+        background-color: $el-color-success-light-9;
+      }
 
-  .day-holiday {
-    background-color: $el-color-danger-light-9;
-    .day-number,
-    .day-name {
-      color: $el-color-danger;
+      &--holiday {
+        background-color: $el-color-danger-light-9;
+        color: $el-color-danger;
+      }
     }
   }
 }

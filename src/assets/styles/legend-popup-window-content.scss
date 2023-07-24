@@ -1,0 +1,175 @@
+.legend-popup-window {
+  font-size: 14px;
+  font-weight: 600;
+
+  hr {
+    border: none;
+    border-top: 1px solid $el-color-info-light-8;
+    width: 440px;
+  }
+
+  &__calendar-days {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 20px;
+
+    p {
+      margin-left: 7px;
+    }
+
+    &__work,
+    &__weekend,
+    &__holliday {
+      display: flex;
+      align-items: center;
+    }
+  }
+
+  &__day-statuses {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    padding: 10px 20px;
+
+    &__success,
+    &__empty,
+    &__warning,
+    &__danger {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+
+      p {
+        margin-left: 10px;
+      }
+    }
+
+    &__empty {
+      width: 250px;
+    }
+
+    // Круги
+    &__success--circle,
+    &__empty--circle,
+    &__warning--circle,
+    &__danger--circle {
+      border-radius: 50%;
+      width: 14px;
+      height: 14px;
+    }
+
+    &__success--circle {
+      background-color: $el-color-success;
+    }
+
+    &__empty--circle {
+      border: 1px solid $el-color-success;
+    }
+
+    &__warning--circle {
+      background-color: $el-color-warning;
+    }
+
+    &__danger--circle {
+      background-color: $el-color-danger;
+    }
+  }
+
+  // Отпуск!!!
+  &__vacation-days {
+    display: grid;
+    grid-template-columns: repeat(2, 0.98fr);
+    grid-template-rows: repeat(5, 0.9fr);
+    padding: 10px 20px;
+
+    // Квадраты
+    &__vacation--square,
+    &__work-day-on-vacation--square,
+    &__business-trip--square,
+    &__work-day-on-business-trip--square,
+    &__sick-day--square,
+    &__work-day-on-sick-day--square,
+    &__personal-day--square,
+    &__work-day-on-personal-day--square,
+    &__maternity-leave--square {
+      min-width: 20px;
+      height: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      &--circle {
+        width: 14px;
+        height: 14px;
+        border-radius: 50%;
+      }
+    }
+
+    &__vacation--square,
+    &__work-day-on-vacation--square {
+      background-color: $el-color-primary;
+
+      &--circle {
+        border: 1px dashed $el-color-success;
+      }
+    }
+
+    &__business-trip--square,
+    &__work-day-on-business-trip--square {
+      background-color: $el-color-info;
+
+      &--circle {
+        border: 1px dashed $el-color-success-light-3;
+      }
+    }
+
+    &__sick-day--square,
+    &__work-day-on-sick-day--square {
+      background-color: $el-color-category-top;
+
+      &--circle {
+        border: 1px dashed $el-color-info;
+      }
+    }
+
+    &__personal-day--square,
+    &__work-day-on-personal-day--square {
+      background-color: $el-fill-color-darker;
+
+      &--circle {
+        border: 1px dashed $el-color-primary;
+      }
+    }
+
+    &__maternity-leave--square {
+      background-color: $el-color-info-light-9;
+    }
+
+    // Отпускные дни
+    &__vacation,
+    &__work-day-on-vacation,
+    &__business-trip,
+    &__work-day-on-business-trip,
+    &__sick-day,
+    &__work-day-on-sick-day,
+    &__personal-day,
+    &__work-day-on-personal-day,
+    &__birthday,
+    &__maternity-leave {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+
+      p {
+        margin-left: 10px;
+      }
+    }
+
+    &__work-day-on-vacation,
+    &__work-day-on-business-trip,
+    &__work-day-on-sick-day,
+    &__work-day-on-personal-day {
+      width: 248px;
+    }
+  }
+}

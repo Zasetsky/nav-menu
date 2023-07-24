@@ -11,3 +11,8 @@ export { default as double_arrows_menu_icon } from "./double-arrows-menu-icon.vu
 export { default as employees_icon } from "./employees-icon.vue";
 export { default as minus_icon } from "./minus-icon.vue";
 export { default as plus_icon } from "./plus-icon.vue";
+export { default as question_icon } from "./question-icon.vue";
+export { default as work_day_icon } from "./work-day-icon.vue";
+export { default as weekend_icon } from "./weekend-icon.vue";
+export { default as holliday_icon } from "./holliday-icon.vue";
+export { default as birthday_icon } from "./birthday-icon.vue";
