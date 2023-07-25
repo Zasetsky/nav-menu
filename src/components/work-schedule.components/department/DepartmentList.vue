@@ -11,6 +11,9 @@
         :isLastItem="index === filteredDepartments.length - 1"
       />
     </div>
+    <div class="footer">
+      <span>Онлайн: {{ onlineCount }}/{{ totalEmployees }}</span>
+    </div>
   </div>
 </template>
 
@@ -49,14 +52,37 @@ export default defineComponent({
       }
     });
 
-    return { selectedEmployees, filteredDepartments };
+    const onlineCount = computed(() => {
+      let count = 0;
+      for (const department of departments.value) {
+        for (const employee of department.employees) {
+          if (employee.isOnline) count++;
+        }
+      }
+      return count;
+    });
+
+    const totalEmployees = computed(() => {
+      let count = 0;
+      for (const department of departments.value) {
+        count += department.employees.length;
+      }
+      return count;
+    });
+
+    return {
+      selectedEmployees,
+      filteredDepartments,
+      onlineCount,
+      totalEmployees,
+    };
   },
 });
 </script>
 
 <style lang="scss" scoped>
 .department-list {
-  min-height: calc(100vh - 4.1rem);
+  min-height: calc(100vh - 5.1rem);
   background-color: $el-color-success-light-9;
   border-right: 1px solid $el-border-color;
 
@@ -66,6 +92,16 @@ export default defineComponent({
     justify-content: center;
     padding: 14px;
     border-bottom: 1px solid $el-border-color;
+  }
+
+  .footer {
+    position: fixed;
+    width: 16.261rem;
+    color: $el-color-white;
+    font-size: 12px;
+    bottom: 0;
+    padding: 10px;
+    background-color: $el-color-primary;
   }
 }
 </style>

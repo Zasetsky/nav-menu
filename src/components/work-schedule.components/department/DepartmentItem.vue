@@ -92,4 +92,7 @@ export default defineComponent({
     border-top: 1px solid $el-color-success-light-8;
   }
 }
+.department:last-child {
+  padding-bottom: 15px;
+}
 </style>
