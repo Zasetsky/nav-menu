@@ -4,9 +4,7 @@ export interface Employee {
   phone: string;
   isOnline: boolean;
   dates: Dates;
-  isWeekend: boolean,
-  isHolliday: boolean,
-  birthday: string,
+  birthday: string;
 }
 
 export interface Department {
@@ -25,6 +23,13 @@ export interface DatesData {
   breaksCount: number;
   totalTime: string;
   downtime: string;
+  isWeekend: boolean;
+  isHolliday: boolean;
+  isVacation: boolean;
+  isBusinessTrip: boolean;
+  isSickDay: boolean;
+  isDayOff: boolean;
+  isMaternityLeave: boolean;
   workPoints: WorkPoint[][];
   status: StatusItem;
 }

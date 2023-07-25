@@ -38,7 +38,7 @@ html {
 .preHoliday-custom-tooltip {
   background-color: $el-color-info !important;
   border: none !important;
-  margin-bottom: 2px;
+  margin-bottom: 5px;
 }
 
 .preHoliday-custom-tooltip .el-popper__arrow::before {
@@ -50,7 +50,7 @@ html {
 .holiday-custom-tooltip {
   background-color: $el-color-danger !important;
   border: none !important;
-  margin-bottom: 2px;
+  margin-bottom: 5px;
 }
 
 .holiday-custom-tooltip .el-popper__arrow::before {

@@ -41,7 +41,10 @@
     <div class="legend-popup-window__vacation-days">
       <div class="legend-popup-window__vacation-days__vacation">
         <div class="legend-popup-window__vacation-days__vacation--square"></div>
-        <p>оплачиваемый отпуск</p>
+        <p>
+          оплачиваемый <br />
+          отпуск
+        </p>
       </div>
       <div class="legend-popup-window__vacation-days__work-day-on-vacation">
         <div
@@ -89,7 +92,10 @@
         <div
           class="legend-popup-window__vacation-days__personal-day--square"
         ></div>
-        <p>отпуск/отгул за свой счёт</p>
+        <p>
+          отпуск/отгул <br />
+          за свой счёт
+        </p>
       </div>
       <div class="legend-popup-window__vacation-days__work-day-on-personal-day">
         <div

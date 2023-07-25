@@ -15,6 +15,13 @@ export function getCurrentMonthDates(): Dates {
       breaksCount: 0,
       totalTime: "00",
       downtime: "00",
+      isWeekend: true,
+      isHolliday: true,
+      isVacation: false,
+      isSickDay: false,
+      isDayOff: false,
+      isBusinessTrip: false,
+      isMaternityLeave: false,
       workPoints: [
         [
           {
