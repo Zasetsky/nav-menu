@@ -23,12 +23,37 @@ html {
   scrollbar-width: none; /* Убираем полосу прокрутки */
 }
 
-.el-popper.is-dark {
+// Цвет подсказки меню
+.menu-custom-tooltip {
   background-color: $el-color-primary !important;
   border: none !important;
 }
 
-.el-popper.is-dark .el-popper__arrow::before {
+.menu-custom-tooltip .el-popper__arrow::before {
   border: none !important;
   background: $el-color-primary !important;
+}
+
+// Цвет подсказки предпразднечных дней
+.preHoliday-custom-tooltip {
+  background-color: $el-color-info !important;
+  border: none !important;
+  margin-bottom: 2px;
+}
+
+.preHoliday-custom-tooltip .el-popper__arrow::before {
+  border: none !important;
+  background: $el-color-info !important;
+}
+
+// Цвет подсказки празднечных дней
+.holiday-custom-tooltip {
+  background-color: $el-color-danger !important;
+  border: none !important;
+  margin-bottom: 2px;
+}
+
+.holiday-custom-tooltip .el-popper__arrow::before {
+  border: none !important;
+  background: $el-color-danger !important;
 }

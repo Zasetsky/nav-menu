@@ -4,6 +4,9 @@ export interface Employee {
   phone: string;
   isOnline: boolean;
   dates: Dates;
+  isWeekend: boolean,
+  isHolliday: boolean,
+  birthday: string,
 }
 
 export interface Department {

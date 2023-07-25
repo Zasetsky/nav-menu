@@ -11,7 +11,7 @@
           'calendar-legend__selected--show-picker': showCalendarLegend,
         }"
       >
-        <question_icon />
+        <legend_info_icon />
       </div>
       <transition name="fade">
         <div
@@ -28,11 +28,11 @@
 
 <script lang="ts">
 import { defineComponent, ref, onMounted, onUnmounted } from "vue";
-import { question_icon } from "@/assets/icons/index";
+import { legend_info_icon } from "@/assets/icons/index";
 import LegendPopupWindowContent from "./LegendPopupWindowContent.vue";
 
 export default defineComponent({
-  components: { LegendPopupWindowContent, question_icon },
+  components: { LegendPopupWindowContent, legend_info_icon },
   setup() {
     const calendarLegend = ref<HTMLElement | null>(null);
     const showCalendarLegend = ref(false);
@@ -115,6 +115,7 @@ export default defineComponent({
     background-color: $el-color-white;
     padding: 12px 10px;
     right: -23px;
+    z-index: 1;
     border-radius: 4px;
     top: 32px;
     width: 480px;

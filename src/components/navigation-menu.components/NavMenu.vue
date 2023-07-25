@@ -17,6 +17,7 @@
           <el-tooltip
             v-if="isCollapsed"
             :disabled="!isCollapsed"
+            popper-class="menu-custom-tooltip"
             effect="dark"
             content="Развернуть"
             placement="right"
@@ -34,6 +35,7 @@
             </div>
             <el-tooltip
               :disabled="isCollapsed"
+              popper-class="menu-custom-tooltip"
               effect="dark"
               content="Свернуть"
               placement="bottom"
@@ -48,6 +50,7 @@
           <!-- Поля меню -->
           <el-tooltip
             :disabled="!isCollapsed"
+            popper-class="menu-custom-tooltip"
             effect="dark"
             content="График работы"
             placement="right"
@@ -73,6 +76,7 @@
           </el-tooltip>
           <el-tooltip
             :disabled="!isCollapsed"
+            popper-class="menu-custom-tooltip"
             effect="dark"
             content="Новости компании"
             placement="right"
@@ -97,6 +101,7 @@
           </el-tooltip>
           <el-tooltip
             :disabled="!isCollapsed"
+            popper-class="menu-custom-tooltip"
             effect="dark"
             content="База знаний"
             placement="right"
@@ -120,6 +125,7 @@
           </el-tooltip>
           <el-tooltip
             :disabled="!isCollapsed"
+            popper-class="menu-custom-tooltip"
             effect="dark"
             content="Пароли"
             placement="right"
@@ -146,6 +152,7 @@
         <!-- Настройки -->
         <el-tooltip
           :disabled="!isCollapsed || isSettingsVisible"
+          popper-class="menu-custom-tooltip"
           effect="dark"
           content="Настройки"
           placement="right"

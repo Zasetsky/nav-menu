@@ -1,5 +1,5 @@
 <template>
-  <div class="question-icon">
+  <div class="legend-info-icon">
     <svg
       width="20"
       height="20"
@@ -31,7 +31,7 @@ import { defineComponent } from "vue";
 export default defineComponent({});
 </script>
 <style scoped>
-.question-icon {
+.legend-info-icon {
   display: flex;
   cursor: pointer;
 }

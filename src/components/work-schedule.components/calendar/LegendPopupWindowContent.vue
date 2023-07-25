@@ -104,7 +104,7 @@
         </p>
       </div>
       <div class="legend-popup-window__vacation-days__birthday">
-        <birthday_icon />
+        <birthday_day_cell_icon />
         <p>день рождения</p>
       </div>
       <div class="legend-popup-window__vacation-days__maternity-leave">
@@ -122,7 +122,7 @@ import {
   work_day_icon,
   weekend_icon,
   holliday_icon,
-  birthday_icon,
+  birthday_day_cell_icon,
 } from "@/assets/icons/index";
 
 export default defineComponent({
@@ -130,7 +130,7 @@ export default defineComponent({
     work_day_icon,
     weekend_icon,
     holliday_icon,
-    birthday_icon,
+    birthday_day_cell_icon,
   },
 });
 </script>

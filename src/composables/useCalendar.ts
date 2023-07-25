@@ -23,5 +23,26 @@ export function useCalendar() {
     );
   };
 
-  return { weekDays, year, month, isWeekend, isHoliday };
+  const isPreHoliday = (day: number) => {
+    return holidays.some(
+      (holiday) => holiday.day - 1 === day && holiday.month === month.value
+    );
+  };
+
+  const getHolidayInfo = (day: number) => {
+    const holiday = holidays.find(
+      (holiday) => holiday.day === day && holiday.month === month.value
+    );
+    return holiday ? holiday.info : "";
+  };
+
+  return {
+    weekDays,
+    year,
+    month,
+    isWeekend,
+    isHoliday,
+    getHolidayInfo,
+    isPreHoliday,
+  };
 }
