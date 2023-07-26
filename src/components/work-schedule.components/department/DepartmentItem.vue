@@ -102,7 +102,7 @@ export default defineComponent({
   padding-bottom: 15px;
 }
 .slide-fade-enter-from {
-  transform: translateY(-50px);
+  transform: translateY(-25px);
   max-height: 0;
   opacity: 0;
 }
@@ -113,13 +113,13 @@ export default defineComponent({
   opacity: 1;
 }
 .slide-fade-leave-to {
-  transform: translateY(-50px);
+  transform: translateY(-25px);
   max-height: 0;
   opacity: 0;
 }
 .slide-fade-enter-active,
 .slide-fade-leave-active {
-  transition: max-height 0.2s ease-in-out, opacity 0.2s ease,
-    transform 0.3s ease;
+  transition: max-height 0.3s ease-in-out, opacity 0.5s ease,
+    transform 0.5s ease-in-out;
 }
 </style>
