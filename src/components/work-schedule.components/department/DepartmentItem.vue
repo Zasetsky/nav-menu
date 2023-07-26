@@ -1,28 +1,38 @@
 <template>
   <div class="department">
-    <div class="department__header" @click="isCollapsed = !isCollapsed">
-      <h3 class="department__title">{{ department.name.toUpperCase() }}</h3>
-      <i class="department__toggle-icon">
-        <plus_icon v-if="isCollapsed" />
-        <minus_icon v-else />
-      </i>
-    </div>
-    <transition name="slide-fade">
-      <div v-if="!isCollapsed" class="department__content">
-        <div
-          v-for="(employee, index) in department.employees"
-          :key="employee.id"
-          class="department__employee-row"
-        >
-          <employee-row :employee="employee" :index="index" />
-        </div>
-      </div>
-    </transition>
+    <el-collapse v-model="isCollapsed" @change="handleCollapseChange">
+      <el-collapse-item :name="department.name">
+        <template #title>
+          <div class="department__header">
+            <h3 class="department__title">
+              {{ department.name.toUpperCase() }}
+            </h3>
+            <i class="department__toggle-icon">
+              <plus_icon v-if="!isCollapsed.includes(department.name)" />
+              <minus_icon v-else />
+            </i>
+          </div>
+        </template>
+        <transition name="slide-fade">
+          <div
+            v-if="isCollapsed.includes(department.name)"
+            class="department__content"
+          >
+            <div
+              v-for="(employee, index) in department.employees"
+              :key="employee.id"
+              class="department__employee-row"
+            >
+              <employee-row :employee="employee" :index="index" />
+            </div>
+          </div>
+        </transition>
+      </el-collapse-item>
+    </el-collapse>
     <p class="department__isOnline">
       Онлайн: <span>{{ onlineEmployeesCount }}</span
       >/<span>{{ department.employees.length }}</span>
     </p>
-    <hr v-if="!isLastItem" />
   </div>
 </template>
 
@@ -39,28 +49,32 @@ export default defineComponent({
       type: Object as () => Department,
       required: true,
     },
-
     isLastItem: {
       type: Boolean,
       default: false,
     },
   },
   setup(props) {
-    const isCollapsed = ref(false);
+    const isCollapsed = ref<string[]>([]);
+
+    const handleCollapseChange = (val: string[]) => {
+      isCollapsed.value = val;
+      console.log(isCollapsed.value);
+    };
 
     const onlineEmployeesCount = computed(() => {
       return props.department.employees.filter((employee) => employee.isOnline)
         .length;
     });
 
-    return { isCollapsed, onlineEmployeesCount };
+    return { isCollapsed, onlineEmployeesCount, handleCollapseChange };
   },
 });
 </script>
 
 <style lang="scss" scoped>
 .department {
-  padding: 16px 16px 0 16px;
+  padding: 0 16px 0 16px;
 
   &:first-child {
     padding-top: 44px;
@@ -69,6 +83,7 @@ export default defineComponent({
   &__header {
     display: flex;
     justify-content: space-between;
+    width: 100%;
     align-items: center;
     cursor: pointer;
   }
@@ -92,34 +107,26 @@ export default defineComponent({
     font-size: 12px;
     cursor: default;
   }
-
-  hr {
-    border: none;
-    border-top: 1px solid $el-color-success-light-8;
-  }
 }
+
 .department:last-child {
   padding-bottom: 15px;
 }
 .slide-fade-enter-from {
   transform: translateY(-25px);
-  max-height: 0;
   opacity: 0;
 }
 .slide-fade-enter-to,
 .slide-fade-leave-from {
   transform: translateY(0);
-  max-height: 1000px;
   opacity: 1;
 }
 .slide-fade-leave-to {
   transform: translateY(-25px);
-  max-height: 0;
   opacity: 0;
 }
 .slide-fade-enter-active,
 .slide-fade-leave-active {
-  transition: max-height 0.3s ease-in-out, opacity 0.5s ease,
-    transform 0.5s ease-in-out;
+  transition: opacity 0.3s ease, transform 0.3s ease-in-out;
 }
 </style>

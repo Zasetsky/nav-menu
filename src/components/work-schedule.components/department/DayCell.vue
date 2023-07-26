@@ -88,8 +88,6 @@ export default defineComponent({
       );
     });
 
-    console.log(isBirthday.value);
-
     return { isWeekend, isHoliday, isBirthday, isWorkDay };
   },
 });
