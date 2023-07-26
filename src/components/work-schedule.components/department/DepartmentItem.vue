@@ -33,6 +33,7 @@
       Онлайн: <span>{{ onlineEmployeesCount }}</span
       >/<span>{{ department.employees.length }}</span>
     </p>
+    <hr />
   </div>
 </template>
 
@@ -106,6 +107,11 @@ export default defineComponent({
     color: $el-text-color-regular;
     font-size: 12px;
     cursor: default;
+  }
+
+  hr {
+    border: none;
+    border-top: 1px solid $el-border-color;
   }
 }
 

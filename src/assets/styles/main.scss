@@ -58,6 +58,9 @@ html {
   background: $el-color-danger !important;
 }
 
+.el-collapse:first-child {
+  border: none;
+}
 
 .el-collapse-item__arrow {
   display: none;
