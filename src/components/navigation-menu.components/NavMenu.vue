@@ -113,7 +113,9 @@
               @click="navigateTo"
             >
               <i :class="isCollapsed ? 'menu__icon-collapsed' : 'menu__icon'">
-                <Icon icon="ph:book-bookmark-light" />
+                <knowledge_base_icon
+                  :is-active="activeIndex === '/knowledge'"
+                />
               </i>
               <span
                 class="menu__label"
@@ -185,12 +187,19 @@ import SettingSubMenu from "./SettingsSubMenu.vue";
 import {
   building_icon,
   double_arrows_menu_icon,
-} from "../../assets/icons/index";
+  knowledge_base_icon,
+} from "@/assets/icons/index";
 import useSettingsVisibility from "@/composables/useSettingsVisibility";
 import { useStore } from "vuex";
 
 export default defineComponent({
-  components: { Icon, SettingSubMenu, building_icon, double_arrows_menu_icon },
+  components: {
+    Icon,
+    SettingSubMenu,
+    building_icon,
+    double_arrows_menu_icon,
+    knowledge_base_icon,
+  },
 
   setup() {
     const router = useRouter();
