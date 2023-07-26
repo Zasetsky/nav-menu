@@ -78,6 +78,10 @@
     cursor: default;
   }
 
+  &--backslash {
+    color: $el-text-color-disabled;
+  }
+
   &--danger {
     color: $el-color-danger;
   }

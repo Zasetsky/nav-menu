@@ -26,8 +26,8 @@
       </div>
     </div>
     <p class="employee--success">
-      {{ successAndWarningStatuses.length }}
-      <span class="employee--backslash">/</span>
+      {{ successAndWarningStatuses.length
+      }}<span class="employee--backslash">/</span>
       <span class="employee--danger">{{ dangerStatuses.length }}</span>
     </p>
   </div>
