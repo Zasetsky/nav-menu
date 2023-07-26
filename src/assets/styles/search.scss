@@ -30,8 +30,6 @@
 
       .employees {
         display: flex;
-        flex-direction: column;
-
         .employee-tag {
           display: flex;
           width: fit-content;
@@ -42,12 +40,84 @@
           color: $el-color-primary;
           padding: 2px 0px 2px 5px;
           height: 20px;
-          margin-left: 10px;
-          margin-bottom: 5px;
+          margin-left: 5px;
           cursor: default;
 
           &--icon {
             margin-top: 5px;
+            cursor: pointer;
+          }
+        }
+
+        .more {
+          position: relative;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          background-color: $el-color-primary-light-9;
+          border: 1px solid $el-color-primary-light-8;
+          border-radius: 4px;
+          color: $el-color-primary;
+          padding: 2px 0 2px 0;
+          height: 20px;
+          margin-left: 10px;
+          width: 30px;
+          cursor: default;
+
+          .tag-wrapper {
+            display: flex;
+            flex-direction: column;
+          }
+
+          .popover {
+            position: absolute;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            top: 150%;
+            left: -10px;
+            background: $el-color-white;
+            padding: 10px;
+            border: 1px solid $el-border-color;
+            border-radius: 5px;
+            width: 200px;
+            z-index: 1;
+
+            &::before,
+          &::after {
+            content: "";
+            position: absolute;
+            left: 10px;
+            transform: translateX(50%);
+            width: 14px;
+            height: 14px;
+            background-color: $el-color-white;
+          }
+
+          &::before {
+            top: -7px;
+            background-color: $el-border-color;
+            z-index: 1;
+          }
+
+          &::after {
+            top: -6px;
+            z-index: 2;
+          }
+
+          &::before,
+          &::after {
+            transform: translateX(50%) rotate(45deg);
+          }
+
+            .employee-tag:not(:last-child) {
+              margin-bottom: 5px;
+            }
+          }
+
+          .clear-all {
+            text-align: center;
+            margin-top: 10px;
             cursor: pointer;
           }
         }
@@ -81,7 +151,7 @@
     }
 
     &::-webkit-scrollbar-thumb {
-      background: rgba(144, 146, 152, 0.30); /* Цвет ползунка */
+      background: rgba(144, 146, 152, 0.3); /* Цвет ползунка */
       border-radius: 4px; /* Скругление углов ползунка */
     }
 
@@ -149,7 +219,7 @@
       margin-left: 20px;
 
       &::selection {
-        background:$el-color-info;
+        background: $el-color-info;
         color: $el-color-white;
       }
 

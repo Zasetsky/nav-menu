@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="all-close">
     <svg
       width="11"
       height="11"
@@ -18,4 +18,8 @@
     </svg>
   </div>
 </template>
-<style lang=""></style>
+<style scoped>
+.all-close {
+  display: flex;
+}
+</style>

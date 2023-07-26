@@ -1,5 +1,6 @@
 <template>
   <div class="employee-search" @click.stop>
+    <!-- Список сотрудников -->
     <div
       class="search-container"
       :class="{ 'search-container--active': isActive }"
@@ -8,7 +9,7 @@
       <div class="search-container__employees-wrapper">
         <div class="employees">
           <span
-            v-for="employee in selectedEmployees"
+            v-for="employee in limitedEmployees"
             :key="employee.id"
             class="employee-tag"
             @click.stop
@@ -18,14 +19,48 @@
               ><close_icon
             /></i>
           </span>
+
+          <!-- Скрыватель сотрудников -->
+          <div
+            v-if="selectedEmployees.length > 1"
+            class="more"
+            ref="more"
+            @click.stop="showPopover = true"
+            @mouseenter="openPopover"
+            @mouseleave="closePopover"
+          >
+            +{{ selectedEmployees.length - 1 }}
+
+            <!-- Всплывающее окно со списком выбранных сотрудников -->
+            <div v-if="showPopover" class="popover" ref="popover">
+              <div class="tag-wrapper">
+                <div
+                  v-for="employee in selectedEmployees.slice(1)"
+                  :key="employee.id"
+                  class="employee-tag"
+                >
+                  {{ employee.name }}
+                  <i
+                    class="employee-tag--icon"
+                    @click.stop="removeEmployee(employee)"
+                    ><close_icon
+                  /></i>
+                </div>
+              </div>
+              <div class="clear-all" @click.stop="clearAllEmployees">
+                <i
+                  v-if="selectedEmployees.length > 0"
+                  class="search-container__employees-wrapper--all_close"
+                  @click.stop="clearAllEmployees"
+                  ><all_close_icon
+                /></i>
+              </div>
+            </div>
+          </div>
         </div>
-        <i
-          v-if="selectedEmployees.length > 0"
-          class="search-container__employees-wrapper--all_close"
-          @click.stop="clearAllEmployees"
-          ><all_close_icon
-        /></i>
       </div>
+
+      <!-- Инпут -->
       <div v-if="!selectedEmployees.length || isActive" class="input-wrapper">
         <input
           type="text"
@@ -38,7 +73,8 @@
       </div>
     </div>
 
-    <div v-if="isActive" class="employee-list">
+    <!-- Выпадающее окно -->
+    <div v-if="isActive" class="employee-list" ref="dropdown">
       <div
         v-for="(department, index) in filteredDepartments"
         :key="department.id"
@@ -55,7 +91,7 @@
         <div
           v-for="employee in department.employees"
           :key="employee.id"
-          @click="selectEmployee(employee)"
+          @click.stop="selectEmployee(employee)"
           class="employee-list__employee"
         >
           {{ employee.name }}
@@ -73,7 +109,7 @@ import {
   ref,
   computed,
   onMounted,
-  onBeforeUnmount,
+  onUnmounted,
   nextTick,
 } from "vue";
 import { useStore } from "vuex";
@@ -101,24 +137,19 @@ export default defineComponent({
     const selectedEmployees = ref<Employee[]>(props.modelValue);
     const store = useStore();
     const searchInput = ref<HTMLInputElement | null>(null);
-
-    const handleOutsideClick = (e: MouseEvent) => {
-      if (!e.composedPath().includes(searchInput.value as Node)) {
-        isActive.value = false;
-      }
-    };
-
-    onMounted(() => {
-      document.addEventListener("click", handleOutsideClick);
-    });
-
-    onBeforeUnmount(() => {
-      document.removeEventListener("click", handleOutsideClick);
-    });
+    const showPopover = ref(false);
+    const more = ref<HTMLElement | null>(null);
+    const popover = ref<HTMLElement | null>(null);
+    const dropdown = ref<HTMLElement | null>(null);
+    let popoverTimeout: number | undefined;
 
     const departments = computed(
       () => store.getters["Department/getAllDepartments"]
     );
+
+    const limitedEmployees = computed(() => {
+      return selectedEmployees.value.slice(0, 1);
+    });
 
     const filteredDepartments = computed(() =>
       departments.value
@@ -176,10 +207,49 @@ export default defineComponent({
     };
 
     const clearAllEmployees = () => {
-      selectedEmployees.value = [];
+      if (selectedEmployees.value.length > 0) {
+        selectedEmployees.value = [selectedEmployees.value[0]];
+      } else {
+        selectedEmployees.value = [];
+      }
       emit("update:modelValue", selectedEmployees.value);
       isActive.value = false;
     };
+
+    const handleClickOutside = (e: MouseEvent) => {
+      if (
+        !e.composedPath().includes(searchInput.value as Node) &&
+        !e.composedPath().includes(more.value as Node) &&
+        !e.composedPath().includes(popover.value as Node) &&
+        !e.composedPath().includes(dropdown.value as Node)
+      ) {
+        isActive.value = false;
+        showPopover.value = false;
+      }
+    };
+
+    const openPopover = () => {
+      clearTimeout(popoverTimeout);
+      popoverTimeout = setTimeout(() => {
+        showPopover.value = true;
+      }, 400);
+    };
+
+    const closePopover = () => {
+      clearTimeout(popoverTimeout);
+      popoverTimeout = setTimeout(() => {
+        showPopover.value = false;
+      }, 400);
+    };
+
+    onMounted(() => {
+      document.addEventListener("mousedown", handleClickOutside);
+    });
+
+    onUnmounted(() => {
+      clearTimeout(popoverTimeout);
+      document.removeEventListener("mousedown", handleClickOutside);
+    });
 
     return {
       search,
@@ -193,6 +263,13 @@ export default defineComponent({
       selectDepartment,
       clearAllEmployees,
       searchInput,
+      limitedEmployees,
+      showPopover,
+      more,
+      popover,
+      dropdown,
+      openPopover,
+      closePopover,
     };
   },
 });
