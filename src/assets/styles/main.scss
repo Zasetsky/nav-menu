@@ -57,3 +57,26 @@ html {
   border: none !important;
   background: $el-color-danger !important;
 }
+
+.el-collapse:first-child {
+  border: none;
+}
+
+.el-collapse-item__arrow {
+  display: none;
+}
+
+.el-collapse-item__wrap {
+  overflow: visible !important;
+  background-color: $el-color-success-light-9;
+  border: none;
+}
+
+.el-collapse-item__content {
+  padding: 0;
+}
+
+.el-collapse-item__header {
+  background-color: $el-color-success-light-9;
+  border: none !important;
+}

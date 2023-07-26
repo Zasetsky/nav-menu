@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="plus">
     <svg
       width="24"
       height="24"
@@ -14,4 +14,8 @@
     </svg>
   </div>
 </template>
-<style lang=""></style>
+<style scoped>
+.plus {
+  display: flex;
+}
+</style>
