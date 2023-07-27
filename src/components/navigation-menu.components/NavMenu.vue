@@ -78,10 +78,15 @@
             :disabled="!isCollapsed"
             popper-class="menu-custom-tooltip"
             effect="dark"
-            content="Новости компании"
             placement="right"
             :show-after="500"
           >
+            <template #content>
+              <span>Новости компании</span>
+              <span class="unread-count-badge" v-if="unreadCount > 0">{{
+                unreadCount
+              }}</span>
+            </template>
             <el-menu-item
               :class="isCollapsed ? 'menu__item-collapsed' : 'menu__item'"
               index="/news"
@@ -97,6 +102,13 @@
                 v-show="!isCollapsed"
                 >Новости компании</span
               >
+              <span v-if="unreadCount > 0 && !isCollapsed" class="unread-count">
+                {{ unreadCount }}
+              </span>
+              <div
+                v-if="unreadCount > 0 && isCollapsed"
+                class="unread-count-dot"
+              ></div>
             </el-menu-item>
           </el-tooltip>
           <el-tooltip
@@ -180,7 +192,14 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, computed } from "vue";
+import {
+  defineComponent,
+  computed,
+  ref,
+  onMounted,
+  onUnmounted,
+  inject,
+} from "vue";
 import { Icon } from "@iconify/vue";
 import { useRouter, useRoute } from "vue-router";
 import SettingSubMenu from "./SettingsSubMenu.vue";
@@ -191,6 +210,7 @@ import {
 } from "@/assets/icons/index";
 import useSettingsVisibility from "@/composables/useSettingsVisibility";
 import { useStore } from "vuex";
+import { Socket } from "socket.io-client";
 
 export default defineComponent({
   components: {
@@ -205,6 +225,10 @@ export default defineComponent({
     const router = useRouter();
     const route = useRoute();
     const store = useStore();
+    const unreadCount = ref(1); // Здесь нужно поменять на реальные данные с сервера
+    const socket = inject("socket") as Socket;
+
+    const { isSettingsVisible, openSettings } = useSettingsVisibility();
 
     const isCollapsed = computed(() => {
       return store.getters["LocalStates/getIsCollapsed"];
@@ -228,15 +252,25 @@ export default defineComponent({
       return classes;
     });
 
+    const navigateTo = (menuObject: { index: string }) => {
+      router.push(menuObject.index);
+    };
+
     const toggleCollapse = () => {
       store.dispatch("LocalStates/toggleCollapse");
     };
 
-    const { isSettingsVisible, openSettings } = useSettingsVisibility();
-
-    const navigateTo = (menuObject: { index: string }) => {
-      router.push(menuObject.index);
+    const handleNotification = () => {
+      unreadCount.value++; // Изменить под сервер
     };
+
+    onMounted(() => {
+      socket.on("notification", handleNotification);
+    });
+
+    onUnmounted(() => {
+      socket.off("notification", handleNotification);
+    });
 
     return {
       isCollapsed,
@@ -244,6 +278,7 @@ export default defineComponent({
       isSettingsVisible,
       settingsClass,
       settingsIconClass,
+      unreadCount,
       openSettings,
       toggleCollapse,
       navigateTo,

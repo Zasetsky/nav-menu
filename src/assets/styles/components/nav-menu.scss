@@ -1,6 +1,30 @@
 .menu {
   position: fixed;
   transition: all 0.4s ease-out;
+
+  .unread-count {
+    position: absolute;
+    right: 10px;
+    font-size: 12px;
+    line-height: 18px;
+    color: $el-color-white;
+    text-align: center;
+    border-radius: 50%;
+    width: 26px;
+    height: 18px;
+    background-color: $el-color-success;
+  }
+
+  .unread-count-dot {
+    position: absolute;
+    width: 6.5px;
+    height: 6.5px;
+    top: 10.8px;
+    right: 11.7px;
+    background-color: $el-color-success;
+    border-radius: 50%;
+  }
+
   .el-menu-item.is-active {
     background-color: $el-color-success-light-8;
     color: $el-color-primary;
@@ -54,7 +78,7 @@
     cursor: pointer;
 
     &:hover {
-      background-color:  $el-color-success-light-9;
+      background-color: $el-color-success-light-9;
       border-radius: 0.5rem;
     }
   }
@@ -79,7 +103,7 @@
     width: 1.5rem;
 
     &:hover {
-      background-color:  $el-color-success-light-9;
+      background-color: $el-color-success-light-9;
       border-radius: 0.5rem;
     }
   }
@@ -97,7 +121,7 @@
     width: 104%;
 
     &:hover {
-      background-color:  $el-color-success-light-9;
+      background-color: $el-color-success-light-9;
     }
   }
 
@@ -113,7 +137,7 @@
     width: 50%;
 
     &:hover {
-      background-color:  $el-color-success-light-9;
+      background-color: $el-color-success-light-9;
     }
   }
 
@@ -167,7 +191,7 @@
     cursor: pointer;
 
     &:hover {
-      background-color:  $el-color-success-light-9;
+      background-color: $el-color-success-light-9;
     }
 
     &:focus {

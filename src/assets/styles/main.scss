@@ -58,6 +58,7 @@ html {
   background: $el-color-danger !important;
 }
 
+// Отделы
 .el-collapse:first-child {
   border: none;
 }
@@ -79,4 +80,12 @@ html {
 .el-collapse-item__header {
   background-color: $el-color-success-light-9;
   border: none !important;
+}
+
+.unread-count-badge {
+  border-radius: 50%;
+  padding: 2px 5px 2px 5px;
+  margin-left: 5px;
+  font-size: 12px;
+  background-color: $el-color-success;
 }
