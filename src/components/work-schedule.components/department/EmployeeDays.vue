@@ -44,11 +44,7 @@ export default defineComponent({
       () => store.getters["LocalStates/getIsCollapsed"]
     );
 
-    const scrollbarWidth = computed(
-      () => store.getters["LocalStates/getScrollbarWidth"]
-    );
-
-    return { isCollapsed, scrollbarWidth };
+    return { isCollapsed };
   },
 });
 </script>

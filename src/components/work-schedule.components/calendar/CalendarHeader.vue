@@ -1,5 +1,11 @@
 <template>
-  <div class="calendar-header">
+  <div
+    class="calendar-header"
+    :class="{ fixed: isFixed }"
+    :style="{
+      width: isCollapsed ? `calc(100vw - 21.25rem)` : `calc(100vw - 34rem)`,
+    }"
+  >
     <div class="calendar-header__head-wrapper">
       <div class="calendar-header__head-wrapper__picker">
         <date-picker />
@@ -58,11 +64,12 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, computed } from "vue";
+import { defineComponent, computed, onMounted, ref, onUnmounted } from "vue";
 import { useCalendar } from "@/composables/useCalendar";
 import DatePicker from "./DatePicker.vue";
 import CalendarLegend from "./CalendarLegend.vue";
 import { holliday_info_icon } from "@/assets/icons/index";
+import { useStore } from "vuex";
 
 export default defineComponent({
   components: {
@@ -82,6 +89,13 @@ export default defineComponent({
       isPreHoliday,
     } = useCalendar();
 
+    const isFixed = ref(false);
+    const store = useStore();
+
+    const isCollapsed = computed(
+      () => store.getters["LocalStates/getIsCollapsed"]
+    );
+
     const daysOfMonth = computed(() => {
       const date = new Date(year.value, month.value + 1, 0);
       return Array.from({ length: date.getDate() }, (_, i) => i + 1);
@@ -94,12 +108,26 @@ export default defineComponent({
       });
     });
 
+    const checkScroll = () => {
+      isFixed.value = window.scrollY > 80;
+    };
+
+    onMounted(() => {
+      window.addEventListener("scroll", checkScroll);
+    });
+
+    onUnmounted(() => {
+      window.removeEventListener("scroll", checkScroll);
+    });
+
     return {
       daysOfMonth,
       weekDays,
       daysOfWeekInMonth,
       year,
       month,
+      isFixed,
+      isCollapsed,
       isWeekend,
       isHoliday,
       getHolidayInfo,

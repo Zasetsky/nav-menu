@@ -16,7 +16,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, computed } from "vue";
+import { defineComponent, computed, onMounted, onUnmounted, ref } from "vue";
 import DepartmentList from "@/components/work-schedule.components/department/DepartmentList.vue";
 import CalendarHeader from "@/components/work-schedule.components/calendar/CalendarHeader.vue";
 import { useCalendar } from "@/composables/useCalendar";
@@ -27,6 +27,7 @@ export default defineComponent({
   setup() {
     const { month, year, isWeekend, isHoliday } = useCalendar();
     const date = new Date(year.value, month.value + 1, 0);
+    const scrollY = ref(0);
 
     const workDaysCount = computed(() => {
       let count = 0;
@@ -58,7 +59,23 @@ export default defineComponent({
       return count;
     });
 
-    return { workDaysCount, weekendDaysCount, holidaysCount };
+    const updateScroll = () => {
+      localStorage.setItem("scroll", window.scrollY.toString());
+    };
+
+    onMounted(() => {
+      window.addEventListener("scroll", updateScroll);
+      const scroll = localStorage.getItem("scroll");
+      if (scroll) {
+        window.scrollTo(0, Number(scroll));
+      }
+    });
+
+    onUnmounted(() => {
+      window.removeEventListener("scroll", updateScroll);
+    });
+
+    return { workDaysCount, weekendDaysCount, holidaysCount, scrollY };
   },
 });
 </script>
@@ -96,6 +113,7 @@ export default defineComponent({
     font-size: 12px;
     bottom: 0;
     padding: 10px;
+    z-index: 9999;
     color: $el-color-white;
     background-color: $el-color-primary;
 

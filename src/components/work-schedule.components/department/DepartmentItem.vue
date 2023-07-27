@@ -116,7 +116,7 @@ export default defineComponent({
 }
 
 .department:last-child {
-  padding-bottom: 15px;
+  padding-bottom: 8px;
 }
 .slide-fade-enter-from {
   transform: translateY(-25px);

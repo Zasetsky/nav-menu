@@ -74,7 +74,7 @@ const state: State = {
         },
         {
           id: 3,
-          name: "Владимир Владимиров",
+          name: "Владимир Владимировфывфывфыв",
           phone: "+1234567890",
           birthday: "29-07-2023",
           isOnline: true,

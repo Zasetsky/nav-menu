@@ -1,5 +1,13 @@
 .calendar-header {
   cursor: default;
+  background-color: $el-color-white;
+
+  &.fixed {
+    position: fixed;
+    top: 0;
+    margin-left: 281px;
+    z-index: 1000;
+  }
 
   &__head-wrapper {
     display: flex;
