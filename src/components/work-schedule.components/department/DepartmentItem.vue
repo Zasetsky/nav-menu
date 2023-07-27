@@ -56,7 +56,7 @@ export default defineComponent({
     },
   },
   setup(props) {
-    const isCollapsed = ref<string[]>([]);
+    const isCollapsed = ref([props.department.name]);
 
     const handleCollapseChange = (val: string[]) => {
       isCollapsed.value = val;
