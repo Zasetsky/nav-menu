@@ -3,7 +3,7 @@
     class="day"
     :class="{
       'day-weekend': isWeekendForUser && isWorkDay,
-      'day-holiday': isHolidayForUser && isWorkDay,
+      'day-holiday': isHoliday(new Date(date).getDate()) && isWorkDay,
       'day-birthday': isBirthday,
       'day-vacation': dayData.isVacation,
       'day-business-trip': dayData.isBusinessTrip,
@@ -17,7 +17,7 @@
     <i v-if="isBirthday" class="day-birhday-icon"><birthday_icon /></i>
 
     <!-- Круг -->
-    <div v-if="!isWeekendForUser">
+    <div v-if="!isWeekendForUser && !isHolidayForUser">
       <div
         v-if="new Date(date) > new Date() && isWorkDay"
         class="day-circle day-circle-future"
@@ -97,11 +97,17 @@ export default defineComponent({
     const isHolidayForUser = computed(() => {
       return (
         isHoliday(new Date(date.value).getDate()) &&
-        dayData.value.isHoliday !== false
+        dayData.value.isHoliday === true
       );
     });
 
-    return { isWeekendForUser, isHolidayForUser, isBirthday, isWorkDay };
+    return {
+      isWeekendForUser,
+      isHolidayForUser,
+      isBirthday,
+      isWorkDay,
+      isHoliday,
+    };
   },
 });
 </script>
