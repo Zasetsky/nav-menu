@@ -199,7 +199,7 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
-@import "@/assets/styles/picker.scss";
+@import "@/assets/styles/components/pickers.scss";
 
 .month-picker {
   @include picker(months, $el-text-color-primary);

@@ -253,5 +253,5 @@ export default defineComponent({
 </script>
 
 <style scoped lang="scss">
-@import "@/assets/styles/nav-menu.scss";
+@import "@/assets/styles/components/nav-menu.scss";
 </style>

@@ -113,5 +113,5 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
-@import "@/assets/styles/day-cell.scss";
+@import "@/assets/styles/components/day-cell.scss";
 </style>

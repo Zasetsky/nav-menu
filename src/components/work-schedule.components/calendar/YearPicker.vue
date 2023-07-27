@@ -151,7 +151,7 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
-@import "@/assets/styles/picker.scss";
+@import "@/assets/styles/components/pickers.scss";
 
 .year-picker {
   @include picker(years, $el-text-color-secondary);

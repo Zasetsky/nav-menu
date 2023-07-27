@@ -91,5 +91,5 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
-@import "@/assets/styles/employee-info.scss";
+@import "@/assets/styles/components/employee-info.scss";
 </style>

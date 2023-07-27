@@ -276,5 +276,5 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
-@import "@/assets/styles/search.scss";
+@import "@/assets/styles/components/search.scss";
 </style>

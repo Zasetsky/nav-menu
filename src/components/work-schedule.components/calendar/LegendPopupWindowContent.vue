@@ -141,5 +141,5 @@ export default defineComponent({
 });
 </script>
 <style lang="scss" scoped>
-@import "@/assets/styles/legend-popup-window-content.scss";
+@import "@/assets/styles/components/legend-popup-window-content.scss";
 </style>
