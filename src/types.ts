@@ -24,7 +24,7 @@ export interface DatesData {
   totalTime: string;
   downtime: string;
   isWeekend: boolean;
-  isHolliday: boolean;
+  isHoliday: boolean;
   isVacation: boolean;
   isBusinessTrip: boolean;
   isSickDay: boolean;

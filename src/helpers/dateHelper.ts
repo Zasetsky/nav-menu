@@ -16,7 +16,7 @@ export function getCurrentMonthDates(): Dates {
       totalTime: "00",
       downtime: "00",
       isWeekend: true,
-      isHolliday: true,
+      isHoliday: true,
       isVacation: false,
       isSickDay: false,
       isDayOff: false,
