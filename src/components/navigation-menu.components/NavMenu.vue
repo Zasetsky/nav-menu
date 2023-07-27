@@ -225,7 +225,7 @@ export default defineComponent({
     const router = useRouter();
     const route = useRoute();
     const store = useStore();
-    const unreadCount = ref(1); // Здесь нужно поменять на реальные данные с сервера
+    const unreadCount = ref(12); // Здесь нужно поменять на реальные данные с сервера
     const socket = inject("socket") as Socket;
 
     const { isSettingsVisible, openSettings } = useSettingsVisibility();
