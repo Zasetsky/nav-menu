@@ -119,7 +119,7 @@ export default defineComponent({
     border-radius: 4px;
     top: 32px;
     width: 480px;
-    height: 556px;
+    height: 536px;
 
     &::before,
     &::after {
