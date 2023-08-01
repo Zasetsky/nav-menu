@@ -12,6 +12,7 @@
       :day-data="dayData"
       :date="(date as string)"
       :birthday="employee.birthday"
+      :employeeID="employee.id"
     />
   </div>
 </template>

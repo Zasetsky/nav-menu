@@ -91,3 +91,49 @@ html {
   font-size: 12px;
   background-color: $el-color-success;
 }
+
+// PopupWindow
+
+.popup-window {
+  .popover-custom {
+    position: absolute;
+    margin-left: -112px;
+    margin-top: 50px;
+    border: 1px solid $el-color-primary !important;
+    border-radius: 4px;
+    background-color: $el-color-success-light-9 !important;
+    width: 250px !important;
+  }
+
+  &__content {
+    min-height: 152px;
+    max-height: 168px;
+    width: 259px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+  }
+}
+
+
+// Content (скролл)
+
+.content {
+  overflow-y: auto;
+  
+  &::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: transparent;
+    border-radius: 4px;
+  }
+
+  &:hover::-webkit-scrollbar-thumb {
+    background-color: $el-color-primary-light-8;
+  }
+}

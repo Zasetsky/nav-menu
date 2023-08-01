@@ -60,7 +60,6 @@ export default defineComponent({
 
     const handleCollapseChange = (val: string[]) => {
       isCollapsed.value = val;
-      console.log(isCollapsed.value);
     };
 
     const onlineEmployeesCount = computed(() => {

@@ -1,3 +1,7 @@
+export interface User {
+  isAdmin: boolean;
+}
+
 export interface Employee {
   id: number;
   name: string;
@@ -38,10 +42,6 @@ export interface Dates {
   [date: string]: DatesData;
 }
 
-export interface User {
-  isAdmin: boolean;
-}
-
 export interface StatusItem {
   dayStatus: string;
   comment: string;
@@ -51,4 +51,5 @@ export interface LocalStates {
   isCollapsed: boolean;
   selectedMonth: number;
   selectedYear: number;
+  showOptions: boolean;
 }
