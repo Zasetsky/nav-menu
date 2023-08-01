@@ -137,23 +137,6 @@ export default defineComponent({
       );
     });
 
-    const hidePopup = () => {
-      isPopupVisible.value = false;
-    };
-
-    const showPopup = () => {
-      cancelCloseTimeout();
-      isPopupVisible.value = true;
-    };
-
-    const removeMouseHandlers = () => {
-      const popover = document.querySelector(".popover-content");
-      if (popover) {
-        popover.removeEventListener("mouseenter", cancelCloseTimeout);
-        popover.removeEventListener("mouseleave", startHidePopup);
-      }
-    };
-
     watch(isPopupVisible, (newValue, oldValue) => {
       if (!newValue && oldValue) {
         removeMouseHandlers();
@@ -163,6 +146,25 @@ export default defineComponent({
         }
       }
     });
+
+    const hidePopup = () => {
+      isPopupVisible.value = false;
+    };
+
+    const showPopup = () => {
+      if (new Date(props.date) < new Date()) {
+        cancelCloseTimeout();
+        isPopupVisible.value = true;
+      }
+    };
+
+    const removeMouseHandlers = () => {
+      const popover = document.querySelector(".popover-content");
+      if (popover) {
+        popover.removeEventListener("mouseenter", cancelCloseTimeout);
+        popover.removeEventListener("mouseleave", startHidePopup);
+      }
+    };
 
     const onPopupMounted = () => {
       clickHandler = (event: MouseEvent) => {
@@ -197,7 +199,7 @@ export default defineComponent({
 
     const startHidePopup = () => {
       if (!showOptions.value) {
-        closeTimeout = window.setTimeout(hidePopup, 400);
+        closeTimeout = window.setTimeout(hidePopup, 40000);
       }
     };
 

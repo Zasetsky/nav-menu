@@ -94,23 +94,12 @@ html {
 
 // PopupWindow
 
-.popup-window {
-  .popover-custom {
-    position: absolute;
-    margin-left: -112px;
-    margin-top: 50px;
-    border: 1px solid $el-color-primary !important;
-    border-radius: 4px;
-    background-color: $el-color-success-light-9 !important;
-    width: 250px !important;
-  }
+.popover-custom {
+  width: 250px !important;
+  border-color: $el-color-primary !important;
 
-  &__content {
-    min-height: 152px;
-    max-height: 168px;
-    width: 259px;
-    margin-top: 5px;
-    margin-bottom: 5px;
+  .el-popper__arrow::before {
+    border-color: $el-color-primary !important;
   }
 }
 

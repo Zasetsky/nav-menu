@@ -12,7 +12,7 @@
       <button
         v-else-if="!isEditing && !statusComment && user.isAdmin"
         class="add-comment-btn"
-        @click="startEditing"
+        @click.stop="startEditing"
       >
         +&nbsp;Комментарий
       </button>
@@ -21,7 +21,7 @@
         {{ statusComment }}
         <i
           v-if="user.isAdmin && statusComment"
-          @click="startEditing"
+          @click.stop="startEditing"
           class="el-icon-edit edit-icon"
         />
       </p>

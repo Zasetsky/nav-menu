@@ -56,6 +56,11 @@ export default defineComponent({
 
 <style scoped lang="scss">
 .content {
+  min-height: 152px;
+  max-height: 168px;
+  width: 234px;
+  margin-top: 5px;
+  margin-bottom: 5px;
   cursor: default;
 
   &__timeline {

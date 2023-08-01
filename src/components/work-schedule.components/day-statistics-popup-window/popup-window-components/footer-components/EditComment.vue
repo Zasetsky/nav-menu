@@ -8,6 +8,7 @@
     show-word-limit
     class="hidden-input"
     ref="editInput"
+    @click.stop
     @blur="onBlur"
     @keydown="onKeydown"
   />

@@ -87,6 +87,7 @@
     }
 
     &-future {
+      cursor: default;
       border: 1px solid $el-color-success;
       background: $el-color-white;
     }
