@@ -62,7 +62,7 @@ import { DatesData } from "@/types";
 import { useCalendar } from "@/composables/useCalendar";
 import { birthday_icon } from "@/assets/icons/index";
 import PopupWindow from "../day-statistics-popup-window/PopupWindow.vue";
-import { useStore } from "vuex";
+import usePopup from "@/composables/usePopup";
 
 export default defineComponent({
   components: { birthday_icon, PopupWindow },
@@ -90,19 +90,22 @@ export default defineComponent({
   },
 
   setup(props) {
+    // Data:
     const { isWeekend, isHoliday } = useCalendar();
     const { date, dayData, birthday } = toRefs(props);
-    const store = useStore();
-    const isPopupVisible = ref(false);
-    let closeTimeout: number | null = null;
     const referenceElement = ref<HTMLElement | null>(null);
+    const {
+      isPopupVisible,
+      hidePopup,
+      showPopup,
+      startHidePopup,
+      cancelCloseTimeout,
+    } = usePopup(props.date);
     let clickHandler: ((event: MouseEvent) => void) | null = null;
 
-    const referenceElementValue = computed(() => referenceElement.value);
+    // Computed:
 
-    const showOptions = computed(() => {
-      return store.getters["LocalStates/getshowOptions"];
-    });
+    const referenceElementValue = computed(() => referenceElement.value);
 
     const isBirthday = computed(() => {
       const [day, month, year] = birthday.value.split("-");
@@ -137,6 +140,8 @@ export default defineComponent({
       );
     });
 
+    // Watch:
+
     watch(isPopupVisible, (newValue, oldValue) => {
       if (!newValue && oldValue) {
         removeMouseHandlers();
@@ -147,16 +152,7 @@ export default defineComponent({
       }
     });
 
-    const hidePopup = () => {
-      isPopupVisible.value = false;
-    };
-
-    const showPopup = () => {
-      if (new Date(props.date) < new Date()) {
-        cancelCloseTimeout();
-        isPopupVisible.value = true;
-      }
-    };
+    // Methods:
 
     const removeMouseHandlers = () => {
       const popover = document.querySelector(".popover-content");
@@ -195,19 +191,6 @@ export default defineComponent({
       };
 
       addMouseHandlers();
-    };
-
-    const startHidePopup = () => {
-      if (!showOptions.value) {
-        closeTimeout = window.setTimeout(hidePopup, 40000);
-      }
-    };
-
-    const cancelCloseTimeout = () => {
-      if (closeTimeout !== null) {
-        clearTimeout(closeTimeout);
-        closeTimeout = null;
-      }
     };
 
     return {
