@@ -1,5 +1,5 @@
 <template>
-  <div class="popup-window" @click="$emit('close')">
+  <div class="popup-window">
     <el-popover
       placement="auto"
       :popper-class="'popover-custom'"
@@ -85,6 +85,10 @@ export default defineComponent({
 
     const user = computed(() => store.getters["User/getUser"]);
 
+    const handleMouseEnter = () => {
+      emit("mouseenter");
+    };
+
     watch(
       () => props.visible,
       (newValue) => {
@@ -99,6 +103,7 @@ export default defineComponent({
     return {
       isVisibleLocal,
       user,
+      handleMouseEnter,
     };
   },
 });

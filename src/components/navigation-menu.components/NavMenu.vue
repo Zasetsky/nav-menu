@@ -23,7 +23,7 @@
             placement="right"
             :show-after="500"
           >
-            <div class="menu__header-collapsed" @click.stop="toggleCollapse">
+            <div class="menu__header-collapsed" @click="toggleCollapse">
               <i class="menu__icon-company"><building_icon /></i>
             </div>
           </el-tooltip>
@@ -41,7 +41,7 @@
               placement="bottom"
               :show-after="500"
             >
-              <i class="menu__icon-colapse" @click.stop="toggleCollapse">
+              <i class="menu__icon-colapse" @click="toggleCollapse">
                 <double_arrows_menu_icon />
               </i>
             </el-tooltip>

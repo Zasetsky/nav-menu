@@ -12,8 +12,8 @@ export function getCurrentMonthDates(): Dates {
     const paddedMonth = String(month + 1).padStart(2, "0");
     const paddedDay = String(i).padStart(2, "0");
     dates[`${year}-${paddedMonth}-${paddedDay}`] = {
-      breaksCount: 0,
-      totalTime: "00",
+      breaksCount: 4,
+      totalTime: "24",
       downtime: "00",
       isWeekend: true,
       isHoliday: false,

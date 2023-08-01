@@ -57,7 +57,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, toRefs, computed, ref, onUnmounted } from "vue";
+import { defineComponent, toRefs, computed, ref, watch } from "vue";
 import { DatesData } from "@/types";
 import { useCalendar } from "@/composables/useCalendar";
 import { birthday_icon } from "@/assets/icons/index";
@@ -146,6 +146,24 @@ export default defineComponent({
       isPopupVisible.value = true;
     };
 
+    const removeMouseHandlers = () => {
+      const popover = document.querySelector(".popover-content");
+      if (popover) {
+        popover.removeEventListener("mouseenter", cancelCloseTimeout);
+        popover.removeEventListener("mouseleave", startHidePopup);
+      }
+    };
+
+    watch(isPopupVisible, (newValue, oldValue) => {
+      if (!newValue && oldValue) {
+        removeMouseHandlers();
+
+        if (clickHandler) {
+          document.removeEventListener("click", clickHandler);
+        }
+      }
+    });
+
     const onPopupMounted = () => {
       clickHandler = (event: MouseEvent) => {
         let targetElement: HTMLElement | null = event.target as HTMLElement; // здесь мы делаем приведение типа
@@ -164,17 +182,22 @@ export default defineComponent({
       };
 
       document.addEventListener("click", clickHandler);
-    };
 
-    onUnmounted(() => {
-      if (clickHandler) {
-        document.removeEventListener("click", clickHandler);
-      }
-    });
+      const addMouseHandlers = () => {
+        const popover = document.querySelector(".popover-content");
+        console.log(popover);
+        if (popover) {
+          popover.addEventListener("mouseenter", cancelCloseTimeout);
+          popover.addEventListener("mouseleave", startHidePopup);
+        }
+      };
+
+      addMouseHandlers();
+    };
 
     const startHidePopup = () => {
       if (!showOptions.value) {
-        closeTimeout = window.setTimeout(hidePopup, 40000);
+        closeTimeout = window.setTimeout(hidePopup, 400);
       }
     };
 
