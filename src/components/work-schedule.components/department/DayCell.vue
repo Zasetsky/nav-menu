@@ -166,8 +166,6 @@ export default defineComponent({
       clickHandler = (event: MouseEvent) => {
         let targetElement: HTMLElement | null = event.target as HTMLElement; // здесь мы делаем приведение типа
 
-        console.log(event.target as HTMLElement);
-
         while (targetElement) {
           // проверяем, является ли элемент target частью popover
           if (targetElement.classList.contains("popover-content")) {
@@ -183,7 +181,7 @@ export default defineComponent({
 
       const addMouseHandlers = () => {
         const popover = document.querySelector(".popover-content");
-        console.log(popover);
+
         if (popover) {
           popover.addEventListener("mouseenter", cancelCloseTimeout);
           popover.addEventListener("mouseleave", startHidePopup);

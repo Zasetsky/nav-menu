@@ -34,7 +34,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, computed } from "vue";
+import { defineComponent, ref, computed, onMounted, onUnmounted } from "vue";
 import { useStore } from "vuex";
 import EditComment from "./EditComment.vue";
 
@@ -59,15 +59,32 @@ export default defineComponent({
     },
   },
   setup() {
-    const isEditing = ref(false);
-
     const store = useStore();
+
+    const isEditing = computed(() => store.getters["LocalStates/getIsEditing"]);
 
     const user = computed(() => store.getters["User/getUser"]);
 
     const startEditing = () => {
-      isEditing.value = true;
+      store.dispatch("LocalStates/toggleIsEditing", true);
+      store.dispatch("LocalStates/toggleShowOptions", false);
     };
+
+    const stopEditing = () => {
+      store.dispatch("LocalStates/toggleIsEditing", false);
+    };
+
+    const clickHandler = () => {
+      stopEditing();
+    };
+
+    onMounted(() => {
+      window.addEventListener("click", clickHandler);
+    });
+
+    onUnmounted(() => {
+      window.removeEventListener("click", clickHandler);
+    });
 
     return { isEditing, user, startEditing };
   },

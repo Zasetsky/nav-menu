@@ -1,5 +1,5 @@
 <template>
-  <div v-if="show" class="window-status-options">
+  <div v-if="show" class="window-status-options" ref="root">
     <div
       v-for="status in statuses"
       :key="status.value"
@@ -27,7 +27,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, PropType, ref } from "vue";
+import { defineComponent, PropType, ref, onMounted, onUnmounted } from "vue";
 import { useStore } from "vuex";
 
 export default defineComponent({
@@ -60,9 +60,11 @@ export default defineComponent({
       required: true,
     },
   },
-  setup(props) {
+
+  setup(props, { emit }) {
     const store = useStore();
     const selectedStatus = ref(props.status);
+    const root = ref<HTMLElement | null>(null);
 
     const updateStatus = (status: string) => {
       selectedStatus.value = status;
@@ -73,8 +75,24 @@ export default defineComponent({
       });
     };
 
+    const outsideClickListener = (event: MouseEvent) => {
+      console.log(root.value);
+      if (root.value && !root.value.contains(event.target as Node)) {
+        emit("close");
+      }
+    };
+
+    onMounted(() => {
+      document.addEventListener("click", outsideClickListener);
+    });
+
+    onUnmounted(() => {
+      document.removeEventListener("click", outsideClickListener);
+    });
+
     return {
       selectedStatus,
+      root,
       updateStatus,
     };
   },

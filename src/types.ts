@@ -52,4 +52,5 @@ export interface LocalStates {
   selectedMonth: number;
   selectedYear: number;
   showOptions: boolean;
+  isEditing: boolean;
 }

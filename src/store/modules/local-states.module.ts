@@ -9,6 +9,8 @@ const state: LocalStates = {
   selectedYear: new Date().getFullYear(),
 
   showOptions: false,
+
+  isEditing: false,
 };
 
 const mutations = {
@@ -25,8 +27,12 @@ const mutations = {
     state.selectedYear = year;
   },
 
-  setshowOptions(state: LocalStates, value: boolean) {
+  setShowOptions(state: LocalStates, value: boolean) {
     state.showOptions = value;
+  },
+
+  setIsEditing(state: LocalStates, value: boolean) {
+    state.isEditing = value;
   },
 };
 
@@ -44,7 +50,11 @@ const actions = {
   },
 
   toggleShowOptions({ commit }: { commit: Commit }, value: boolean) {
-    commit("setshowOptions", value);
+    commit("setShowOptions", value);
+  },
+
+  toggleIsEditing({ commit }: { commit: Commit }, value: boolean) {
+    commit("setIsEditing", value);
   },
 };
 
@@ -55,7 +65,9 @@ const getters = {
 
   getSelectedYear: (state: LocalStates) => state.selectedYear,
 
-  getshowOptions: (state: LocalStates) => state.showOptions,
+  getShowOptions: (state: LocalStates) => state.showOptions,
+
+  getIsEditing: (state: LocalStates) => state.isEditing,
 };
 
 export default {

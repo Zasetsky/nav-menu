@@ -7,7 +7,7 @@ export default function usePopup(propsDate: string) {
   let closeTimeout: number | null = null;
 
   const showOptions = computed(() => {
-    return store.getters["LocalStates/getshowOptions"];
+    return store.getters["LocalStates/getShowOptions"];
   });
 
   const hidePopup = () => {

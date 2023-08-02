@@ -1,6 +1,7 @@
 <template>
   <div class="footer-status">
     <div
+      ref="openButton"
       class="footer-status__info"
       @click.stop="toggleShowOptions(!showOptions)"
       :style="{ cursor: user.isAdmin ? 'pointer' : 'default' }"
@@ -20,27 +21,21 @@
     </div>
 
     <status-select-window
-      ref="statusSelectWindow"
       :status="status"
       :statuses="statuses"
       :getColor="getColor"
       :show="showOptions"
       :date="date"
       :employeeID="employeeID"
+      :openButton="openButton"
       @mouseleave="onMouseLeave"
+      @close="toggleShowOptions(false)"
     />
   </div>
 </template>
 
 <script lang="ts">
-import {
-  defineComponent,
-  ref,
-  computed,
-  onMounted,
-  onBeforeUnmount,
-  ComponentPublicInstance,
-} from "vue";
+import { defineComponent, ref, computed, onMounted, onUnmounted } from "vue";
 import { useStore } from "vuex";
 import StatusSelectWindow from "./StatusSelectWindow.vue";
 
@@ -74,19 +69,22 @@ export default defineComponent({
 
   setup(props: Props) {
     const store = useStore();
-    const user = computed(() => store.getters["User/getUser"]);
-    const showOptions = computed(
-      () => store.getters["LocalStates/getshowOptions"]
-    );
+    const openButton = ref<HTMLElement | null>(null);
     const isHovered = ref(false);
-    const statusSelectWindow = ref<ComponentPublicInstance | null>(null);
     const statuses = ref([
       { value: "success", label: "День засчитан" },
       { value: "warning", label: "Нарушение" },
       { value: "danger", label: "День не засчитан" },
     ]);
 
+    const user = computed(() => store.getters["User/getUser"]);
+
+    const showOptions = computed(
+      () => store.getters["LocalStates/getShowOptions"]
+    );
+
     const statusColor = computed(() => getColor(props.status));
+
     const statusText = computed(() => {
       if (!props.status) return "";
       const statusText = statuses.value.find((s) => s.value === props.status);
@@ -105,27 +103,17 @@ export default defineComponent({
     const toggleShowOptions = (value: boolean) => {
       if (!user.value.isAdmin) return;
       store.dispatch("LocalStates/toggleShowOptions", value);
-    };
-
-    const closeOnOutsideClick = (event: Event) => {
-      if (statusSelectWindow.value) {
-        const el = statusSelectWindow.value.$el;
-        if (el && !el.contains(event.target as Node)) {
-          toggleShowOptions(false);
-        }
-      }
+      store.dispatch("LocalStates/toggleIsEditing", false);
     };
 
     onMounted(() => {
       document.addEventListener("mouseenter", onMouseEnter);
       document.addEventListener("mouseleave", onMouseLeave);
-      document.addEventListener("click", closeOnOutsideClick);
     });
 
-    onBeforeUnmount(() => {
+    onUnmounted(() => {
       document.removeEventListener("mouseenter", onMouseEnter);
       document.removeEventListener("mouseleave", onMouseLeave);
-      document.removeEventListener("click", closeOnOutsideClick);
     });
 
     const getColor = (status: string) => {
@@ -148,6 +136,7 @@ export default defineComponent({
       statuses,
       statusColor,
       statusText,
+      openButton,
       toggleShowOptions,
       getColor,
       onMouseLeave,
