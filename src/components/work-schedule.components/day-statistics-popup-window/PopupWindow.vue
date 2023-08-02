@@ -15,7 +15,7 @@
           :breaksCount="dateData.breaksCount"
         />
         <Content
-          v-if="workPointsForDate.length > 0"
+          v-if="isContent"
           class="popup-window__content"
           :date="date"
           :workPoints="workPointsForDate"
@@ -26,6 +26,7 @@
           :date="date"
           :dateStatus="dateData.status"
           :employeeID="employeeID"
+          :isContent="isContent"
         />
       </div>
     </el-popover>
@@ -85,6 +86,8 @@ export default defineComponent({
 
     const user = computed(() => store.getters["User/getUser"]);
 
+    const isContent = computed(() => props.workPointsForDate.length > 0);
+
     const handleMouseEnter = () => {
       emit("mouseenter");
     };
@@ -103,6 +106,7 @@ export default defineComponent({
     return {
       isVisibleLocal,
       user,
+      isContent,
       handleMouseEnter,
     };
   },

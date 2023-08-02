@@ -1,5 +1,8 @@
 <template>
-  <div class="footer">
+  <div
+    class="footer"
+    :style="isContent ? { 'border-top': '1px solid #17505b' } : {}"
+  >
     <footer-status
       :date="date"
       :status="dateStatus.dayStatus"
@@ -40,6 +43,11 @@ export default defineComponent({
       type: Number,
       required: true,
     },
+
+    isContent: {
+      type: Boolean,
+      required: true,
+    },
   },
 });
 </script>
@@ -49,7 +57,6 @@ export default defineComponent({
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  border-top: 1px solid $el-color-primary;
   margin: 0 -13px;
   padding: 20px 20px 8px 20px;
 }
