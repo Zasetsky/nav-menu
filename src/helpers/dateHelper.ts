@@ -14,12 +14,12 @@ export function getCurrentMonthDates(): Dates {
     dates[`${year}-${paddedMonth}-${paddedDay}`] = {
       breaksCount: 4,
       totalTime: {
-        hours: 0,
+        hours: 23,
         min: 0,
       },
       downtime: {
-        hours: 0,
-        min: 0,
+        hours: 1,
+        min: 30,
       },
       isWeekend: true,
       isHoliday: false,

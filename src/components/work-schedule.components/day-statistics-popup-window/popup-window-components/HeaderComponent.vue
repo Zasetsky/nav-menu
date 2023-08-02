@@ -1,17 +1,27 @@
 <template>
   <div class="header">
-    <p class="header__item">
+    <div class="header__item">
       <span class="header__item-label">Общее время</span>
-      <span class="header__item-value">{{ totalTime }}</span>
-    </p>
-    <p class="header__item">
+      <div class="header__item-value">
+        <span v-if="totalTime.hours > 0" class="header__item-hours">
+          {{ totalTime.hours }} ч.</span
+        >
+        <span class="header__item-min">{{ totalTime.min }} мин.</span>
+      </div>
+    </div>
+    <div class="header__item">
       <span class="header__item-label">Время простоя</span>
-      <span class="header__item-value">{{ downtime }}</span>
-    </p>
-    <p class="header__item">
+      <div class="header__item-value">
+        <span v-if="downtime.hours > 0" class="header__item-hours"
+          >{{ downtime.hours }} ч.</span
+        >
+        <span class="header__item-min">{{ downtime.min }} мин.</span>
+      </div>
+    </div>
+    <div class="header__item">
       <span class="header__item-label">Количество перерывов</span>
       <span class="header__item-value">{{ breaksCount }}</span>
-    </p>
+    </div>
   </div>
 </template>
 
@@ -21,11 +31,11 @@ import { defineComponent } from "vue";
 export default defineComponent({
   props: {
     totalTime: {
-      type: String,
+      type: Object,
       required: true,
     },
     downtime: {
-      type: String,
+      type: Object,
       required: true,
     },
     breaksCount: {
@@ -61,6 +71,10 @@ export default defineComponent({
 
   &__item-value {
     color: $el-text-color-regular;
+  }
+
+  &__item-hours {
+    padding-right: 4px;
   }
 }
 </style>
