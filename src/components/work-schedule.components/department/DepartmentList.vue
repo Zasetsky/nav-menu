@@ -1,6 +1,6 @@
 <template>
   <div class="department-list">
-    <div class="search">
+    <div class="search" ref="stickySearch">
       <EmployeeSearch v-model="selectedEmployees" />
     </div>
     <div class="departments">
@@ -18,7 +18,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, computed } from "vue";
+import { defineComponent, ref, computed, onMounted, onUnmounted } from "vue";
 import DepartmentItem from "./DepartmentItem.vue";
 import EmployeeSearch from "./EmployeeSearch.vue";
 import { Department, Employee } from "@/types";
@@ -31,6 +31,7 @@ export default defineComponent({
   },
   setup() {
     const selectedEmployees = ref<Employee[]>([]);
+    const stickySearch = ref<HTMLElement | null>(null);
     const store = useStore();
 
     const departments = computed(
@@ -70,11 +71,32 @@ export default defineComponent({
       return count;
     });
 
+    const updateSearchPosition = () => {
+      if (stickySearch.value) {
+        const stickyTop = stickySearch.value.getBoundingClientRect().top;
+        if (window.scrollY > stickyTop) {
+          stickySearch.value.style.position = "fixed";
+          stickySearch.value.style.top = "0";
+        } else {
+          stickySearch.value.style.position = "static";
+        }
+      }
+    };
+
+    onMounted(() => {
+      window.addEventListener("scroll", updateSearchPosition);
+    });
+
+    onUnmounted(() => {
+      window.removeEventListener("scroll", updateSearchPosition);
+    });
+
     return {
       selectedEmployees,
       filteredDepartments,
       onlineCount,
       totalEmployees,
+      stickySearch,
     };
   },
 });
@@ -92,6 +114,8 @@ export default defineComponent({
     justify-content: center;
     padding: 14px;
     border-bottom: 1px solid $el-border-color;
+    background-color: $el-color-success-light-9;
+    z-index: 99999;
   }
 
   .footer {
