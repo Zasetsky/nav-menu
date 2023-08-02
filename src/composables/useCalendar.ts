@@ -9,7 +9,7 @@ export function useCalendar() {
   const holidays = [
     { month: 0, day: 1, info: "Бухой день" }, // 1 января
     { month: 6, day: 19, info: "День создания этой фичи" },
-    // Другие праздничные дни здесь
+    { month: 7, day: 2, info: "День ВДВ" },
   ];
 
   const isWeekend = (date: Date) => {

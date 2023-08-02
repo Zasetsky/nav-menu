@@ -1,40 +1,38 @@
 <template>
-  <div>
-    <div class="footer__comment">
-      <EditComment
-        v-if="isEditing"
-        :statusComment="statusComment"
-        :date="date"
-        :employeeID="employeeID"
-        @editDone="isEditing = false"
-      />
+  <div class="footer__comment">
+    <EditComment
+      v-if="isEditing"
+      :statusComment="statusComment"
+      :date="date"
+      :employeeID="employeeID"
+      @editDone="stopEditing"
+    />
 
-      <button
-        v-else-if="!isEditing && !statusComment && user.isAdmin"
-        class="add-comment-btn"
+    <button
+      v-else-if="!isEditing && !statusComment && user.isAdmin"
+      class="add-comment-btn"
+      @click.stop="startEditing"
+    >
+      +&nbsp;Комментарий
+    </button>
+
+    <p v-else-if="!isEditing && statusComment" class="comment-text">
+      {{ statusComment }}
+      <i
+        v-if="user.isAdmin && statusComment"
         @click.stop="startEditing"
-      >
-        +&nbsp;Комментарий
-      </button>
+        class="el-icon-edit edit-icon"
+      />
+    </p>
 
-      <p v-else-if="!isEditing && statusComment" class="comment-text">
-        {{ statusComment }}
-        <i
-          v-if="user.isAdmin && statusComment"
-          @click.stop="startEditing"
-          class="el-icon-edit edit-icon"
-        />
-      </p>
-
-      <p class="comment-text__none" v-if="!user.isAdmin && !statusComment">
-        Комментариев нет
-      </p>
-    </div>
+    <p class="comment-text__none" v-if="!user.isAdmin && !statusComment">
+      Комментариев нет
+    </p>
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, computed, onMounted, onUnmounted } from "vue";
+import { defineComponent, computed, onMounted, onUnmounted } from "vue";
 import { useStore } from "vuex";
 import EditComment from "./EditComment.vue";
 
@@ -86,7 +84,7 @@ export default defineComponent({
       window.removeEventListener("click", clickHandler);
     });
 
-    return { isEditing, user, startEditing };
+    return { isEditing, user, startEditing, stopEditing };
   },
 });
 </script>
@@ -125,9 +123,9 @@ export default defineComponent({
   justify-content: space-between;
   font-size: 8px;
   background-color: $el-color-success-light-8;
-  padding: 11px 10px;
+  padding: 7px 10px;
   margin-top: 10px;
-  width: 215px;
+  width: 190px;
   border-radius: 4px;
 
   &__none {

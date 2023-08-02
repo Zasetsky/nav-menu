@@ -15,7 +15,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, Ref, watch } from "vue";
+import { defineComponent, ref, Ref, watch, onMounted, nextTick } from "vue";
 import { useStore } from "vuex";
 
 export default defineComponent({
@@ -35,7 +35,7 @@ export default defineComponent({
       required: true,
     },
   },
-  setup(props) {
+  setup(props, { emit }) {
     const store = useStore();
     const editInput: Ref<HTMLTextAreaElement | null> = ref(null);
 
@@ -49,7 +49,7 @@ export default defineComponent({
     );
 
     const onBlur = () => {
-      store.dispatch("updateStatusComment", {
+      store.dispatch("Department/updateStatusComment", {
         employeeId: props.employeeID,
         date: props.date,
         comment: localComment.value,
@@ -58,13 +58,22 @@ export default defineComponent({
 
     const onKeydown = (event: KeyboardEvent) => {
       if (event.key === "Enter") {
-        store.dispatch("updateStatusComment", {
+        store.dispatch("Department/updateStatusComment", {
           employeeId: props.employeeID,
           date: props.date,
           comment: localComment.value,
         });
+        event.preventDefault(); // Всегда предотвращаем новую строку при нажатии "Enter"
+        emit("editDone");
       }
     };
+
+    onMounted(async () => {
+      await nextTick();
+      if (editInput.value) {
+        editInput.value.focus();
+      }
+    });
 
     return {
       localComment,
@@ -78,8 +87,7 @@ export default defineComponent({
 
 <style lang="scss">
 .hidden-input {
-  margin-bottom: 8px;
-
+  padding-bottom: 8px;
   .el-input__inner,
   .el-textarea__inner {
     border: 1px solid $el-color-success-light-8;
@@ -87,9 +95,10 @@ export default defineComponent({
     color: $el-text-color-regular;
     font-size: 8px;
     margin-top: 10px;
-    width: 235px;
-    height: 40px;
-    padding: 13px 10px;
+    width: 210px;
+    height: 32px;
+    line-height: 8px;
+    padding: 11px 10px;
     resize: none;
     box-shadow: none;
     overflow: hidden;
@@ -102,11 +111,20 @@ export default defineComponent({
     }
   }
 
+  .el-input__inner::selection,
+  .el-textarea__inner::selection {
+    background: $el-color-info;
+    color: $el-color-white;
+  }
+
   .el-input__count,
   .el-textarea__count {
-    position: absolute;
     color: $el-color-primary !important;
+    background-color: transparent;
     margin-right: 10px;
+    font-size: 8px;
+    right: 0;
+    bottom: 8px;
   }
 }
 </style>

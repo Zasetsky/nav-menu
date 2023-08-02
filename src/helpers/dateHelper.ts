@@ -13,8 +13,14 @@ export function getCurrentMonthDates(): Dates {
     const paddedDay = String(i).padStart(2, "0");
     dates[`${year}-${paddedMonth}-${paddedDay}`] = {
       breaksCount: 4,
-      totalTime: "24",
-      downtime: "00",
+      totalTime: {
+        hours: 0,
+        min: 0,
+      },
+      downtime: {
+        hours: 0,
+        min: 0,
+      },
       isWeekend: true,
       isHoliday: false,
       isVacation: false,

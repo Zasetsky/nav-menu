@@ -4,6 +4,8 @@
       ref="openButton"
       class="footer-status__info"
       @click.stop="toggleShowOptions(!showOptions)"
+      @mouseover="onMouseEnter"
+      @mouseleave="onMouseLeave"
       :style="{ cursor: user.isAdmin ? 'pointer' : 'default' }"
     >
       <div class="footer-status__info-text">
@@ -28,14 +30,14 @@
       :date="date"
       :employeeID="employeeID"
       :openButton="openButton"
-      @mouseleave="onMouseLeave"
+      @mouseleave="toggleShowOptions(false)"
       @close="toggleShowOptions(false)"
     />
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, computed, onMounted, onUnmounted } from "vue";
+import { defineComponent, ref, computed } from "vue";
 import { useStore } from "vuex";
 import StatusSelectWindow from "./StatusSelectWindow.vue";
 
@@ -97,7 +99,6 @@ export default defineComponent({
 
     const onMouseLeave = () => {
       isHovered.value = false;
-      toggleShowOptions(false);
     };
 
     const toggleShowOptions = (value: boolean) => {
@@ -105,16 +106,6 @@ export default defineComponent({
       store.dispatch("LocalStates/toggleShowOptions", value);
       store.dispatch("LocalStates/toggleIsEditing", false);
     };
-
-    onMounted(() => {
-      document.addEventListener("mouseenter", onMouseEnter);
-      document.addEventListener("mouseleave", onMouseLeave);
-    });
-
-    onUnmounted(() => {
-      document.removeEventListener("mouseenter", onMouseEnter);
-      document.removeEventListener("mouseleave", onMouseLeave);
-    });
 
     const getColor = (status: string) => {
       switch (status) {
@@ -139,6 +130,7 @@ export default defineComponent({
       openButton,
       toggleShowOptions,
       getColor,
+      onMouseEnter,
       onMouseLeave,
     };
   },

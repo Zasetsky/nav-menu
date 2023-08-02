@@ -17,13 +17,7 @@
     <i v-if="isBirthday" class="day-birhday-icon"><birthday_icon /></i>
 
     <!-- Круг -->
-    <div
-      v-if="!isWeekendForUser && !isHolidayForUser"
-      @click.stop="showPopup"
-      @mouseover="cancelCloseTimeout"
-      @mouseleave="startHidePopup"
-      ref="referenceElement"
-    >
+    <div v-if="!isWeekendForUser && !isHolidayForUser" ref="referenceElement">
       <div
         v-if="new Date(date) > new Date() && isWorkDay"
         class="day-circle day-circle-future"
@@ -33,6 +27,9 @@
 
       <div
         v-else
+        @click.stop="showPopup"
+        @mouseover="cancelCloseTimeout"
+        @mouseleave="startHidePopup"
         class="day-circle"
         :class="{
           'day-circle-success': dayData.status.dayStatus === 'success',
@@ -63,6 +60,7 @@ import { useCalendar } from "@/composables/useCalendar";
 import { birthday_icon } from "@/assets/icons/index";
 import PopupWindow from "../day-statistics-popup-window/PopupWindow.vue";
 import usePopup from "@/composables/usePopup";
+import { useStore } from "vuex";
 
 export default defineComponent({
   components: { birthday_icon, PopupWindow },
@@ -102,6 +100,7 @@ export default defineComponent({
       cancelCloseTimeout,
     } = usePopup(props.date);
     let clickHandler: ((event: MouseEvent) => void) | null = null;
+    const store = useStore();
 
     // Computed:
 
@@ -175,6 +174,7 @@ export default defineComponent({
         }
         // Если target не является частью popover, скрываем его
         hidePopup();
+        store.dispatch("LocalStates/toggleIsEditing", false);
       };
 
       document.addEventListener("click", clickHandler);

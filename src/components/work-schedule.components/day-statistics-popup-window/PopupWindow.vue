@@ -110,7 +110,10 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
-.popup-window {
-  z-index: 9999;
+.popover-content {
+  padding: 12px;
+  z-index: 1;
+  border-radius: 4px;
+  background-color: $el-color-success-light-9;
 }
 </style>

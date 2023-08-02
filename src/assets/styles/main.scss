@@ -97,9 +97,11 @@ html {
 .popover-custom {
   width: 250px !important;
   border-color: $el-color-primary !important;
+  padding: 0 !important;
 
   .el-popper__arrow::before {
     border-color: $el-color-primary !important;
+    background-color: $el-color-success-light-9 !important;
   }
 }
 

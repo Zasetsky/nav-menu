@@ -51,6 +51,6 @@ export default defineComponent({
   align-items: flex-start;
   border-top: 1px solid $el-color-primary;
   margin: 0 -13px;
-  padding: 20px;
+  padding: 20px 20px 8px 20px;
 }
 </style>

@@ -20,6 +20,16 @@
     top: -8px;
   }
 
+  &-vacation,
+  &-business-trip,
+  &-sick,
+  &-personal,
+  &-maternity-leave {
+    .day-circle {
+      cursor: default !important;
+    }
+  }
+
   &-birthday {
     border: 1px solid $el-additional-color-special;
   }

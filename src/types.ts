@@ -23,10 +23,20 @@ export interface WorkPoint {
   comment: string;
 }
 
+export interface TotalTime {
+  hours: number;
+  min: number;
+}
+
+export interface Downtime {
+  hours: number;
+  min: number;
+}
+
 export interface DatesData {
   breaksCount: number;
-  totalTime: string;
-  downtime: string;
+  totalTime: TotalTime;
+  downtime: Downtime;
   isWeekend: boolean;
   isHoliday: boolean;
   isVacation: boolean;
