@@ -52,9 +52,15 @@
       }
 
       &--edit-icon {
+        cursor: pointer;
         font-size: 12px;
         color: $el-text-color-disabled;
         margin-left: 5px;
+
+        &:hover {
+          color: $el-color-success;
+          font-weight: 600; /* Под вопросом! */
+        }
       }
     }
 
