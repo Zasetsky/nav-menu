@@ -13,6 +13,7 @@
       :date="(date as string)"
       :birthday="employee.birthday"
       :employeeID="employee.id"
+      :is-first-special-day="isFirstSpecialDay(date as string)"
     />
   </div>
 </template>
@@ -38,14 +39,50 @@ export default defineComponent({
     },
   },
 
-  setup() {
+  setup(props) {
     const store = useStore();
+
+    const isSpecialDaySet = computed(() => {
+      let specialDaysFound: Record<number, string> = {};
+      const dates = Object.entries(props.employee.dates);
+
+      // Сортируем даты по возрастанию
+      dates.sort(
+        ([dateA], [dateB]) =>
+          new Date(dateA).getTime() - new Date(dateB).getTime()
+      );
+
+      for (const [date, dayData] of dates) {
+        const month = new Date(date).getMonth();
+
+        if (
+          dayData.isVacation ||
+          dayData.isBusinessTrip ||
+          dayData.isSickDay ||
+          dayData.isDayOff ||
+          dayData.isMaternityLeave
+        ) {
+          if (!specialDaysFound[month]) {
+            // Если особого дня в этом месяце ещё не было найдено, устанавливаем его
+            specialDaysFound[month] = date;
+          }
+        }
+      }
+
+      // specialDaysFound теперь содержит дату первого особого дня в каждом месяце
+      return specialDaysFound;
+    });
 
     const isCollapsed = computed(
       () => store.getters["LocalStates/getIsCollapsed"]
     );
 
-    return { isCollapsed };
+    const isFirstSpecialDay = (date: string): boolean => {
+      const month = new Date(date).getMonth();
+      return isSpecialDaySet.value[month] === date;
+    };
+
+    return { isCollapsed, isFirstSpecialDay };
   },
 });
 </script>

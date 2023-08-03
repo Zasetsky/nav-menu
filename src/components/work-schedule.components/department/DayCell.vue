@@ -1,21 +1,24 @@
 <template>
-  <div
-    class="day"
-    :class="{
-      'day-weekend': isWeekendForUser && isWorkDay,
-      'day-holiday': isHoliday(new Date(date).getDate()) && isWorkDay,
-      'day-preHoliday': isPreHoliday(new Date(date).getDate()) && isWorkDay,
-      'day-birthday': isBirthday,
-      'day-vacation': dayData.isVacation,
-      'day-business-trip': dayData.isBusinessTrip,
-      'day-sick': dayData.isSickDay,
-      'day-personal': dayData.isDayOff,
-      'day-maternity-leave': dayData.isMaternityLeave,
-    }"
-  >
+  <div class="day" :class="dayClass">
     <!-- День рождения -->
     <div v-if="isBirthday" class="day-birthday-cirle"></div>
     <i v-if="isBirthday" class="day-birhday-icon"><birthday_icon /></i>
+
+    <!-- Подсказка особых дней -->
+    <el-tooltip
+      v-if="isFirstSpecialDay"
+      popper-class="special-day-custom-tooltip"
+      :content="specialDayText"
+      placement="top"
+      :show-after="500"
+    >
+      <div class="special-day">
+        <div class="special-day--cirle"></div>
+        <i class="special-day--info-icon">
+          <holliday_info_icon />
+        </i>
+      </div>
+    </el-tooltip>
 
     <!-- Круг -->
     <div v-if="!isWeekendForUser && !isHolidayForUser" ref="referenceElement">
@@ -58,13 +61,13 @@
 import { defineComponent, toRefs, computed, ref, watch } from "vue";
 import { DatesData } from "@/types";
 import { useCalendar } from "@/composables/useCalendar";
-import { birthday_icon } from "@/assets/icons/index";
+import { birthday_icon, holliday_info_icon } from "@/assets/icons/index";
 import PopupWindow from "../day-statistics-popup-window/PopupWindow.vue";
 import usePopup from "@/composables/usePopup";
 import { useStore } from "vuex";
 
 export default defineComponent({
-  components: { birthday_icon, PopupWindow },
+  components: { birthday_icon, holliday_info_icon, PopupWindow },
 
   props: {
     dayData: {
@@ -86,6 +89,12 @@ export default defineComponent({
       type: Number,
       required: true,
     },
+
+    isFirstSpecialDay: {
+      type: Boolean,
+      required: false,
+      default: false,
+    },
   },
 
   setup(props) {
@@ -106,6 +115,48 @@ export default defineComponent({
     // Computed:
 
     const referenceElementValue = computed(() => referenceElement.value);
+
+    const specialDays = computed(() => {
+      return (
+        dayData.value.isVacation ||
+        dayData.value.isBusinessTrip ||
+        dayData.value.isSickDay ||
+        dayData.value.isDayOff ||
+        dayData.value.isMaternityLeave
+      );
+    });
+
+    const dayClass = computed(() => {
+      return {
+        "day-weekend": isWeekendForUser.value && isWorkDay.value,
+        "day-holiday":
+          isHoliday(new Date(date.value).getDate()) && isWorkDay.value,
+        "day-preHoliday":
+          isPreHoliday(new Date(date.value).getDate()) && isWorkDay.value,
+        "day-birthday": isBirthday.value,
+        "day-vacation": dayData.value.isVacation,
+        "day-business-trip": dayData.value.isBusinessTrip,
+        "day-sick": dayData.value.isSickDay,
+        "day-personal": dayData.value.isDayOff,
+        "day-maternity-leave": dayData.value.isMaternityLeave,
+      };
+    });
+
+    const specialDayText = computed(() => {
+      if (dayData.value.isVacation) {
+        return "Отпуск";
+      } else if (dayData.value.isBusinessTrip) {
+        return "Командировка";
+      } else if (dayData.value.isSickDay) {
+        return "Больничный";
+      } else if (dayData.value.isDayOff) {
+        return "Отгул";
+      } else if (dayData.value.isMaternityLeave) {
+        return "Декрет";
+      } else {
+        return ""; // Если никакой специальный день не наступил
+      }
+    });
 
     const isBirthday = computed(() => {
       const [day, month, year] = birthday.value.split("-");
@@ -196,6 +247,9 @@ export default defineComponent({
       isWeekendForUser,
       isHolidayForUser,
       isBirthday,
+      dayClass,
+      specialDays,
+      specialDayText,
       isWorkDay,
       isPopupVisible,
       referenceElement,
@@ -204,8 +258,6 @@ export default defineComponent({
       showPopup,
       startHidePopup,
       cancelCloseTimeout,
-      isHoliday,
-      isPreHoliday,
     };
   },
 });
