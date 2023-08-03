@@ -123,7 +123,9 @@ html {
 
 .content {
   overflow-y: auto;
-  
+  scrollbar-width: thin; /* Добавить для Firefox */
+  scrollbar-color: transparent transparent; /* Добавить для Firefox */
+
   &::-webkit-scrollbar {
     width: 6px;
   }
@@ -137,7 +139,11 @@ html {
     border-radius: 4px;
   }
 
-  &:hover::-webkit-scrollbar-thumb {
-    background-color: $el-color-primary-light-8;
+  &:hover {
+    scrollbar-color: $el-color-primary-light-8 transparent; /* Добавить для Firefox */
+
+    &::-webkit-scrollbar-thumb {
+      background-color: $el-color-primary-light-8;
+    }
   }
 }
