@@ -53,6 +53,30 @@ export function getCurrentMonthDates(): Dates {
             comment: "",
           },
         ],
+        [
+          {
+            time: "9:34",
+            name: "Начало работы",
+            comment: "Встал в пробку на Невском проспекте",
+          },
+          {
+            time: "13:00",
+            name: "Блокировка",
+            comment: "Забыл остановить таймер",
+          },
+        ],
+        [
+          {
+            time: "14:00",
+            name: "Продолжение работы",
+            comment: "",
+          },
+          {
+            time: "18:00",
+            name: "Прогулка",
+            comment: "",
+          },
+        ],
       ],
       status: {
         dayStatus: "success",

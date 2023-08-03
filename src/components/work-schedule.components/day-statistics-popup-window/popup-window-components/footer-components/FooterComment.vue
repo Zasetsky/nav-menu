@@ -133,7 +133,8 @@ export default defineComponent({
     font-size: 8px;
     background-color: $el-color-success-light-8;
     padding: 11px 10px;
-    width: 215px;
+    width: 190px;
+    border-radius: 4px;
   }
 }
 

@@ -11,6 +11,9 @@
       <span>Рабочих дней в месяце: {{ workDaysCount }}</span>
       <span>Выходных дней: {{ weekendDaysCount }}</span>
       <span>Праздников: {{ holidaysCount }}</span>
+      <button class="scroll-to-top" @click="scrollToTop" v-show="isScrolled">
+        Наверх
+      </button>
     </div>
   </div>
 </template>
@@ -27,7 +30,8 @@ export default defineComponent({
   setup() {
     const { month, year, isWeekend, isHoliday } = useCalendar();
     const date = new Date(year.value, month.value + 1, 0);
-    const scrollY = ref(0);
+
+    const isScrolled = ref(false);
 
     const workDaysCount = computed(() => {
       let count = 0;
@@ -59,6 +63,17 @@ export default defineComponent({
       return count;
     });
 
+    window.onscroll = () => {
+      isScrolled.value = window.scrollY > 200;
+    };
+
+    const scrollToTop = () => {
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth",
+      });
+    };
+
     const updateScroll = () => {
       localStorage.setItem("scroll", window.scrollY.toString());
     };
@@ -75,7 +90,13 @@ export default defineComponent({
       window.removeEventListener("scroll", updateScroll);
     });
 
-    return { workDaysCount, weekendDaysCount, holidaysCount, scrollY };
+    return {
+      workDaysCount,
+      weekendDaysCount,
+      holidaysCount,
+      isScrolled,
+      scrollToTop,
+    };
   },
 });
 </script>
@@ -119,6 +140,19 @@ export default defineComponent({
 
     span:not(:first-child) {
       margin-left: 40px;
+    }
+
+    .scroll-to-top {
+      position: fixed;
+      right: 20px;
+      bottom: 20px;
+      padding: 10px;
+      border: none;
+      background-color: $el-color-primary;
+      color: $el-color-white;
+      border-radius: 4px;
+      cursor: pointer;
+      z-index: 9999;
     }
   }
 }

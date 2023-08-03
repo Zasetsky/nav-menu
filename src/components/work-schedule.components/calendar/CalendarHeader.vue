@@ -1,10 +1,10 @@
 <template>
   <div
     class="calendar-header"
-    :class="{ fixed: isFixed }"
     :style="{
       width: isCollapsed ? `calc(100vw - 21.25rem)` : `calc(100vw - 34rem)`,
     }"
+    ref="stickyHeader"
   >
     <div class="calendar-header__head-wrapper">
       <div class="calendar-header__head-wrapper__picker">
@@ -64,7 +64,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, computed, onMounted, ref, onUnmounted } from "vue";
+import { defineComponent, computed, ref, onMounted, onUnmounted } from "vue";
 import { useCalendar } from "@/composables/useCalendar";
 import DatePicker from "./DatePicker.vue";
 import CalendarLegend from "./CalendarLegend.vue";
@@ -89,7 +89,8 @@ export default defineComponent({
       isPreHoliday,
     } = useCalendar();
 
-    const isFixed = ref(false);
+    const stickyHeader = ref<HTMLElement | null>(null);
+
     const store = useStore();
 
     const isCollapsed = computed(
@@ -108,16 +109,25 @@ export default defineComponent({
       });
     });
 
-    const checkScroll = () => {
-      isFixed.value = window.scrollY > 80;
+    const updateHeaderPosition = () => {
+      if (stickyHeader.value) {
+        const stickyTop = stickyHeader.value.getBoundingClientRect().top;
+        if (window.scrollY > stickyTop) {
+          stickyHeader.value.style.position = "fixed";
+          stickyHeader.value.style.top = "0";
+          stickyHeader.value.style.right = "-1px";
+        } else {
+          stickyHeader.value.style.position = "static";
+        }
+      }
     };
 
     onMounted(() => {
-      window.addEventListener("scroll", checkScroll);
+      window.addEventListener("scroll", updateHeaderPosition);
     });
 
     onUnmounted(() => {
-      window.removeEventListener("scroll", checkScroll);
+      window.removeEventListener("scroll", updateHeaderPosition);
     });
 
     return {
@@ -126,7 +136,7 @@ export default defineComponent({
       daysOfWeekInMonth,
       year,
       month,
-      isFixed,
+      stickyHeader,
       isCollapsed,
       isWeekend,
       isHoliday,
