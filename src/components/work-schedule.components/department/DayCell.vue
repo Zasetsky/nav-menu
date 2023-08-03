@@ -4,6 +4,7 @@
     :class="{
       'day-weekend': isWeekendForUser && isWorkDay,
       'day-holiday': isHoliday(new Date(date).getDate()) && isWorkDay,
+      'day-preHoliday': isPreHoliday(new Date(date).getDate()) && isWorkDay,
       'day-birthday': isBirthday,
       'day-vacation': dayData.isVacation,
       'day-business-trip': dayData.isBusinessTrip,
@@ -89,7 +90,7 @@ export default defineComponent({
 
   setup(props) {
     // Data:
-    const { isWeekend, isHoliday } = useCalendar();
+    const { isWeekend, isHoliday, isPreHoliday } = useCalendar();
     const { date, dayData, birthday } = toRefs(props);
     const referenceElement = ref<HTMLElement | null>(null);
     const {
@@ -204,6 +205,7 @@ export default defineComponent({
       startHidePopup,
       cancelCloseTimeout,
       isHoliday,
+      isPreHoliday,
     };
   },
 });

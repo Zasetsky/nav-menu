@@ -74,7 +74,8 @@
     background-color: $el-color-danger-light-9;
   }
 
-  &-weekend {
+  &-weekend,
+  &-preHoliday {
     background-color: $el-color-success-light-9;
   }
 

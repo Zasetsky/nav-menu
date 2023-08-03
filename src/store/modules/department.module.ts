@@ -98,7 +98,7 @@ const state: State = {
           id: 9,
           name: "Владимир Владимиров",
           phone: "+1234567890",
-          birthday: "28-07-2023",
+          birthday: "03-08-2023",
           isOnline: true,
           dates: getCurrentMonthDates(),
         },

@@ -25,6 +25,7 @@
         :class="{
           weekend: isWeekend(new Date(year, month, day)),
           holiday: isHoliday(day),
+          preHoliday: isPreHoliday(day),
         }"
       >
         <div class="calendar-header__days-wrapper__day--number">

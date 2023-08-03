@@ -2,13 +2,6 @@
   cursor: default;
   background-color: $el-color-white;
 
-  &.fixed {
-    position: fixed;
-    top: 0;
-    margin-left: 281px;
-    z-index: 1000;
-  }
-
   &__head-wrapper {
     display: flex;
     justify-content: space-between;
@@ -96,6 +89,10 @@
         .calendar-header__days-wrapper__day--name {
           color: $el-color-danger;
         }
+      }
+
+      &.preHoliday {
+        background-color: $el-color-success-light-9;
       }
     }
   }
