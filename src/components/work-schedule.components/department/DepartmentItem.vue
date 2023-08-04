@@ -1,5 +1,5 @@
 <template>
-  <div class="department">
+  <div class="department" :class="{ settings: !isNotEmployeePage }">
     <el-collapse v-model="isCollapsed" @change="handleCollapseChange">
       <el-collapse-item :name="department.name">
         <template #title>
@@ -42,6 +42,7 @@ import { defineComponent, ref, computed } from "vue";
 import EmployeeRow from "./EmployeeRow.vue";
 import { Department } from "@/types";
 import { plus_icon, minus_icon } from "@/assets/icons/index";
+import { useIsNotEmployeePage } from "@/composables/useIsNotEmployeePage";
 
 export default defineComponent({
   components: { EmployeeRow, plus_icon, minus_icon },
@@ -58,6 +59,8 @@ export default defineComponent({
   setup(props) {
     const isCollapsed = ref([props.department.name]);
 
+    const { isNotEmployeePage } = useIsNotEmployeePage();
+
     const handleCollapseChange = (val: string[]) => {
       isCollapsed.value = val;
     };
@@ -67,7 +70,12 @@ export default defineComponent({
         .length;
     });
 
-    return { isCollapsed, onlineEmployeesCount, handleCollapseChange };
+    return {
+      isCollapsed,
+      onlineEmployeesCount,
+      isNotEmployeePage,
+      handleCollapseChange,
+    };
   },
 });
 </script>
@@ -115,7 +123,10 @@ export default defineComponent({
 }
 
 .department:last-child {
-  padding-bottom: 20px;
+  padding-bottom: 10px;
+  &.settings {
+    padding-bottom: 20px;
+  }
 }
 .slide-fade-enter-from {
   transform: translateY(-25px);

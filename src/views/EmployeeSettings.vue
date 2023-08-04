@@ -4,15 +4,18 @@
       <span class="employee-settings__header--title">Сотрудники</span>
     </div>
     <department-list />
+    <department-list-footer />
   </div>
 </template>
 <script lang="ts">
 import { defineComponent } from "vue";
 import DepartmentList from "@/components/work-schedule.components/department/DepartmentList.vue";
+import DepartmentListFooter from "@/components/work-schedule.components/footers/DepartmentListFooter.vue";
 
 export default defineComponent({
   components: {
     DepartmentList,
+    DepartmentListFooter,
   },
 });
 </script>
