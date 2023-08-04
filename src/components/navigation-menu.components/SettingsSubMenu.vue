@@ -75,9 +75,6 @@ export default defineComponent({
     bottom: 1.25rem;
   }
 
-  &__content {
-  }
-
   &__item {
     display: flex;
     align-items: center;
