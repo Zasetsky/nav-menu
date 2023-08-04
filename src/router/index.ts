@@ -6,11 +6,11 @@ const routes: Array<RouteRecordRaw> = [
     name: "shedule",
     component: () => import("@/views/WorkSchedule.vue"),
   },
-  // {
-  //   path: "/about",
-  //   name: "knowledge",
-  //   component: () => import("@/views/KnowledgeBase.vue"),
-  // },
+  {
+    path: "/employees",
+    name: "employees",
+    component: () => import("@/views/EmployeeSettings.vue"),
+  },
 ];
 
 const router = createRouter({

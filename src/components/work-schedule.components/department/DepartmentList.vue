@@ -77,6 +77,7 @@ export default defineComponent({
         if (window.scrollY > stickyTop) {
           stickySearch.value.style.position = "fixed";
           stickySearch.value.style.top = "0";
+          stickySearch.value.style.marginLeft = "4px";
         } else {
           stickySearch.value.style.position = "static";
         }
@@ -107,6 +108,7 @@ export default defineComponent({
   min-height: calc(100vh - 5.1rem);
   background-color: $el-color-success-light-9;
   border-right: 1px solid $el-border-color;
+  width: 280px;
 
   .search {
     display: flex;

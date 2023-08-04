@@ -3,7 +3,7 @@
     <div class="employee-row--info">
       <EmployeeInfo :employee="employee" />
     </div>
-    <div class="employee-row--day">
+    <div v-if="isNotEmployeePage" class="employee-row--day">
       <EmployeeDays :employee="employee" :index="index" />
     </div>
   </div>
@@ -14,6 +14,7 @@ import { defineComponent } from "vue";
 import EmployeeInfo from "./EmployeeInfo.vue";
 import EmployeeDays from "./EmployeeDays.vue";
 import { Employee } from "@/types";
+import { useIsNotEmployeePage } from "@/composables/useIsNotEmployeePage";
 
 export default defineComponent({
   components: { EmployeeInfo, EmployeeDays },
@@ -29,9 +30,15 @@ export default defineComponent({
       required: true,
     },
   },
+
+  setup() {
+    const { isNotEmployeePage } = useIsNotEmployeePage();
+
+    return { isNotEmployeePage };
+  },
 });
 </script>
-
+<!-- $el-color-success-light-9 -->
 <style lang="scss" scoped>
 .employee-row {
   display: flex;

@@ -6,10 +6,14 @@
     @click.stop
   >
     <div class="settings-submenu__content">
-      <div class="settings-submenu__item">
+      <router-link
+        class="settings-submenu__item"
+        to="/employees"
+        active-class="active"
+      >
         <i class="settings-submenu__item-icon"><employees_icon /></i>
         <span class="settings-submenu__item-text">Сотрудники</span>
-      </div>
+      </router-link>
       <div class="settings-submenu__item">
         <i class="settings-submenu__item-icon"><absense_icon /></i>
         <span class="settings-submenu__item-text">Список отсутствий</span>
@@ -82,6 +86,7 @@ export default defineComponent({
     color: $el-text-color-primary;
     justify-content: flex-start;
     padding: 0.625rem;
+    text-decoration: none;
     cursor: pointer;
 
     &:hover {
@@ -92,7 +97,15 @@ export default defineComponent({
       min-width: 2.1875rem;
     }
 
-    &-text {
+    &.active {
+      pointer-events: none;
+      color: $el-color-primary; // или другой цвет для активного маршрута
+      background-color: $el-color-success-light-8; // или другой цвет для фона активного маршрута
+
+      // Иконка, если нужно изменить её цвет
+      .settings-submenu__item-icon {
+        color: $el-color-primary; // или другой цвет для иконки активного маршрута
+      }
     }
   }
 }

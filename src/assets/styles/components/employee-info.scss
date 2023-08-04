@@ -45,6 +45,12 @@
       align-items: flex-end;
       cursor: default;
 
+      &__icon-wrapper {
+        display: flex;
+        align-items: center;
+        text-decoration: none;
+      }
+
       &--name {
         margin: 5px 0 0 0;
         line-height: 1;

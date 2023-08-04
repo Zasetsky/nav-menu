@@ -1,4 +1,5 @@
 <template>
+  <!-- :style="!isNotEmployeePage ? { 'margin-top': '10px' } : {}" -->
   <div class="employee">
     <div class="employee__card">
       <el-avatar class="employee--avatar" shape="square">
@@ -20,11 +21,18 @@
           >
             {{ employee.name }}
           </p>
-          <i class="el-icon-edit employee__info__name-wrapper--edit-icon"></i>
+          <router-link
+            v-if="isNotEmployeePage"
+            class="employee__info__name-wrapper__icon-wrapper"
+            to="/employee"
+          >
+            <i class="el-icon-edit employee__info__name-wrapper--edit-icon"></i>
+          </router-link>
         </div>
         <p class="employee__info--phone">{{ employee.phone }}</p>
       </div>
     </div>
+    <!-- v-if="isNotEmployeePage" -->
     <p class="employee--success">
       {{ successAndWarningStatuses.length
       }}<span class="employee--backslash">/</span>
@@ -36,6 +44,7 @@
 <script lang="ts">
 import { defineComponent, computed, ref } from "vue";
 import { Employee, StatusItem } from "@/types";
+import { useIsNotEmployeePage } from "@/composables/useIsNotEmployeePage";
 
 export default defineComponent({
   props: {
@@ -47,6 +56,8 @@ export default defineComponent({
 
   setup(props) {
     const nameElement = ref<HTMLElement | null>(null);
+
+    const { isNotEmployeePage } = useIsNotEmployeePage();
 
     const employeeStatuses = computed(() => {
       if (!props.employee.dates) return [];
@@ -85,6 +96,7 @@ export default defineComponent({
       nameStyle,
       successAndWarningStatuses,
       dangerStatuses,
+      isNotEmployeePage,
     };
   },
 });

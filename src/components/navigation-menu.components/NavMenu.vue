@@ -238,17 +238,27 @@ export default defineComponent({
       return route.path;
     });
 
+    const isActiveSettings = computed(() => {
+      // Здесь приведены примеры маршрутов. Замените их на фактические маршруты, которые вы считаете пунктами меню.
+      const settingsRoutes = ["/employees", "/absences", "/deal-distribution"];
+      return settingsRoutes.includes(route.path);
+    });
+
     const settingsClass = computed(() => {
       let classes = "menu__item-settings";
       classes += isCollapsed.value ? " menu__item-collapsed" : " menu__item";
-      classes += isSettingsVisible.value ? " active-settings" : "";
+      classes +=
+        isSettingsVisible.value || isActiveSettings.value
+          ? " active-settings"
+          : "";
       return classes;
     });
 
     const settingsIconClass = computed(() => {
       let classes = "";
       classes += isCollapsed.value ? "menu__icon-collapsed" : "menu__icon";
-      classes += isSettingsVisible.value ? " active-icon" : "";
+      classes +=
+        isSettingsVisible.value || isActiveSettings.value ? " active-icon" : "";
       return classes;
     });
 
