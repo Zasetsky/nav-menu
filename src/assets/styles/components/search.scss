@@ -30,6 +30,7 @@
 
       .employees {
         display: flex;
+
         .employee-tag {
           display: flex;
           width: fit-content;
@@ -38,8 +39,7 @@
           border: 1px solid $el-color-primary-light-8;
           border-radius: 4px;
           color: $el-color-primary;
-          padding: 2px 0px 2px 5px;
-          height: 20px;
+          padding: 2px 0 2px 5px;
           margin-left: 5px;
           cursor: default;
 
@@ -59,7 +59,6 @@
           border-radius: 4px;
           color: $el-color-primary;
           padding: 2px 0 2px 0;
-          height: 20px;
           margin-left: 10px;
           width: 30px;
           cursor: default;
@@ -84,31 +83,31 @@
             z-index: 1;
 
             &::before,
-          &::after {
-            content: "";
-            position: absolute;
-            left: 10px;
-            transform: translateX(50%);
-            width: 14px;
-            height: 14px;
-            background-color: $el-color-white;
-          }
+            &::after {
+              content: "";
+              position: absolute;
+              left: 10px;
+              transform: translateX(50%);
+              width: 14px;
+              height: 14px;
+              background-color: $el-color-white;
+            }
 
-          &::before {
-            top: -7px;
-            background-color: $el-border-color;
-            z-index: 1;
-          }
+            &::before {
+              top: -7px;
+              background-color: $el-border-color;
+              z-index: 1;
+            }
 
-          &::after {
-            top: -6px;
-            z-index: 2;
-          }
+            &::after {
+              top: -6px;
+              z-index: 2;
+            }
 
-          &::before,
-          &::after {
-            transform: translateX(50%) rotate(45deg);
-          }
+            &::before,
+            &::after {
+              transform: translateX(50%) rotate(45deg);
+            }
 
             .employee-tag:not(:last-child) {
               margin-bottom: 5px;
@@ -139,6 +138,8 @@
     border-left: 1px solid $el-color-primary;
     border-right: 1px solid $el-color-primary;
     z-index: 1;
+    scrollbar-width: thin; /* Добавить для Firefox */
+    scrollbar-color: transparent transparent; /* Добавить для Firefox */
 
     &::-webkit-scrollbar {
       width: 4px; /* Ширина ползунка */
@@ -153,6 +154,14 @@
     &::-webkit-scrollbar-thumb {
       background: rgba(144, 146, 152, 0.3); /* Цвет ползунка */
       border-radius: 4px; /* Скругление углов ползунка */
+    }
+
+    &:hover {
+      scrollbar-color: $el-color-primary-light-8 transparent; /* для Firefox */
+
+      &::-webkit-scrollbar-thumb {
+        background-color: $el-color-primary-light-8;
+      }
     }
 
     &__department {

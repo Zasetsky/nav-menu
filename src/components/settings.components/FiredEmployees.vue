@@ -51,29 +51,7 @@ export default defineComponent({
   }
 
   .custom-scrollbar {
-    @media (min-width: 768px) {
-      height: 86vh;
-    }
-
-    @media (min-width: 820px) {
-      height: 88vh;
-    }
-
-    @media (min-width: 1024px) {
-      height: 76vh;
-    }
-
-    @media (min-width: 1280px) {
-      height: 80vh;
-    }
-
-    @media (min-width: 1600px) {
-      height: 83vh;
-    }
-
-    @media (min-width: 1920px) {
-      height: 84.5vh;
-    }
+    height: calc(100vh - 144px);
   }
 }
 </style>
