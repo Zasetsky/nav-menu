@@ -160,11 +160,11 @@ export default defineComponent({
 
 .department:first-child {
   &.settings {
-    padding-top: 60px;
+    padding-top: 70px;
   }
 
   &.fired {
-    padding-top: 60px;
+    padding-top: 70px;
   }
 }
 
