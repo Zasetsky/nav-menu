@@ -110,26 +110,26 @@ export default defineComponent({
       });
     });
 
-    const updateHeaderPosition = () => {
-      if (stickyHeader.value) {
-        const stickyTop = stickyHeader.value.getBoundingClientRect().top;
-        if (window.scrollY > stickyTop) {
-          stickyHeader.value.style.position = "fixed";
-          stickyHeader.value.style.top = "0";
-          stickyHeader.value.style.right = "-1px";
-        } else {
-          stickyHeader.value.style.position = "static";
-        }
-      }
-    };
+    // const updateHeaderPosition = () => {
+    //   if (stickyHeader.value) {
+    //     const stickyTop = stickyHeader.value.getBoundingClientRect().top;
+    //     if (window.scrollY > stickyTop) {
+    //       stickyHeader.value.style.position = "fixed";
+    //       stickyHeader.value.style.top = "0";
+    //       stickyHeader.value.style.right = "-1px";
+    //     } else {
+    //       stickyHeader.value.style.position = "static";
+    //     }
+    //   }
+    // };
 
-    onMounted(() => {
-      window.addEventListener("scroll", updateHeaderPosition);
-    });
+    // onMounted(() => {
+    //   window.addEventListener("scroll", updateHeaderPosition);
+    // });
 
-    onUnmounted(() => {
-      window.removeEventListener("scroll", updateHeaderPosition);
-    });
+    // onUnmounted(() => {
+    //   window.removeEventListener("scroll", updateHeaderPosition);
+    // });
 
     return {
       daysOfMonth,

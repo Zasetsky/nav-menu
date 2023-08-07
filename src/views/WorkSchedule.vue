@@ -32,8 +32,12 @@ export default defineComponent({
 <style lang="scss" scoped>
 .work-schedule {
   &__header {
+    position: fixed;
+    background-color: $el-color-white;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
     padding: 1rem;
-    margin-top: 4px;
     border-bottom: 1px solid $el-border-color;
 
     &--title {
@@ -47,6 +51,8 @@ export default defineComponent({
   &__content {
     display: flex;
     align-items: flex-start;
+    margin-top: 3.79rem;
+
     &--department-list {
       width: 17.5rem;
     }

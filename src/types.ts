@@ -9,6 +9,7 @@ export interface Employee {
   isOnline: boolean;
   dates: Dates;
   birthday: string;
+  isFired: boolean;
 }
 
 export interface Department {

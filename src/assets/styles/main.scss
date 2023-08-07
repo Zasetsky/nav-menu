@@ -72,27 +72,29 @@ html {
 }
 
 // Отделы
-.el-collapse:first-child {
-  border: none;
-}
+.department {
+  .el-collapse:first-child {
+    border: none;
+  }
 
-.el-collapse-item__arrow {
-  display: none;
-}
+  .el-collapse-item__arrow {
+    display: none;
+  }
 
-.el-collapse-item__wrap {
-  overflow: visible !important;
-  background-color: $el-color-success-light-9;
-  border: none;
-}
+  .el-collapse-item__wrap {
+    overflow: visible !important;
+    background-color: $el-color-success-light-9;
+    border: none;
+  }
 
-.el-collapse-item__content {
-  padding: 0;
-}
+  .el-collapse-item__content {
+    padding: 0;
+  }
 
-.el-collapse-item__header {
-  background-color: $el-color-success-light-9;
-  border: none !important;
+  .el-collapse-item__header {
+    background-color: $el-color-success-light-9;
+    border: none !important;
+  }
 }
 
 // Уведомления в меню
@@ -117,7 +119,6 @@ html {
     background-color: $el-color-success-light-9 !important;
   }
 }
-
 
 // Content (скролл)
 
@@ -145,5 +146,20 @@ html {
     &::-webkit-scrollbar-thumb {
       background-color: $el-color-primary-light-8;
     }
+  }
+}
+
+// Уволенные
+
+.fixed-collapse {
+  .el-collapse-item__arrow {
+    transform: rotate(-90deg);
+    margin-right: 16px;
+    color: $el-text-color-disabled;
+    font-size: 14px;
+  }
+  
+  .el-collapse-item.is-active .el-collapse-item__arrow {
+    transform: rotate(90deg);
   }
 }

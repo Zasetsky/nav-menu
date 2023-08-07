@@ -24,7 +24,7 @@
           <router-link
             v-if="isNotEmployeePage"
             class="employee__info__name-wrapper__icon-wrapper"
-            to="/employee"
+            to="/employees"
           >
             <i class="el-icon-edit employee__info__name-wrapper--edit-icon"></i>
           </router-link>

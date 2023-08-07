@@ -19,6 +19,7 @@ const state: State = {
           birthday: "22-07-2023",
           isOnline: true,
           dates: getCurrentMonthDates(),
+          isFired: false,
         },
         {
           id: 2,
@@ -27,6 +28,7 @@ const state: State = {
           birthday: "25-07-2023",
           isOnline: false,
           dates: getCurrentMonthDates(),
+          isFired: false,
         },
       ],
     },
@@ -41,6 +43,7 @@ const state: State = {
           birthday: "19-07-2023",
           isOnline: true,
           dates: getCurrentMonthDates(),
+          isFired: false,
         },
         {
           id: 4,
@@ -49,6 +52,7 @@ const state: State = {
           birthday: "27-07-2023",
           isOnline: true,
           dates: getCurrentMonthDates(),
+          isFired: false,
         },
       ],
     },
@@ -63,6 +67,7 @@ const state: State = {
           birthday: "28-07-2023",
           isOnline: true,
           dates: getCurrentMonthDates(),
+          isFired: false,
         },
         {
           id: 6,
@@ -71,6 +76,7 @@ const state: State = {
           birthday: "24-07-2023",
           isOnline: true,
           dates: getCurrentMonthDates(),
+          isFired: false,
         },
         {
           id: 7,
@@ -79,6 +85,7 @@ const state: State = {
           birthday: "29-07-2023",
           isOnline: true,
           dates: getCurrentMonthDates(),
+          isFired: false,
         },
         {
           id: 8,
@@ -87,6 +94,7 @@ const state: State = {
           birthday: "31-07-2023",
           isOnline: false,
           dates: getCurrentMonthDates(),
+          isFired: false,
         },
       ],
     },
@@ -101,6 +109,7 @@ const state: State = {
           birthday: "03-08-2023",
           isOnline: true,
           dates: getCurrentMonthDates(),
+          isFired: false,
         },
         {
           id: 10,
@@ -109,6 +118,7 @@ const state: State = {
           birthday: "24-07-2023",
           isOnline: true,
           dates: getCurrentMonthDates(),
+          isFired: true,
         },
         {
           id: 11,
@@ -117,6 +127,7 @@ const state: State = {
           birthday: "29-07-2023",
           isOnline: true,
           dates: getCurrentMonthDates(),
+          isFired: true,
         },
         {
           id: 12,
@@ -125,6 +136,7 @@ const state: State = {
           birthday: "31-07-2023",
           isOnline: false,
           dates: getCurrentMonthDates(),
+          isFired: true,
         },
         {
           id: 13,
@@ -133,6 +145,7 @@ const state: State = {
           birthday: "28-07-2023",
           isOnline: false,
           dates: getCurrentMonthDates(),
+          isFired: true,
         },
         {
           id: 14,
@@ -141,6 +154,7 @@ const state: State = {
           birthday: "24-07-2023",
           isOnline: true,
           dates: getCurrentMonthDates(),
+          isFired: true,
         },
         {
           id: 15,
@@ -149,6 +163,7 @@ const state: State = {
           birthday: "29-07-2023",
           isOnline: true,
           dates: getCurrentMonthDates(),
+          isFired: true,
         },
         {
           id: 16,
@@ -157,6 +172,7 @@ const state: State = {
           birthday: "31-07-2023",
           isOnline: false,
           dates: getCurrentMonthDates(),
+          isFired: true,
         },
       ],
     },
@@ -165,6 +181,18 @@ const state: State = {
 
 const getters = {
   getAllDepartments: (state: State) => state.departments,
+
+  getAllDismissed: (state: State) => {
+    const dismissedEmployees = [];
+    for (const department of state.departments) {
+      for (const employee of department.employees) {
+        if (employee.isFired) {
+          dismissedEmployees.push(employee);
+        }
+      }
+    }
+    return dismissedEmployees;
+  },
 };
 
 const mutations = {

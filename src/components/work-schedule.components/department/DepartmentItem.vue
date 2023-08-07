@@ -23,7 +23,11 @@
               :key="employee.id"
               class="department__employee-row"
             >
-              <employee-row :employee="employee" :index="index" />
+              <employee-row
+                v-if="!employee.isFired"
+                :employee="employee"
+                :index="index"
+              />
             </div>
           </div>
         </transition>
@@ -66,8 +70,9 @@ export default defineComponent({
     };
 
     const onlineEmployeesCount = computed(() => {
-      return props.department.employees.filter((employee) => employee.isOnline)
-        .length;
+      return props.department.employees.filter(
+        (employee) => employee.isOnline && !employee.isFired
+      ).length;
     });
 
     return {
@@ -122,10 +127,16 @@ export default defineComponent({
   }
 }
 
+.department:first-child {
+  &.settings {
+    padding-top: 60px;
+  }
+}
+
 .department:last-child {
   padding-bottom: 10px;
   &.settings {
-    padding-bottom: 20px;
+    padding-bottom: 70px;
   }
 }
 .slide-fade-enter-from {
