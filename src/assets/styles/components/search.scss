@@ -157,10 +157,10 @@
     }
 
     &:hover {
-      scrollbar-color: $el-color-primary-light-8 transparent; /* для Firefox */
+      scrollbar-color: rgba(144, 146, 152, 0.3) transparent; /* для Firefox */
 
       &::-webkit-scrollbar-thumb {
-        background-color: $el-color-primary-light-8;
+        background-color: rgba(144, 146, 152, 0.3);
       }
     }
 
