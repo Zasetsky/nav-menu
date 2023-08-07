@@ -35,6 +35,7 @@
                   (!isIntoFired && !employee.isFired)
                 "
                 :employee="employee"
+                :isIntoFired="isIntoFired"
                 :index="index"
               />
             </div>
@@ -42,7 +43,7 @@
         </transition>
       </el-collapse-item>
     </el-collapse>
-    <p class="department__isOnline">
+    <p v-if="!isIntoFired" class="department__isOnline">
       Онлайн: <span>{{ onlineEmployeesCount }}</span
       >/<span>{{ totalEmployees }}</span>
     </p>
@@ -85,30 +86,23 @@ export default defineComponent({
     };
 
     const onlineEmployeesCount = computed(() => {
-      if (props.isIntoFired) {
-        // Если isIntoFired == true, подсчитываем онлайн сотрудников с isFired == true
-        return props.department.employees.filter(
-          (employee) => employee.isOnline && employee.isFired
-        ).length;
-      } else {
+      if (!props.isIntoFired) {
         // Если isIntoFired == false, подсчитываем онлайн сотрудников с isFired == false
         return props.department.employees.filter(
           (employee) => employee.isOnline && !employee.isFired
         ).length;
       }
+      return 0; // Вернем 0, если isIntoFired == true
     });
 
     const totalEmployees = computed(() => {
-      if (props.isIntoFired) {
-        // Если isIntoFired == true, подсчитываем всех сотрудников с isFired == true
-        return props.department.employees.filter((employee) => employee.isFired)
-          .length;
-      } else {
+      if (!props.isIntoFired) {
         // Если isIntoFired == false, подсчитываем всех сотрудников с isFired == false
         return props.department.employees.filter(
           (employee) => !employee.isFired
         ).length;
       }
+      return 0; // Вернем 0, если isIntoFired == true
     });
 
     return {

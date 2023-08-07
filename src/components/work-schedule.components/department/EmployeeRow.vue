@@ -1,7 +1,7 @@
 <template>
   <div class="employee-row">
     <div class="employee-row--info">
-      <EmployeeInfo :employee="employee" />
+      <EmployeeInfo :employee="employee" :isIntoFired="isIntoFired" />
     </div>
     <div v-if="isNotEmployeePage" class="employee-row--day">
       <EmployeeDays :employee="employee" :index="index" />
@@ -28,6 +28,11 @@ export default defineComponent({
     index: {
       type: Number,
       required: true,
+    },
+
+    isIntoFired: {
+      type: Boolean,
+      default: false,
     },
   },
 

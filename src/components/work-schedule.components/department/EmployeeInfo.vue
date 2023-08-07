@@ -1,15 +1,14 @@
 <template>
-  <!-- :style="!isNotEmployeePage ? { 'margin-top': '10px' } : {}" -->
-  <div class="employee">
+  <div class="employee" :style="isIntoFired ? { 'margin-bottom': '10px' } : {}">
     <div class="employee__card">
       <el-avatar class="employee--avatar" shape="square">
         <div
           class="employee--avatar--online-indicator"
-          v-show="employee.isOnline"
+          v-if="employee.isOnline && !isIntoFired"
         ></div>
         <div
           class="employee--avatar--offline-indicator"
-          v-show="!employee.isOnline"
+          v-if="!employee.isOnline && !isIntoFired"
         ></div>
       </el-avatar>
       <div class="employee__info">
@@ -33,7 +32,7 @@
       </div>
     </div>
     <!-- v-if="isNotEmployeePage" -->
-    <p class="employee--success">
+    <p v-if="!isIntoFired" class="employee--success">
       {{ successAndWarningStatuses.length
       }}<span class="employee--backslash">/</span>
       <span class="employee--danger">{{ dangerStatuses.length }}</span>
@@ -51,6 +50,11 @@ export default defineComponent({
     employee: {
       type: Object as () => Employee,
       required: true,
+    },
+
+    isIntoFired: {
+      type: Boolean,
+      default: false,
     },
   },
 

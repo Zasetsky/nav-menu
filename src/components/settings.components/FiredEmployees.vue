@@ -7,7 +7,7 @@
             <h3 class="custom-title">Уволенные</h3>
           </div>
         </template>
-        <el-scrollbar style="height: 84.5vh">
+        <el-scrollbar class="custom-scrollbar">
           <department-list :isIntoFired="true" />
         </el-scrollbar>
       </el-collapse-item>
@@ -48,6 +48,32 @@ export default defineComponent({
 
   .custom-toggle-icon {
     margin-right: 16px;
+  }
+
+  .custom-scrollbar {
+    @media (min-width: 768px) {
+      height: 86vh;
+    }
+
+    @media (min-width: 820px) {
+      height: 88vh;
+    }
+
+    @media (min-width: 1024px) {
+      height: 76vh;
+    }
+
+    @media (min-width: 1280px) {
+      height: 80vh;
+    }
+
+    @media (min-width: 1600px) {
+      height: 83vh;
+    }
+
+    @media (min-width: 1920px) {
+      height: 84.5vh;
+    }
   }
 }
 </style>
