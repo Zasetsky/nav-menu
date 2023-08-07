@@ -1,11 +1,13 @@
-import { ref, onMounted, onUnmounted } from "vue";
+import { ref, Ref, onMounted, onUnmounted } from "vue";
 
-export default function useSettingsVisibility() {
-  const isSettingsVisible = ref(false);
-
+export default function useSettingsVisibility(isSettingsVisible: Ref<boolean>) {
   const openSettings = (event: Event) => {
-    isSettingsVisible.value = !isSettingsVisible.value;
+    isSettingsVisible.value = true;
     event.stopPropagation();
+  };
+
+  const closeSettings = () => {
+    isSettingsVisible.value = false;
   };
 
   const clickOutsideHandler = () => {
@@ -25,5 +27,6 @@ export default function useSettingsVisibility() {
   return {
     isSettingsVisible,
     openSettings,
+    closeSettings,
   };
 }

@@ -187,7 +187,11 @@
       </div>
     </el-menu>
 
-    <SettingSubMenu :visible="isSettingsVisible" :isCollapsed="isCollapsed" />
+    <SettingSubMenu
+      :isCollapsed="isCollapsed"
+      :isSettingsVisible="isSettingsVisible"
+      @closeSettings="closeSettings"
+    />
   </div>
 </template>
 
@@ -227,8 +231,10 @@ export default defineComponent({
     const store = useStore();
     const unreadCount = ref(12); // Здесь нужно поменять на реальные данные с сервера
     const socket = inject("socket") as Socket;
+    const isSettingsVisible = ref(false);
 
-    const { isSettingsVisible, openSettings } = useSettingsVisibility();
+    const { openSettings, closeSettings } =
+      useSettingsVisibility(isSettingsVisible);
 
     const isCollapsed = computed(() => {
       return store.getters["LocalStates/getIsCollapsed"];
@@ -239,7 +245,6 @@ export default defineComponent({
     });
 
     const isActiveSettings = computed(() => {
-      // Здесь приведены примеры маршрутов. Замените их на фактические маршруты, которые вы считаете пунктами меню.
       const settingsRoutes = ["/employees", "/absences", "/deal-distribution"];
       return settingsRoutes.includes(route.path);
     });
@@ -290,6 +295,7 @@ export default defineComponent({
       settingsIconClass,
       unreadCount,
       openSettings,
+      closeSettings,
       toggleCollapse,
       navigateTo,
     };

@@ -1,6 +1,6 @@
 <template>
   <div
-    v-if="visible"
+    v-if="isSettingsVisible"
     class="settings-submenu"
     :class="{ 'settings-submenu--collapsed': isCollapsed }"
     @click.stop
@@ -10,6 +10,7 @@
         class="settings-submenu__item"
         to="/employees"
         active-class="active"
+        @click="$emit('closeSettings')"
       >
         <i class="settings-submenu__item-icon"><employees_icon /></i>
         <span class="settings-submenu__item-text">Сотрудники</span>
@@ -42,12 +43,12 @@ export default defineComponent({
   },
 
   props: {
-    visible: {
+    isCollapsed: {
       type: Boolean,
       required: true,
     },
 
-    isCollapsed: {
+    isSettingsVisible: {
       type: Boolean,
       required: true,
     },
