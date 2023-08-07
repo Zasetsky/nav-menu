@@ -1,5 +1,11 @@
 <template>
-  <div class="department" :class="{ settings: !isNotEmployeePage }">
+  <div
+    class="department"
+    :class="{
+      settings: !isNotEmployeePage && !isIntoFired,
+      fired: isIntoFired,
+    }"
+  >
     <el-collapse v-model="isCollapsed" @change="handleCollapseChange">
       <el-collapse-item :name="department.name">
         <template #title>
@@ -24,7 +30,10 @@
               class="department__employee-row"
             >
               <employee-row
-                v-if="!employee.isFired"
+                v-if="
+                  (isIntoFired && employee.isFired) ||
+                  (!isIntoFired && !employee.isFired)
+                "
                 :employee="employee"
                 :index="index"
               />
@@ -35,7 +44,7 @@
     </el-collapse>
     <p class="department__isOnline">
       Онлайн: <span>{{ onlineEmployeesCount }}</span
-      >/<span>{{ department.employees.length }}</span>
+      >/<span>{{ totalEmployees }}</span>
     </p>
     <hr />
   </div>
@@ -55,7 +64,13 @@ export default defineComponent({
       type: Object as () => Department,
       required: true,
     },
+
     isLastItem: {
+      type: Boolean,
+      default: false,
+    },
+
+    isIntoFired: {
       type: Boolean,
       default: false,
     },
@@ -70,15 +85,37 @@ export default defineComponent({
     };
 
     const onlineEmployeesCount = computed(() => {
-      return props.department.employees.filter(
-        (employee) => employee.isOnline && !employee.isFired
-      ).length;
+      if (props.isIntoFired) {
+        // Если isIntoFired == true, подсчитываем онлайн сотрудников с isFired == true
+        return props.department.employees.filter(
+          (employee) => employee.isOnline && employee.isFired
+        ).length;
+      } else {
+        // Если isIntoFired == false, подсчитываем онлайн сотрудников с isFired == false
+        return props.department.employees.filter(
+          (employee) => employee.isOnline && !employee.isFired
+        ).length;
+      }
+    });
+
+    const totalEmployees = computed(() => {
+      if (props.isIntoFired) {
+        // Если isIntoFired == true, подсчитываем всех сотрудников с isFired == true
+        return props.department.employees.filter((employee) => employee.isFired)
+          .length;
+      } else {
+        // Если isIntoFired == false, подсчитываем всех сотрудников с isFired == false
+        return props.department.employees.filter(
+          (employee) => !employee.isFired
+        ).length;
+      }
     });
 
     return {
       isCollapsed,
       onlineEmployeesCount,
       isNotEmployeePage,
+      totalEmployees,
       handleCollapseChange,
     };
   },
@@ -131,12 +168,21 @@ export default defineComponent({
   &.settings {
     padding-top: 60px;
   }
+
+  &.fired {
+    padding-top: 60px;
+  }
 }
 
 .department:last-child {
   padding-bottom: 10px;
   &.settings {
     padding-bottom: 70px;
+  }
+
+  &.fired {
+    margin-bottom: -20px;
+    padding-bottom: 0;
   }
 }
 .slide-fade-enter-from {

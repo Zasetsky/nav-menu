@@ -152,13 +152,20 @@ html {
 // Уволенные
 
 .fixed-collapse {
+  .el-collapse-item__content {
+    padding-bottom: 0;
+  }
+  .el-scrollbar__bar.is-horizontal {
+    display: none;
+  }
+
   .el-collapse-item__arrow {
     transform: rotate(-90deg);
     margin-right: 16px;
     color: $el-text-color-disabled;
     font-size: 14px;
   }
-  
+
   .el-collapse-item.is-active .el-collapse-item__arrow {
     transform: rotate(90deg);
   }

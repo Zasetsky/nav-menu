@@ -45,6 +45,7 @@ export default defineComponent({
   color: $el-color-white;
   font-size: 12px;
   bottom: 0;
+  z-index: 9999;
   padding: 10px;
   background-color: $el-color-primary;
 }

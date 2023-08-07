@@ -1,13 +1,14 @@
 <template>
   <div class="department-list">
-    <div class="search" ref="stickySearch">
-      <EmployeeSearch v-model="selectedEmployees" />
+    <div class="search">
+      <EmployeeSearch v-model="selectedEmployees" :isIntoFired="isIntoFired" />
     </div>
-    <div class="departments">
+    <div class="departments" :class="{ isFired: isIntoFired }">
       <DepartmentItem
         v-for="(department, index) in filteredDepartments"
         :key="department.id"
         :department="department"
+        :isIntoFired="isIntoFired"
         :isLastItem="index === filteredDepartments.length - 1"
       />
     </div>
@@ -15,7 +16,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, computed, onMounted, onUnmounted } from "vue";
+import { defineComponent, ref, computed } from "vue";
 import DepartmentItem from "./DepartmentItem.vue";
 import EmployeeSearch from "./EmployeeSearch.vue";
 import { Department, Employee } from "@/types";
@@ -26,7 +27,15 @@ export default defineComponent({
     DepartmentItem,
     EmployeeSearch,
   },
-  setup() {
+
+  props: {
+    isIntoFired: {
+      type: Boolean,
+      default: false,
+    },
+  },
+
+  setup(props) {
     const selectedEmployees = ref<Employee[]>([]);
     const stickySearch = ref<HTMLElement | null>(null);
     const store = useStore();
@@ -36,10 +45,23 @@ export default defineComponent({
     );
 
     const filteredDepartments = computed(() => {
-      if (selectedEmployees.value.length === 0) {
-        return departments.value;
-      } else {
-        return departments.value
+      let departmentsToFilter = departments.value;
+
+      // Если isIntoFired равно true, то фильтруем отделы и сотрудников по полю isFired
+      if (props.isIntoFired) {
+        departmentsToFilter = departmentsToFilter
+          .map((department: Department) => ({
+            ...department,
+            employees: department.employees.filter(
+              (employee: Employee) => employee.isFired
+            ),
+          }))
+          .filter((department: Department) => department.employees.length);
+      }
+
+      // Если есть выбранные сотрудники, то фильтруем отделы по этим сотрудникам
+      if (selectedEmployees.value.length > 0) {
+        departmentsToFilter = departmentsToFilter
           .map((department: Department) => ({
             ...department,
             employees: department.employees.filter((employee: Employee) =>
@@ -48,28 +70,9 @@ export default defineComponent({
           }))
           .filter((department: Department) => department.employees.length);
       }
+
+      return departmentsToFilter;
     });
-
-    // const updateSearchPosition = () => {
-    //   if (stickySearch.value) {
-    //     const stickyTop = stickySearch.value.getBoundingClientRect().top;
-    //     if (window.scrollY > stickyTop) {
-    //       stickySearch.value.style.position = "fixed";
-    //       stickySearch.value.style.top = "0";
-    //       stickySearch.value.style.marginLeft = "4px";
-    //     } else {
-    //       stickySearch.value.style.position = "static";
-    //     }
-    //   }
-    // };
-
-    // onMounted(() => {
-    //   window.addEventListener("scroll", updateSearchPosition);
-    // });
-
-    // onUnmounted(() => {
-    //   window.removeEventListener("scroll", updateSearchPosition);
-    // });
 
     return {
       selectedEmployees,
@@ -96,11 +99,15 @@ export default defineComponent({
     padding: 14px;
     border-bottom: 1px solid $el-border-color;
     background-color: $el-color-success-light-9;
-    z-index: 99999;
+    z-index: 500;
   }
 
   .departments {
     margin-top: 45px;
+
+    &.isFired {
+      margin-top: 0;
+    }
   }
 }
 </style>

@@ -127,6 +127,11 @@ export default defineComponent({
       type: Array as () => Employee[],
       default: () => [],
     },
+
+    isIntoFired: {
+      type: Boolean,
+      default: false,
+    },
   },
 
   emits: ["update:modelValue"],
@@ -155,14 +160,23 @@ export default defineComponent({
       departments.value
         .map((department: Department) => ({
           ...department,
-          employees: department.employees.filter(
-            (employee: Employee) =>
-              employee.name
-                .toLowerCase()
-                .includes(search.value.toLowerCase()) &&
-              !selectedEmployees.value.includes(employee)
-          ),
+          employees: department.employees
+            .filter(
+              (employee: Employee) =>
+                // Сначала фильтруем сотрудников по isFired
+                (props.isIntoFired && employee.isFired) ||
+                (!props.isIntoFired && !employee.isFired)
+            )
+            // Затем фильтруем по имени
+            .filter(
+              (employee: Employee) =>
+                employee.name
+                  .toLowerCase()
+                  .includes(search.value.toLowerCase()) &&
+                !selectedEmployees.value.includes(employee)
+            ),
         }))
+        // Убираем отделы без подходящих сотрудников
         .filter((department: Department) => department.employees.length)
     );
 
