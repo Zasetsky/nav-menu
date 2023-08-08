@@ -59,7 +59,6 @@
             <el-menu-item
               :class="isCollapsed ? 'menu__item-collapsed' : 'menu__item'"
               index="/"
-              :model-value="activeIndex === '/'"
               @click="navigateTo"
             >
               <i
@@ -71,6 +70,34 @@
                 :class="{ 'menu__label-active': activeIndex === '/' }"
                 v-show="!isCollapsed"
                 >График работы</span
+              >
+            </el-menu-item>
+          </el-tooltip>
+          <el-tooltip
+            :disabled="!isCollapsed"
+            popper-class="menu-custom-tooltip"
+            effect="dark"
+            content="Структура компании"
+            placement="right"
+            :show-after="500"
+          >
+            <el-menu-item
+              :class="isCollapsed ? 'menu__item-collapsed' : 'menu__item'"
+              index="/company-structure"
+              @click="navigateTo"
+            >
+              <i :class="isCollapsed ? 'menu__icon-collapsed' : 'menu__icon'">
+                <company_structure
+                  :is-active="activeIndex === '/company-structure'"
+                />
+              </i>
+              <span
+                class="menu__label"
+                :class="{
+                  'menu__label-active': activeIndex === '/company-structure',
+                }"
+                v-show="!isCollapsed"
+                >Структура компании</span
               >
             </el-menu-item>
           </el-tooltip>
@@ -211,6 +238,7 @@ import {
   building_icon,
   double_arrows_menu_icon,
   knowledge_base_icon,
+  company_structure,
 } from "@/assets/icons/index";
 import useSettingsVisibility from "@/composables/useSettingsVisibility";
 import { useStore } from "vuex";
@@ -223,6 +251,7 @@ export default defineComponent({
     building_icon,
     double_arrows_menu_icon,
     knowledge_base_icon,
+    company_structure,
   },
 
   setup() {

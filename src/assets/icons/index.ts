@@ -19,3 +19,4 @@ export { default as birthday_day_cell_icon } from "./birthday-day-cell-icon.vue"
 export { default as holliday_info_icon } from "./holliday-info-icon.vue";
 export { default as birthday_icon } from "./birthday-icon.vue";
 export { default as knowledge_base_icon } from "./knowledge-base-icon.vue";
+export { default as company_structure } from "./company-structure.vue";
