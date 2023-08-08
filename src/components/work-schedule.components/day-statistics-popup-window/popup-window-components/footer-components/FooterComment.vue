@@ -92,7 +92,7 @@ export default defineComponent({
 <style scoped lang="scss">
 .footer__comment {
   cursor: default;
-  color: $el-text-color-regular;
+  color: var(--el-text-color-regular);
   font: 8px;
   line-height: 8px;
   word-break: keep-all;
@@ -104,16 +104,16 @@ export default defineComponent({
   border-radius: 4px;
   font-size: 10px;
   font-weight: bold;
-  color: $el-color-primary;
-  background-color: $el-color-success-light-9;
-  border: 1px solid $el-color-primary;
+  color: var(--el-color-primary);
+  background-color: var(--el-color-success-light-9);
+  border: 1px solid var(--el-color-primary);
   cursor: pointer;
   text-align: center;
   margin-top: 10px;
 
   &:hover {
-    color: $el-color-success-light-9;
-    background-color: $el-color-primary;
+    color: var(--el-color-success-light-9);
+    background-color: var(--el-color-primary);
   }
 }
 
@@ -122,16 +122,16 @@ export default defineComponent({
   align-items: center;
   justify-content: space-between;
   font-size: 8px;
-  background-color: $el-color-success-light-8;
+  background-color: var(--el-color-success-light-8);
   padding: 7px 10px;
   margin-top: 10px;
   width: 190px;
   border-radius: 4px;
 
   &__none {
-    color: $el-text-color-secondary;
+    color: var(--el-text-color-secondary);
     font-size: 8px;
-    background-color: $el-color-success-light-8;
+    background-color: var(--el-color-success-light-8);
     padding: 11px 10px;
     width: 190px;
     border-radius: 4px;
@@ -145,7 +145,7 @@ export default defineComponent({
   cursor: pointer;
 
   &:hover {
-    color: $el-color-success;
+    color: var(--el-color-success);
   }
 }
 </style>

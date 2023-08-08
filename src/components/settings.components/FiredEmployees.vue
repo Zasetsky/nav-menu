@@ -43,7 +43,7 @@ export default defineComponent({
   .custom-title {
     margin-left: 20px;
     font-size: 14px;
-    color: $el-color-primary-dark-2;
+    color: var(--el-color-primary-dark-2);
   }
 
   .custom-toggle-icon {

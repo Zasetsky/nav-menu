@@ -65,7 +65,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, computed, ref, onMounted, onUnmounted } from "vue";
+import { defineComponent, computed, ref } from "vue";
 import { useCalendar } from "@/composables/useCalendar";
 import DatePicker from "./DatePicker.vue";
 import CalendarLegend from "./CalendarLegend.vue";

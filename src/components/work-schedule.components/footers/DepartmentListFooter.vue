@@ -42,11 +42,11 @@ export default defineComponent({
 .department-footer {
   position: fixed;
   width: 16.261rem;
-  color: $el-color-white;
+  color: var(--el-color-white);
   font-size: 12px;
   bottom: 0;
   z-index: 9999;
   padding: 10px;
-  background-color: $el-color-primary;
+  background-color: var(--el-color-primary);
 }
 </style>

@@ -19,8 +19,8 @@
       right: -2px;
       width: 8px;
       height: 8px;
-      border: 2px solid $el-fill-color-light;
-      background-color: $el-color-success;
+      border: 2px solid var(--el-fill-color-light);
+      background-color: var(--el-color-success);
       border-radius: 50%;
     }
 
@@ -30,15 +30,15 @@
       right: -2px;
       width: 8px;
       height: 8px;
-      border: 2px solid $el-fill-color-light;
-      background-color: $el-color-danger;
+      border: 2px solid var(--el-fill-color-light);
+      background-color: var(--el-color-danger);
       border-radius: 50%;
     }
   }
 
   &__info {
     margin-left: 10px;
-    color: $el-text-color-primary;
+    color: var(--el-text-color-primary);
 
     &__name-wrapper {
       display: flex;
@@ -60,11 +60,11 @@
       &--edit-icon {
         cursor: pointer;
         font-size: 12px;
-        color: $el-text-color-disabled;
+        color: var(--el-text-color-disabled);
         margin-left: 5px;
 
         &:hover {
-          color: $el-color-success;
+          color: var(--el-color-success);
           font-weight: 600; /* Под вопросом! */
         }
       }
@@ -72,28 +72,28 @@
 
     &--phone {
       margin: 0;
-      color: $el-text-color-secondary;
+      color: var(--el-text-color-secondary);
       font-size: 10px;
 
       &::selection {
-        background:$el-color-info;
-        color: $el-color-white;
+        background:var(--el-color-info);
+        color: var(--el-color-white);
       }
     }
   }
 
   &--success {
     flex-shrink: 0;
-    color: $el-color-success;
+    color: var(--el-color-success);
     margin-right: 1rem;
     cursor: default;
   }
 
   &--backslash {
-    color: $el-text-color-disabled;
+    color: var(--el-text-color-disabled);
   }
 
   &--danger {
-    color: $el-color-danger;
+    color: var(--el-color-danger);
   }
 }

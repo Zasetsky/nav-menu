@@ -138,7 +138,7 @@ export default defineComponent({
     margin: 0;
     height: 32px;
     font-size: 14px;
-    color: $el-color-primary-dark-2;
+    color: var(--el-color-primary-dark-2);
   }
 
   &__content {
@@ -147,14 +147,14 @@ export default defineComponent({
 
   &__isOnline {
     font-weight: 600;
-    color: $el-text-color-regular;
+    color: var(--el-text-color-regular);
     font-size: 12px;
     cursor: default;
   }
 
   hr {
     border: none;
-    border-top: 1px solid $el-border-color;
+    border-top: 1px solid var(--el-border-color);
   }
 }
 
@@ -164,7 +164,7 @@ export default defineComponent({
   }
 
   &.fired {
-    padding-top: 70px;
+    padding-top: 90px;
   }
 }
 

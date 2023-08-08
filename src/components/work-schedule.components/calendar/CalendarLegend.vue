@@ -83,14 +83,14 @@ export default defineComponent({
 <style lang="scss" scoped>
 .calendar-legend {
   position: relative;
-  color: $el-text-color-regular;
+  color: var(--el-text-color-regular);
   cursor: default;
 
   &__selected {
     text-transform: uppercase;
     font-size: 18px;
     font-weight: 600;
-    color: $el-text-color-primary;
+    color: var(--el-text-color-primary);
     cursor: pointer;
   }
 
@@ -111,8 +111,8 @@ export default defineComponent({
 
   &__body {
     position: absolute;
-    border: 1px solid $el-color-info;
-    background-color: $el-color-white;
+    border: 1px solid var(--el-color-info);
+    background-color: var(--el-color-white);
     padding: 12px 10px;
     right: -23px;
     z-index: 1;
@@ -129,12 +129,12 @@ export default defineComponent({
       transform: translateX(50%);
       width: 14px;
       height: 14px;
-      background-color: $el-color-white;
+      background-color: var(--el-color-white);
     }
 
     &::before {
       top: -7px;
-      background-color: $el-color-info;
+      background-color: var(--el-color-info);
       z-index: 1;
     }
 

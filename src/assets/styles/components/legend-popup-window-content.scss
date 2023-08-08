@@ -4,7 +4,7 @@
 
   hr {
     border: none;
-    border-top: 1px solid $el-color-info-light-8;
+    border-top: 1px solid var(--el-color-info-light-8);
     width: 440px;
   }
 
@@ -59,19 +59,19 @@
     }
 
     &__success--circle {
-      background-color: $el-color-success;
+      background-color: var(--el-color-success);
     }
 
     &__empty--circle {
-      border: 1px solid $el-color-success;
+      border: 1px solid var(--el-color-success);
     }
 
     &__warning--circle {
-      background-color: $el-color-warning;
+      background-color: var(--el-color-warning);
     }
 
     &__danger--circle {
-      background-color: $el-color-danger;
+      background-color: var(--el-color-danger);
     }
   }
 
@@ -107,42 +107,42 @@
 
     &__vacation--square,
     &__work-day-on-vacation--square {
-      background-color: $el-color-primary;
+      background-color: var(--el-color-primary);
 
       &--circle {
-        border: 1px dashed $el-color-success;
+        border: 1px dashed var(--el-color-success);
       }
     }
 
     &__business-trip--square,
     &__work-day-on-business-trip--square {
-      background-color: $el-color-info;
+      background-color: var(--el-color-info);
 
       &--circle {
-        border: 1px dashed $el-color-success-light-3;
+        border: 1px dashed var(--el-color-success-light-3);
       }
     }
 
     &__sick-day--square,
     &__work-day-on-sick-day--square {
-      background-color: $el-color-category-top;
+      background-color: var(--el-color-category-top);
 
       &--circle {
-        border: 1px dashed $el-color-info;
+        border: 1px dashed var(--el-color-info);
       }
     }
 
     &__personal-day--square,
     &__work-day-on-personal-day--square {
-      background-color: $el-fill-color-darker;
+      background-color: var(--el-fill-color-darker);
 
       &--circle {
-        border: 1px dashed $el-color-primary;
+        border: 1px dashed var(--el-color-primary);
       }
     }
 
     &__maternity-leave--square {
-      background-color: $el-color-info-light-9;
+      background-color: var(--el-color-info-light-9);
     }
 
     // Отпускные дни

@@ -154,7 +154,7 @@ export default defineComponent({
 @import "@/assets/styles/components/pickers.scss";
 
 .year-picker {
-  @include picker(years, $el-text-color-secondary);
+  @include picker(years, var(--el-text-color-secondary));
   margin-left: 0.5rem;
 }
 </style>

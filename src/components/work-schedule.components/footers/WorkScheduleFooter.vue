@@ -96,8 +96,8 @@ export default defineComponent({
   bottom: 0;
   padding: 10px;
   z-index: 9999;
-  color: $el-color-white;
-  background-color: $el-color-primary;
+  color: var(--el-color-white);
+  background-color: var(--el-color-primary);
 
   span:not(:first-child) {
     margin-left: 40px;
@@ -109,8 +109,8 @@ export default defineComponent({
     bottom: 20px;
     padding: 10px;
     border: none;
-    background-color: $el-color-primary;
-    color: $el-color-white;
+    background-color: var(--el-color-primary);
+    color: var(--el-color-white);
     border-radius: 4px;
     cursor: pointer;
     z-index: 9999;

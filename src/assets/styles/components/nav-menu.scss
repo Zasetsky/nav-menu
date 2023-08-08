@@ -7,11 +7,11 @@
     right: 10px;
     font-size: 12px;
     line-height: 16px;
-    color: $el-color-white;
+    color: var(--el-color-white);
     text-align: center;
     border-radius: 10px;
     padding: 2px 6px 2px 6px;
-    background-color: $el-color-success;
+    background-color: var(--el-color-success);
   }
 
   .unread-count-dot {
@@ -20,13 +20,13 @@
     height: 6.5px;
     top: 10.8px;
     right: 11.7px;
-    background-color: $el-color-success;
+    background-color: var(--el-color-success);
     border-radius: 50%;
   }
 
   .el-menu-item.is-active {
-    background-color: $el-color-success-light-8;
-    color: $el-color-primary;
+    background-color: var(--el-color-success-light-8);
+    color: var(--el-color-primary);
   }
 
   &__list:not(.el-menu--collapse) {
@@ -77,7 +77,7 @@
     cursor: pointer;
 
     &:hover {
-      background-color: $el-color-success-light-9;
+      background-color: var(--el-color-success-light-9);
       border-radius: 0.5rem;
     }
   }
@@ -90,7 +90,7 @@
     font-weight: 900 !important;
     font-size: 1.5rem;
     margin-left: 0.3125rem;
-    color: $el-color-black;
+    color: var(--el-color-black);
   }
 
   &__icon-colapse {
@@ -102,7 +102,7 @@
     width: 1.5rem;
 
     &:hover {
-      background-color: $el-color-success-light-9;
+      background-color: var(--el-color-success-light-9);
       border-radius: 0.5rem;
     }
   }
@@ -120,7 +120,7 @@
     width: 104%;
 
     &:hover {
-      background-color: $el-color-success-light-9;
+      background-color: var(--el-color-success-light-9);
     }
   }
 
@@ -136,7 +136,7 @@
     width: 50%;
 
     &:hover {
-      background-color: $el-color-success-light-9;
+      background-color: var(--el-color-success-light-9);
     }
   }
 
@@ -147,20 +147,20 @@
 
   .is-active {
     cursor: default;
-    color: $el-color-primary;
+    color: var(--el-color-primary);
   }
 
   &__icon {
     position: absolute;
     left: 0.625rem;
-    color: $el-text-color-primary;
+    color: var(--el-text-color-primary);
     font-size: 1.5rem !important;
     line-height: 1.25rem;
   }
 
   &__icon-collapsed {
     font-size: 1.5rem !important;
-    color: $el-text-color-primary;
+    color: var(--el-text-color-primary);
     line-height: 1.25rem;
   }
 
@@ -172,11 +172,11 @@
     line-height: 1.5625rem;
     font-weight: 600;
     margin-left: 1.875rem;
-    color: $el-text-color-primary;
+    color: var(--el-text-color-primary);
   }
 
   &__label-active {
-    color: $el-color-primary;
+    color: var(--el-color-primary);
   }
 
   &__label-settings {
@@ -186,11 +186,11 @@
   &__item-settings {
     margin-left: 1.0625rem;
     margin-bottom: 1.25rem;
-    border: 0.0625rem solid $el-border-color;
+    border: 0.0625rem solid var(--el-border-color);
     cursor: pointer;
 
     &:hover {
-      background-color: $el-color-success-light-9;
+      background-color: var(--el-color-success-light-9);
     }
 
     &:focus {
@@ -199,11 +199,11 @@
   }
 
   .active-settings {
-    border: 0.0625rem solid $el-color-primary;
-    background-color: $el-color-success-light-8;
+    border: 0.0625rem solid var(--el-color-primary);
+    background-color: var(--el-color-success-light-8);
   }
 
   .active-icon {
-    color: $el-color-primary;
+    color: var(--el-color-primary);
   }
 }

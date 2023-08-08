@@ -92,8 +92,8 @@ export default defineComponent({
   display: flex;
   justify-content: space-between;
   transition: width 0.3s;
-  border-bottom: 1px solid $el-border-color;
-  border-left: 1px solid $el-border-color;
+  border-bottom: 1px solid var(--el-border-color);
+  border-left: 1px solid var(--el-border-color);
   height: 48px;
 }
 </style>

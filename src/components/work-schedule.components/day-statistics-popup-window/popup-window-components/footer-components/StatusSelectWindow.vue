@@ -110,8 +110,8 @@ export default defineComponent({
   left: 113%;
   top: -22px;
   width: 218px;
-  border: 1px solid $el-color-primary;
-  background-color: $el-color-success-light-9;
+  border: 1px solid var(--el-color-primary);
+  background-color: var(--el-color-success-light-9);
   border-radius: 4px;
   padding: 20px;
   z-index: 10;
@@ -121,14 +121,14 @@ export default defineComponent({
     align-items: center;
     padding: 5px 10px;
     justify-content: flex-start;
-    color: $el-text-color-primary;
+    color: var(--el-text-color-primary);
 
     &--selected {
-      color: $el-color-primary;
+      color: var(--el-color-primary);
       cursor: default;
 
       &:hover {
-        color: $el-color-primary;
+        color: var(--el-color-primary);
       }
     }
 
@@ -136,7 +136,7 @@ export default defineComponent({
       cursor: pointer;
 
       &:hover {
-        color: $el-color-success;
+        color: var(--el-color-success);
       }
     }
 
@@ -162,7 +162,7 @@ export default defineComponent({
       right: 20px;
       height: 24px;
       width: 24px;
-      color: $el-color-primary;
+      color: var(--el-color-primary);
     }
   }
 }

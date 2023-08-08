@@ -10,6 +10,7 @@ import "@/assets/theme/index.css";
 import "normalize.css";
 import "@fontsource/roboto";
 import "@/assets/styles/main.scss";
+import "@/assets/styles/_theme.css";
 
 let initialMenuState = localStorage.getItem("menuIsCollapsed");
 if (initialMenuState === null) {

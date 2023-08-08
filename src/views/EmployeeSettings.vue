@@ -30,8 +30,8 @@ export default defineComponent({
     position: fixed;
     top: 0;
     width: 100%;
-    background-color: $el-color-white;
-    border-bottom: 1px solid $el-border-color;
+    background-color: var(--el-color-white);
+    border-bottom: 1px solid var(--el-border-color);
     padding: 1rem;
     z-index: 9999;
 
@@ -39,7 +39,7 @@ export default defineComponent({
       font-weight: 900;
       font-size: 1.5rem;
       // margin-left: 0.3125rem;
-      color: $el-color-primary;
+      color: var(--el-color-primary);
     }
   }
   &__content {

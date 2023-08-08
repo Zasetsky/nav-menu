@@ -33,18 +33,18 @@ export default defineComponent({
 .work-schedule {
   &__header {
     position: fixed;
-    background-color: $el-color-white;
+    background-color: var(--el-color-white);
     top: 0;
     width: 100%;
     z-index: 1000;
     padding: 1rem;
-    border-bottom: 1px solid $el-border-color;
+    border-bottom: 1px solid var(--el-border-color);
 
     &--title {
       font-weight: 900;
       font-size: 1.5rem;
       margin-left: 0.3125rem;
-      color: $el-color-primary;
+      color: var(--el-color-primary);
     }
   }
 

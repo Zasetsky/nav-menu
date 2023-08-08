@@ -86,8 +86,8 @@ export default defineComponent({
 <style lang="scss" scoped>
 .department-list {
   min-height: calc(100vh - 5.1rem);
-  background-color: $el-color-success-light-9;
-  border-right: 1px solid $el-border-color;
+  background-color: var(--el-color-success-light-9);
+  border-right: 1px solid var(--el-border-color);
   width: 280px;
 
   .search {
@@ -97,8 +97,8 @@ export default defineComponent({
     justify-content: center;
     margin-left: 2px;
     padding: 14px;
-    border-bottom: 1px solid $el-border-color;
-    background-color: $el-color-success-light-9;
+    border-bottom: 1px solid var(--el-border-color);
+    background-color: var(--el-color-success-light-9);
     z-index: 500;
   }
 

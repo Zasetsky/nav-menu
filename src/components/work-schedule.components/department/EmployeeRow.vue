@@ -43,7 +43,7 @@ export default defineComponent({
   },
 });
 </script>
-<!-- $el-color-success-light-9 -->
+<!-- var(--el-color-success-light-9) -->
 <style lang="scss" scoped>
 .employee-row {
   display: flex;

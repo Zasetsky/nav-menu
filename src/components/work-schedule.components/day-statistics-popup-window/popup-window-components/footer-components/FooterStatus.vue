@@ -141,7 +141,7 @@ export default defineComponent({
 .footer-status {
   position: relative;
   width: 100%;
-  color: $el-text-color-primary;
+  color: var(--el-text-color-primary);
   font-weight: bold;
   cursor: default;
 
@@ -159,7 +159,7 @@ export default defineComponent({
   }
 
   .footer-status__arrow--hover {
-    color: $el-color-success !important;
+    color: var(--el-color-success) !important;
   }
 
   .status-circle {

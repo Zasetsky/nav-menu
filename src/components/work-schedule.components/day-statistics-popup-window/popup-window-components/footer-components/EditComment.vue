@@ -90,9 +90,9 @@ export default defineComponent({
   padding-bottom: 8px;
   .el-input__inner,
   .el-textarea__inner {
-    border: 1px solid $el-color-success-light-8;
-    background-color: $el-color-success-light-9;
-    color: $el-text-color-regular;
+    border: 1px solid var(--el-color-success-light-8);
+    background-color: var(--el-color-success-light-9);
+    color: var(--el-text-color-regular);
     font-size: 8px;
     margin-top: 10px;
     width: 210px;
@@ -104,7 +104,7 @@ export default defineComponent({
     overflow: hidden;
 
     &:focus {
-      border-color: $el-color-success-light-8;
+      border-color: var(--el-color-success-light-8);
       border-radius: 4px;
       outline: none;
       box-shadow: none;
@@ -113,13 +113,13 @@ export default defineComponent({
 
   .el-input__inner::selection,
   .el-textarea__inner::selection {
-    background: $el-color-info;
-    color: $el-color-white;
+    background: var(--el-color-info);
+    color: var(--el-color-white);
   }
 
   .el-input__count,
   .el-textarea__count {
-    color: $el-color-primary !important;
+    color: var(--el-color-primary) !important;
     background-color: transparent;
     margin-right: 10px;
     font-size: 8px;

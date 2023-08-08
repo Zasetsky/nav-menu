@@ -1,6 +1,6 @@
 .employee-search {
   position: relative;
-  background-color: $el-color-white;
+  background-color: var(--el-color-white);
   width: 248px;
   font-size: 12px;
   font-weight: 600;
@@ -9,12 +9,12 @@
     display: flex;
     flex-direction: column;
     padding: 5px;
-    border: 1px solid $el-color-primary-light-8;
+    border: 1px solid var(--el-color-primary-light-8);
     border-radius: 4px;
     cursor: text;
 
     &--active {
-      border: 1px solid $el-color-primary;
+      border: 1px solid var(--el-color-primary);
       border-radius: 4px 4px 0 0;
     }
 
@@ -35,10 +35,10 @@
           display: flex;
           width: fit-content;
           align-items: center;
-          background-color: $el-color-primary-light-9;
-          border: 1px solid $el-color-primary-light-8;
+          background-color: var(--el-color-primary-light-9);
+          border: 1px solid var(--el-color-primary-light-8);
           border-radius: 4px;
-          color: $el-color-primary;
+          color: var(--el-color-primary);
           padding: 2px 0 2px 5px;
           margin-left: 5px;
           cursor: default;
@@ -54,10 +54,10 @@
           display: flex;
           align-items: center;
           justify-content: center;
-          background-color: $el-color-primary-light-9;
-          border: 1px solid $el-color-primary-light-8;
+          background-color: var(--el-color-primary-light-9);
+          border: 1px solid var(--el-color-primary-light-8);
           border-radius: 4px;
-          color: $el-color-primary;
+          color: var(--el-color-primary);
           padding: 2px 0 2px 0;
           margin-left: 10px;
           width: 30px;
@@ -75,9 +75,9 @@
             align-items: center;
             top: 150%;
             left: -10px;
-            background: $el-color-white;
+            background: var(--el-color-white);
             padding: 10px;
-            border: 1px solid $el-border-color;
+            border: 1px solid var(--el-border-color);
             border-radius: 5px;
             width: 200px;
             z-index: 1;
@@ -90,12 +90,12 @@
               transform: translateX(50%);
               width: 14px;
               height: 14px;
-              background-color: $el-color-white;
+              background-color: var(--el-color-white);
             }
 
             &::before {
               top: -7px;
-              background-color: $el-border-color;
+              background-color: var(--el-border-color);
               z-index: 1;
             }
 
@@ -132,11 +132,11 @@
     height: 252px;
     overflow-y: auto;
     overflow-x: hidden;
-    background-color: $el-color-white;
-    border-bottom: 1px solid $el-color-primary;
+    background-color: var(--el-color-white);
+    border-bottom: 1px solid var(--el-color-primary);
     border-radius: 0 0 4px 4px;
-    border-left: 1px solid $el-color-primary;
-    border-right: 1px solid $el-color-primary;
+    border-left: 1px solid var(--el-color-primary);
+    border-right: 1px solid var(--el-color-primary);
     z-index: 1;
     scrollbar-width: thin; /* Добавить для Firefox */
     scrollbar-color: transparent transparent; /* Добавить для Firefox */
@@ -166,7 +166,7 @@
 
     &__department {
       font-size: 12px;
-      color: $el-text-color-secondary;
+      color: var(--el-text-color-secondary);
       cursor: default;
 
       &--name {
@@ -176,25 +176,25 @@
         padding: 0px 10px 0px 10px;
 
         button {
-          border: 1px solid $el-color-primary-light-7;
+          border: 1px solid var(--el-color-primary-light-7);
           cursor: pointer;
           padding: 8px 15px;
           font-weight: 600;
           font-size: 12px;
-          color: $el-text-color-regular;
+          color: var(--el-text-color-regular);
           border-radius: 4px;
-          background-color: $el-color-white;
+          background-color: var(--el-color-white);
 
           &:hover {
-            background-color: $el-color-primary-light-9;
-            color: $el-color-primary;
+            background-color: var(--el-color-primary-light-9);
+            color: var(--el-color-primary);
           }
         }
       }
 
       hr {
         border: none;
-        border-top: 1px solid $el-border-color-light;
+        border-top: 1px solid var(--el-border-color-light);
       }
     }
 
@@ -202,10 +202,10 @@
       padding: 10px 0 10px 10px;
       width: 100%;
       font-size: 14px;
-      color: $el-text-color-regular;
+      color: var(--el-text-color-regular);
       cursor: pointer;
       &:hover {
-        background-color: $el-fill-color-light;
+        background-color: var(--el-fill-color-light);
       }
     }
   }
@@ -217,7 +217,7 @@
       position: absolute;
       left: 5px;
       top: 2px;
-      color: $el-text-color-disabled;
+      color: var(--el-text-color-disabled);
     }
 
     input {
@@ -228,12 +228,12 @@
       margin-left: 20px;
 
       &::selection {
-        background: $el-color-info;
-        color: $el-color-white;
+        background: var(--el-color-info);
+        color: var(--el-color-white);
       }
 
       &::placeholder {
-        color: $el-text-color-disabled;
+        color: var(--el-text-color-disabled);
       }
     }
   }

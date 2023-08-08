@@ -1,4 +1,4 @@
-import { ref, Ref, onMounted, onUnmounted } from "vue";
+import { Ref, onMounted, onUnmounted } from "vue";
 
 export default function useSettingsVisibility(isSettingsVisible: Ref<boolean>) {
   const openSettings = (event: Event) => {

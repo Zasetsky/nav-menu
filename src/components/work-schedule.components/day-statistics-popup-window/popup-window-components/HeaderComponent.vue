@@ -49,10 +49,10 @@ export default defineComponent({
 <style scoped lang="scss">
 .header {
   cursor: default;
-  border-bottom: 1px solid $el-color-primary;
+  border-bottom: 1px solid var(--el-color-primary);
   text-align: left;
   margin: 0 -13px 0 -13px;
-  color: $el-text-color-primary;
+  color: var(--el-text-color-primary);
   line-height: 0;
 
   &__item {
@@ -70,7 +70,7 @@ export default defineComponent({
   }
 
   &__item-value {
-    color: $el-text-color-regular;
+    color: var(--el-text-color-regular);
   }
 
   &__item-hours {

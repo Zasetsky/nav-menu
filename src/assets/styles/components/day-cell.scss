@@ -11,7 +11,7 @@
     width: 20px;
     height: 20px;
     bottom: -10px;
-    background-color: $el-additional-color-special;
+    background-color: var(--el-additional-color-special);
     border-radius: 50%;
   }
 
@@ -29,7 +29,7 @@
       position: absolute;
       width: 20px;
       height: 20px;
-      background-color: $el-color-success-dark-2;
+      background-color: var(--el-color-success-dark-2);
       border-radius: 50%;
     }
 
@@ -51,52 +51,52 @@
   }
 
   &-birthday {
-    border: 1px solid $el-additional-color-special;
+    border: 1px solid var(--el-additional-color-special);
   }
 
   &-vacation {
-    background-color: $el-color-primary;
+    background-color: var(--el-color-primary);
 
     .day-circle {
-      border: 1px dashed $el-color-success;
+      border: 1px dashed var(--el-color-success);
     }
   }
 
   &-business-trip {
-    background-color: $el-color-info;
+    background-color: var(--el-color-info);
 
     .day-circle {
-      border: 1px dashed $el-color-success-light-3;
+      border: 1px dashed var(--el-color-success-light-3);
     }
   }
 
   &-sick {
-    background-color: $el-color-category-top;
+    background-color: var(--el-color-category-top);
 
     .day-circle {
-      border: 1px dashed $el-color-info;
+      border: 1px dashed var(--el-color-info);
     }
   }
 
   &-personal {
-    background-color: $el-fill-color-darker;
+    background-color: var(--el-fill-color-darker);
 
     .day-circle {
-      border: 1px dashed $el-color-primary;
+      border: 1px dashed var(--el-color-primary);
     }
   }
 
   &-maternity-leave {
-    background-color: $el-color-info-light-9;
+    background-color: var(--el-color-info-light-9);
   }
 
   &-holiday {
-    background-color: $el-color-danger-light-9;
+    background-color: var(--el-color-danger-light-9);
   }
 
   &-weekend,
   &-preHoliday {
-    background-color: $el-color-success-light-9;
+    background-color: var(--el-color-success-light-9);
   }
 
   .day-circle {
@@ -106,21 +106,21 @@
     cursor: pointer;
 
     &-success {
-      background: $el-color-success;
+      background: var(--el-color-success);
     }
 
     &-warning {
-      background: $el-color-warning;
+      background: var(--el-color-warning);
     }
 
     &-danger {
-      background: $el-color-danger;
+      background: var(--el-color-danger);
     }
 
     &-future {
       cursor: default;
-      border: 1px solid $el-color-success;
-      background: $el-color-white;
+      border: 1px solid var(--el-color-success);
+      background: var(--el-color-white);
     }
   }
 }

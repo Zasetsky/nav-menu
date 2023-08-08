@@ -25,42 +25,42 @@ html {
 
 // Цвет подсказки меню
 .menu-custom-tooltip {
-  background-color: $el-color-primary !important;
+  background-color: var(--el-color-primary) !important;
   border: none !important;
 }
 
 .menu-custom-tooltip .el-popper__arrow::before {
   border: none !important;
-  background: $el-color-primary !important;
+  background: var(--el-color-primary) !important;
 }
 
 // Цвет подсказки предпразднечных дней
 .preHoliday-custom-tooltip {
-  background-color: $el-color-info !important;
+  background-color: var(--el-color-info) !important;
   border: none !important;
   margin-bottom: 5px;
 }
 
 .preHoliday-custom-tooltip .el-popper__arrow::before {
   border: none !important;
-  background: $el-color-info !important;
+  background: var(--el-color-info) !important;
 }
 
 // Цвет подсказки празднечных дней
 .holiday-custom-tooltip {
-  background-color: $el-color-danger !important;
+  background-color: var(--el-color-danger) !important;
   border: none !important;
   margin-bottom: 5px;
 }
 
 .holiday-custom-tooltip .el-popper__arrow::before {
   border: none !important;
-  background: $el-color-danger !important;
+  background: var(--el-color-danger) !important;
 }
 
 // Цвет подсказки особенных дней
 .special-day-custom-tooltip {
-  background-color: $el-color-success-dark-2 !important;
+  background-color: var(--el-color-success-dark-2) !important;
   border: none !important;
   margin-bottom: -10px;
   margin-left: 15px;
@@ -68,7 +68,7 @@ html {
 
 .special-day-custom-tooltip .el-popper__arrow::before {
   border: none !important;
-  background: $el-color-success-dark-2 !important;
+  background: var(--el-color-success-dark-2) !important;
 }
 
 // Отделы
@@ -83,7 +83,7 @@ html {
 
   .el-collapse-item__wrap {
     overflow: visible !important;
-    background-color: $el-color-success-light-9;
+    background-color: var(--el-color-success-light-9);
     border: none;
   }
 
@@ -92,7 +92,7 @@ html {
   }
 
   .el-collapse-item__header {
-    background-color: $el-color-success-light-9;
+    background-color: var(--el-color-success-light-9);
     border: none !important;
   }
 }
@@ -104,19 +104,19 @@ html {
   padding: 2px 5px 2px 5px;
   margin-left: 5px;
   font-size: 12px;
-  background-color: $el-color-success;
+  background-color: var(--el-color-success);
 }
 
 // PopupWindow
 
 .popover-custom {
   width: 250px !important;
-  border-color: $el-color-primary !important;
+  border-color: var(--el-color-primary) !important;
   padding: 0 !important;
 
   .el-popper__arrow::before {
-    border-color: $el-color-primary !important;
-    background-color: $el-color-success-light-9 !important;
+    border-color: var(--el-color-primary) !important;
+    background-color: var(--el-color-success-light-9) !important;
   }
 }
 
@@ -141,10 +141,10 @@ html {
   }
 
   &:hover {
-    scrollbar-color: $el-color-primary-light-8 transparent; /* для Firefox */
+    scrollbar-color: var(--el-color-primary-light-8) transparent; /* для Firefox */
 
     &::-webkit-scrollbar-thumb {
-      background-color: $el-color-primary-light-8;
+      background-color: var(--el-color-primary-light-8);
     }
   }
 }
@@ -162,7 +162,7 @@ html {
   .el-collapse-item__arrow {
     transform: rotate(-90deg);
     margin-right: 16px;
-    color: $el-text-color-disabled;
+    color: var(--el-text-color-disabled);
     font-size: 14px;
   }
 

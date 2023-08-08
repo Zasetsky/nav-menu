@@ -84,7 +84,7 @@ export default defineComponent({
     top: 2px;
     width: 12px;
     height: 12px;
-    background: $el-color-primary;
+    background: var(--el-color-primary);
     border-radius: 50%;
     z-index: 1;
   }
@@ -95,7 +95,7 @@ export default defineComponent({
     top: 10px;
     bottom: -10px;
     width: 2px;
-    background: $el-color-primary;
+    background: var(--el-color-primary);
   }
 
   &__timeline-content {
@@ -110,19 +110,19 @@ export default defineComponent({
     font-size: 12px;
     min-width: 50px;
     font-weight: bold;
-    color: $el-text-color-primary;
+    color: var(--el-text-color-primary);
   }
 
   &__timeline-name {
     font-size: 12px;
     font-weight: bold;
-    color: $el-text-color-regular;
+    color: var(--el-text-color-regular);
   }
 
   &__timeline-comment {
     margin-top: 2px;
     font-size: 10px;
-    color: $el-text-color-regular;
+    color: var(--el-text-color-regular);
   }
 }
 </style>

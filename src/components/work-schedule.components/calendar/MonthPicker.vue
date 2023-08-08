@@ -202,6 +202,6 @@ export default defineComponent({
 @import "@/assets/styles/components/pickers.scss";
 
 .month-picker {
-  @include picker(months, $el-text-color-primary);
+  @include picker(months, var(--el-text-color-primary));
 }
 </style>

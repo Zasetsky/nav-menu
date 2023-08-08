@@ -1,6 +1,6 @@
 @mixin picker($childClass, $selectedColor) {
   position: relative;
-  color: $el-text-color-regular;
+  color: var(--el-text-color-regular);
   cursor: default;
   z-index: 1;
 
@@ -39,8 +39,8 @@
 
   &__body {
     position: absolute;
-    border: 1px solid $el-border-color-lighter;
-    background-color: $el-color-white;
+    border: 1px solid var(--el-border-color-lighter);
+    background-color: var(--el-color-white);
     padding: 10px;
     left: -10px;
     border-radius: 4px;
@@ -56,12 +56,12 @@
       transform: translateX(-50%);
       width: 14px;
       height: 14px;
-      background-color: $el-color-white;
+      background-color: var(--el-color-white);
     }
 
     &::before {
       top: -7px;
-      background-color: $el-border-color-lighter;
+      background-color: var(--el-border-color-lighter);
       z-index: 1;
     }
 
@@ -77,7 +77,7 @@
 
     hr {
       border: none;
-      border-top: 1px solid $el-border-color-lighter;
+      border-top: 1px solid var(--el-border-color-lighter);
     }
   }
 
@@ -109,17 +109,17 @@
       cursor: pointer;
 
       &:hover {
-        color: $el-color-success;
+        color: var(--el-color-success);
         font-weight: 600;
       }
 
       &--selected {
-        color: $el-color-success;
+        color: var(--el-color-success);
         font-weight: 600;
       }
 
       &--disabled {
-        color: $el-text-color-disabled;
+        color: var(--el-text-color-disabled);
         pointer-events: none;
       }
     }

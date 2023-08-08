@@ -118,6 +118,6 @@ export default defineComponent({
   padding: 12px;
   z-index: 1;
   border-radius: 4px;
-  background-color: $el-color-success-light-9;
+  background-color: var(--el-color-success-light-9);
 }
 </style>

@@ -63,8 +63,8 @@ export default defineComponent({
   height: 9rem;
   bottom: 5rem;
   left: 1.25rem;
-  background-color: $el-color-white;
-  border: 0.0625rem solid $el-color-primary;
+  background-color: var(--el-color-white);
+  border: 0.0625rem solid var(--el-color-primary);
   box-shadow: 0rem 0.25rem 0.25rem 0rem rgba(209, 220, 222, 0.5);
   border-radius: 0.5rem;
   z-index: 9999;
@@ -81,14 +81,14 @@ export default defineComponent({
     align-items: center;
     font-size: 0.875rem;
     font-weight: 600;
-    color: $el-text-color-primary;
+    color: var(--el-text-color-primary);
     justify-content: flex-start;
     padding: 0.625rem;
     text-decoration: none;
     cursor: pointer;
 
     &:hover {
-      background-color: $el-color-success-light-9;
+      background-color: var(--el-color-success-light-9);
     }
 
     &-icon {
@@ -97,12 +97,16 @@ export default defineComponent({
 
     &.active {
       pointer-events: none;
-      color: $el-color-primary; // или другой цвет для активного маршрута
-      background-color: $el-color-success-light-8; // или другой цвет для фона активного маршрута
+      color: var(--el-color-primary); // или другой цвет для активного маршрута
+      background-color: var(
+        --el-color-success-light-8
+      ); // или другой цвет для фона активного маршрута
 
       // Иконка, если нужно изменить её цвет
       .settings-submenu__item-icon {
-        color: $el-color-primary; // или другой цвет для иконки активного маршрута
+        color: var(
+          --el-color-primary
+        ); // или другой цвет для иконки активного маршрута
       }
     }
   }

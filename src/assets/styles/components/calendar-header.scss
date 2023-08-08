@@ -2,13 +2,13 @@
   position: fixed;
   margin-left: 281px;
   cursor: default;
-  background-color: $el-color-white;
+  background-color: var(--el-color-white);
 
   &__head-wrapper {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-bottom: 1px solid $el-border-color;
+    border-bottom: 1px solid var(--el-border-color);
 
     &__legend {
       display: flex;
@@ -17,7 +17,7 @@
 
       &-title {
         font-size: 18px;
-        color: $el-text-color-primary;
+        color: var(--el-text-color-primary);
         margin-right: 5px;
       }
     }
@@ -34,7 +34,7 @@
       align-items: center;
       height: 41px;
       width: 100%;
-      border-bottom: 1px solid $el-border-color;
+      border-bottom: 1px solid var(--el-border-color);
       overflow: hidden;
 
       &--number {
@@ -44,7 +44,7 @@
 
       &--name {
         font-size: 10px;
-        color: $el-text-color-regular;
+        color: var(--el-text-color-regular);
       }
 
       .icon-wrapper {
@@ -66,11 +66,11 @@
         }
 
         .holiday-icon-circle {
-          background-color: $el-color-error;
+          background-color: var(--el-color-error);
         }
 
         .preHoliday-icon-circle {
-          background-color: $el-color-info;
+          background-color: var(--el-color-info);
         }
 
         .holiday-icon {
@@ -81,20 +81,20 @@
       }
 
       &.weekend {
-        background-color: $el-color-success-light-9;
+        background-color: var(--el-color-success-light-9);
       }
 
       &.holiday {
-        background-color: $el-color-danger-light-9;
+        background-color: var(--el-color-danger-light-9);
 
         .calendar-header__days-wrapper__day--number,
         .calendar-header__days-wrapper__day--name {
-          color: $el-color-danger;
+          color: var(--el-color-danger);
         }
       }
 
       &.preHoliday {
-        background-color: $el-color-success-light-9;
+        background-color: var(--el-color-success-light-9);
       }
     }
   }
