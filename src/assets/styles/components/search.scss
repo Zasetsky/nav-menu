@@ -1,6 +1,6 @@
 .employee-search {
   position: relative;
-  background-color: var(--el-color-white);
+  background-color: var(--el-bg-color);
   width: 248px;
   font-size: 12px;
   font-weight: 600;
@@ -11,6 +11,7 @@
     padding: 5px;
     border: 1px solid var(--el-color-primary-light-8);
     border-radius: 4px;
+    background-color: var(--el-bg-color);
     cursor: text;
 
     &--active {
@@ -75,7 +76,7 @@
             align-items: center;
             top: 150%;
             left: -10px;
-            background: var(--el-color-white);
+            background-color: var(--el-bg-color);
             padding: 10px;
             border: 1px solid var(--el-border-color);
             border-radius: 5px;
@@ -90,7 +91,7 @@
               transform: translateX(50%);
               width: 14px;
               height: 14px;
-              background-color: var(--el-color-white);
+              background-color: var(--el-bg-color);
             }
 
             &::before {
@@ -132,7 +133,7 @@
     height: 252px;
     overflow-y: auto;
     overflow-x: hidden;
-    background-color: var(--el-color-white);
+    background-color: var(--el-bg-color);
     border-bottom: 1px solid var(--el-color-primary);
     border-radius: 0 0 4px 4px;
     border-left: 1px solid var(--el-color-primary);
@@ -183,7 +184,7 @@
           font-size: 12px;
           color: var(--el-text-color-regular);
           border-radius: 4px;
-          background-color: var(--el-color-white);
+          background-color: var(--el-bg-color);
 
           &:hover {
             background-color: var(--el-color-primary-light-9);
@@ -226,6 +227,7 @@
       border: none;
       outline: none;
       margin-left: 20px;
+      background-color: var(--el-bg-color);
 
       &::selection {
         background: var(--el-color-info);

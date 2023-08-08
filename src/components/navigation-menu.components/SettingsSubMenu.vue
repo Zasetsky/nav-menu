@@ -63,7 +63,7 @@ export default defineComponent({
   height: 9rem;
   bottom: 5rem;
   left: 1.25rem;
-  background-color: var(--el-color-white);
+  background-color: var(--el-bg-color);
   border: 0.0625rem solid var(--el-color-primary);
   box-shadow: 0rem 0.25rem 0.25rem 0rem rgba(209, 220, 222, 0.5);
   border-radius: 0.5rem;

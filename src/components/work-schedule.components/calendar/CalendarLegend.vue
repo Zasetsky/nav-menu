@@ -112,7 +112,7 @@ export default defineComponent({
   &__body {
     position: absolute;
     border: 1px solid var(--el-color-info);
-    background-color: var(--el-color-white);
+    background-color: var(--el-bg-color);
     padding: 12px 10px;
     right: -23px;
     z-index: 1;
@@ -129,7 +129,7 @@ export default defineComponent({
       transform: translateX(50%);
       width: 14px;
       height: 14px;
-      background-color: var(--el-color-white);
+      background-color: var(--el-bg-color);
     }
 
     &::before {

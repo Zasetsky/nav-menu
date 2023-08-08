@@ -33,7 +33,7 @@ export default defineComponent({
 .work-schedule {
   &__header {
     position: fixed;
-    background-color: var(--el-color-white);
+    background-color: var(--el-bg-color);
     top: 0;
     width: 100%;
     z-index: 1000;

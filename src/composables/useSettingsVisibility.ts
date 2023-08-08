@@ -2,7 +2,7 @@ import { Ref, onMounted, onUnmounted } from "vue";
 
 export default function useSettingsVisibility(isSettingsVisible: Ref<boolean>) {
   const openSettings = (event: Event) => {
-    isSettingsVisible.value = true;
+    isSettingsVisible.value = !isSettingsVisible.value;
     event.stopPropagation();
   };
 

@@ -34,6 +34,7 @@
     justify-content: flex-start;
     max-width: 16.5rem;
     height: 100vh;
+    background-color: var(--el-bg-color);
   }
 
   &__list {
@@ -41,6 +42,7 @@
     justify-content: center;
     max-width: 3.75rem;
     height: 100vh;
+    background-color: var(--el-bg-color);
   }
 
   &__wrapper {
