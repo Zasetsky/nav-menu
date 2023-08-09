@@ -134,8 +134,6 @@ export default defineComponent({
     },
   },
 
-  emits: ["update:modelValue"],
-
   setup(props, { emit }) {
     const search = ref("");
     const isActive = ref(false);
@@ -167,12 +165,15 @@ export default defineComponent({
                 (props.isIntoFired && employee.isFired) ||
                 (!props.isIntoFired && !employee.isFired)
             )
-            // Затем фильтруем по имени
+            // Затем фильтруем по имени или названию отдела
             .filter(
               (employee: Employee) =>
-                employee.name
+                (employee.name
                   .toLowerCase()
-                  .includes(search.value.toLowerCase()) &&
+                  .includes(search.value.toLowerCase()) ||
+                  department.name
+                    .toLowerCase()
+                    .includes(search.value.toLowerCase())) &&
                 !selectedEmployees.value.includes(employee)
             ),
         }))
