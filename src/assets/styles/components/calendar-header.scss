@@ -3,6 +3,7 @@
   margin-left: 281px;
   cursor: default;
   background-color: var(--el-bg-color);
+  transition: width 0.4s;
 
   &__head-wrapper {
     display: flex;

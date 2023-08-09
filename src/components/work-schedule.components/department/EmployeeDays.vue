@@ -91,7 +91,7 @@ export default defineComponent({
 .employee-days {
   display: flex;
   justify-content: space-between;
-  transition: width 0.3s;
+  transition: width 0.4s;
   border-bottom: 1px solid var(--el-border-color);
   border-left: 1px solid var(--el-border-color);
   height: 48px;
