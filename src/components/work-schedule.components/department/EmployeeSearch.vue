@@ -126,6 +126,7 @@ import {
 import { useStore } from "vuex";
 import { Department, Employee } from "@/types";
 import { close_icon, all_close_icon } from "@/assets/icons/index";
+import { useTransliterate } from "@/composables/useTransliterate";
 
 export default defineComponent({
   components: {
@@ -156,6 +157,8 @@ export default defineComponent({
     const popover = ref<HTMLElement | null>(null);
     const dropdown = ref<HTMLElement | null>(null);
     let popoverTimeout: number | undefined;
+    const { transliterate } = useTransliterate();
+    const transliteratedSearch = ref("");
 
     const departments = computed(
       () => store.getters["Department/getAllDepartments"]
@@ -176,15 +179,15 @@ export default defineComponent({
                 (props.isIntoFired && employee.isFired) ||
                 (!props.isIntoFired && !employee.isFired)
             )
-            // Затем фильтруем по имени или названию отдела
+            // Затем фильтруем по имени или названию отдела с использованием транслитерированного текста
             .filter(
               (employee: Employee) =>
                 (employee.name
                   .toLowerCase()
-                  .includes(search.value.toLowerCase()) ||
+                  .includes(transliteratedSearch.value.toLowerCase()) ||
                   department.name
                     .toLowerCase()
-                    .includes(search.value.toLowerCase())) &&
+                    .includes(transliteratedSearch.value.toLowerCase())) &&
                 !selectedEmployees.value.includes(employee)
             ),
         }))
@@ -193,6 +196,7 @@ export default defineComponent({
     );
 
     const handleInput = () => {
+      transliteratedSearch.value = transliterate(search.value);
       isActive.value = true;
     };
 
@@ -202,6 +206,7 @@ export default defineComponent({
       }
       emit("update:modelValue", selectedEmployees.value);
       search.value = "";
+      transliteratedSearch.value = "";
       isActive.value = false;
     };
 
@@ -259,6 +264,7 @@ export default defineComponent({
         isActive.value = false;
         showPopover.value = false;
         search.value = "";
+        transliteratedSearch.value = "";
       }
     };
 
