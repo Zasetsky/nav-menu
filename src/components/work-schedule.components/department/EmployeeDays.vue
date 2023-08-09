@@ -3,7 +3,7 @@
     class="employee-days"
     :style="{
       width: isCollapsed ? `calc(100vw - 21.25rem)` : `calc(100vw - 34rem)`,
-      borderTop: index === 0 ? '1px solid #dcdfe6' : 'none',
+      borderTop: index === 0 ? '1px solid var(--el-border-color)' : 'none',
     }"
   >
     <day-cell

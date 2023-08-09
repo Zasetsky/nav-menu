@@ -13,6 +13,7 @@ export default function usePopup(propsDate: string) {
   const hidePopup = () => {
     isPopupVisible.value = false;
     store.dispatch("LocalStates/toggleShowOptions", false);
+    store.dispatch("LocalStates/toggleIsEditing", false);
   };
 
   const showPopup = () => {

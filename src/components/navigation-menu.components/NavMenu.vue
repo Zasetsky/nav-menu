@@ -8,7 +8,6 @@
     <el-menu
       class="menu__list"
       :collapse="isCollapsed"
-      v-model:activeIndex="activeIndex"
       :default-active="activeIndex"
     >
       <div class="menu__wrapper">

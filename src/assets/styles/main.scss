@@ -24,9 +24,15 @@ html {
   scrollbar-width: none; /* Убираем полосу прокрутки */
 }
 
+// Меню
+.el-menu {
+  border-right: 1px solid var(--el-border-color);
+}
+
 // Цвет подсказки меню
 .menu-custom-tooltip {
   background-color: var(--el-color-primary) !important;
+  color: var(--el-color-white) !important;
   border: none !important;
 }
 
@@ -39,6 +45,7 @@ html {
 .preHoliday-custom-tooltip {
   background-color: var(--el-color-info) !important;
   border: none !important;
+  color: var(--el-color-white) !important;
   margin-bottom: 5px;
 }
 
@@ -51,6 +58,7 @@ html {
 .holiday-custom-tooltip {
   background-color: var(--el-color-danger) !important;
   border: none !important;
+  color: var(--el-color-white) !important;
   margin-bottom: 5px;
 }
 
@@ -64,6 +72,7 @@ html {
   background-color: var(--el-color-success-dark-2) !important;
   border: none !important;
   margin-bottom: -10px;
+  color: var(--el-color-white) !important;
   margin-left: 15px;
 }
 
