@@ -189,6 +189,8 @@
           </el-tooltip>
         </div>
 
+        <button style="width: 20px; margin-left: 30px" @click="theme">*</button>
+
         <!-- Настройки -->
         <el-tooltip
           :disabled="!isCollapsed || isSettingsVisible"
@@ -295,6 +297,10 @@ export default defineComponent({
       return classes;
     });
 
+    const theme = () => {
+      document.body.classList.add("dark-theme");
+    };
+
     const navigateTo = (menuObject: { index: string }) => {
       router.push(menuObject.index);
     };
@@ -326,6 +332,7 @@ export default defineComponent({
       closeSettings,
       toggleCollapse,
       navigateTo,
+      theme,
     };
   },
 });

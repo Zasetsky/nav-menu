@@ -65,7 +65,7 @@ export default defineComponent({
   left: 1.25rem;
   background-color: var(--el-bg-color);
   border: 0.0625rem solid var(--el-color-primary);
-  box-shadow: 0rem 0.25rem 0.25rem 0rem rgba(209, 220, 222, 0.5);
+  box-shadow: 0rem 0.25rem 0.25rem 0rem var(--el-color-primary-light-9);
   border-radius: 0.5rem;
   z-index: 9999;
   transition: all 0.4s ease-out;
