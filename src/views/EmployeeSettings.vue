@@ -30,6 +30,7 @@ export default defineComponent({
     position: fixed;
     top: 0;
     width: 100%;
+    height: 30px;
     background-color: var(--el-bg-color);
     border-bottom: 1px solid var(--el-border-color);
     padding: 1rem;

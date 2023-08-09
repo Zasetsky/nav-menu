@@ -38,6 +38,7 @@ export default defineComponent({
     width: 100%;
     z-index: 1000;
     padding: 1rem;
+    height: 30px;
     border-bottom: 1px solid var(--el-border-color);
 
     &--title {
