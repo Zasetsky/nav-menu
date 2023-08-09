@@ -2,15 +2,15 @@
   <div class="legend-popup-window">
     <div class="legend-popup-window__calendar-days">
       <div class="legend-popup-window__calendar-days__work">
-        <work_day_icon />
+        <work_day_icon :is-dark-theme="isDarkTheme" />
         <p>рабочий день</p>
       </div>
       <div class="legend-popup-window__calendar-days__weekend">
-        <weekend_icon />
+        <weekend_icon :is-dark-theme="isDarkTheme" />
         <p>выходной</p>
       </div>
       <div class="legend-popup-window__calendar-days__holliday">
-        <holliday_icon />
+        <holliday_icon :is-dark-theme="isDarkTheme" />
         <p>праздник</p>
       </div>
     </div>
@@ -123,7 +123,7 @@
   </div>
 </template>
 <script lang="ts">
-import { defineComponent } from "vue";
+import { defineComponent, computed } from "vue";
 import {
   work_day_icon,
   weekend_icon,
@@ -137,6 +137,14 @@ export default defineComponent({
     weekend_icon,
     holliday_icon,
     birthday_day_cell_icon,
+  },
+
+  setup() {
+    const isDarkTheme = computed(() => {
+      return document.body.classList.contains("dark-theme");
+    });
+
+    return { isDarkTheme };
   },
 });
 </script>
