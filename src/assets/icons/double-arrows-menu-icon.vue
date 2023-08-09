@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="double-arrows-menu-icon">
     <svg
       width="24"
       height="25"
@@ -20,4 +20,8 @@
     </svg>
   </div>
 </template>
-<style lang=""></style>
+<style lang="scss">
+.double-arrows-menu-icon {
+  display: flex;
+}
+</style>
