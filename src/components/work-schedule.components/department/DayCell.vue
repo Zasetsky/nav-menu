@@ -128,7 +128,7 @@ export default defineComponent({
 
     const dayClass = computed(() => {
       return {
-        "day-weekend": isWeekendForUser.value && isWorkDay.value,
+        "day-weekend": isWeekend(new Date(date.value)),
         "day-holiday":
           isHoliday(new Date(date.value).getDate()) && isWorkDay.value,
         "day-preHoliday":
