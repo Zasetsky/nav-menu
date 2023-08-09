@@ -206,7 +206,9 @@
             /></i>
             <span
               class="menu__label menu__label-settings"
-              :class="{ 'menu__label-active': isSettingsVisible }"
+              :class="{
+                'menu__label-active': isSettingsVisible || isActiveSettings,
+              }"
               v-show="!isCollapsed"
               >Настройки</span
             >
@@ -325,6 +327,7 @@ export default defineComponent({
       isCollapsed,
       activeIndex,
       isSettingsVisible,
+      isActiveSettings,
       settingsClass,
       settingsIconClass,
       unreadCount,

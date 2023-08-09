@@ -148,5 +148,12 @@ export default defineComponent({
       transform: translateX(50%) rotate(45deg);
     }
   }
+
+  @-moz-document url-prefix() {
+    .calendar-legend__body {
+      width: 480px;
+      height: 565px;
+    }
+  }
 }
 </style>

@@ -172,4 +172,14 @@
       width: 248px;
     }
   }
+
+  @-moz-document url-prefix() {
+    .legend-popup-window__vacation-days {
+      grid-template-rows: repeat(5, 0.1fr);
+    }
+
+    .legend-popup-window__day-statuses {
+      grid-template-rows: repeat(2, 0.1fr);
+    }
+  }
 }
