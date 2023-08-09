@@ -54,6 +54,7 @@
         .more {
           position: relative;
           display: flex;
+          z-index: 9999;
           align-items: center;
           justify-content: center;
           background-color: var(--el-color-primary-light-9);
@@ -117,12 +118,19 @@
           }
 
           .clear-all {
-            text-align: center;
-            margin-top: 10px;
+            display: flex;
+            align-items: center;
+            margin-left: 15px;
             cursor: pointer;
           }
         }
       }
+    }
+    .clear-all {
+      display: flex;
+      align-items: center;
+      margin-left: 8px;
+      cursor: pointer;
     }
   }
 

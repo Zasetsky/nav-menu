@@ -47,16 +47,27 @@
                   /></i>
                 </div>
               </div>
-              <div class="clear-all" @click.stop="clearAllEmployees">
+
+              <!-- Закрыть в скрывателе -->
+              <div class="clear-all">
                 <i
+                  @click.stop="clearAllHideEmployees"
                   v-if="selectedEmployees.length > 0"
                   class="search-container__employees-wrapper--all_close"
-                  @click.stop="clearAllEmployees"
                   ><all_close_icon
                 /></i>
               </div>
             </div>
           </div>
+        </div>
+
+        <!-- Закрыть вообще все -->
+        <div class="clear-all" @click.stop="clearAllEmployees">
+          <i
+            v-if="selectedEmployees.length > 0"
+            class="search-container__employees-wrapper--all_close"
+            ><all_close_icon
+          /></i>
         </div>
       </div>
 
@@ -219,14 +230,21 @@ export default defineComponent({
       });
       emit("update:modelValue", selectedEmployees.value);
       isActive.value = false;
+      search.value = "";
     };
 
-    const clearAllEmployees = () => {
+    const clearAllHideEmployees = () => {
       if (selectedEmployees.value.length > 0) {
         selectedEmployees.value = [selectedEmployees.value[0]];
       } else {
         selectedEmployees.value = [];
       }
+      emit("update:modelValue", selectedEmployees.value);
+      isActive.value = false;
+    };
+
+    const clearAllEmployees = () => {
+      selectedEmployees.value = [];
       emit("update:modelValue", selectedEmployees.value);
       isActive.value = false;
     };
@@ -240,6 +258,7 @@ export default defineComponent({
       ) {
         isActive.value = false;
         showPopover.value = false;
+        search.value = "";
       }
     };
 
@@ -269,14 +288,8 @@ export default defineComponent({
     return {
       search,
       filteredDepartments,
-      handleInput,
-      selectEmployee,
       isActive,
       selectedEmployees,
-      removeEmployee,
-      inputFocus,
-      selectDepartment,
-      clearAllEmployees,
       searchInput,
       limitedEmployees,
       showPopover,
@@ -285,6 +298,13 @@ export default defineComponent({
       dropdown,
       openPopover,
       closePopover,
+      removeEmployee,
+      inputFocus,
+      selectDepartment,
+      clearAllEmployees,
+      clearAllHideEmployees,
+      handleInput,
+      selectEmployee,
     };
   },
 });
