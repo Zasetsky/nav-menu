@@ -189,7 +189,9 @@
           </el-tooltip>
         </div>
 
+        <!-- !!! -->
         <button style="width: 20px; margin-left: 30px" @click="theme">*</button>
+        <!-- !!! -->
 
         <!-- Настройки -->
         <el-tooltip
@@ -264,6 +266,7 @@ export default defineComponent({
     const unreadCount = ref(12); // Здесь нужно поменять на реальные данные с сервера
     const socket = inject("socket") as Socket;
     const isSettingsVisible = ref(false);
+    const isDark = ref(false);
 
     const { openSettings, closeSettings } =
       useSettingsVisibility(isSettingsVisible);
@@ -300,7 +303,12 @@ export default defineComponent({
     });
 
     const theme = () => {
-      document.body.classList.add("dark-theme");
+      isDark.value = !isDark.value;
+      if (isDark.value) {
+        document.body.classList.add("dark-theme");
+      } else {
+        document.body.classList.remove("dark-theme");
+      }
     };
 
     const navigateTo = (menuObject: { index: string }) => {
