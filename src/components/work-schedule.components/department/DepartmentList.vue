@@ -7,9 +7,7 @@
     <el-tooltip
       popper-class="department-menu-custom-tooltip"
       effect="dark"
-      :content="
-        !allCollapsed ? 'Свернуть все разделы' : 'Развернуть все разделы'
-      "
+      :content="!allCollapsed ? 'Свернуть все разделы' : 'Показать все разделы'"
       placement="bottom"
       :show-after="500"
     >
