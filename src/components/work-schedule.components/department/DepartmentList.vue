@@ -4,25 +4,27 @@
       <EmployeeSearch v-model="selectedEmployees" :isIntoFired="isIntoFired" />
     </div>
 
-    <el-tooltip
-      popper-class="department-menu-custom-tooltip"
-      effect="dark"
-      :content="!allCollapsed ? 'Свернуть все разделы' : 'Показать все разделы'"
-      placement="bottom"
-      :show-after="500"
+    <div
+      :class="[
+        'collapse-expand-icon',
+        hasSelectedEmployees ? 'with-selected-employees' : '',
+      ]"
     >
-      <div
-        :class="[
-          'collapse-expand-icon',
-          hasSelectedEmployees ? 'with-selected-employees' : '',
-        ]"
+      <el-tooltip
+        popper-class="department-menu-custom-tooltip"
+        effect="dark"
+        :content="
+          !allCollapsed ? 'Свернуть все разделы' : 'Показать все разделы'
+        "
+        placement="bottom"
+        :show-after="500"
       >
         <i v-if="!allCollapsed" @click="collapseAllDepartments">
           <all_collapse_icon />
         </i>
         <i v-else @click="expandAllDepartments"><all_expand_icon /></i>
-      </div>
-    </el-tooltip>
+      </el-tooltip>
+    </div>
 
     <div class="departments" :class="{ isFired: isIntoFired }">
       <DepartmentItem
@@ -137,7 +139,10 @@ export default defineComponent({
     padding-top: 65px;
     justify-content: flex-end;
     margin-right: 16px;
-    cursor: pointer;
+
+    i {
+      cursor: pointer;
+    }
   }
 
   .collapse-expand-icon.with-selected-employees {
