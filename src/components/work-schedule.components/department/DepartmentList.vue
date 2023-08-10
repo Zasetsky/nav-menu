@@ -8,7 +8,7 @@
       popper-class="department-menu-custom-tooltip"
       effect="dark"
       :content="
-        allCollapsed ? 'Свернуть все разделы' : 'Развернуть все разделы'
+        !allCollapsed ? 'Свернуть все разделы' : 'Развернуть все разделы'
       "
       placement="bottom"
       :show-after="500"
