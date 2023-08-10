@@ -16,7 +16,7 @@
         :content="
           !allCollapsed ? 'Свернуть все разделы' : 'Показать все разделы'
         "
-        placement="bottom"
+        placement="left"
         :show-after="500"
       >
         <i v-if="!allCollapsed" @click="collapseAllDepartments">
