@@ -94,10 +94,14 @@ export default defineComponent({
   margin-left: 281px;
   font-size: 12px;
   bottom: 0;
-  padding: 10px;
+  padding: 11px 10px;
   z-index: 9999;
   color: var(--el-color-white);
   background-color: var(--el-color-primary);
+
+  span:first-child {
+    margin-left: 6px;
+  }
 
   span:not(:first-child) {
     margin-left: 40px;

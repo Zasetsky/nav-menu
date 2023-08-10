@@ -11,7 +11,12 @@
       placement="bottom"
       :show-after="500"
     >
-      <div class="collapse-expand-icon">
+      <div
+        :class="[
+          'collapse-expand-icon',
+          hasSelectedEmployees ? 'with-selected-employees' : '',
+        ]"
+      >
         <i v-if="!allCollapsed" @click="collapseAllDepartments">
           <all_collapse_icon />
         </i>
@@ -65,6 +70,10 @@ export default defineComponent({
       () => store.getters["Department/getAllDepartments"]
     );
 
+    const hasSelectedEmployees = computed(
+      () => selectedEmployees.value.length > 0
+    );
+
     const filteredDepartments = computed(() => {
       let departmentsToFilter = departments.value;
 
@@ -108,6 +117,7 @@ export default defineComponent({
       filteredDepartments,
       stickySearch,
       allCollapsed,
+      hasSelectedEmployees,
       collapseAllDepartments,
       expandAllDepartments,
     };
@@ -128,6 +138,10 @@ export default defineComponent({
     justify-content: flex-end;
     margin-right: 16px;
     cursor: pointer;
+  }
+
+  .collapse-expand-icon.with-selected-employees {
+    padding-top: 80px;
   }
 
   .search {

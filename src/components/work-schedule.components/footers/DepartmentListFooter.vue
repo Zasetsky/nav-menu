@@ -46,7 +46,11 @@ export default defineComponent({
   font-size: 12px;
   bottom: 0;
   z-index: 9999;
-  padding: 10px;
+  padding: 11px 10px;
   background-color: var(--el-color-primary);
+
+  span {
+    margin: 6px;
+  }
 }
 </style>

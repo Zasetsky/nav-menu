@@ -3,11 +3,11 @@
     <el-collapse>
       <el-collapse-item name="1">
         <template #title>
-          <div class="custom-title-container">
-            <h3 class="custom-title">Уволенные</h3>
+          <div class="fired-title-container">
+            <h3 class="fired-title">Уволенные</h3>
           </div>
         </template>
-        <el-scrollbar class="custom-scrollbar">
+        <el-scrollbar class="fired-scrollbar">
           <department-list :isIntoFired="true" />
         </el-scrollbar>
       </el-collapse-item>
@@ -33,24 +33,20 @@ export default defineComponent({
   bottom: 34px;
   z-index: 1000;
 
-  .custom-title-container {
+  .fired-title-container {
     display: flex;
     align-items: center;
     width: 100%;
     justify-content: space-between;
   }
 
-  .custom-title {
-    margin-left: 20px;
+  .fired-title {
+    margin-left: 16px;
     font-size: 14px;
     color: var(--el-color-primary-dark-2);
   }
 
-  .custom-toggle-icon {
-    margin-right: 16px;
-  }
-
-  .custom-scrollbar {
+  .fired-scrollbar {
     height: calc(100vh - 144px);
   }
 }
