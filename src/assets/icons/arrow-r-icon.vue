@@ -22,8 +22,8 @@ import { defineComponent, ref } from "vue";
 export default defineComponent({
   setup() {
     const hover = ref(false);
-    const defaultColor = "#606266";
-    const hoverColor = "#6fcf97";
+    const defaultColor = "var(--el-text-color-regular)";
+    const hoverColor = "var(--el-color-success)";
 
     return {
       hover,

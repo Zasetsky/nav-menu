@@ -52,7 +52,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, computed } from "vue";
+import { defineComponent, ref, computed, watch } from "vue";
 import EmployeeRow from "./EmployeeRow.vue";
 import { Department } from "@/types";
 import { plus_icon, minus_icon } from "@/assets/icons/index";
@@ -75,9 +75,14 @@ export default defineComponent({
       type: Boolean,
       default: false,
     },
+
+    allCollapsed: {
+      type: Boolean,
+      default: false,
+    },
   },
   setup(props) {
-    const isCollapsed = ref([props.department.name]);
+    const isCollapsed = ref(props.allCollapsed ? [] : [props.department.name]);
 
     const { isNotEmployeePage } = useIsNotEmployeePage();
 
@@ -105,6 +110,14 @@ export default defineComponent({
       return 0; // Вернем 0, если isIntoFired == true
     });
 
+    // Отслеживаем изменения свойства allCollapsed
+    watch(
+      () => props.allCollapsed,
+      (newVal) => {
+        isCollapsed.value = newVal ? [] : [props.department.name];
+      }
+    );
+
     return {
       isCollapsed,
       onlineEmployeesCount,
@@ -119,10 +132,6 @@ export default defineComponent({
 <style lang="scss" scoped>
 .department {
   padding: 0 16px 0 16px;
-
-  &:first-child {
-    padding-top: 44px;
-  }
 
   &__header {
     display: flex;
@@ -155,16 +164,6 @@ export default defineComponent({
   hr {
     border: none;
     border-top: 1px solid var(--el-border-color);
-  }
-}
-
-.department:first-child {
-  &.settings {
-    padding-top: 70px;
-  }
-
-  &.fired {
-    padding-top: 90px;
   }
 }
 

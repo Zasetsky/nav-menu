@@ -20,3 +20,5 @@ export { default as holliday_info_icon } from "./holliday-info-icon.vue";
 export { default as birthday_icon } from "./birthday-icon.vue";
 export { default as knowledge_base_icon } from "./knowledge-base-icon.vue";
 export { default as company_structure } from "./company-structure.vue";
+export { default as all_collapse_icon } from "./all-collapse-icon.vue";
+export { default as all_expand_icon } from "./all-expand-icon.vue";

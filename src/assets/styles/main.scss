@@ -41,6 +41,20 @@ html {
   background: var(--el-color-primary) !important;
 }
 
+// Подсказка в меню отделов
+.department-menu-custom-tooltip {
+  background-color: var(--el-color-primary) !important;
+  color: var(--el-color-white) !important;
+  border: none !important;
+  margin-top: -5px;
+  margin-left: 121px;
+}
+
+.department-menu-custom-tooltip .el-popper__arrow::before {
+  border: none !important;
+  background: var(--el-color-primary) !important;
+}
+
 // Цвет подсказки предпразднечных дней
 .preHoliday-custom-tooltip {
   background-color: var(--el-color-info) !important;
