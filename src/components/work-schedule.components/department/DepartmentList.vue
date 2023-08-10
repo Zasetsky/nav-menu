@@ -129,6 +129,7 @@ export default defineComponent({
     padding-top: 65px;
     justify-content: flex-end;
     margin-right: 16px;
+    cursor: pointer;
   }
 
   .search {
