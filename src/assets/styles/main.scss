@@ -95,6 +95,37 @@ html {
   background: var(--el-color-success-dark-2) !important;
 }
 
+// Уволенные
+
+.fixed-collapse {
+  .el-collapse {
+    border-bottom: none;
+    border-top: var(--el-border-color);
+  }
+
+  .el-collapse-item__header {
+    background-color: var(--el-bg-color) !important;
+  }
+
+  .el-collapse-item__content {
+    padding-bottom: 0;
+  }
+  .el-scrollbar__bar.is-horizontal {
+    display: none;
+  }
+
+  .el-collapse-item__arrow {
+    transform: rotate(-90deg);
+    margin-right: 16px;
+    color: var(--el-text-color-disabled);
+    font-size: 14px;
+  }
+
+  .el-collapse-item.is-active .el-collapse-item__arrow {
+    transform: rotate(90deg);
+  }
+}
+
 // Отделы
 .department {
   .el-collapse:first-child {
@@ -116,7 +147,7 @@ html {
   }
 
   .el-collapse-item__header {
-    background-color: var(--el-color-success-light-9);
+    background-color: var(--el-color-success-light-9) !important;
     border: none !important;
   }
 }
@@ -170,27 +201,5 @@ html {
     &::-webkit-scrollbar-thumb {
       background-color: rgba(144, 146, 152, 0.3);
     }
-  }
-}
-
-// Уволенные
-
-.fixed-collapse {
-  .el-collapse-item__content {
-    padding-bottom: 0;
-  }
-  .el-scrollbar__bar.is-horizontal {
-    display: none;
-  }
-
-  .el-collapse-item__arrow {
-    transform: rotate(-90deg);
-    margin-right: 16px;
-    color: var(--el-text-color-disabled);
-    font-size: 14px;
-  }
-
-  .el-collapse-item.is-active .el-collapse-item__arrow {
-    transform: rotate(90deg);
   }
 }
