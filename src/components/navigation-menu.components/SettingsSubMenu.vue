@@ -1,30 +1,32 @@
 <template>
-  <div
-    v-if="isSettingsVisible"
-    class="settings-submenu"
-    :class="{ 'settings-submenu--collapsed': isCollapsed }"
-    @click.stop
-  >
-    <div class="settings-submenu__content">
-      <router-link
-        class="settings-submenu__item"
-        to="/employees"
-        active-class="active"
-        @click="$emit('closeSettings')"
-      >
-        <i class="settings-submenu__item-icon"><employees_icon /></i>
-        <span class="settings-submenu__item-text">Сотрудники</span>
-      </router-link>
-      <div class="settings-submenu__item">
-        <i class="settings-submenu__item-icon"><absense_icon /></i>
-        <span class="settings-submenu__item-text">Список отсутствий</span>
-      </div>
-      <div class="settings-submenu__item">
-        <i class="settings-submenu__item-icon"><deals_distribution_icon /></i>
-        <span class="settings-submenu__item-text">Распределение сделок</span>
+  <Teleport to="body">
+    <div
+      v-if="isSettingsVisible"
+      class="settings-submenu"
+      :class="{ 'settings-submenu--collapsed': isCollapsed }"
+      @click.stop
+    >
+      <div class="settings-submenu__content">
+        <router-link
+          class="settings-submenu__item"
+          to="/employees"
+          active-class="active"
+          @click="$emit('closeSettings')"
+        >
+          <i class="settings-submenu__item-icon"><employees_icon /></i>
+          <span class="settings-submenu__item-text">Сотрудники</span>
+        </router-link>
+        <div class="settings-submenu__item">
+          <i class="settings-submenu__item-icon"><absense_icon /></i>
+          <span class="settings-submenu__item-text">Список отсутствий</span>
+        </div>
+        <div class="settings-submenu__item">
+          <i class="settings-submenu__item-icon"><deals_distribution_icon /></i>
+          <span class="settings-submenu__item-text">Распределение сделок</span>
+        </div>
       </div>
     </div>
-  </div>
+  </Teleport>
 </template>
 
 <script lang="ts">

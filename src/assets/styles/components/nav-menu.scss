@@ -8,7 +8,7 @@
   height: 100vh;
 
   &.collapsed {
-    padding: 8px 10px;
+    padding: 0 10px;
   }
 
   .unread-count {
@@ -25,10 +25,10 @@
 
   .unread-count-dot {
     position: absolute;
-    width: 6.5px;
-    height: 6.5px;
-    top: 10.8px;
-    right: 11.7px;
+    width: 6px;
+    height: 6px;
+    top: 10.5px;
+    right: 9px;
     background-color: var(--el-color-success);
     border-radius: 50%;
   }
@@ -67,7 +67,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-top: 7px;
+    margin-top: 14px;
     cursor: pointer;
 
     &:hover {
@@ -87,7 +87,7 @@
     color: var(--el-text-color-primary);
   }
 
-  &__icon-colapse {
+  &__icon-collapse {
     display: flex;
     align-items: center;
     margin-top: 0.1875rem;

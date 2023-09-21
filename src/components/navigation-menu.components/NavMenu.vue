@@ -6,99 +6,188 @@
   >
     <!-- Шапка -->
     <div class="menu-top-items">
-      <div
+      <el-tooltip
         v-if="isCollapsed"
-        class="menu__header-collapsed"
-        @click.stop="toggleCollapse"
+        :disabled="!isCollapsed"
+        popper-class="menu-custom-tooltip"
+        effect="dark"
+        content="Развернуть"
+        placement="right"
+        :show-after="500"
       >
-        <i class="menu__icon-company"><building_icon /></i>
-      </div>
+        <div class="menu__header-collapsed" @click.stop="toggleCollapse">
+          <i class="menu__icon-company"><building_icon /></i>
+        </div>
+      </el-tooltip>
+
       <div v-else class="menu__header">
         <div class="menu__header-wrapper">
           <i class="menu__icon-company"><building_icon /></i>
           <span class="menu__title" v-show="!isCollapsed">КОМПАНИЯ</span>
         </div>
         <i class="menu__icon-collapse" @click.stop="toggleCollapse">
-          <double_arrows_menu_icon />
+          <el-tooltip
+            :disabled="isCollapsed"
+            popper-class="menu-custom-tooltip"
+            effect="dark"
+            content="Свернуть"
+            placement="bottom"
+            :show-after="500"
+          >
+            <double_arrows_menu_icon />
+          </el-tooltip>
         </i>
       </div>
 
       <!-- Элементы меню -->
       <div class="menu__nav" :class="{ collapsed: isCollapsed }">
         <!-- График работы -->
-        <div :class="itemClass('/')" @click="navigateTo('/')">
-          <i class="menu__icon"
-            ><graph_icon :is-active="activeIndex === '/'"
-          /></i>
-          <span
-            class="menu__label"
-            :class="{
-              'menu__label-active': activeIndex === '/',
-            }"
-            v-show="!isCollapsed"
-            >График работы</span
-          >
-        </div>
-        <!-- Структура компании -->
-        <div
-          :class="itemClass('/company-structure')"
-          @click="navigateTo('/company-structure')"
+        <el-tooltip
+          :disabled="!isCollapsed"
+          popper-class="menu-custom-tooltip"
+          effect="dark"
+          content="График работы"
+          placement="right"
+          :show-after="500"
         >
-          <i class="menu__icon"
-            ><company_structure
-              :is-active="activeIndex === '/company-structure'"
-          /></i>
-          <span
-            class="menu__label"
-            :class="{
-              'menu__label-active': activeIndex === '/company-structure',
-            }"
-            v-show="!isCollapsed"
-            >Структура компании</span
+          <div :class="itemClass('/')" @click="navigateTo('/')">
+            <i class="menu__icon"
+              ><graph_icon :is-active="activeIndex === '/'"
+            /></i>
+            <span
+              class="menu__label"
+              :class="{
+                'menu__label-active': activeIndex === '/',
+              }"
+              v-show="!isCollapsed"
+              >График работы</span
+            >
+          </div>
+        </el-tooltip>
+
+        <!-- Структура компании -->
+        <el-tooltip
+          :disabled="!isCollapsed"
+          popper-class="menu-custom-tooltip"
+          effect="dark"
+          content="Структура компании"
+          placement="right"
+          :show-after="500"
+        >
+          <div
+            :class="itemClass('/company-structure')"
+            @click="navigateTo('/company-structure')"
           >
-        </div>
+            <i class="menu__icon"
+              ><company_structure
+                :is-active="activeIndex === '/company-structure'"
+            /></i>
+            <span
+              class="menu__label"
+              :class="{
+                'menu__label-active': activeIndex === '/company-structure',
+              }"
+              v-show="!isCollapsed"
+              >Структура компании</span
+            >
+          </div>
+        </el-tooltip>
+
         <!-- Новости компании -->
-        <div :class="itemClass('/news')" @click="navigateTo('/news')">
-          <i class="menu__icon"
-            ><news_icon :is-active="activeIndex === '/news'"
-          /></i>
-          <span
-            class="menu__label"
-            :class="{
-              'menu__label-active': activeIndex === '/news',
-            }"
-            v-show="!isCollapsed"
-            >Новости компании</span
+        <el-tooltip
+          :disabled="!isCollapsed"
+          popper-class="menu-custom-tooltip"
+          effect="dark"
+          placement="right"
+          :show-after="500"
+        >
+          <template #content>
+            <span>Новости компании</span>
+            <span class="unread-count-badge" v-if="unreadCount > 0">{{
+              unreadCount
+            }}</span>
+          </template>
+
+          <div
+            style="position: relative"
+            :class="itemClass('/news')"
+            @click="navigateTo('/news')"
           >
-        </div>
+            <i class="menu__icon"
+              ><news_icon :is-active="activeIndex === '/news'"
+            /></i>
+            <span
+              class="menu__label"
+              :class="{
+                'menu__label-active': activeIndex === '/news',
+              }"
+              v-show="!isCollapsed"
+              >Новости компании</span
+            >
+
+            <span v-if="unreadCount > 0 && !isCollapsed" class="unread-count">
+              {{ unreadCount }}
+            </span>
+            <div
+              v-if="unreadCount > 0 && isCollapsed"
+              class="unread-count-dot"
+            ></div>
+          </div>
+        </el-tooltip>
+
         <!-- База знаний -->
-        <div :class="itemClass('/knowledge')" @click="navigateTo('/knowledge')">
-          <i class="menu__icon"
-            ><knowledge_base_icon :is-active="activeIndex === '/knowledge'"
-          /></i>
-          <span
-            class="menu__label"
-            :class="{
-              'menu__label-active': activeIndex === '/knowledge',
-            }"
-            v-show="!isCollapsed"
-            >База знаний</span
+        <el-tooltip
+          :disabled="!isCollapsed"
+          popper-class="menu-custom-tooltip"
+          effect="dark"
+          content="База знаний"
+          placement="right"
+          :show-after="500"
+        >
+          <div
+            :class="itemClass('/knowledge')"
+            @click="navigateTo('/knowledge')"
           >
-        </div>
+            <i class="menu__icon"
+              ><knowledge_base_icon :is-active="activeIndex === '/knowledge'"
+            /></i>
+            <span
+              class="menu__label"
+              :class="{
+                'menu__label-active': activeIndex === '/knowledge',
+              }"
+              v-show="!isCollapsed"
+              >База знаний</span
+            >
+          </div>
+        </el-tooltip>
+
         <!-- Пароли -->
-        <div :class="itemClass('/passwords')" @click="navigateTo('/passwords')">
-          <i class="menu__icon"
-            ><password_icon :is-active="activeIndex === '/passwords'"
-          /></i>
-          <span
-            class="menu__label"
-            :class="{
-              'menu__label-active': activeIndex === '/passwords',
-            }"
-            v-show="!isCollapsed"
-            >Пароли</span
+        <el-tooltip
+          :disabled="!isCollapsed"
+          popper-class="menu-custom-tooltip"
+          effect="dark"
+          content="Пароли"
+          placement="right"
+          :show-after="500"
+        >
+          <div
+            :class="itemClass('/passwords')"
+            @click="navigateTo('/passwords')"
           >
-        </div>
+            <i class="menu__icon"
+              ><password_icon :is-active="activeIndex === '/passwords'"
+            /></i>
+            <span
+              class="menu__label"
+              :class="{
+                'menu__label-active': activeIndex === '/passwords',
+              }"
+              v-show="!isCollapsed"
+              >Пароли</span
+            >
+          </div>
+        </el-tooltip>
       </div>
     </div>
     <!-- Кнопка смены темы -->
