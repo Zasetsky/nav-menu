@@ -1,5 +1,15 @@
 .menu {
   position: fixed;
+  box-sizing: border-box;
+  padding: 0 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100vh;
+
+  &.collapsed {
+    padding: 8px 10px;
+  }
 
   .unread-count {
     position: absolute;
@@ -23,11 +33,6 @@
     border-radius: 50%;
   }
 
-  .el-menu-item.is-active {
-    background-color: var(--el-color-success-light-8);
-    color: var(--el-color-primary);
-  }
-
   &__list:not(.el-menu--collapse) {
     display: flex;
     justify-content: flex-start;
@@ -44,12 +49,6 @@
     background-color: var(--el-bg-color);
   }
 
-  &__wrapper {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-  }
-
   &__header-wrapper {
     display: flex;
     justify-content: center;
@@ -59,10 +58,8 @@
   &__header {
     display: flex;
     justify-content: space-between;
-    margin-left: 1.34375rem;
-    height: 2.5rem;
     width: 100%;
-    margin-top: 1rem;
+    padding-top: 14px;
     cursor: default;
   }
 
@@ -70,11 +67,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: none;
-    margin-top: 1rem;
-    margin-left: 1.3125rem;
-    height: 2.5rem;
-    width: 50%;
+    margin-top: 7px;
     cursor: pointer;
 
     &:hover {
@@ -112,67 +105,35 @@
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    position: relative;
-    margin-top: 0.85rem;
-    margin-left: 1.0625rem;
-    transition: none;
+    margin-top: 8px;
     height: 2.5rem;
     border-radius: 0.5rem;
-    width: 104%;
+    width: 100%;
+
+    &.active {
+      background-color: var(--el-color-success-light-9);
+    }
 
     &:hover {
       background-color: var(--el-color-success-light-9);
     }
   }
 
-  &__item-collapsed {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-left: 1.27rem !important;
-    margin-top: 0.85rem;
-    transition: none;
-    height: 2.5rem;
-    border-radius: 0.5rem;
-    width: 50%;
+  // &__item-collapsed {
 
-    &:hover {
-      background-color: var(--el-color-success-light-9);
-    }
-  }
-
-  .el-icon-time,
-  .el-icon-news {
-    margin: 0;
-  }
+  //   &:hover {
+  //     background-color: var(--el-color-success-light-9);
+  //   }
+  // }
 
   .is-active {
     cursor: default;
     color: var(--el-color-primary);
   }
 
-  &__icon {
-    position: absolute;
-    left: 0.625rem;
-    color: var(--el-text-color-primary);
-    font-size: 1.5rem !important;
-    line-height: 1.25rem;
-  }
-
-  &__icon-collapsed {
-    font-size: 1.5rem !important;
-    color: var(--el-text-color-primary);
-    line-height: 1.25rem;
-  }
-
-  &__icon-settings {
-    position: inherit;
-  }
-
   &__label {
-    line-height: 1.5625rem;
+    margin-left: 10px;
     font-weight: 600;
-    margin-left: 1.875rem;
     color: var(--el-text-color-primary);
   }
 
@@ -180,22 +141,14 @@
     color: var(--el-color-primary);
   }
 
-  &__label-settings {
-    margin-left: 1.625rem;
-  }
 
   &__item-settings {
-    margin-left: 1.0625rem;
-    margin-bottom: 1.25rem;
     border: 0.0625rem solid var(--el-border-color);
     cursor: pointer;
+    margin-bottom: 10px;
 
     &:hover {
       background-color: var(--el-color-success-light-9);
-    }
-
-    &:focus {
-      background-color: transparent;
     }
   }
 

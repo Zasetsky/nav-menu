@@ -7,6 +7,7 @@
   --el-text-color-secondary: #909399;
   --el-text-color-placeholder: #a8abb2;
   --el-text-color-disabled: #c0c4cc;
+  --el-text-color-overlay: #ffffff;
 
   --el-border-color: #dcdfe6;
   --el-border-color-light: #e4e7ed;
@@ -104,6 +105,7 @@
   --el-text-color-secondary: #a3a6ad;
   --el-text-color-placeholder: #8d9095;
   --el-text-color-disabled: #6c6e72;
+  --el-text-color-overlay: #303133;
 
   --el-border-color: #4c4d4f;
   --el-border-color-light: #414243;

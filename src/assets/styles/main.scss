@@ -25,8 +25,9 @@ html {
 }
 
 // Меню
-.el-menu {
-  border-right: 1px solid var(--el-border-color);
+.nav-menu-icon {
+  display: flex;
+  margin-left: 10px;
 }
 
 // Цвет подсказки меню

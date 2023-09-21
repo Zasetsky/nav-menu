@@ -22,3 +22,7 @@ export { default as knowledge_base_icon } from "./knowledge-base-icon.vue";
 export { default as company_structure } from "./company-structure.vue";
 export { default as all_collapse_icon } from "./all-collapse-icon.vue";
 export { default as all_expand_icon } from "./all-expand-icon.vue";
+export { default as graph_icon } from "./graph-icon.vue";
+export { default as news_icon } from "./news-icon.vue";
+export { default as password_icon } from "./password-icon.vue";
+export { default as settings_icon } from "./settings-icon.vue";

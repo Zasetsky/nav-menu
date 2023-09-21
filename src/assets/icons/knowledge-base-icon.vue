@@ -1,5 +1,5 @@
 <template>
-  <div class="knowledge-base-icon">
+  <div class="nav-menu-icon">
     <svg
       width="23"
       height="23"

@@ -36,6 +36,14 @@ export default defineComponent({
     onMounted(() => {
       const targetNode = document.documentElement;
 
+      // Получение начального значения темы и применение соответствующей темы
+      const initialTheme = targetNode.getAttribute("data-color-scheme");
+      if (initialTheme === "dark") {
+        document.body.classList.add("dark-theme");
+      } else {
+        document.body.classList.remove("dark-theme");
+      }
+
       // конфигурация наблюдателя
       const config = {
         attributes: true,
@@ -80,9 +88,9 @@ export default defineComponent({
 
 <style scoped>
 .el-aside {
-  overflow: visible !important;
+  overflow: hidden;
   transition: all 0.4s ease-out;
-  z-index: 1;
+  border-right: 1px solid var(--el-border-color);
 }
 .el-main {
   padding: 0;

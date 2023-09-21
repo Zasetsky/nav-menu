@@ -6,9 +6,7 @@ import ElementPlus from "element-plus";
 import { io } from "socket.io-client";
 
 import "element-plus/dist/index.css";
-import "@/assets/theme/index.css";
 import "normalize.css";
-import "@fontsource/roboto";
 import "@/assets/styles/main.scss";
 import "@/assets/styles/_theme.css";
 
