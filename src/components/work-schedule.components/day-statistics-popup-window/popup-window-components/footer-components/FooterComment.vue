@@ -18,12 +18,11 @@
 
     <p v-else-if="!isEditing && statusComment" class="comment-text">
       {{ statusComment }}
-      <i
+      <edit_comment_icon
         v-if="user.isAdmin && statusComment"
         @click.stop="startEditing"
         class="edit-icon"
-        ><edit_comment_icon
-      /></i>
+      />
     </p>
 
     <p class="comment-text__none" v-if="!user.isAdmin && !statusComment">
