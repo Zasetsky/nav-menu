@@ -80,7 +80,7 @@
           @input="handleInput"
           ref="searchInput"
         />
-        <i class="el-icon-search search-icon"></i>
+        <i class="search-icon"><search_icon /></i>
       </div>
     </div>
 
@@ -125,13 +125,14 @@ import {
 } from "vue";
 import { useStore } from "vuex";
 import { Department, Employee } from "@/types";
-import { close_icon, all_close_icon } from "@/assets/icons/index";
+import { close_icon, all_close_icon, search_icon } from "@/assets/icons/index";
 import { useTransliterate } from "@/composables/useTransliterate";
 
 export default defineComponent({
   components: {
     close_icon,
     all_close_icon,
+    search_icon,
   },
 
   props: {

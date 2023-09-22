@@ -21,8 +21,9 @@
       <i
         v-if="user.isAdmin && statusComment"
         @click.stop="startEditing"
-        class="el-icon-edit edit-icon"
-      />
+        class="edit-icon"
+        ><edit_comment_icon
+      /></i>
     </p>
 
     <p class="comment-text__none" v-if="!user.isAdmin && !statusComment">
@@ -35,10 +36,12 @@
 import { defineComponent, computed, onMounted, onUnmounted } from "vue";
 import { useStore } from "vuex";
 import EditComment from "./EditComment.vue";
+import { edit_comment_icon } from "@/assets/icons/index";
 
 export default defineComponent({
   components: {
     EditComment,
+    edit_comment_icon,
   },
   props: {
     statusComment: {

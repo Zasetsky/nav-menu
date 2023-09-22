@@ -26,3 +26,6 @@ export { default as graph_icon } from "./graph-icon.vue";
 export { default as news_icon } from "./news-icon.vue";
 export { default as password_icon } from "./password-icon.vue";
 export { default as settings_icon } from "./settings-icon.vue";
+export { default as search_icon } from "./search-icon.vue";
+export { default as day_statistic_arrow_r_icon } from "./day-statistic-arrow-r-icon.vue";
+export { default as edit_comment_icon } from "./edit-comment-icon.vue";

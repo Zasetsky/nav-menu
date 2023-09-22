@@ -15,11 +15,9 @@
         ></span>
         <span>{{ statusText }}</span>
       </div>
-      <i
-        v-if="user.isAdmin"
-        class="el-icon-arrow-right footer-status__arrow"
-        :class="{ 'footer-status__arrow--hover': isHovered || showOptions }"
-      ></i>
+      <i v-if="user.isAdmin" class="footer-status__arrow"
+        ><day_statistic_arrow_r_icon :hover="isHovered || showOptions"
+      /></i>
     </div>
 
     <status-select-window
@@ -40,6 +38,7 @@
 import { defineComponent, ref, computed } from "vue";
 import { useStore } from "vuex";
 import StatusSelectWindow from "./StatusSelectWindow.vue";
+import { day_statistic_arrow_r_icon } from "@/assets/icons/index";
 
 interface Props {
   status: string;
@@ -50,6 +49,7 @@ interface Props {
 export default defineComponent({
   components: {
     StatusSelectWindow,
+    day_statistic_arrow_r_icon,
   },
 
   props: {
@@ -156,10 +156,6 @@ export default defineComponent({
       display: flex;
       align-items: center;
     }
-  }
-
-  .footer-status__arrow--hover {
-    color: var(--el-color-success) !important;
   }
 
   .status-circle {
