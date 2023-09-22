@@ -242,6 +242,9 @@ import {
 import useSettingsVisibility from "@/composables/useSettingsVisibility";
 import { useStore } from "vuex";
 import { Socket } from "socket.io-client";
+import { ElTooltip } from "element-plus";
+
+import "element-plus/es/components/tooltip/style/css";
 
 export default defineComponent({
   components: {
@@ -254,6 +257,7 @@ export default defineComponent({
     news_icon,
     password_icon,
     settings_icon,
+    ElTooltip,
   },
 
   setup() {

@@ -25,7 +25,9 @@
             class="employee__info__name-wrapper__icon-wrapper"
             to="/employees"
           >
-            <i class="el-icon-edit employee__info__name-wrapper--edit-icon"></i>
+            <i class="employee__info__name-wrapper--edit-icon"
+              ><edit_comment_icon
+            /></i>
           </router-link>
         </div>
         <p class="employee__info--phone">{{ employee.phone }}</p>
@@ -44,8 +46,17 @@
 import { defineComponent, computed, ref } from "vue";
 import { Employee, StatusItem } from "@/types";
 import { useIsNotEmployeePage } from "@/composables/useIsNotEmployeePage";
+import { edit_comment_icon } from "@/assets/icons/index";
+import { ElAvatar } from "element-plus";
+
+import "element-plus/es/components/avatar/style/css";
 
 export default defineComponent({
+  components: {
+    edit_comment_icon,
+    ElAvatar,
+  },
+
   props: {
     employee: {
       type: Object as () => Employee,

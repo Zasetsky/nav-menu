@@ -18,10 +18,18 @@
 <script lang="ts">
 import { defineComponent } from "vue";
 import DepartmentList from "../work-schedule.components/department/DepartmentList.vue";
+import { ElCollapse, ElCollapseItem, ElScrollbar } from "element-plus";
+
+import "element-plus/es/components/collapse/style/css";
+import "element-plus/es/components/collapse-item/style/css";
+import "element-plus/es/components/scrollbar/style/css";
 
 export default defineComponent({
   components: {
     DepartmentList,
+    ElCollapse,
+    ElCollapseItem,
+    ElScrollbar,
   },
 });
 </script>

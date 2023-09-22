@@ -46,6 +46,9 @@ import EmployeeSearch from "./EmployeeSearch.vue";
 import { Department, Employee } from "@/types";
 import { useStore } from "vuex";
 import { all_collapse_icon, all_expand_icon } from "@/assets/icons/index";
+import { ElTooltip } from "element-plus";
+
+import "element-plus/es/components/tooltip/style/css";
 
 export default defineComponent({
   components: {
@@ -53,6 +56,7 @@ export default defineComponent({
     EmployeeSearch,
     all_collapse_icon,
     all_expand_icon,
+    ElTooltip,
   },
 
   props: {

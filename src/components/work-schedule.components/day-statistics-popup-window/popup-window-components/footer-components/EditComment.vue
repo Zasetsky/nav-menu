@@ -17,8 +17,15 @@
 <script lang="ts">
 import { defineComponent, ref, Ref, watch, onMounted, nextTick } from "vue";
 import { useStore } from "vuex";
+import { ElInput } from "element-plus";
+
+import "element-plus/es/components/input/style/css";
 
 export default defineComponent({
+  components: {
+    ElInput,
+  },
+
   props: {
     statusComment: {
       type: String,
@@ -56,8 +63,8 @@ export default defineComponent({
       });
     };
 
-    const onKeydown = (event: KeyboardEvent) => {
-      if (event.key === "Enter") {
+    const onKeydown = (event: KeyboardEvent | Event) => {
+      if ("key" in event && event.key === "Enter") {
         store.dispatch("Department/updateStatusComment", {
           employeeId: props.employeeID,
           date: props.date,

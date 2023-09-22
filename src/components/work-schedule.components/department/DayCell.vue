@@ -65,9 +65,12 @@ import { birthday_icon, holliday_info_icon } from "@/assets/icons/index";
 import PopupWindow from "../day-statistics-popup-window/PopupWindow.vue";
 import usePopup from "@/composables/usePopup";
 import { useStore } from "vuex";
+import { ElTooltip } from "element-plus";
+
+import "element-plus/es/components/tooltip/style/css";
 
 export default defineComponent({
-  components: { birthday_icon, holliday_info_icon, PopupWindow },
+  components: { birthday_icon, holliday_info_icon, PopupWindow, ElTooltip },
 
   props: {
     dayData: {

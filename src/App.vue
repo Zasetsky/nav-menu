@@ -20,10 +20,18 @@
 import { defineComponent, computed, onMounted, onBeforeUnmount } from "vue";
 import NavMenu from "./components/navigation-menu.components/NavMenu.vue";
 import { useStore } from "vuex";
+import { ElContainer, ElAside, ElMain } from "element-plus";
+
+import "element-plus/es/components/container/style/css";
+import "element-plus/es/components/aside/style/css";
+import "element-plus/es/components/main/style/css";
 
 export default defineComponent({
   components: {
+    ElContainer,
+    ElAside,
     NavMenu,
+    ElMain,
   },
 
   setup() {

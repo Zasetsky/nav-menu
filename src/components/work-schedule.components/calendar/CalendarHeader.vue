@@ -71,12 +71,16 @@ import DatePicker from "./DatePicker.vue";
 import CalendarLegend from "./CalendarLegend.vue";
 import { holliday_info_icon } from "@/assets/icons/index";
 import { useStore } from "vuex";
+import { ElTooltip } from "element-plus";
+
+import "element-plus/es/components/tooltip/style/css";
 
 export default defineComponent({
   components: {
     DatePicker,
     CalendarLegend,
     holliday_info_icon,
+    ElTooltip,
   },
 
   setup() {

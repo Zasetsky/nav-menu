@@ -2,13 +2,11 @@ import { createApp } from "vue";
 import App from "./App.vue";
 import store from "./store";
 import router from "./router/index";
-import ElementPlus from "element-plus";
 import { io } from "socket.io-client";
 
-import "element-plus/dist/index.css";
 import "normalize.css";
-import "@/assets/styles/main.scss";
 import "@/assets/styles/_theme.css";
+import "@/assets/styles/main.scss";
 
 let initialMenuState = localStorage.getItem("menuIsCollapsed");
 if (initialMenuState === null) {
@@ -24,4 +22,4 @@ const socket = io("http://localhost:3000"); // замените на адрес 
 
 app.provide("socket", socket);
 
-app.use(store).use(ElementPlus).use(router).mount("#app");
+app.use(store).use(router).mount("#app");

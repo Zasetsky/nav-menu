@@ -40,12 +40,16 @@ import Content from "./popup-window-components/ContentComponent.vue";
 import Footer from "./popup-window-components/FooterComponent.vue";
 import { useStore } from "vuex";
 import { WorkPoint, DatesData } from "@/types";
+import { ElPopover } from "element-plus";
+
+import "element-plus/es/components/popover/style/css";
 
 export default defineComponent({
   components: {
     Header,
     Content,
     Footer,
+    ElPopover,
   },
 
   props: {

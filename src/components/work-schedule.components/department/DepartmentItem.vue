@@ -14,16 +14,13 @@
               {{ department.name.toUpperCase() }}
             </h3>
             <i class="department__toggle-icon">
-              <plus_icon v-if="!isCollapsed.includes(department.name)" />
+              <plus_icon v-if="!isDepartmentCollapsed" />
               <minus_icon v-else />
             </i>
           </div>
         </template>
         <transition name="slide-fade">
-          <div
-            v-if="isCollapsed.includes(department.name)"
-            class="department__content"
-          >
+          <div v-if="isDepartmentCollapsed" class="department__content">
             <div
               v-for="(employee, index) in department.employees"
               :key="employee.id"
@@ -57,9 +54,20 @@ import EmployeeRow from "./EmployeeRow.vue";
 import { Department } from "@/types";
 import { plus_icon, minus_icon } from "@/assets/icons/index";
 import { useIsNotEmployeePage } from "@/composables/useIsNotEmployeePage";
+import { ElCollapse, ElCollapseItem } from "element-plus";
+import type { CollapseModelValue } from "element-plus";
+
+import "element-plus/es/components/collapse/style/css";
+import "element-plus/es/components/collapse-item/style/css";
 
 export default defineComponent({
-  components: { EmployeeRow, plus_icon, minus_icon },
+  components: {
+    EmployeeRow,
+    plus_icon,
+    minus_icon,
+    ElCollapse,
+    ElCollapseItem,
+  },
   props: {
     department: {
       type: Object as () => Department,
@@ -82,11 +90,13 @@ export default defineComponent({
     },
   },
   setup(props) {
-    const isCollapsed = ref(props.allCollapsed ? [] : [props.department.name]);
+    const isCollapsed = ref<CollapseModelValue>(
+      props.allCollapsed ? [] : [props.department.name]
+    );
 
     const { isNotEmployeePage } = useIsNotEmployeePage();
 
-    const handleCollapseChange = (val: string[]) => {
+    const handleCollapseChange = (val: CollapseModelValue) => {
       isCollapsed.value = val;
     };
 
@@ -110,6 +120,13 @@ export default defineComponent({
       return 0; // Вернем 0, если isIntoFired == true
     });
 
+    const isDepartmentCollapsed = computed(() => {
+      return (
+        Array.isArray(isCollapsed.value) &&
+        isCollapsed.value.includes(props.department.name)
+      );
+    });
+
     // Отслеживаем изменения свойства allCollapsed
     watch(
       () => props.allCollapsed,
@@ -123,6 +140,7 @@ export default defineComponent({
       onlineEmployeesCount,
       isNotEmployeePage,
       totalEmployees,
+      isDepartmentCollapsed,
       handleCollapseChange,
     };
   },
