@@ -109,9 +109,11 @@
     height: 2.5rem;
     border-radius: 0.5rem;
     width: 100%;
+    cursor: pointer;
 
     &.active {
       background-color: var(--el-color-success-light-9);
+      cursor: default;
     }
 
     &:hover {
