@@ -27,6 +27,12 @@
           >
             <i class="employee__info__name-wrapper--edit-icon"
               ><edit_comment_icon
+                style="
+                  display: flex;
+                  align-items: baseline;
+                  height: 12px;
+                  width: 12px;
+                "
             /></i>
           </router-link>
         </div>
