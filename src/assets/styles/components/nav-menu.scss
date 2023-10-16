@@ -1,10 +1,10 @@
 .menu {
   position: fixed;
   box-sizing: border-box;
-  padding: 0 20px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  padding: 0 20px;
   height: 100vh;
 
   &.collapsed {
@@ -28,7 +28,7 @@
     width: 6px;
     height: 6px;
     top: 10.5px;
-    right: 9px;
+    right: 11px;
     background-color: var(--el-color-success);
     border-radius: 50%;
   }
@@ -87,6 +87,14 @@
     color: var(--el-text-color-primary);
   }
 
+  &__icon {
+    margin-left: 10px;
+
+    &.collapsed {
+      margin-left: 8px;
+    }
+  }
+
   &__icon-collapse {
     display: flex;
     align-items: center;
@@ -103,8 +111,8 @@
 
   &__item {
     display: flex;
-    justify-content: flex-start;
     align-items: center;
+    justify-content: flex-start;
     margin-top: 8px;
     height: 2.5rem;
     border-radius: 0.5rem;
@@ -120,14 +128,6 @@
       background-color: var(--el-color-success-light-9);
     }
   }
-
-  // &__item-collapsed {
-
-  //   &:hover {
-  //     background-color: var(--el-color-success-light-9);
-  //   }
-  // }
-
   .is-active {
     cursor: default;
     color: var(--el-color-primary);
@@ -142,7 +142,6 @@
   &__label-active {
     color: var(--el-color-primary);
   }
-
 
   &__item-settings {
     border: 0.0625rem solid var(--el-border-color);

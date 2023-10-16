@@ -11,7 +11,7 @@
   &__calendar-days {
     display: flex;
     justify-content: space-between;
-    padding: 10px 20px;
+    padding: 0px 20px;
 
     p {
       margin-left: 7px;
@@ -29,7 +29,7 @@
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: repeat(2, 1fr);
-    padding: 10px 20px;
+    padding: 0px 20px;
 
     &__success,
     &__empty,
@@ -80,7 +80,7 @@
     display: grid;
     grid-template-columns: repeat(2, 0.988fr);
     grid-template-rows: repeat(5, 0.8fr);
-    padding: 10px 20px;
+    padding: 0px 20px;
 
     // Квадраты
     &__vacation--square,

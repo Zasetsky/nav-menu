@@ -51,7 +51,7 @@
           :show-after="500"
         >
           <div :class="itemClass('/')" @click="navigateTo('/')">
-            <i class="menu__icon"
+            <i class="menu__icon" :class="{ collapsed: isCollapsed }"
               ><graph_icon :is-active="activeIndex === '/'"
             /></i>
             <span
@@ -78,7 +78,7 @@
             :class="itemClass('/company-structure')"
             @click="navigateTo('/company-structure')"
           >
-            <i class="menu__icon"
+            <i class="menu__icon" :class="{ collapsed: isCollapsed }"
               ><company_structure
                 :is-active="activeIndex === '/company-structure'"
             /></i>
@@ -113,7 +113,7 @@
             :class="itemClass('/news')"
             @click="navigateTo('/news')"
           >
-            <i class="menu__icon"
+            <i class="menu__icon" :class="{ collapsed: isCollapsed }"
               ><news_icon :is-active="activeIndex === '/news'"
             /></i>
             <span
@@ -148,7 +148,7 @@
             :class="itemClass('/knowledge')"
             @click="navigateTo('/knowledge')"
           >
-            <i class="menu__icon"
+            <i class="menu__icon" :class="{ collapsed: isCollapsed }"
               ><knowledge_base_icon :is-active="activeIndex === '/knowledge'"
             /></i>
             <span
@@ -175,7 +175,7 @@
             :class="itemClass('/passwords')"
             @click="navigateTo('/passwords')"
           >
-            <i class="menu__icon"
+            <i class="menu__icon" :class="{ collapsed: isCollapsed }"
               ><password_icon :is-active="activeIndex === '/passwords'"
             /></i>
             <span
@@ -312,7 +312,7 @@ export default defineComponent({
 
     const settingsIconClass = computed(() => {
       let classes = "";
-      classes += isCollapsed.value ? "menu__icon-collapsed" : "menu__icon";
+      classes += isCollapsed.value ? "menu__icon collapsed" : "menu__icon";
       classes +=
         isSettingsVisible.value || isActiveSettings.value ? " active-icon" : "";
       return classes;
