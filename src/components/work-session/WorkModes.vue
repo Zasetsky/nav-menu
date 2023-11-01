@@ -20,7 +20,7 @@
     />
     <mode3_icon
       class="button-container__icon"
-      :class="{ active: isMode2Active }"
+      :class="{ active: isMode3Active }"
       @click="handlePressWorkMode(3)"
       @mouseenter="isMode3Hover = true"
       @mouseleave="handleMouseLeaveWorkMode(3)"
