@@ -1,6 +1,8 @@
 <template>
-  <el-container>
-    <!-- Навигационное меню -->
+  <div class="company">
+    <work-session-panel />
+    <!-- <el-container>
+    Навигационное меню
     <el-aside
       :style="{
         width: isCollapsed ? '3.75rem' : '16.5rem',
@@ -9,18 +11,20 @@
       <nav-menu />
     </el-aside>
 
-    <!-- Основное содержимое -->
+    Основное содержимое
     <el-main>
       <router-view></router-view>
     </el-main>
-  </el-container>
+  </el-container> -->
+  </div>
 </template>
 
 <script lang="ts">
 import { defineComponent, computed, onMounted, onBeforeUnmount } from "vue";
-import NavMenu from "./components/navigation-menu.components/NavMenu.vue";
+// import NavMenu from "./components/navigation-menu.components/NavMenu.vue";
 import { useStore } from "vuex";
-import { ElContainer, ElAside, ElMain } from "element-plus";
+// import { ElContainer, ElAside, ElMain } from "element-plus";
+import WorkSessionPanel from "./components/work-session/WorkSessionPanel.vue";
 
 import "element-plus/es/components/container/style/css";
 import "element-plus/es/components/aside/style/css";
@@ -28,10 +32,11 @@ import "element-plus/es/components/main/style/css";
 
 export default defineComponent({
   components: {
-    ElContainer,
-    ElAside,
-    NavMenu,
-    ElMain,
+    // ElContainer,
+    // ElAside,
+    // NavMenu,
+    // ElMain,
+    WorkSessionPanel,
   },
 
   setup() {

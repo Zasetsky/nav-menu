@@ -94,6 +94,7 @@
   --el-color-category-free-dark-2: #1a7842;
 
   --el-additional-color-special: #9747ff;
+  --el-color-overlay-50: rgba(255, 255, 255, 0.5);
 }
 
 .dark-theme {
