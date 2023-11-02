@@ -106,9 +106,11 @@ export default defineComponent({
 .button-container {
   display: flex;
   align-items: center;
-  padding: 24px 20px;
+  justify-content: space-between;
+  width: 100%;
   border-bottom: 1px solid var(--el-border-color);
   border-left: 1px solid var(--el-border-color);
+  padding: 24px 0;
 
   &__icon {
     cursor: pointer;

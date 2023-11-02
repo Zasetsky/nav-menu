@@ -116,7 +116,7 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 .custom-select {
-  width: 200px;
+  width: 180px;
   cursor: pointer;
 
   &__wrapper {

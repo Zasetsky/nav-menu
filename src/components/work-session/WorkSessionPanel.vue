@@ -4,7 +4,9 @@
 
     <div><WorkSessionButton /></div>
 
-    <div><WorkModes /></div>
+    <div style="width: 100%"><WorkModes /></div>
+    <div style="min-width: 600px"></div>
+    <div style="min-width: 65px"></div>
   </div>
 </template>
 

@@ -1,5 +1,5 @@
 <template>
-  <div style="display: flex">
+  <div style="display: flex; padding-left: 20px">
     <svg
       v-if="active"
       xmlns="http://www.w3.org/2000/svg"

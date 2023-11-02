@@ -181,7 +181,9 @@ export default defineComponent({
 <style lang="scss" scoped>
 .work-session-button {
   display: flex;
+  justify-content: center;
   padding: 16px 20px;
+  // width: 224px;
   border-bottom: 1px solid var(--el-border-color);
 
   &__wrapper {

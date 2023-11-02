@@ -1,5 +1,5 @@
 <template>
-  <div style="display: flex">
+  <div style="display: flex; padding-right: 20px">
     <svg
       v-if="!hover"
       xmlns="http://www.w3.org/2000/svg"
