@@ -69,6 +69,7 @@
         >
         <el-button
           style="width: 48px; height: 24px"
+          :disabled="!comment"
           @click="handleConfirm"
           type="warning"
           >ОК</el-button
