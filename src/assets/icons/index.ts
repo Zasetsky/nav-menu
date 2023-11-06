@@ -36,3 +36,4 @@ export { default as chevron_collapse_icon } from "./chevron-collapse-icon.vue";
 export { default as mode1_icon } from "./mode1-icon.vue";
 export { default as mode2_icon } from "./mode2-icon.vue";
 export { default as mode3_icon } from "./mode3-icon.vue";
+export { default as next_task_button_icon } from "./next-task-button-icon.vue";

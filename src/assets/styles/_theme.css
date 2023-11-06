@@ -64,13 +64,13 @@
   --el-color-error-light-9: #fdefef;
   --el-color-error-dark-2: #bc4646;
 
-  --el-color-info: #2f80ed;
-  --el-color-info-light-3: #6ea7f3;
-  --el-color-info-light-5: #97c0f6;
-  --el-color-info-light-7: #c1d9fa;
-  --el-color-info-light-8: #d5e6fb;
-  --el-color-info-light-9: #ebf3fe;
-  --el-color-info-dark-2: #2666be;
+  --rkrs-color-info: #2f80ed;
+  --rkrs-color-info-light-3: #6ea7f3;
+  --rkrs-color-info-light-5: #97c0f6;
+  --rkrs-color-info-light-7: #c1d9fa;
+  --rkrs-color-info-light-8: #d5e6fb;
+  --rkrs-color-info-light-9: #ebf3fe;
+  --rkrs-color-info-dark-2: #2666be;
 
   --el-bg-color: #ffffff;
   --el-bg-color-page: #f2f3f5;
@@ -163,13 +163,13 @@
   --el-color-error-light-9: #291b1b;
   --el-color-error-dark-2: #ef7979;
 
-  --el-color-info: #2f80ed;
-  --el-color-info-light-3: #2760ac;
-  --el-color-info-light-5: #214a80;
-  --el-color-info-light-7: #1c3455;
-  --el-color-info-light-8: #192a3f;
-  --el-color-info-light-9: #171f2a;
-  --el-color-info-dark-2: #5999f1;
+  --rkrs-color-info: #2f80ed;
+  --rkrs-color-info-light-3: #2760ac;
+  --rkrs-color-info-light-5: #214a80;
+  --rkrs-color-info-light-7: #1c3455;
+  --rkrs-color-info-light-8: #192a3f;
+  --rkrs-color-info-light-9: #171f2a;
+  --rkrs-color-info-dark-2: #5999f1;
 
   --el-bg-color: #141414;
   --el-bg-color-page: #0a0a0a;

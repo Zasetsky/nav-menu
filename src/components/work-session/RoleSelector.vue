@@ -54,11 +54,8 @@ export default defineComponent({
     const toggleDropdown = () => {
       if (optionsElement.value !== null) {
         if (isOpen.value) {
-          console.log(optionsElement.value.style.maxHeight);
-
           optionsElement.value.style.maxHeight = "0";
         } else {
-          console.log(optionsElement.value.style.maxHeight);
           // Получите высоту контента
           const scrollHeight = optionsElement.value.scrollHeight;
 
@@ -116,12 +113,11 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 .custom-select {
-  width: 180px;
+  min-width: 180px;
   cursor: pointer;
 
   &__wrapper {
     padding: 16px 20px;
-    border-right: 1px solid var(--el-border-color);
     border-bottom: 1px solid var(--el-border-color);
     // transition: background-color 0.2s ease-in;
 

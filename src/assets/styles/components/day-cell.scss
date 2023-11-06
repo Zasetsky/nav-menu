@@ -63,7 +63,7 @@
   }
 
   &-business-trip {
-    background-color: var(--el-color-info);
+    background-color: var(--rkrs-color-info);
 
     .day-circle {
       border: 1px dashed var(--el-color-success-light-9);
@@ -74,7 +74,7 @@
     background-color: var(--el-color-category-top);
 
     .day-circle {
-      border: 1px dashed var(--el-color-info);
+      border: 1px dashed var(--rkrs-color-info);
     }
   }
 
@@ -87,7 +87,7 @@
   }
 
   &-maternity-leave {
-    background-color: var(--el-color-info-light-9);
+    background-color: var(--rkrs-color-info-light-9);
   }
 
   &-holiday {

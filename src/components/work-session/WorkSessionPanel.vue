@@ -6,7 +6,9 @@
 
     <div style="width: 100%"><WorkModes /></div>
     <div style="min-width: 600px"></div>
-    <div style="min-width: 65px"></div>
+    <div style="cursor: pointer">
+      <next_task_button_icon />
+    </div>
   </div>
 </template>
 
@@ -15,12 +17,14 @@ import { defineComponent, ref } from "vue";
 import WorkSessionButton from "./WorkSessionButton.vue";
 import RoleSelector from "./RoleSelector.vue";
 import WorkModes from "./WorkModes.vue";
+import { next_task_button_icon } from "@/assets/icons/index";
 
 export default defineComponent({
   components: {
     WorkSessionButton,
     RoleSelector,
     WorkModes,
+    next_task_button_icon,
   },
   setup() {
     const roles = ref([

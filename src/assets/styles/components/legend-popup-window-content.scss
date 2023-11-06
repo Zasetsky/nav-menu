@@ -4,7 +4,7 @@
 
   hr {
     border: none;
-    border-top: 1px solid var(--el-color-info-light-8);
+    border-top: 1px solid var(--rkrs-color-info-light-8);
     width: 440px;
   }
 
@@ -116,7 +116,7 @@
 
     &__business-trip--square,
     &__work-day-on-business-trip--square {
-      background-color: var(--el-color-info);
+      background-color: var(--rkrs-color-info);
 
       &--circle {
         border: 1px dashed var(--el-color-success-light-9);
@@ -128,7 +128,7 @@
       background-color: var(--el-color-category-top);
 
       &--circle {
-        border: 1px dashed var(--el-color-info);
+        border: 1px dashed var(--rkrs-color-info);
       }
     }
 
@@ -142,7 +142,7 @@
     }
 
     &__maternity-leave--square {
-      background-color: var(--el-color-info-light-9);
+      background-color: var(--rkrs-color-info-light-9);
     }
 
     // Отпускные дни

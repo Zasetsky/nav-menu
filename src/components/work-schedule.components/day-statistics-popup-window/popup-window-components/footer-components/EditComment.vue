@@ -120,7 +120,7 @@ export default defineComponent({
 
   .el-input__inner::selection,
   .el-textarea__inner::selection {
-    background: var(--el-color-info);
+    background: var(--rkrs-color-info);
     color: var(--el-color-white);
   }
 

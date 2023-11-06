@@ -1,3 +1,14 @@
+@forward "element-plus/theme-chalk/src/common/var.scss" with (
+  $colors: (
+    "primary": (
+      "base": #17505b,
+    ),
+    "info": (
+      "base": #909399,
+    ),
+  )
+);
+
 ::selection {
   background: none;
 }
@@ -56,7 +67,7 @@ html {
 
 // Цвет подсказки предпразднечных дней
 .preHoliday-custom-tooltip {
-  background-color: var(--el-color-info) !important;
+  background-color: var(--rkrs-color-info) !important;
   border: none !important;
   color: var(--el-color-white) !important;
   margin-bottom: 5px;
@@ -64,7 +75,7 @@ html {
 
 .preHoliday-custom-tooltip .el-popper__arrow::before {
   border: none !important;
-  background: var(--el-color-info) !important;
+  background: var(--rkrs-color-info) !important;
 }
 
 // Цвет подсказки празднечных дней

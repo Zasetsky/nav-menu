@@ -111,7 +111,7 @@ export default defineComponent({
 
   &__body {
     position: absolute;
-    border: 1px solid var(--el-color-info);
+    border: 1px solid var(--rkrs-color-info);
     background-color: var(--el-bg-color);
     padding: 12px 10px;
     right: -23px;
@@ -134,7 +134,7 @@ export default defineComponent({
 
     &::before {
       top: -7px;
-      background-color: var(--el-color-info);
+      background-color: var(--rkrs-color-info);
       z-index: 1;
     }
 
