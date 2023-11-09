@@ -56,23 +56,28 @@
 
   <div class="comment" :class="{ open: isOpen }">
     <div class="comment__content">
-      <el-input
-        v-model="comment"
-        maxlength="30"
-        :placeholder="placeholderText"
-        show-word-limit
-        type="textarea"
-      />
-      <div class="comment__actions">
-        <el-button style="width: 76px; height: 24px" @click="handleCancel" text
-          >Отменить</el-button
-        >
-        <el-button
-          style="width: 48px; height: 24px"
-          @click="handleConfirm"
-          type="warning"
-          >ОК</el-button
-        >
+      <div class="comment__content__inner">
+        <el-input
+          v-model="comment"
+          maxlength="30"
+          :placeholder="placeholderText"
+          show-word-limit
+          type="textarea"
+        />
+        <div class="comment__actions">
+          <el-button
+            style="width: 76px; height: 24px"
+            @click="handleCancel"
+            text
+            >Отменить</el-button
+          >
+          <el-button
+            style="width: 48px; height: 24px"
+            @click="handleConfirm"
+            type="warning"
+            >ОК</el-button
+          >
+        </div>
       </div>
     </div>
   </div>
@@ -400,8 +405,7 @@ export default defineComponent({
   display: grid;
   grid-template-rows: 0fr;
   overflow: hidden;
-  transition: grid-template-rows 0.4s ease-in-out, padding 0s 0.4s,
-    border-color 0s 0.4s;
+  transition: grid-template-rows 0.4s ease-in-out, border-color 0s 0.4s;
   border: 1px solid transparent;
   border-top: none;
   border-radius: 0 0 4px 4px;
@@ -409,13 +413,19 @@ export default defineComponent({
   &.open {
     grid-template-rows: 1fr;
     transition-delay: 0s;
-    padding: 16px 20px;
+
     border-color: var(--el-border-color);
   }
 
   &__content {
     padding: 0;
     min-height: 0;
+
+    &__inner {
+      display: flex;
+      flex-direction: column;
+      padding: 16px 20px;
+    }
 
     .el-textarea__inner {
       min-height: 64px !important;
