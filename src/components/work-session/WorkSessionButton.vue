@@ -69,7 +69,6 @@
         >
         <el-button
           style="width: 48px; height: 24px"
-          :disabled="!comment"
           @click="handleConfirm"
           type="warning"
           >ОК</el-button
@@ -399,6 +398,7 @@ export default defineComponent({
     border-color 0s 0.4s;
   border: 1px solid transparent;
   border-top: none;
+  border-radius: 0 0 4px 4px;
 
   &.open {
     grid-template-rows: 1fr;

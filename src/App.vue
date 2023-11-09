@@ -2,20 +2,20 @@
   <div class="company">
     <work-session-panel />
     <!-- <el-container>
-    Навигационное меню
-    <el-aside
-      :style="{
-        width: isCollapsed ? '3.75rem' : '16.5rem',
-      }"
-    >
-      <nav-menu />
-    </el-aside>
+      Навигационное меню
+      <el-aside
+        :style="{
+          width: isCollapsed ? '3.75rem' : '16.5rem',
+        }"
+      >
+        <nav-menu />
+      </el-aside>
 
-    Основное содержимое
-    <el-main>
-      <router-view></router-view>
-    </el-main>
-  </el-container> -->
+      Основное содержимое
+      <el-main>
+        <router-view></router-view>
+      </el-main>
+    </el-container> -->
   </div>
 </template>
 

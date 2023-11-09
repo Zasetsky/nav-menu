@@ -10,7 +10,7 @@
     <path
       d="M8.43746 7.63538V12.3645M11.5625 7.63538V12.3645M9.99996 18.3333C14.6025 18.3333 18.3333 14.6025 18.3333 9.99996C18.3333 5.39746 14.6025 1.66663 9.99996 1.66663C5.39746 1.66663 1.66663 5.39746 1.66663 9.99996C1.66663 14.6025 5.39746 18.3333 9.99996 18.3333Z"
       :stroke="
-        isActive ? 'var(--el-color-white)' : 'var(--el-color-primary-light-7)'
+        isActive ? 'var(--el-color-white)' : 'var(--el-color-warning-light-7)'
       "
       stroke-linecap="round"
       stroke-linejoin="round"
