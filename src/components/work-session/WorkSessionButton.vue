@@ -324,10 +324,12 @@ export default defineComponent({
   &__content {
     display: flex;
     justify-content: center;
-    padding: 16px 20px;
+    align-items: center;
     // width: 224px;
     border: 1px solid var(--el-border-color);
     border-top: none;
+    height: 64px;
+    padding: 0 20px;
   }
   &__wrapper {
     display: flex;

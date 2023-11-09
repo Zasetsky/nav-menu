@@ -6,8 +6,8 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      min-width: 65px;
-      padding: 16px 0;
+      min-width: 64px;
+      height: 64px;
     "
     @mouseenter="isHover = true"
     @mouseleave="isHover = false"

@@ -108,7 +108,7 @@ export default defineComponent({
   align-items: center;
   width: 100%;
   border-bottom: 1px solid var(--el-border-color);
-  padding: 24px 0;
+  height: 64px;
 
   &__icon {
     cursor: pointer;

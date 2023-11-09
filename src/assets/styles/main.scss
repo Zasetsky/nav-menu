@@ -39,6 +39,9 @@ html {
 
 // Цвет подсказки меню
 .menu-custom-tooltip {
+  font-family: "Roboto";
+  font-size: 12px;
+  font-weight: 500;
   background-color: var(--el-color-primary) !important;
   color: var(--el-color-white) !important;
   border: none !important;
@@ -51,6 +54,9 @@ html {
 
 // Подсказка в меню отделов
 .department-menu-custom-tooltip {
+  font-family: "Roboto";
+  font-size: 12px;
+  font-weight: 500;
   background-color: var(--el-color-primary) !important;
   color: var(--el-color-white) !important;
   border: none !important;
@@ -64,6 +70,9 @@ html {
 
 // Цвет подсказки предпразднечных дней
 .preHoliday-custom-tooltip {
+  font-family: "Roboto";
+  font-size: 12px;
+  font-weight: 500;
   background-color: var(--rkrs-color-info) !important;
   border: none !important;
   color: var(--el-color-white) !important;
@@ -77,6 +86,9 @@ html {
 
 // Цвет подсказки празднечных дней
 .holiday-custom-tooltip {
+  font-family: "Roboto";
+  font-size: 12px;
+  font-weight: 500;
   background-color: var(--el-color-danger) !important;
   border: none !important;
   color: var(--el-color-white) !important;
@@ -90,6 +102,9 @@ html {
 
 // Цвет подсказки особенных дней
 .special-day-custom-tooltip {
+  font-family: "Roboto";
+  font-size: 12px;
+  font-weight: 500;
   background-color: var(--el-color-success-dark-2) !important;
   border: none !important;
   margin-bottom: -10px;

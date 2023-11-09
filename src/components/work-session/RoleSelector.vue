@@ -117,7 +117,11 @@ export default defineComponent({
   cursor: pointer;
 
   &__wrapper {
-    padding: 16px 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 64px;
+    padding: 0 20px;
     border-bottom: 1px solid var(--el-border-color);
     // transition: background-color 0.2s ease-in;
 
